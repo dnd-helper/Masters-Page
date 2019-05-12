@@ -1,0 +1,123 @@
+.meta-content {
+    flex-grow: 1;
+    margin: auto;
+    margin-left: 0.5em;
+}
+.details {
+    margin-top: 0.1em;
+    margin-right: 0.4em;
+}
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+}
+.meta-item {
+    flex-grow: 1;
+    display: flex;
+    font-size: 9.5pt;
+    height: 1.2em;
+    margin: 1%;
+}
+.meta-item img {
+    max-height: 100%;
+    user-select: none;
+}
+.description {
+    font-size: 8px !important;
+}
+.description p {
+    margin: 0;
+    padding-top: 0.3em;
+    padding-bottom: 0.4em;
+}
+.description ul {
+    padding-left: 1.5em;
+}
+.long-spell .description {
+    column-count: 1;
+    padding-bottom: 0.4em;
+}
+.known {
+    height: 1.5em;
+}
+.known img {
+    user-select: none;
+    max-height: 100%;
+}
+
+@media print {
+    .known + label {
+        display: none;
+    }
+    body {
+        margin: 0px;
+    }
+    footer {
+        display: none;
+    }
+    #menu {
+        display: none;
+    }
+    #spell-list {
+        margin: 0;
+    }
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 13.5pt;
+    font-family: "Calibri Light";
+}
+.name {
+    font-variant: small-caps;
+    font-family: "Calibri Light";
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: 1px solid;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0.2em;
+}
+.name img {
+    height: 1em;
+    margin-bottom: 0.1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    user-select: none;
+}
+.name p {
+    margin-top: 0;
+    margin-bottom: 0.1em;
+}
+.school {
+    font-variant: normal;
+    font-size: 8pt;
+    font-style: italic;
+    text-align: right;
+    white-space: nowrap;
+    flex-grow: 1;
+    margin-right: 0.2em;
+}
+.spell-body {
+    margin: 0;
+    padding: 0.1em 0.2em 0.1em 0.7em;
+    border: 1px solid;
+}
+.long-spell {
+    width: 100%;
+}
+.spell-item {
+    font-size: 10pt;
+    box-sizing: border-box;
+    vertical-align: top;
+    page-break-inside: avoid;
+    display: inline-block;
+    border: none;
+    background: white;
+}
+.grid-size, .spell-item {
+    /* grid-column: 1 / 2; */
+    width: 100%;
+}

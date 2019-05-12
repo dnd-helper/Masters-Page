@@ -1,0 +1,620 @@
+document.write(`
+<!-- <div class="bootstrap"> -->
+  <div class="row row-no-gutters">
+    <div class="col-xs-3 col-sm-3 col-md-3">
+
+      <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne1">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                Tabela de Monstros
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne1">
+            <div class="panel-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo1">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                Tabela de Magias
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo1">
+            <div class="panel-body">
+              <div class="dropdown clearfix">
+                <button value="Todas" style="text-transform: Capitalize; width: 100%" class="btn btn-classe btn-default dropdown-toggle" type="button" id="dropdownClasses" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Classes
+                  <span class="caret"></span>
+                </button>
+                <ul style="text-transform: Capitalize" id="ULdropdownClasse" class="dropdown-menu dropdown-menu-classe" aria-labelledby="dropdownClasses">
+                  <li><a href="#">Bardo</a></li>
+                  <li><a href="#">Bruxo</a></li>
+                  <li><a href="#">Clérigo</a></li>
+                  <li><a href="#">Druida</a></li>
+                  <li><a href="#">Feiticeiro</a></li>
+                  <li><a href="#">Mago</a></li>
+                  <li><a href="#">Paladino</a></li>
+                  <li><a href="#">Patrulheiro</a></li>
+                  <li><a href="#">Todas</a></li>
+                </ul>
+              </div>
+              <div class="dropdown clearfix">
+                <button value="Todos" style="text-transform: Capitalize; width: 100%" class="btn btn-nivel btn-default dropdown-toggle" type="button" id="dropdownNivel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Nivel
+                  <span class="caret"></span>
+                </button>
+                <ul style="text-transform: Capitalize;" id="ULdropdownNivel" class="dropdown-menu dropdown-menu-nivel" aria-labelledby="dropdownNivel">
+                  <li><a href="#">Nivel 0</a></li>
+                  <li><a href="#">Nivel 1</a></li>
+                  <li><a href="#">Nivel 2</a></li>
+                  <li><a href="#">Nivel 3</a></li>
+                  <li><a href="#">Nivel 4</a></li>
+                  <li><a href="#">Nivel 5</a></li>
+                  <li><a href="#">Nivel 6</a></li>
+                  <li><a href="#">Nivel 7</a></li>
+                  <li><a href="#">Nivel 8</a></li>
+                  <li><a href="#">Nivel 9</a></li>
+                  <li><a href="#">Todos</a></li>
+                </ul>
+              </div>
+              <div class="dropdown clearfix">
+                <button style="text-transform: Capitalize; width: 100%" class="btn btn-magia btn-default dropdown-toggle" type="button" id="dropdownMagia" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Magia
+                  <span class="caret"></span>
+                </button>
+                <ul style="text-transform: Capitalize" id="ULdropdownMagia" class="dropdown-menu dropdown-menu-magia scrollable-menu" aria-labelledby="dropdownMagia">
+                  <li><a href="#">amizade</a></li>
+                  <li><a href="#">druidismo</a></li>
+                  <li><a href="#">Magia 3</a></li>
+                  <li><a href="#">Magia 4</a></li>
+                </ul>
+              </div>
+              <div id="MagiaSelecionada" class="" style="width:100%; max-height: calc(50vh); overflow: hidden auto;">
+                <div id="spell-list">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingThree1">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                Players
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree1">
+            <div class="panel-body">
+              <div class="btn-group btn-group-lg" role="group" aria-label="..." style="width: 100%;display: flex;">
+                <button type="button" class="btn btn-success" style="width: 50%;">Adicionar Player</button>
+                <button type="button" class="btn btn-danger" style="width: 50%;">Remover Player</button>
+              </div>
+              <div id="PlayersAdicionados" class="" style="width:100%; height: 400px;"></div>
+              <div class="btn-group btn-group-lg" role="group" aria-label="..." style="width: 100%;display: flex;">
+                <button type="button" class="btn btn-primary" style="width: 100%;">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  Adicionar Players aos Grids
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6">
+      <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs" style="margin-left: 10px;margin-right: 10px;margin-top: 10px;">
+
+
+        <ul id="myTabs" class="nav nav-tabs nav-justified" role="tablist" style="margin-left: 0px;padding-right: 0px;">
+          <li role="presentation" class="active black-tab"><a class="newtab" href="#bloco" id="bloco-tab" role="tab" data-toggle="tab" aria-controls="bloco" aria-expanded="true">Bloco de Notas</a></li>
+          <li role="presentation" class="black-tab"><a class="newtab" href="#tabela" role="tab" id="tabela-tab" data-toggle="tab" aria-controls="tabela" aria-expanded="false">Tabela</a></li>
+          <!-- <li role="presentation" class="black-tab"><a class="newtab" href="#grid" role="tab" id="grid-tab" data-toggle="tab" aria-controls="grid" aria-expanded="false">Grid</a></li> -->
+          <li role="presentation" class="dropdown top_level expanded" style="padding-right: 0px;">
+            <a href="#" id="myTabDrop11" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDrop11-contents" aria-expanded="false">Grids<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="myTabDrop11" id="myTabDrop11-contents">
+              <li><a href="#dropdown11" role="tab" id="dropdown11-tab" data-toggle="tab" aria-controls="dropdown11">Concreto</a></li>
+              <li><a href="#dropdown22" role="tab" id="dropdown22-tab" data-toggle="tab" aria-controls="dropdown22">Campo</a></li>
+              <li><a href="#dropdown33" role="tab" id="dropdown33-tab" data-toggle="tab" aria-controls="dropdown33">Floresta</a></li>
+              <li><a href="#dropdown44" role="tab" id="dropdown44-tab" data-toggle="tab" aria-controls="dropdown44">Deserto</a></li>
+            </ul>
+          </li>
+          <!-- <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Tabela</a></li> -->
+          <li role="presentation" class="dropdown top_level expanded" style="padding-right: 0px;">
+            <a href="#" id="myTabDrop1" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Progressão de Classes<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+              <li><a href="#dropdown1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">Todas</a></li>
+              <li><a href="#dropdown2" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">Bárbaro</a></li>
+              <li><a href="#dropdown3" role="tab" id="dropdown3-tab" data-toggle="tab" aria-controls="dropdown3">Bardo</a></li>
+              <li><a href="#dropdown4" role="tab" id="dropdown4-tab" data-toggle="tab" aria-controls="dropdown4">Bruxo</a></li>
+              <li><a href="#dropdown5" role="tab" id="dropdown5-tab" data-toggle="tab" aria-controls="dropdown5">Clérigo</a></li>
+              <li><a href="#dropdown6" role="tab" id="dropdown6-tab" data-toggle="tab" aria-controls="dropdown6">Druida</a></li>
+              <li><a href="#dropdown7" role="tab" id="dropdown7-tab" data-toggle="tab" aria-controls="dropdown7">Feiticeiro</a></li>
+              <li><a href="#dropdown8" role="tab" id="dropdown8-tab" data-toggle="tab" aria-controls="dropdown8">Guerreiro</a></li>
+              <li><a href="#dropdown9" role="tab" id="dropdown9-tab" data-toggle="tab" aria-controls="dropdown9">Ladino</a></li>
+              <li><a href="#dropdown10" role="tab" id="dropdown10-tab" data-toggle="tab" aria-controls="dropdown10">Mago</a></li>
+              <li><a href="#dropdown11" role="tab" id="dropdown11-tab" data-toggle="tab" aria-controls="dropdown11">Monge</a></li>
+              <li><a href="#dropdown12" role="tab" id="dropdown12-tab" data-toggle="tab" aria-controls="dropdown12">Paladino</a></li>
+              <li><a href="#dropdown13" role="tab" id="dropdown13-tab" data-toggle="tab" aria-controls="dropdown13">Patrulheiro</a></li>
+            </ul>
+          </li>
+        </ul>
+
+
+        <div id="myTabContent" class="tab-content" style="background-color: #ffffff;">
+
+          <div role="tabpanel" style="width: 100%" class="tab-pane fade active in" id="bloco" aria-labelledby="bloco-tab">
+            <textarea name="area1" style="width: 100%; height: 500px">
+                 Faça suas anotações aqui.
+            </textarea><br/>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="tabela" aria-labelledby="tabela-tab">
+
+            <div id="example"></div>
+            <script>
+              const data = [
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', '']
+              ];
+
+              const container = document.getElementById('example');
+              const hot = new Handsontable(container, {
+                data: data,
+                rowHeaders: true,
+                colHeaders: true,
+                stretchH: 'all',
+                autoWrapRow: true,
+                height: 500,
+                maxRows: 22,
+                columnSorting: {
+                  indicator: true
+                },
+                rowSorting: {
+                  indicator: true
+                },
+                autoColumnSize: {
+                  samplingRatio: 23
+                },
+                mergeCells: true,
+                contextMenu: true,
+                manualRowResize: true,
+                manualColumnResize: true,
+                manualRowMove: true,
+                manualColumnMove: true,
+                dropdownMenu: true,
+                multiColumnSorting: {
+                  indicator: true
+                },
+                exportFile: true
+              });
+            </script>
+
+          </div>
+
+          <!-- <div role="tabpanel" class="tab-pane fade" id="grid" aria-labelledby="grid-tab">
+            <canvas id="canvas" width="100%" height="500"></canvas>
+          </div> -->
+
+          <!-- <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+          </div> -->
+
+          <div role="tabpanel" class="tab-pane fade" style="height: 600px; overflow-y: scroll;" id="dropdown11" aria-labelledby="dropdown11-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%;"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown22" aria-labelledby="dropdown22-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown33" aria-labelledby="dropdown33-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown44" aria-labelledby="dropdown44-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
+
+
+
+          <div role="tabpanel" class="tab-pane fade" id="dropdown1" aria-labelledby="dropdown1-tab"><img src="img/progressao/All.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledby="dropdown2-tab"><img src="img/progressao/All.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown3" aria-labelledby="dropdown3-tab"><img src="img/progressao/Bardo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown4" aria-labelledby="dropdown4-tab"><img src="img/progressao/Bruxo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown5" aria-labelledby="dropdown5-tab"><img src="img/progressao/Clerigo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown6" aria-labelledby="dropdown6-tab"><img src="img/progressao/Druida.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown7" aria-labelledby="dropdown7-tab"><img src="img/progressao/Feiticeiro.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown8" aria-labelledby="dropdown8-tab"><img src="img/progressao/Bardo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown9" aria-labelledby="dropdown9-tab"><img src="img/progressao/Bardo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown10" aria-labelledby="dropdown10-tab"><img src="img/progressao/Mago.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown11" aria-labelledby="dropdown11-tab"><img src="img/progressao/Monge.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown12" aria-labelledby="dropdown12-tab"><img src="img/progressao/Paladino.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdown13" aria-labelledby="dropdown13-tab"><img src="img/progressao/Patrulheiro.PNG" alt="" style="width: 100%"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3">
+
+      <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne2">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                Avanço de Personagem (XP)
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne2">
+            <div class="panel-body">
+              <img src="img/collapse/exp.PNG" alt="" style="width: 100%">
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo2">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                Rolar Dados
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
+            <div class="panel-body">
+              <div class="btn-group" role="group" style="width: 100%;display: flex;" aria-label="...">
+                <button id="D4" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)"><center>D4</center></button>
+                <button id="D6" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)"><center>D6</center></button>
+                <button id="D8" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)"><center>D8</center></button>
+                <button id="D10" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)"><center>D10</center></button>
+                <button id="D12" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)"><center>D12</center></button>
+                <button id="D20" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)"><center>D20</center></button>
+                <button id="D50" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)"><center>D50</center></button>
+                <button id="D100" type="button" style="calc(12.5% +3px)" class="btn btn-default" onclick="addDado(this.id)"><center>D100</center></button>
+              </div>
+
+              <table class="table table-bordered" style="margin-top: 10px; width: 100%; table-layout: fixed;" id="ListaDeDados">
+                <thead>
+                  <tr class="active" style="height: 15px;">
+                    <th style="width: 36px;"><b><center>Del</center></b></th>
+                    <th><b>Dado</b></th>
+                    <th><b>Resultado</b></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+              <div class="btn-group btn-group-lg" role="group" aria-label="..." style="width: 100%;display: flex;">
+                <button type="button" class="btn btn-success" style="width: 50%;" onclick="rollDado()">Rolar</button>
+                <button type="button" class="btn btn-danger" style="width: 50%;" onclick="delAll()">Limpar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingThree2">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                Plugin YouTube
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree2">
+            <div class="panel-body">
+              <iframe width="100%" height="500" frameborder="0" style="overflow: hidden"
+                src="YoutubeApi/youtubeapi.html">
+              </iframe>
+              <!-- <div id="result">
+
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- <div class="row row-no-gutters">
+    <div class="col-md-8">.col-md-8</div>
+    <div class="col-md-4">.col-md-4</div>
+  </div>
+  <div class="row row-no-gutters">
+    <div class="col-md-4">.col-md-4</div>
+    <div class="col-md-4">.col-md-4</div>
+    <div class="col-md-4">.col-md-4</div>
+  </div>
+  <div class="row row-no-gutters">
+    <div class="col-md-6">.col-md-6</div>
+    <div class="col-md-6">.col-md-6</div>
+  </div> -->
+<!-- </div> -->
+
+
+
+<!-- <div class="promo-box media-resources">
+  <div class="box articles">
+
+    <a class="fancybox" rel="media" href="https://dnd-helper.github.io/Magic-Filter-Printable/" title="">
+    <article class="dbl">
+      <div class="media-mediaresource">
+
+        <img src="img/PrintPreviewRetan.png" alt="Magic Filter">
+
+        <h3>
+          <span class="first-line">Filtro de Magias</span>
+          <span>Versão Printável</span>
+        </h3>
+      </div>
+    </article>
+    </a>
+  </div>
+</div> -->
+
+<!-- <div class="promo-box media-resources">
+  <div class="box articles">
+    <a class="fancybox " rel="media" href="img/jkaxjjxlqx_th.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/v1_44DnDLive_Ann-2560x1600_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/v1_44DnDLive_Ann-1920x1080_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/v1_44DnDLive_Ann-1280x960_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/v1_44DnDLive_Ann-iPad_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/v1_44DnDLive_Ann-iPhone_Wallpaper_Template.jpg&#39;}]">
+      <article class="dbl">
+        <div class="media-mediaresource">
+
+          <img src="img/jkaxjjxlqx_th.jpg" alt="D&D Live 2019" width="600" height="338">
+
+          <h3>
+            <span class="first-line">Wallpapers</span>
+            <span>D&amp;D Live 2019</span>
+          </h3>
+        </div>
+      </article>
+    </a>
+  </div>
+</div> -->
+
+  <!--
+
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/Saltmarsh_Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Saltmarsh_2560x1600_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Saltmarsh_1920x1080_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Saltmarsh_1280x960_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Saltmarsh_Facebook_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Saltmarsh_Twitter_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Saltmarsh_iPad_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Saltmarsh_iPhone_Wallpaper_Template.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/Saltmarsh_Gallery_Thumb.jpg" alt="Ghosts of Saltmarsh Wallpaper" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Ghosts of Saltmarsh</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/MadMage_Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/MadMage_Expansion_2560x1600_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/MadMage_Expansion_1920x1080_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/MadMage_Expansion_1280x960_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/MadMage_Expansion_Facebook_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/MadMage_Expansion_Twitter_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/MadMage_Expansion_iPad_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/MadMage_Expansion_iPhone_Wallpaper_Template.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/MadMage_Gallery_Thumb.jpg" alt="Wallpaper_Dungeon of the Mad Mage" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Dungeon of the Mad Mage</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/D21-Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/D21-2560x1600_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/D21-1920x1080_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/D21-1280x960_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/D21-iPhone_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/D21-iPad_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/D21-Facebook_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/D21-Twitter_Wallpaper.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/D21-Gallery_Thumb.jpg" alt="Dragon+ 21" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Dragon+ Issue 21</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/ToF_Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/ToF_2560x1600_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/ToF_1920x1080_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/ToF_1280x960_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/ToF_iPhone_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/ToF_iPad_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/ToF_Facebook_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/ToF_Twitter_Wallpaper_Template.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/ToF_Gallery_Thumb.jpg" alt="Mordenkainen&#39;s Tome of Foes" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Mordenkainen's Tome of Foes</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/Xanathars_Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Xanathars_Wallpaper_2560x1600.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Xanathars_Wallpaper_1920x1080.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Xanathars_Wallpaper_1280x960.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Xanathars_Wallpaper_iPhone.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Xanathars_Wallpaper_iPad.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Xanathars_Wallpaper_Facebook.jpg&#39;},{&#39;size&#39;:&#39;Facebook v2&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Xanathars_Wallpaper_Facebook_v2.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Xanathars_Wallpaper_Twitter.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/Xanathars_Gallery_Thumb.jpg" alt="Xanathar&#39;s Guide to Everything" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Xanathar's Guide to Everything</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/GreenFaceMask_Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/GreenFaceMask_Expansion_2560x1600_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/GreenFaceMask_Expansion_1920x1080_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/GreenFaceMask_Expansion_1280x960_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/GreenFaceMask_Expansion_iPhone_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/GreenFaceMask_Expansion_iPad_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/GreenFaceMask_Expansion_Facebook_Wallpaper_Template_v2.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/GreenFaceMask_Expansion_Twitter_Wallpaper_Template.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/GreenFaceMask_Gallery_Thumb.jpg" alt="Tomb of Annihilation 1" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Tomb of Annihilation</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/2016_010516_Yawning_Portal_TH.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Yawning_portal_2560x1600_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Yawning_Portal_1920x1080_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Yawning_Portal_1280x960_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Yawning_Portal_iPhone_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Yawning_Portal_iPad_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Yawning_Portal_Facebook_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Yawning_Portal_Twitter_Wallpaper.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/2016_010516_Yawning_Portal_TH.jpg" alt="Tales from the Yawning Portal" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Tales from the Yawning Portal</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/DragonPlus11_WallTh.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus11_2560x1600_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus11_1920x1080_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus11_1280x960_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Expansion_iPhone_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus11_iPad_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Dragonplus11_Facebook_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus11_Twitter_Wallpaper.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/DragonPlus11_WallTh.jpg" alt="Dragon+ Issue 11" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Dragon+ Holiday</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/DX_LiveGame_Article_Thumbnail_02.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DX_LiveGame_2560x1600_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DX_LiveGame_1920x1080_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DX_LiveGame_1280x960_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DX_LiveGame_iPhone_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DX_LiveGame_iPad_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DX_LiveGame_Facebook.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DX-LiveGame_Twitter_Wallpaper.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/DX_LiveGame_Article_Thumbnail_02.jpg" alt="Force Grey: The Lost Episode" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Force Grey: Giant Hunters</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/Wallpaper4_TH.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/00_Volos_adventurers_2560x1600_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/00_Volos_adventurers_1920x1080_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/00_Volos_adventurers_1280x960_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volos_adventurers_iPhone_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volos_adventurers_iPad_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/02_Volos_adventurers_Facebook_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/01_Volos_adventurers_Twitter_Wallpaper.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/Wallpaper4_TH.jpg" alt="Volo&#39;s Guide to Monsters 4" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Volo's Guide to Monsters</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/Wallpaper3_TH.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/00_Volos_Setting_2560x1600_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/00_Volos_setting_1920x1080_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/00_Volos_setting_1280x960_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volos_setting_iPhone_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volos_setting_iPad_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/02_Volos_setting_Facebook_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/01_Volos_setting_Twitter_Wallpaper_Template.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/Wallpaper3_TH.jpg" alt="Volo&#39;s Guide to Monsters 3" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Volo's Guide to Monsters</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/Wallpaper2-TH.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/00_Volos_2560x1600_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/00_Volos_1920x1080_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/00_Volos_1280x960_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volos_iPhone_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volos_iPad_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/02_Volos_Facebook_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/01_Volos_Twitter_Wallpaper_Template.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/Wallpaper2-TH.jpg" alt="Volo&#39;s Guide to Monsters 2" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Volo's Guide to Monsters</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/DX_Frost_Giant_Mosaic_Thumbnail_TypeA.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volo_2560x1600_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volo_1920x1080_New_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volo_1280x960_New_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volo_iPhone.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volo_iPad.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volo_Facebook.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Volo_Twitter.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/DX_Frost_Giant_Mosaic_Thumbnail_TypeA.jpg" alt="Volo&#39;s Guide to Monsters 1" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Volo's Guide to Monsters</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus10_2560x1600_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus10_1920x1080_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus10_1280x960_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus10_iPhone_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus10_iPad_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus10_Facebook_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/DragonPlus10_Twitter_Wallpaper.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/Gallery_Thumb.jpg" alt="Dragon+ Halloween Wallpaper 2016" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Dragon+ Halloween 2016</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/Halloween_Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Halloween_2560x1600_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Halloween_1920x1080_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Halloween_1280x960_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Halloween_iPhone_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Halloween_iPad_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Halloween_Facebook_Wallpaper.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Halloween_Twitter_Wallpaper.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/Halloween_Gallery_Thumb.jpg" alt="Wallpaper_Halloween 2016" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Halloween 2016</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/StormGiant_Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560x1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Storm_Giant_2560x1600_Wallpaper_Template_0.jpg&#39;},{&#39;size&#39;:&#39;1920x1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Storm-Giant_1920x1080_WallpaperTemplate_0.jpg&#39;},{&#39;size&#39;:&#39;1280x960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Storm_Giant_1280x960_WallpaperTemplate_0.jpg&#39;},{&#39;size&#39;:&#39;iPhone&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Storm-Giant_iPhone_Wallpaper_Template_0.jpg&#39;},{&#39;size&#39;:&#39;iPad&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Storm-Giant_iPad_WallpaperTemplate_0.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Storm-Giant_Facebook_Wallpaper_Template_0.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/StormGiant_Twitter-Header.jpg&#39;}]">
+        <article class="dbl">
+          <div class="media-mediaresource">
+
+            <img src="https://dnd-helper.github.io/files/StormGiant_Gallery_Thumb.jpg" alt="wallpaper_20160601_Storm Giant" width="600" height="338">
+
+            <h3>
+              <span class="first-line">Wallpapers</span>
+              <span>Storm King's Thunder Set 1</span>
+            </h3>
+          </div>
+        </article>
+      </a>
+      <a class="fancybox " rel="media" href="http://dnd.wizards.com/sites/default/files/media/Ezmerelda_Gallery_Thumb.jpg" title="" data-wallpaper="[{&#39;size&#39;:&#39;2560 x 1600&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Ezmerelda_2560x1600_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;1920 x 1080&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Ezmerelda_1920x1080_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;1280 x 960&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Ezmerelda_1280x960_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;Mobile&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Ezmerelda_iPhone_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;Tablet&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Ezmerelda_iPad_WallpaperTemplate.jpg&#39;},{&#39;size&#39;:&#39;Facebook&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Ezmerelda_Facebook_Wallpaper_Template.jpg&#39;},{&#39;size&#39;:&#39;Twitter&#39;,&#39;file&#39;:&#39;http:\/\/dnd.wizards.com\/sites\/default\/files\/media\/Ezmerelda_Twitter_Wallpaper_Template.jpg&#39;}]">
+      <article class="dbl">
+        <div class="media-mediaresource">
+
+          <img src="https://dnd-helper.github.io/files/Ezmerelda_Gallery_Thumb.jpg" alt="wallpaper_20160506_Ezmerelda" width="600" height="338">
+
+          <h3>
+            <span class="first-line">Wallpapers</span>
+            <span>Curse of Strahd Set 4</span>
+          </h3>
+        </div>
+      </article>
+      </a>
+
+
+      -->
+
+
+    `)
