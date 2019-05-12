@@ -28,55 +28,57 @@ document.write(`
           </div>
           <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo1">
             <div class="panel-body">
-              <div class="dropdown clearfix">
-                <button value="Todas" style="text-transform: Capitalize; width: 100%" class="btn btn-classe btn-default dropdown-toggle" type="button" id="dropdownClasses" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Classes
-                  <span class="caret"></span>
-                </button>
-                <ul style="text-transform: Capitalize" id="ULdropdownClasse" class="dropdown-menu dropdown-menu-classe" aria-labelledby="dropdownClasses">
-                  <li><a href="#">Bardo</a></li>
-                  <li><a href="#">Bruxo</a></li>
-                  <li><a href="#">Clérigo</a></li>
-                  <li><a href="#">Druida</a></li>
-                  <li><a href="#">Feiticeiro</a></li>
-                  <li><a href="#">Mago</a></li>
-                  <li><a href="#">Paladino</a></li>
-                  <li><a href="#">Patrulheiro</a></li>
-                  <li><a href="#">Todas</a></li>
-                </ul>
+              <div style="width: 100%;display: flex;">
+                <div class="dropdown clearfix" style="width: 50%">
+                  <button value="Todas" style="text-transform: Capitalize; width: 100%; border-bottom-right-radius: 0px; border-top-right-radius: 0px"
+                  class="btn btn-classe btn-default dropdown-toggle" type="button" id="dropdownClasses" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    Classes
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize" id="ULdropdownClasse" class="dropdown-menu dropdown-menu-classe" aria-labelledby="dropdownClasses">
+                    <li><a href="#">Bardo</a></li>
+                    <li><a href="#">Bruxo</a></li>
+                    <li><a href="#">Clérigo</a></li>
+                    <li><a href="#">Druida</a></li>
+                    <li><a href="#">Feiticeiro</a></li>
+                    <li><a href="#">Mago</a></li>
+                    <li><a href="#">Paladino</a></li>
+                    <li><a href="#">Patrulheiro</a></li>
+                    <li><a href="#">Todas</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown clearfix" style="width: 50%">
+                  <button value="Todos" style="text-transform: Capitalize; width: 100%;  border-bottom-left-radius: 0px; border-top-left-radius: 0px"
+                  class="btn btn-nivel btn-default dropdown-toggle" type="button" id="dropdownNivel" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    Nivel
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize;" id="ULdropdownNivel" class="dropdown-menu dropdown-menu-nivel" aria-labelledby="dropdownNivel">
+                    <li><a href="#">Nivel 0</a></li>
+                    <li><a href="#">Nivel 1</a></li>
+                    <li><a href="#">Nivel 2</a></li>
+                    <li><a href="#">Nivel 3</a></li>
+                    <li><a href="#">Nivel 4</a></li>
+                    <li><a href="#">Nivel 5</a></li>
+                    <li><a href="#">Nivel 6</a></li>
+                    <li><a href="#">Nivel 7</a></li>
+                    <li><a href="#">Nivel 8</a></li>
+                    <li><a href="#">Nivel 9</a></li>
+                    <li><a href="#">Todos</a></li>
+                  </ul>
+                </div>
               </div>
               <div class="dropdown clearfix">
-                <button value="Todos" style="text-transform: Capitalize; width: 100%" class="btn btn-nivel btn-default dropdown-toggle" type="button" id="dropdownNivel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Nivel
-                  <span class="caret"></span>
-                </button>
-                <ul style="text-transform: Capitalize;" id="ULdropdownNivel" class="dropdown-menu dropdown-menu-nivel" aria-labelledby="dropdownNivel">
-                  <li><a href="#">Nivel 0</a></li>
-                  <li><a href="#">Nivel 1</a></li>
-                  <li><a href="#">Nivel 2</a></li>
-                  <li><a href="#">Nivel 3</a></li>
-                  <li><a href="#">Nivel 4</a></li>
-                  <li><a href="#">Nivel 5</a></li>
-                  <li><a href="#">Nivel 6</a></li>
-                  <li><a href="#">Nivel 7</a></li>
-                  <li><a href="#">Nivel 8</a></li>
-                  <li><a href="#">Nivel 9</a></li>
-                  <li><a href="#">Todos</a></li>
-                </ul>
-              </div>
-              <div class="dropdown clearfix">
-                <button style="text-transform: Capitalize; width: 100%" class="btn btn-magia btn-default dropdown-toggle" type="button" id="dropdownMagia" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <button style="text-transform: Capitalize; width: 100%; margin-top: -1px;" class="btn btn-magia btn-default dropdown-toggle" type="button" id="dropdownMagia" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   Magia
                   <span class="caret"></span>
                 </button>
                 <ul style="text-transform: Capitalize" id="ULdropdownMagia" class="dropdown-menu dropdown-menu-magia scrollable-menu" aria-labelledby="dropdownMagia">
-                  <li><a href="#">amizade</a></li>
-                  <li><a href="#">druidismo</a></li>
-                  <li><a href="#">Magia 3</a></li>
-                  <li><a href="#">Magia 4</a></li>
                 </ul>
               </div>
-              <div id="MagiaSelecionada" class="" style="width:100%; max-height: calc(50vh); overflow: hidden auto;">
+              <div id="MagiaSelecionada" class="" style="width:100%; max-height: calc(50vh); overflow: hidden auto; margin-top: 10px;"">
                 <div id="spell-list">
 
                 </div>

@@ -103,7 +103,7 @@
 .spell-body {
     margin: 0;
     padding: 0.1em 0.2em 0.1em 0.7em;
-    border: 1px solid;
+    border: 1px rgb(140, 140, 140);
 }
 .long-spell {
     width: 100%;
