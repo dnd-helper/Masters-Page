@@ -5543,7 +5543,7 @@ button.list-group-item-danger.active:focus {
   padding: 15px;
 }
 .panel-heading {
-  padding: 10px 15px;
+  padding: 7px 15px;
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -5751,7 +5751,7 @@ button.list-group-item-danger.active:focus {
   border-radius: 4px;
 }
 .panel-group .panel + .panel {
-  margin-top: 5px;
+  margin-top: -1px;
 }
 .panel-group .panel-heading {
   border-bottom: 0;

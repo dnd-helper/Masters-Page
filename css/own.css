@@ -90,6 +90,14 @@
 	padding: 6px 9px !important;
 }
 
+.delPlayerbutton {
+	padding: 4px 6px !important;
+}
+.delPlayerline {
+	margin-top: -1px;
+	padding: 8px 10px !important;
+}
+
 .scrollable-menu {
     height: auto;
     max-height: 200px;
