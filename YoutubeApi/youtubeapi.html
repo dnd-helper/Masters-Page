@@ -1,4 +1,5 @@
-
+<html style="overflow: hidden;">
+<head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="E:\Documents\GitHub\Masters-Page\YoutubeApi\youtubeapi.css">
 <style type="text/css" class="cp-pen-styles">
@@ -523,7 +524,14 @@ fieldset[disabled] .btn-default.focus {
 
 
 </style>
+
+</head>
+<body>
+
 <div class="youtube-video">
+  <div class="" style="">
+
+
   <header style="height: 190px; display: flex;">
 		<!-- <img src="https://github.com/Middi/youtube-api/blob/master/images/logo.png?raw=true" alt="" class="logo" style="padding-left: 3px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;"> -->
     <img src="https://github.com/Middi/youtube-api/blob/master/images/logo.png?raw=true" alt="" class="logo" style="padding-left: 3px;padding-right: 5px;padding-top: 0px;padding-bottom: 0px;margin-top: 3px;">
@@ -550,7 +558,7 @@ fieldset[disabled] .btn-default.focus {
     <!-- <button type="button" class="" name="button"></button> -->
 	</header>
 	<section id="video"></section>
-  <div style="overflow-x: hidden; overflow-y: auto;">
+  <div style="overflow-x: hidden; overflow-y: auto; height: 100vh">
     <main ></main>
   </div>
   <footer>
@@ -567,6 +575,7 @@ fieldset[disabled] .btn-default.focus {
     </div>
 
   </footer>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -647,7 +656,7 @@ fieldset[disabled] .btn-default.focus {
   var nextpage;
   var prevpage;
   var contnext = 0;
-
+  var searchval = false;
   $('#SearchInput').keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13'){
@@ -658,152 +667,159 @@ fieldset[disabled] .btn-default.focus {
   $(document).on('click', '#PesquisaYoutube', YoutubeSearch);
 
   function YoutubeSearch() {
-    contnext = 0;
-    var key = 'AIzaSyCl2XLxOUH3knKUjAWZuL9HZBZnfDBDWOQ';
-    var playlistId = 'PL2fnLUTsNyq7A335zB_RpOzu7hEUcSJbB';
-    // var URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
-    var URL = 'https://www.googleapis.com/youtube/v3/search';
     var Pesquisa = $('#SearchInput').val();
-
-    var options = {
-        part: 'id, snippet',
-        key: key,
-        maxResults: 20,
-        order: "relevance",
-        q: Pesquisa,
-        type: "video"
-    }
-
-    $('main').empty();
-
-    loadVids();
-
-    function loadVids() {
-        $.getJSON(URL, options, function (data) {
-            var id = data.items[0].id.videoId;
-            resultsLoop(data);
-            nextpage = data.nextPageToken;
-        });
-    }
-
-    function mainVid(id) {
-        $('#video').html(`
-					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-				`);
-    }
-
-    function resultsLoop(data) {
-
-        $.each(data.items, function (i, item) {
-
-            var thumb = item.snippet.thumbnails.medium.url;
-            var title = item.snippet.title;
-            var desc = item.snippet.description.substring(0, 100);
-            var vid = item.id.videoId;
+    if (Pesquisa != "") {
+      searchval = true;
+      contnext = 0;
+      var key = 'AIzaSyCl2XLxOUH3knKUjAWZuL9HZBZnfDBDWOQ';
+      var playlistId = 'PL2fnLUTsNyq7A335zB_RpOzu7hEUcSJbB';
+      // var URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
+      var URL = 'https://www.googleapis.com/youtube/v3/search';
 
 
+      var options = {
+          part: 'id, snippet',
+          key: key,
+          maxResults: 20,
+          order: "relevance",
+          q: Pesquisa,
+          type: "video"
+      }
 
-            $('main').append(`
-							<article class="item" data-key="${vid}">
+      $('main').empty();
 
-								<img src="${thumb}" alt="" class="thumb">
-								<div class="details">
-									<h4>${title}</h4>
-									<p style=\"text-align: justify;\">${desc}</p>
-								</div>
+      loadVids();
 
-							</article>
-						`);
-        });
-    }
+      function loadVids() {
+          $.getJSON(URL, options, function (data) {
+              var id = data.items[0].id.videoId;
+              resultsLoop(data);
+              nextpage = data.nextPageToken;
+          });
+      }
 
-		// CLICK EVENT
-    $('main').on('click', 'article', function () {
-        var id = $(this).attr('data-key');
-        mainVid(id);
-    });
+      function mainVid(id) {
+          $('#video').html(`
+  					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  				`);
+      }
 
-    // return nextpage;
-    $("#proximo").removeClass().removeAttr('class');
-    $("#proximo").attr("class","btn btn-default");
+      function resultsLoop(data) {
 
-    if (contnext == 0) {
-      $("#anterior").removeClass().removeAttr('class');
-      $("#anterior").attr("class","btn btn-default disabled");
+          $.each(data.items, function (i, item) {
+
+              var thumb = item.snippet.thumbnails.medium.url;
+              var title = item.snippet.title;
+              var desc = item.snippet.description.substring(0, 100);
+              var vid = item.id.videoId;
+
+
+
+              $('main').append(`
+  							<article class="item" data-key="${vid}">
+
+  								<img src="${thumb}" alt="" class="thumb">
+  								<div class="details">
+  									<h4>${title}</h4>
+  									<p style=\"text-align: justify;\">${desc}</p>
+  								</div>
+
+  							</article>
+  						`);
+          });
+      }
+
+  		// CLICK EVENT
+      $('main').on('click', 'article', function () {
+          var id = $(this).attr('data-key');
+          mainVid(id);
+      });
+
+      // return nextpage;
+      $("#proximo").removeClass().removeAttr('class');
+      $("#proximo").attr("class","btn btn-default");
+
+      if (contnext == 0) {
+        $("#anterior").removeClass().removeAttr('class');
+        $("#anterior").attr("class","btn btn-default disabled");
+      }
     }
   };
 
 
   $(document).on('click', '#proximo', function() {
+    if (searchval == true) {
 
-    var key = 'AIzaSyCl2XLxOUH3knKUjAWZuL9HZBZnfDBDWOQ';
-    var playlistId = 'PL2fnLUTsNyq7A335zB_RpOzu7hEUcSJbB';
-    // var URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
-    var URL = 'https://www.googleapis.com/youtube/v3/search';
-    var Pesquisa = $('#SearchInput').val();
 
-    var options = {
-        part: 'id, snippet',
-        key: key,
-        maxResults: 20,
-        order: "relevance",
-        pageToken: nextpage,
-        q: Pesquisa,
-        type: "video"
+      var key = 'AIzaSyCl2XLxOUH3knKUjAWZuL9HZBZnfDBDWOQ';
+      var playlistId = 'PL2fnLUTsNyq7A335zB_RpOzu7hEUcSJbB';
+      // var URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
+      var URL = 'https://www.googleapis.com/youtube/v3/search';
+      var Pesquisa = $('#SearchInput').val();
+
+      var options = {
+          part: 'id, snippet',
+          key: key,
+          maxResults: 20,
+          order: "relevance",
+          pageToken: nextpage,
+          q: Pesquisa,
+          type: "video"
+      }
+
+      $('main').empty();
+
+      loadVids();
+
+      function loadVids() {
+          $.getJSON(URL, options, function (data) {
+              var id = data.items[0].id.videoId;
+              resultsLoop(data);
+              nextpage = data.nextPageToken;
+              prevpage = data.prevPageToken ;
+          });
+      }
+
+      function mainVid(id) {
+          $('#video').html(`
+  					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  				`);
+      }
+
+      function resultsLoop(data) {
+
+          $.each(data.items, function (i, item) {
+
+              var thumb = item.snippet.thumbnails.medium.url;
+              var title = item.snippet.title;
+              var desc = item.snippet.description.substring(0, 100);
+              var vid = item.id.videoId;
+
+
+
+              $('main').append(`
+  							<article class="item" data-key="${vid}">
+
+  								<img src="${thumb}" alt="" class="thumb">
+  								<div class="details">
+  									<h4>${title}</h4>
+  									<p style=\"text-align: justify;\">${desc}</p>
+  								</div>
+
+  							</article>
+  						`);
+          });
+      }
+
+  		// CLICK EVENT
+      $('main').on('click', 'article', function () {
+          var id = $(this).attr('data-key');
+          mainVid(id);
+      });
+      contnext++;
+      $("#anterior").removeClass().removeAttr('class');
+      $("#anterior").attr("class","btn btn-default");
     }
-
-    $('main').empty();
-
-    loadVids();
-
-    function loadVids() {
-        $.getJSON(URL, options, function (data) {
-            var id = data.items[0].id.videoId;
-            resultsLoop(data);
-            nextpage = data.nextPageToken;
-            prevpage = data.prevPageToken ;
-        });
-    }
-
-    function mainVid(id) {
-        $('#video').html(`
-					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-				`);
-    }
-
-    function resultsLoop(data) {
-
-        $.each(data.items, function (i, item) {
-
-            var thumb = item.snippet.thumbnails.medium.url;
-            var title = item.snippet.title;
-            var desc = item.snippet.description.substring(0, 100);
-            var vid = item.id.videoId;
-
-
-
-            $('main').append(`
-							<article class="item" data-key="${vid}">
-
-								<img src="${thumb}" alt="" class="thumb">
-								<div class="details">
-									<h4>${title}</h4>
-									<p style=\"text-align: justify;\">${desc}</p>
-								</div>
-
-							</article>
-						`);
-        });
-    }
-
-		// CLICK EVENT
-    $('main').on('click', 'article', function () {
-        var id = $(this).attr('data-key');
-        mainVid(id);
-    });
-    contnext++;
-    $("#anterior").removeClass().removeAttr('class');
-    $("#anterior").attr("class","btn btn-default");
   });
 
 
@@ -885,3 +901,6 @@ fieldset[disabled] .btn-default.focus {
 
   //# sourceURL=pen.js
 </script>
+
+</body>
+</html>
