@@ -647,7 +647,18 @@ fieldset[disabled] .btn-default.focus {
   var nextpage;
   var prevpage;
   var contnext = 0;
-  $(document).on('click', '#PesquisaYoutube', function() {
+
+  $('#SearchInput').keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        YoutubeSearch();
+    }
+  });
+
+  $(document).on('click', '#PesquisaYoutube', YoutubeSearch);
+
+  function YoutubeSearch() {
+    contnext = 0;
     var key = 'AIzaSyCl2XLxOUH3knKUjAWZuL9HZBZnfDBDWOQ';
     var playlistId = 'PL2fnLUTsNyq7A335zB_RpOzu7hEUcSJbB';
     // var URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
@@ -715,7 +726,12 @@ fieldset[disabled] .btn-default.focus {
     // return nextpage;
     $("#proximo").removeClass().removeAttr('class');
     $("#proximo").attr("class","btn btn-default");
-  });
+
+    if (contnext == 0) {
+      $("#anterior").removeClass().removeAttr('class');
+      $("#anterior").attr("class","btn btn-default disabled");
+    }
+  };
 
 
   $(document).on('click', '#proximo', function() {
