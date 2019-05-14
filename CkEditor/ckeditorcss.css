@@ -56,9 +56,11 @@ main .document-editor {
 	border-bottom-color: #cdd0d2;
 	border-right-color: #cdd0d2;
 	border-radius: 2px;
-	max-height: calc(100vh - 180px);
+	height: calc(100vh - 155px);
+	max-height: calc(100vh - 155px);
 	display: flex;
 	flex-flow: column nowrap;
+	flex-direction: column;
 	box-shadow: 2px 2px 2px rgba(0,0,0,.1);
 }
 
@@ -79,6 +81,9 @@ main .content-container {
 	/* padding: var(--ck-sample-base-spacing); */
 	padding: 0px;
 	background: #eee;
+	flex-flow: 1;
+	height: 100% !important;
+	/* max-height: 100% !important; */
 	/* overflow-y: scroll; */
 }
 
@@ -87,10 +92,22 @@ main .content-container #editor {
 	border-top-right-radius: 0;
 
 	/* width: 15.8cm; */
-	/* max-height: calc(100vh - 140px); */
+	height: 100% !important;
+	/* max-height: 100% !important; */
 	padding: 1cm 1cm 0cm;
 	margin: 0 auto;
 	box-shadow: 2px 2px 1px rgba(0,0,0,.05);
+}
+
+.ck .ck-button__label
+{
+	width: 5em !important;
+}
+
+.ck.ck-dropdown.ck-heading-dropdown .ck-dropdown__panel .ck-list__item {
+
+    min-width: 15em !important;
+
 }
 
 /* --------- RWD ------------------------------------------------------------------------------- */

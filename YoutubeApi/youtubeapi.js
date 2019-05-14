@@ -11,7 +11,6 @@
 
 // https://i.ytimg.com/vi/qxWrnhZEuRU/mqdefault.jpg
 
-
 $(document).ready(function () {
 
     var key = 'AIzaSyCl2XLxOUH3knKUjAWZuL9HZBZnfDBDWOQ';
@@ -51,6 +50,74 @@ $(document).ready(function () {
             var title = item.snippet.title;
             var desc = item.snippet.description.substring(0, 100);
             var vid = item.snippet.resourceId.videoId;
+
+
+            $('main').append(`
+							<article class="item" data-key="${vid}">
+
+								<img src="${thumb}" alt="" class="thumb">
+								<div class="details">
+									<h4>${title}</h4>
+									<p>${desc}</p>
+								</div>
+
+							</article>
+						`);
+        });
+    }
+
+		// CLICK EVENT
+    $('main').on('click', 'article', function () {
+        var id = $(this).attr('data-key');
+        mainVid(id);
+    });
+
+
+});
+
+
+$(document).on('click', '#PesquisaYoutube', function() {
+    var key = 'AIzaSyCl2XLxOUH3knKUjAWZuL9HZBZnfDBDWOQ';
+    var playlistId = 'PL2fnLUTsNyq7A335zB_RpOzu7hEUcSJbB';
+    // var URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
+    var URL = 'https://www.googleapis.com/youtube/v3/search';
+    var Pesquisa = $('#SearchInput').val();
+    alert(Pesquisa));
+
+    var options = {
+        part: 'id', 'snippet',
+        key: key,
+        maxResults: 20,
+        order: "relevance",
+        q: Pesquisa,
+        type: "video"
+    }
+
+    $('main').empty();
+
+    loadVids();
+
+    function loadVids() {
+        $.getJSON(URL, options, function (data) {
+            var id = data.items[0].snippet.resourceId.videoId;
+            resultsLoop(data);
+        });
+    }
+
+    function mainVid(id) {
+        $('#video').html(`
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				`);
+    }
+
+    function resultsLoop(data) {
+
+        $.each(data.items, function (i, item) {
+
+            var thumb = item.snippet.thumbnails.medium.url;
+            var title = item.snippet.title;
+            var desc = item.snippet.description.substring(0, 100);
+            var vid = item.id.videoId;
 
 
             $('main').append(`
