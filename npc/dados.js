@@ -8,7 +8,7 @@ $(document).on('click', '#GerarNPC', function() {
   $("#idealNPC").empty().append("<b>Ideal:</b> "+npcDados["Ideais"][Math.floor(Math.random() * 20)]+".");
   $("#vincNPC").empty().append("<b>Vínculo:</b> "+npcDados["Vinculos"][Math.floor(Math.random() * 10)]+".");
   $("#falhaNPC").empty().append("<b>Falha:</b> "+npcDados["Falha"][Math.floor(Math.random() * 12)]+".");
-  $("#nivelNPC").empty().append("<b>Nível:</b> "+(Math.floor(Math.random() * 20))+".");
+  $("#nivelNPC").empty().append("<b>Nível:</b> "+(1 + Math.floor(Math.random() * 20))+".");
 });
 
 
