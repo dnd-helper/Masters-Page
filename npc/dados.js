@@ -4,11 +4,11 @@ $(document).on('click', '#GerarNPC', function() {
   var nome = npcDados["PrimeiroNome"][Math.floor(Math.random() * 20)]+npcDados["SegundoNome"][Math.floor(Math.random() * 20)]+npcDados["TerceiroNome"][Math.floor(Math.random() * 20)];
   nome = nome.toLowerCase().replace(/\b[a-z]/g, function(letter) { return letter.toUpperCase();});
   $("#nomeNPC").empty().append("<b>Nome:</b> "+nome+".");
-  $("#caracNPC").empty().append("<b>Caracteristica:</b> "+npcDados["Caracteristica"][1 + Math.floor(Math.random() * 20)]+".");
-  $("#idealNPC").empty().append("<b>Ideal:</b> "+npcDados["Ideais"][1 + Math.floor(Math.random() * 20)]+".");
-  $("#vincNPC").empty().append("<b>Vínculo:</b> "+npcDados["Vinculos"][1 + Math.floor(Math.random() * 10)]+".");
-  $("#falhaNPC").empty().append("<b>Falha:</b> "+npcDados["Falha"][1 + Math.floor(Math.random() * 12)]+".");
-  $("#nivelNPC").empty().append("<b>Nível:</b> "+(1 + Math.floor(Math.random() * 20))+".");
+  $("#caracNPC").empty().append("<b>Caracteristica:</b> "+npcDados["Caracteristica"][Math.floor(Math.random() * 20)]+".");
+  $("#idealNPC").empty().append("<b>Ideal:</b> "+npcDados["Ideais"][Math.floor(Math.random() * 20)]+".");
+  $("#vincNPC").empty().append("<b>Vínculo:</b> "+npcDados["Vinculos"][Math.floor(Math.random() * 10)]+".");
+  $("#falhaNPC").empty().append("<b>Falha:</b> "+npcDados["Falha"][Math.floor(Math.random() * 12)]+".");
+  $("#nivelNPC").empty().append("<b>Nível:</b> "+(Math.floor(Math.random() * 20))+".");
 });
 
 
