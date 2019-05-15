@@ -1,5 +1,18 @@
 npcDados = {}
 
+$(document).on('click', '#GerarNPC', function() {
+  var nome = npcDados["PrimeiroNome"][Math.floor(Math.random() * 20)]+npcDados["SegundoNome"][Math.floor(Math.random() * 20)]+npcDados["TerceiroNome"][Math.floor(Math.random() * 20)];
+  nome = nome.toLowerCase().replace(/\b[a-z]/g, function(letter) { return letter.toUpperCase();});
+  $("#nomeNPC").empty().append("<b>Nome:</b> "+nome+".");
+  $("#caracNPC").empty().append("<b>Caracteristica:</b> "+npcDados["Caracteristica"][1 + Math.floor(Math.random() * 20)]+".");
+  $("#idealNPC").empty().append("<b>Ideal:</b> "+npcDados["Ideais"][1 + Math.floor(Math.random() * 20)]+".");
+  $("#vincNPC").empty().append("<b>Vínculo:</b> "+npcDados["Vinculos"][1 + Math.floor(Math.random() * 10)]+".");
+  $("#falhaNPC").empty().append("<b>Falha:</b> "+npcDados["Falha"][1 + Math.floor(Math.random() * 12)]+".");
+  $("#nivelNPC").empty().append("<b>Nível:</b> "+(1 + Math.floor(Math.random() * 20))+".");
+});
+
+
+
 npcDados["Caracteristica"] = [
 ["Distraído"],
 ["Arrogante"],
@@ -56,7 +69,7 @@ npcDados["Vinculos"] = [
 ["Lembrança "],
 ["Posse de algo valioso "],
 ["Vingança"],
-["Role duas vezes, ignorando mais rolos de 10"]
+["Role duas vezes, ignorando rolagens maiores que 10"]
 ];
 
 npcDados["Falha"] = [
@@ -75,10 +88,10 @@ npcDados["Falha"] = [
 ];
 
 npcDados["PrimeiroNome"] = [
-[""],
-[""],
-[""],
-[""],
+[" "],
+[" "],
+[" "],
+[" "],
 ["A"],
 ["Be"],
 ["De"],
@@ -121,7 +134,7 @@ npcDados["SegundoNome"] = [
 ];
 
 npcDados["TerceiroNome"] = [
-[""],
+[" "],
 ["a"],
 ["ac"],
 ["ai"],

@@ -23,7 +23,7 @@
     user-select: none;
 }
 .description {
-    font-size: 8px !important;
+    font-size: 10px !important;
 }
 .description p {
     margin: 0;
@@ -31,7 +31,7 @@
     padding-bottom: 0.4em;
 }
 .description ul {
-    padding-left: 1.5em;
+    /* padding-left: 1.5em; */
 }
 .long-spell .description {
     column-count: 1;

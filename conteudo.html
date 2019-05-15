@@ -146,8 +146,8 @@ document.write(`
 
                   <div id="BotaoAbreDivPlayer1" role="button" data-toggle="collapse" data-parent="#PlayersAdicionados" href="#collapsePlayer1"
                   aria-expanded="true" aria-controls="collapsePlayer1" class="btn btn-default delPlayerline" style="width: 100%;display: inline-block;">
-                    <p style="float: left;position: absolute;top:50%;transform: translateY(-50%);">Immeral Varis</p>
-                    <button style="float: right;" type="button" class="btn btn-danger delPlayerbutton" onclick="delDado(this)">
+                    <p style="float: left;position: absolute;top:50%;transform: translateY(-50%);"><b>Immeral Varis - HP:46/25 - XP:5500</b></p>
+                    <button style="float: right;" type="button" class="btn btn-danger delPlayerbutton"  onclick="alert('teste')">
                       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                   </div>
@@ -162,7 +162,7 @@ document.write(`
 
                                 <p class="school">Nivel 8</p>
                             </div>
-                            <button style="float: right;" type="button" class="btn btn-info delPlayerbutton" onclick="delDado(this)">
+                            <button style="float: right;" type="button" class="btn btn-info delPlayerbutton">
                               <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             </button>
                             <!-- <div class="known">
@@ -250,12 +250,90 @@ document.write(`
           </div>
           <div id="collapseFour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour1">
             <div class="panel-body">
-              Nome:
+                <div class="btn-group btn-group-justified" style="width: 100%" role="group" aria-label="...">
+                  <div class="btn-group"  style="width: 80%" role="group">
+                    <button id="GerarNPC" type="button" class="btn btn-default">Gerar NPC</button>
+                  </div>
+                  <div class="btn-group" style="width: 20%" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Nivel
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu scrollable-menu" style="width: 20%">
+                      <li><a href="#">Aleatório</a></li>
+                      <li><a href="#">Nivel 1</a></li>
+                      <li><a href="#">Nivel 2</a></li>
+                      <li><a href="#">Nivel 3</a></li>
+                      <li><a href="#">Nivel 4</a></li>
+                      <li><a href="#">Nivel 5</a></li>
+                      <li><a href="#">Nivel 6</a></li>
+                      <li><a href="#">Nivel 7</a></li>
+                      <li><a href="#">Nivel 8</a></li>
+                      <li><a href="#">Nivel 9</a></li>
+                      <li><a href="#">Nivel 10</a></li>
+                      <li><a href="#">Nivel 11</a></li>
+                      <li><a href="#">Nivel 12</a></li>
+                      <li><a href="#">Nivel 13</a></li>
+                      <li><a href="#">Nivel 14</a></li>
+                      <li><a href="#">Nivel 15</a></li>
+                      <li><a href="#">Nivel 16</a></li>
+                      <li><a href="#">Nivel 17</a></li>
+                      <li><a href="#">Nivel 18</a></li>
+                      <li><a href="#">Nivel 19</a></li>
+                      <li><a href="#">Nivel 20</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div style="display: inline-flex;">
+                  <table class="table table-bordered" style="margin-top: 10px; margin-bottom: 10px; height: 100%;width: 60%; table-layout: fixed;" id="ListaDeCaractNPC">
+                    <thead style="height: 32px">
+                      <tr class="active">
+                        <th style="padding: 0px;padding-bottom: 5px;"><b><center>FOR</center></b></th>
+                        <th style="padding: 0px;padding-bottom: 5px;"><b><center>DES</center></b></th>
+                        <th style="padding: 0px;padding-bottom: 5px;"><b><center>CON</center></b></th>
+                        <th style="padding: 0px;padding-bottom: 5px;"><b><center>SAB</center></b></th>
+                        <th style="padding: 0px;padding-bottom: 5px;"><b><center>CAR</center></b></th>
+                        <th style="padding: 0px;padding-bottom: 5px;"><b><center>INT</center></b></th>
+                      </tr>
+                    </thead>
+                    <tbody style="height: 50px;">
+                      <tr>
+                        <th style="padding-top: 4px;padding-bottom: 4px;">10</th>
+                        <th style="padding-top: 4px;padding-bottom: 4px;">10</th>
+                        <th style="padding-bottom: 4px;padding-top: 4px;">12</th>
+                        <th style="padding-top: 4px;padding-bottom: 4px;">08</th>
+                        <th style="padding-bottom: 4px;padding-top: 4px;">15</th>
+                        <th style="padding-bottom: 4px;padding-top: 4px;">14</th>
+                      </tr>
+                      <tr>
+                        <th style="padding-top: 4px;padding-bottom: 4px;">+1</th>
+                        <th style="padding-top: 4px;padding-bottom: 4px;">+1</th>
+                        <th style="padding-bottom: 4px;padding-top: 4px;">+2</th>
+                        <th style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+                        <th style="padding-bottom: 4px;padding-top: 4px;">+3</th>
+                        <th style="padding-bottom: 4px;padding-top: 4px;">+1</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div style="width: 40%;padding-left: 1.6rem;margin-top: 1.0rem;">
+                    <li id="nomeNPC"><b>Nome:</b></li>
+                    <li id="classeNPC"><b>Classe:</b></li>
+                    <li id="racaNPC"><b>Raça:</b></li>
+                    <li id="nivelNPC"><b>Nivel:</b></li>
+                  </div>
+                </div>
+                <div style="width: 100%;padding-left: 1.6rem;">
+                  <li id="caracNPC"><b>Caracteristica:</b></li>
+                  <li id="idealNPC"><b>Ideal:</b></li>
+                  <li id="vincNPC"><b>Vínculo:</b></li>
+                  <li id="falhaNPC"><b>Falha:</b></li>
+                </div>
+              <!-- Nome:
               Classe:
               Caracteristica:
               Ideal:
               Vinculo:
-              Defeito:
+              Defeito: -->
             </div>
           </div>
         </div>
