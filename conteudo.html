@@ -15,14 +15,290 @@ document.write(`
           </div>
           <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne1">
             <div class="panel-body">
-              <div class="dropdown clearfix" style="width: 100%;">
-                <button style="text-transform: Capitalize; width: 100%" class="btn btn-monstro btn-default dropdown-toggle" type="button" id="dropdownMonstro" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <div style="width: 100%;display: flex;">
+                <div class="dropdown clearfix" style="width: 30%">
+                  <button value="Todas" style="text-transform: Capitalize; width: 100%; border-bottom-right-radius: 0px; border-top-right-radius: 0px; border-bottom-left-radius: 0px"
+                  class="btn btn-Tamanho btn-default dropdown-toggle" type="button" id="dropdownTamanhos" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    Tamanho
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize" id="ULdropdownTamanho" class="dropdown-menu dropdown-menu-Tamanho" aria-labelledby="dropdownTamanhos">
+                    <li><a href="#">Miúdo</a></li>
+                    <li><a href="#">Pequeno</a></li>
+                    <li><a href="#">Médio</a></li>
+                    <li><a href="#">Grande</a></li>
+                    <li><a href="#">Enorme</a></li>
+                    <li><a href="#">Imenso</a></li>
+                    <li><a href="#">Todos</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown clearfix" style="width: calc(30% + 1px); margin-left: -1px; ">
+                  <button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+                  class="btn btn-Seção btn-default dropdown-toggle" type="button" id="dropdownSeção" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    Lendário
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize;" id="ULdropdownSeção" class="dropdown-menu dropdown-menu-Seção" aria-labelledby="dropdownSeção">
+                    <li><a href="#">Sim</a></li>
+                    <li><a href="#">Não</a></li>
+                    <li><a href="#">Todos</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown clearfix" style="width: calc(40% + 1px); margin-left: -1px; ">
+                  <button value="Todos" style="text-transform: Capitalize; width: 100%;  border-bottom-left-radius: 0px; border-top-left-radius: 0px; border-bottom-right-radius: 0px"
+                  class="btn btn-Ambiente btn-default dropdown-toggle" type="button" id="dropdownAmbiente" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    Ambiente
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize;" id="ULdropdownAmbiente" class="dropdown-menu dropdown-menu-Ambiente" aria-labelledby="dropdownAmbiente">
+                    <li><a href="#">Aquático</a></li>
+                    <li><a href="#">Ártico</a></li>
+                    <li><a href="#">Caverna</a></li>
+                    <li><a href="#">Costa</a></li>
+                    <li><a href="#">Deserto</a></li>
+                    <li><a href="#">Floresta</a></li>
+                    <li><a href="#">Masmorra</a></li>
+                    <li><a href="#">Montanha</a></li>
+                    <li><a href="#">Pântano</a></li>
+                    <li><a href="#">Planicies</a></li>
+                    <li><a href="#">Planos</a></li>
+                    <li><a href="#">Ruínas</a></li>
+                    <li><a href="#">Subterrâneo</a></li>
+                    <li><a href="#">Urbano</a></li>
+                    <li><a href="#">Todos</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div style="width: 100%;display: flex; margin-top: -1px;">
+                <div class="dropdown clearfix" style="width: 30%">
+                  <button value="Todas" style="text-transform: Capitalize; width: 100%; border-radius: 0px;"
+                  class="btn btn-Alinhamento1 btn-default dropdown-toggle" type="button" id="dropdownAlinhamento1" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    Alinhamento 1
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize" id="ULdropdownAlinhamento1" class="dropdown-menu dropdown-menu-Alinhamento1" aria-labelledby="dropdownAlinhamento1">
+                    <li><a href="#">Caótico</a></li>
+                    <li><a href="#">Neutro</a></li>
+                    <li><a href="#">Leal</a></li>
+                    <li><a href="#">Nenhum</a></li>
+                    <li><a href="#">Qualquer</a></li>
+                    <li><a href="#">Não-Leal</a></li>
+                    <li><a href="#">Todos</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown clearfix" style="width: calc(30% + 1px); margin-left: -1px; ">
+                  <button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+                  class="btn btn-Alinhamento2 btn-default dropdown-toggle" type="button" id="dropdownAlinhamento2" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    Alinhamento 2
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize;" id="ULdropdownAlinhamento2" class="dropdown-menu dropdown-menu-Alinhamento2" aria-labelledby="dropdownAlinhamento2">
+                    <li><a href="#">Mal</a></li>
+                    <li><a href="#">Neutro</a></li>
+                    <li><a href="#">Bom</a></li>
+                    <li><a href="#">Nenhum</a></li>
+                    <li><a href="#">Qualquer</a></li>
+                    <li><a href="#">Não-Bom</a></li>
+                    <li><a href="#">Não-Neutro</a></li>
+                    <li><a href="#">Todos</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown clearfix" style="width: calc(40% + 1px); margin-left: -1px; ">
+                  <button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+                  class="btn btn-Tipo btn-default dropdown-toggle" type="button" id="dropdownTipo" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    Tipo
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize;" id="ULdropdownTipo" class="dropdown-menu dropdown-menu-Tipo" aria-labelledby="dropdownTipo">
+                    <li><a href="#">Aberração</a></li>
+                    <li><a href="#">Besta</a></li>
+                    <li><a href="#">Celestial</a></li>
+                    <li><a href="#">Constructo</a></li>
+                    <li><a href="#">Corruptor</a></li>
+                    <li><a href="#">Dragão</a></li>
+                    <li><a href="#">Elemental</a></li>
+                    <li><a href="#">Fada</a></li>
+                    <li><a href="#">Gigante</a></li>
+                    <li><a href="#">Humanoide</a></li>
+                    <li><a href="#">Limo</a></li>
+                    <li><a href="#">Monstruosidade</a></li>
+                    <li><a href="#">Morto-vivo</a></li>
+                    <li><a href="#">Planta</a></li>
+                    <li><a href="#">Todos</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div style="width: 100%;display: flex; margin-top: -1px;">
+                <div class="dropdown clearfix" style="width: 30%">
+                  <button value="Todas" style="text-transform: Capitalize; width: 100%; border-radius: 0px;"
+                  class="btn btn-CDMin btn-default dropdown-toggle" type="button" id="dropdownCDMin" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    CD Mínimo
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize" id="ULdropdownCDMin" class="dropdown-menu dropdown-menu-CDMin" aria-labelledby="dropdownAlinhamento1">
+                    <li><a href="#">0</a></li>
+                    <li><a href="#">1/8</a></li>
+                    <li><a href="#">1/4</a></li>
+                    <li><a href="#">1/2</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">10</a></li>
+                    <li><a href="#">11</a></li>
+                    <li><a href="#">12</a></li>
+                    <li><a href="#">13</a></li>
+                    <li><a href="#">14</a></li>
+                    <li><a href="#">15</a></li>
+                    <li><a href="#">16</a></li>
+                    <li><a href="#">17</a></li>
+                    <li><a href="#">18</a></li>
+                    <li><a href="#">19</a></li>
+                    <li><a href="#">20</a></li>
+                    <li><a href="#">21</a></li>
+                    <li><a href="#">22</a></li>
+                    <li><a href="#">23</a></li>
+                    <li><a href="#">24</a></li>
+                    <li><a href="#">25</a></li>
+                    <li><a href="#">26</a></li>
+                    <li><a href="#">27</a></li>
+                    <li><a href="#">28</a></li>
+                    <li><a href="#">29</a></li>
+                    <li><a href="#">30</a></li>
+                    <li><a href="#">Todos</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown clearfix" style="width: calc(30% + 1px); margin-left: -1px; ">
+                  <button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+                  class="btn btn-CDMax btn-default dropdown-toggle" type="button" id="dropdownCDMax" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    CD Máximo
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize;" id="ULdropdownCDMax" class="dropdown-menu dropdown-menu-CDMax" aria-labelledby="dropdownCDMax">
+                    <li><a href="#">0</a></li>
+                    <li><a href="#">1/8</a></li>
+                    <li><a href="#">1/4</a></li>
+                    <li><a href="#">1/2</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">10</a></li>
+                    <li><a href="#">11</a></li>
+                    <li><a href="#">12</a></li>
+                    <li><a href="#">13</a></li>
+                    <li><a href="#">14</a></li>
+                    <li><a href="#">15</a></li>
+                    <li><a href="#">16</a></li>
+                    <li><a href="#">17</a></li>
+                    <li><a href="#">18</a></li>
+                    <li><a href="#">19</a></li>
+                    <li><a href="#">20</a></li>
+                    <li><a href="#">21</a></li>
+                    <li><a href="#">22</a></li>
+                    <li><a href="#">23</a></li>
+                    <li><a href="#">24</a></li>
+                    <li><a href="#">25</a></li>
+                    <li><a href="#">26</a></li>
+                    <li><a href="#">27</a></li>
+                    <li><a href="#">28</a></li>
+                    <li><a href="#">29</a></li>
+                    <li><a href="#">30</a></li>
+                    <li><a href="#">Todos</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown clearfix" style="width: calc(40% + 1px); margin-left: -1px; ">
+                  <button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+                  class="btn btn-Seção btn-default dropdown-toggle" type="button" id="dropdownSeção" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                    Seção
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize;" id="ULdropdownSeção" class="dropdown-menu dropdown-menu-Seção" aria-labelledby="dropdownSeção">
+                    <li><a href="#">Todas</a></li>
+                    <li><a href="#">Anjos</a></li>
+                    <li><a href="#">Blights</a></li>
+                    <li><a href="#">Bruxas</a></li>
+                    <li><a href="#">Bugbears</a></li>
+                    <li><a href="#">Carniçais</a></li>
+                    <li><a href="#">Criaturas Diversas</a></li>
+                    <li><a href="#">Demônios</a></li>
+                    <li><a href="#">Devorador de Mentes</a></li>
+                    <li><a href="#">Diabos</a></li>
+                    <li><a href="#">Dinossauros</a></li>
+                    <li><a href="#">Dracolich</a></li>
+                    <li><a href="#">Dragões</a></li>
+                    <li><a href="#">Dragon, Shadow</a></li>
+                    <li><a href="#">Elementais</a></li>
+                    <li><a href="#">Elfos: Drow</a></li>
+                    <li><a href="#">Esfinges</a></li>
+                    <li><a href="#">Espectro</a></li>
+                    <li><a href="#">Esqueletos</a></li>
+                    <li><a href="#">Fungos</a></li>
+                    <li><a href="#">Gênios</a></li>
+                    <li><a href="#">Gigantes</a></li>
+                    <li><a href="#">Gith</a></li>
+                    <li><a href="#">Gnolls</a></li>
+                    <li><a href="#">Gnomos</a></li>
+                    <li><a href="#">Goblins</a></li>
+                    <li><a href="#">Golens</a></li>
+                    <li><a href="#">Grick</a></li>
+                    <li><a href="#">Hobgoblins</a></li>
+                    <li><a href="#">Kobolds</a></li>
+                    <li><a href="#">Kuo-toa</a></li>
+                    <li><a href="#">Licantropos</a></li>
+                    <li><a href="#">Limos</a></li>
+                    <li><a href="#">Meio-Dragão</a></li>
+                    <li><a href="#">Mephits</a></li>
+                    <li><a href="#">Miconides</a></li>
+                    <li><a href="#">Modrons</a></li>
+                    <li><a href="#">Múmias</a></li>
+                    <li><a href="#">Nagas</a></li>
+                    <li><a href="#">Não-Definida</a></li>
+                    <li><a href="#">Objetos Animados</a></li>
+                    <li><a href="#">Observadores</a></li>
+                    <li><a href="#">Ogros</a></li>
+                    <li><a href="#">Orcs</a></li>
+                    <li><a href="#">Personagens do Mestre</a></li>
+                    <li><a href="#">Povo Lagarto</a></li>
+                    <li><a href="#">Quaggoth</a></li>
+                    <li><a href="#">Remorhazes</a></li>
+                    <li><a href="#">Sahuagin</a></li>
+                    <li><a href="#">Salamandras</a></li>
+                    <li><a href="#">Slaadi</a></li>
+                    <li><a href="#">Vampiros</a></li>
+                    <li><a href="#">Yeti</a></li>
+                    <li><a href="#">Yuan-ti</a></li>
+                    <li><a href="#">Yugoloths</a></li>
+                    <li><a href="#">Zumbis</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="dropdown clearfix" style="width: 100%;margin-top: -1px;">
+                <button style="text-transform: Capitalize; width: 100%; border-top-left-radius: 0px;border-top-right-radius: 0px;" class="btn btn-monstro btn-default dropdown-toggle" type="button" id="dropdownMonstro" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   Monstro
                   <span class="caret"></span>
                 </button>
                 <ul style="text-transform: Capitalize" id="ULdropdownMonstro" class="dropdown-menu dropdown-menu-monstro scrollable-menu" aria-labelledby="dropdownMonstro">
-                  <li><a href="#">Monstro 1</a></li>
-                  <li><a href="#">Monstro 2</a></li>
                 </ul>
               </div>
               <div id="MonstroSelecionado" style="width:100%; max-height: calc(50vh); overflow: hidden auto; margin-top: 10px;"">
