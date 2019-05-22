@@ -260,13 +260,13 @@ function mostraMonstro(){
   var tipoDisplay = $('#selectedMonsterPicture').css('display');
   if (linkImagem != 'none') {
     if (tipoDisplay == 'none') {
-      $('#selectedMonsterPicture').css('display','flex');
+      $('#selectedMonsterPicture').css('display','block');
       $('#selectedMonster').css('display','none');
       $('#glyphiconPicture').attr('class','glyphicon glyphicon-search');
     }
-    if (tipoDisplay == 'flex') {
+    if (tipoDisplay == 'block') {
       $('#selectedMonsterPicture').css('display','none');
-      $('#selectedMonster').css('display','flex');
+      $('#selectedMonster').css('display','block');
       $('#glyphiconPicture').attr('class','glyphicon glyphicon-picture');
     }
   }
