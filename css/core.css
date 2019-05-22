@@ -17,6 +17,8 @@ li { text-align: justify; line-height: 1rem !important; }
 ol, dt, dd { font-size: 1.6rem; margin: 0 0 1.6rem; padding: 0; }
 /* .name{ font-size: 16px; margin: 0 0 1.6rem; padding: 0; } */
 .name p{ font-size: 14px; margin: 0 0 1.6rem; padding: 0; }
+.unstyled div, p, strong, em, br{ text-align: justify; line-height: 1.2 !important; }
+.unstyled .carac{ text-align: center; line-height: 1.5 !important; }
 .description p{ font-size: 10px; margin: 0 0 1.6rem; padding: 0; text-align: justify; line-height: 1rem !important; }
 .meta div{ font-size: 11px; height: 12px}
 .meta img{ margin: auto}

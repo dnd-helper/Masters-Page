@@ -67,16 +67,48 @@
 .black-tab {
     font-size: 12px !important;
     color: #000 !important;
+		border-radius: 0px 0px 0 0;
 }
 .btn {
     font-size: 11px !important;
 }
 .newtab {
 		/* background-color: #d4d2d2 !important; */
-		color: black !important;
+		color: white !important;
+		text-transform: uppercase;
+		font-size: 12px !important;
+		font-weight: 600;
+		background-color: rgba(0, 0, 0, 0.86) !important;
+		border-radius: 0px 0px 0 0;
+		border-width: 1px !important;
+		border-color: rgb(44, 44, 44) !important;
+}
+.black-tab.active > a{
+		background-color: rgba(0, 0, 0, 0.75) !important;
+		border-radius: 0px 0px 0 0;
+		border-width: 1px !important;
+		border-color: rgb(44, 44, 44) !important;
+}
+.newtab:hover{
+		background-color: rgba(0, 0, 0, 0.75) !important;
+		border-radius: 0px 0px 0 0;
+}
+a {
+   outline: 0;
 }
 .dropdown-menu{
 	width: 100%;
+}
+.tab-content > .tab-pane {
+  display: none;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+	border-width: 1px;
+	border-color: rgba(0, 0, 0, 0.73) !important
+	/* border: 1px solid ; */
+  /* border: 1px solid #ddd; */
 }
 /* .newtab:active {
 		color: (85, 85, 85) !important;
@@ -104,9 +136,34 @@
     overflow-x: hidden;
 }
 
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    max-width:inherit; /* For Bootstrap 4 - to avoid the modal window stretching full width */
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events: all;
+}
 
-
-
+.filler {
+	height: 100%;
+	width: 100%;
+	100%;
+  flex: 1;
+}
 
 
 

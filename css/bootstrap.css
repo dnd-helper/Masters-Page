@@ -1082,7 +1082,6 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 1.42857143;
   color: #333333;
@@ -2808,7 +2807,7 @@ fieldset[disabled] .checkbox-inline {
 .input-sm {
   height: 30px;
   padding: 5px 10px;
-  font-size: 10px;
+  font-size: 13px !important;
   line-height: 1.5;
   border-radius: 3px;
 }
@@ -3813,6 +3812,8 @@ tbody.collapse.in {
 }
 .btn .caret {
   margin-left: 0;
+  padding-bottom: 1px;
+  margin-left: 4px;
 }
 .btn-lg .caret {
   border-width: 5px 5px 0;
@@ -3986,8 +3987,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-radius: 4px;
 }
 .input-group-addon.input-sm {
-  padding: 5px 10px;
-  font-size: 10px;
+  padding: 2px 10px;
+  font-size: 13px;
   border-radius: 3px;
 }
 .input-group-addon.input-lg {
@@ -4105,7 +4106,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-right: 2px;
   line-height: 1.42857143;
   border: 1px solid transparent;
-  border-radius: 4px 4px 0 0;
+  /* border-radius: 4px 4px 0 0; */
   border: 1px solid #ddd;
   background-color: #eee;
 }
@@ -4118,10 +4119,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:focus {
   color: #555555;
   cursor: default;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: rgba(0, 0, 0, 0.86);;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
 }
+
 .nav-tabs.nav-justified {
   width: 100%;
   border-bottom: 0;
@@ -4148,7 +4151,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs.nav-justified > li > a {
   margin-right: 0;
-  border-radius: 4px;
+  /* border-radius: 4px; */
 }
 .nav-tabs.nav-justified > .active > a,
 .nav-tabs.nav-justified > .active > a:hover,
@@ -4158,7 +4161,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .nav-tabs.nav-justified > li > a {
     border-bottom: 1px solid #ddd;
-    border-radius: 4px 4px 0 0;
+    /* border-radius: 4px 4px 0 0; */
   }
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
@@ -5538,7 +5541,7 @@ button.list-group-item-danger.active:focus {
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid transparent;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -5548,8 +5551,8 @@ button.list-group-item-danger.active:focus {
 .panel-heading {
   padding: 7px 15px;
   border-bottom: 1px solid transparent;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  /* border-top-left-radius: 3px;
+  border-top-right-radius: 3px; */
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -5560,12 +5563,22 @@ button.list-group-item-danger.active:focus {
   font-size: 14px;
   color: inherit;
 }
-.panel-title > a,
+/* .panel-title > a,
 .panel-title > small,
 .panel-title > .small,
 .panel-title > small > a,
 .panel-title > .small > a {
   color: inherit;
+} */
+.panel-title > a,
+.panel-title > small,
+.panel-title > .small,
+.panel-title > small > a,
+.panel-title > .small > a {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px !important;
 }
 .panel-footer {
   padding: 10px 15px;
@@ -5751,7 +5764,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-group .panel {
   margin-bottom: 0;
-  border-radius: 4px;
+  /* border-radius: 4px; */
 }
 .panel-group .panel + .panel {
   margin-top: -1px;
@@ -5769,13 +5782,21 @@ button.list-group-item-danger.active:focus {
 .panel-group .panel-footer + .panel-collapse .panel-body {
   border-bottom: 1px solid #ddd;
 }
-.panel-default {
+/* .panel-default {
   border-color: #ddd;
+} */
+.panel-default {
+  border-color: rgba(0, 0, 0, 0.73);
 }
-.panel-default > .panel-heading {
+/* .panel-default > .panel-heading {
   color: #333333;
   background-color: #f5f5f5;
   border-color: #ddd;
+} */
+.panel-default > .panel-heading {
+  color: #333333;
+  background-color: rgba(0, 0, 0, 0.86);
+  border-color: rgba(0,0,0,0.97);
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;
@@ -6080,7 +6101,6 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.42857143;
@@ -6198,7 +6218,6 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.42857143;
