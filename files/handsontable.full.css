@@ -830,7 +830,7 @@ thead .htCollapseButton:after {
 .handsontable .ht_master thead,
 .handsontable .ht_master tr th,
 .handsontable .ht_clone_left thead {
-  visibility: hidden;
+  visibility: visible;
 }
 
 .ht_clone_top .wtHolder,

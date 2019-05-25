@@ -1,0 +1,82 @@
+.player-details {
+    margin-top: 0.1em;
+    margin-right: 0.4em;
+}
+.player-description {
+    font-size: 10px !important;
+}
+.player-description p {
+    margin: 0;
+    padding-top: 0.3em;
+    padding-bottom: 0.4em;
+}
+.player-description ul {
+    /* padding-left: 1.5em; */
+}
+.long-spell .player-description {
+    column-count: 1;
+    padding-bottom: 0.4em;
+}
+
+.player-title {
+    display: flex;
+    align-items: center;
+    font-size: 13.5pt;
+    /* font-family: "Calibri Light"; */
+}
+.player-name {
+    font-variant: small-caps;
+    /* font-family: "Calibri Light"; */
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: 1px solid;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0.2em;
+}
+#TabelaPlayer {
+  margin: 0px;
+}
+#TabelaPlayer > tbody > tr > th {
+    padding: 2px;
+    font-size: 11px;
+}
+.player-name img {
+    height: 1em;
+    margin-bottom: 0.1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    user-select: none;
+}
+.player-name p {
+    margin-top: 0;
+    margin-bottom: 0.1em;
+}
+.player-id {
+    font-variant: normal;
+    font-size: 8pt;
+    font-style: italic;
+    text-align: right;
+    white-space: nowrap;
+    flex-grow: 1;
+    margin-right: 0.2em;
+}
+.player-body {
+    margin: 0;
+    padding: 0.1em 0.2em 0.1em 0.7em;
+    border: 1px rgb(140, 140, 140);
+}
+.player-item {
+    font-size: 10pt;
+    box-sizing: border-box;
+    vertical-align: top;
+    page-break-inside: avoid;
+    display: inline-block;
+    border: none;
+    background: white;
+}
+.grid-size, .player-item {
+    /* grid-column: 1 / 2; */
+    width: 100%;
+}

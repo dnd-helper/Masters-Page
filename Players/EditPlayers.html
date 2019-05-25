@@ -1,0 +1,479 @@
+<div id="addPlayerModalDiv" class="">
+
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+    <h4 class="modal-title">Editar Personagem</h4>
+  </div>
+  <div class="" style="height: 80vh;max-height: 90vh;overflow-x: hidden;overflow-y: auto;">
+
+
+    <div class="modal-body">
+
+      <ul class="" style="display: flex;flex-wrap: wrap; margin: 0;">
+        <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <span class="input-group-addon input-sm"><b>ID:</b></span>
+          <input id="IDPlayer" type="text" placeholder="" class="form-control input-sm" value="21252362" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled"></input>
+        </li>
+        <li class="input-group" style="width: 37.5%;padding-right: 5px;padding-bottom: 5px;">
+          <span class="input-group-addon input-sm"><b>Nome (Pers.):</b></span>
+          <input id="NomePersonagem" type="text" placeholder="" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;">
+        </li>
+        <li class="input-group" style="width: 37.5%;padding-right: 5px;padding-bottom: 5px;">
+          <span class="input-group-addon input-sm"><b>Nome (Jog.):</b></span>
+          <input id="NomePlayer" type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;">
+        </li>
+        <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" id="BotaoRaca" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Raça</b>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-selecionavel botao-raca">
+            <li><a href="#">Anão da Colina</a></li>
+            <li><a href="#">Anão da Montanha</a></li>
+            <li><a href="#">Alto Elfo</a></li>
+            <li><a href="#">Elfo das Florestas</a></li>
+            <li><a href="#">Elfo Drow</a></li>
+            <li><a href="#">Halfling dos Pés Leves</a></li>
+            <li><a href="#">Halfling Robusto</a></li>
+            <li><a href="#">Humano</a></li>
+            <li><a href="#">Draconato</a></li>
+            <li><a href="#">Gnomo da Floresta</a></li>
+            <li><a href="#">Gnomo das Profundezas</a></li>
+            <li><a href="#">Gnomo das Rochas</a></li>
+            <li><a href="#">Meio-Elfo</a></li>
+            <li><a href="#">Meio-Orc</a></li>
+            <li><a href="#">Tiefling</a></li>
+          </ul>
+        </li>
+        <!-- <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <span class="input-group-addon input-sm"><b>Nivel:</b></span>
+          <input type="text" placeholder="ID" class="form-control input-sm" value="Dropdown" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
+        </li> -->
+        <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" id="BotaoAlinhamento"class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Alinhamento</b>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-selecionavel">
+            <li><a href="#">Leal e Bom</a></li>
+            <li><a href="#">Leal e Neutro</a></li>
+            <li><a href="#">Leal e Mau</a></li>
+            <li><a href="#">Neutro e Bom</a></li>
+            <li><a href="#">Neutro e Neutro</a></li>
+            <li><a href="#">Neutro e Mau</a></li>
+            <li><a href="#">Caótico e Bom</a></li>
+            <li><a href="#">Caótico e Neutro</a></li>
+            <li><a href="#">Caótico e Mau</a></li>
+          </ul>
+        </li>
+        <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" id="BotaoAntecedentes" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Antecedentes</b>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-selecionavel">
+            <li><a href="#">Acólito</a></li>
+            <li><a href="#">Artesão de Guilda</a></li>
+            <li><a href="#">Artesão, Mercador de Guilda</a></li>
+            <li><a href="#">Artista</a></li>
+            <li><a href="#">Artista, Gladiador</a></li>
+            <li><a href="#">Charlatão</a></li>
+            <li><a href="#">Criminoso</a></li>
+            <li><a href="#">Criminoso, Espião</a></li>
+            <li><a href="#">Eremita</a></li>
+            <li><a href="#">Forasteiro</a></li>
+            <li><a href="#">Herói do Povo</a></li>
+            <li><a href="#">Marinheiro</a></li>
+            <li><a href="#">Marinheiro, Pirata</a></li>
+            <li><a href="#">Nobre</a></li>
+            <li><a href="#">Nobre, Cavaleiro</a></li>
+            <li><a href="#">Orfão</a></li>
+            <li><a href="#">Sábio</a></li>
+            <li><a href="#">Soldado</a></li>
+          </ul>
+        </li>
+        <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 50%;" class="input-group-addon input-sm"><b>XP:</b></span>
+          <input id="InputXP" type="text" placeholder="XP" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;">
+        </li>
+        <li class="btn-group" role="group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <div class="btn-group" style="width: 70%;" role="group">
+            <button type="button" id="BotaoClasseBase" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+              <b>Classe Base</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel">
+              <li><a href="#">Bárbaro</a></li>
+              <li><a href="#">Bardo</a></li>
+              <li><a href="#">Bruxo</a></li>
+              <li><a href="#">Clérigo</a></li>
+              <li><a href="#">Druida</a></li>
+              <li><a href="#">Feiticeiro</a></li>
+              <li><a href="#">Guerreiro</a></li>
+              <li><a href="#">Ladino</a></li>
+              <li><a href="#">Mago</a></li>
+              <li><a href="#">Monge</a></li>
+              <li><a href="#">Paladino</a></li>
+              <li><a href="#">Patrulheiro</a></li>
+            </ul>
+          </div>
+          <div class="btn-group" style="width: 30%;" role="group">
+            <button type="button" id="BotaoNivelClasseBase" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+              <b>Nivel</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel botao-nivel">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">6</a></li>
+              <li><a href="#">7</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">10</a></li>
+              <li><a href="#">11</a></li>
+              <li><a href="#">12</a></li>
+              <li><a href="#">13</a></li>
+              <li><a href="#">14</a></li>
+              <li><a href="#">15</a></li>
+              <li><a href="#">16</a></li>
+              <li><a href="#">17</a></li>
+              <li><a href="#">18</a></li>
+              <li><a href="#">19</a></li>
+              <li><a href="#">20</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="btn-group" role="group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <div class="btn-group" style="width: 70%;" role="group">
+            <button type="button" id="BotaoMulticlasse1" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+              <b>Multiclasse 1</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel">
+              <li><a href="#">Bárbaro</a></li>
+              <li><a href="#">Bardo</a></li>
+              <li><a href="#">Bruxo</a></li>
+              <li><a href="#">Clérigo</a></li>
+              <li><a href="#">Druida</a></li>
+              <li><a href="#">Feiticeiro</a></li>
+              <li><a href="#">Guerreiro</a></li>
+              <li><a href="#">Ladino</a></li>
+              <li><a href="#">Mago</a></li>
+              <li><a href="#">Monge</a></li>
+              <li><a href="#">Paladino</a></li>
+              <li><a href="#">Patrulheiro</a></li>
+            </ul>
+          </div>
+          <div class="btn-group" style="width: 30%;" role="group">
+            <button type="button" id="BotaoNivelMulticlasse1" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+              <b>Nivel</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel botao-nivel">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">6</a></li>
+              <li><a href="#">7</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">10</a></li>
+              <li><a href="#">11</a></li>
+              <li><a href="#">12</a></li>
+              <li><a href="#">13</a></li>
+              <li><a href="#">14</a></li>
+              <li><a href="#">15</a></li>
+              <li><a href="#">16</a></li>
+              <li><a href="#">17</a></li>
+              <li><a href="#">18</a></li>
+              <li><a href="#">19</a></li>
+              <li><a href="#">20</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="btn-group" role="group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <div class="btn-group" style="width: 70%;" role="group">
+            <button type="button" id="BotaoMulticlasse2" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+              <b>Multiclasse 2</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel">
+              <li><a href="#">Bárbaro</a></li>
+              <li><a href="#">Bardo</a></li>
+              <li><a href="#">Bruxo</a></li>
+              <li><a href="#">Clérigo</a></li>
+              <li><a href="#">Druida</a></li>
+              <li><a href="#">Feiticeiro</a></li>
+              <li><a href="#">Guerreiro</a></li>
+              <li><a href="#">Ladino</a></li>
+              <li><a href="#">Mago</a></li>
+              <li><a href="#">Monge</a></li>
+              <li><a href="#">Paladino</a></li>
+              <li><a href="#">Patrulheiro</a></li>
+            </ul>
+          </div>
+          <div class="btn-group" style="width: 30%;" role="group">
+            <button type="button" id="BotaoNivelMulticlasse2" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+              <b>Nivel</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel botao-nivel">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">6</a></li>
+              <li><a href="#">7</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">10</a></li>
+              <li><a href="#">11</a></li>
+              <li><a href="#">12</a></li>
+              <li><a href="#">13</a></li>
+              <li><a href="#">14</a></li>
+              <li><a href="#">15</a></li>
+              <li><a href="#">16</a></li>
+              <li><a href="#">17</a></li>
+              <li><a href="#">18</a></li>
+              <li><a href="#">19</a></li>
+              <li><a href="#">20</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 50%;" class="input-group-addon input-sm"><b>Cor:</b></span>
+          <button type="button" class="btn btn-default btn-sm" style="width: 100%;border-top-left-radius: 0px;;border-bottom-left-radius: 0px;height: 30px;padding-top: 4px;padding-bottom: 4px;background-color: blueviolet;"></button>
+          <!-- <input id="InputXP" type="text" placeholder="XP" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"> -->
+        </li>
+        <!-- <li class="input-group" style="width: 15%;padding-right: 5px;padding-bottom: 5px;">
+          <span class="input-group-addon input-sm"><b>HP:</b></span>
+          <input type="text" style="width: 50%;font-weight: bold;" placeholder="ID" class="form-control input-sm" value="" disabled="disabled">
+          <input type="text" style="width: 50%;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" placeholder="ID" class="form-control input-sm" value="" disabled="disabled">
+        </li>
+        <li class="input-group" style="width: 50%;padding-right: 5px;padding-bottom: 5px;">
+          <span class="input-group-addon input-sm"><b>Nivel:</b></span>
+          <input type="text" placeholder="ID" class="form-control input-sm" value="Dropdown" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
+        </li> -->
+      </ul>
+
+    </div>
+    <div class="modal-body" style="display: flex;flex-wrap: wrap;">
+      <ul id="listaStatusPlayer" class="" style="display: flex;width: 25%;flex-wrap: wrap; margin: 0;">
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>For</b></span>
+          <input id="InputFor1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center">
+          <input id="InputFor2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center">
+          <input id="InputFor3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Des</b></span>
+          <input id="InputDes1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center">
+          <input id="InputDes2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center" >
+          <input id="InputDes3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Con</b></span>
+          <input id="InputCon1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center">
+          <input id="InputCon2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center" >
+          <input id="InputCon3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Int</b></span>
+          <input id="InputInt1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center">
+          <input id="InputInt2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center" >
+          <input id="InputInt3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Sab</b></span>
+          <input id="InputSab1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center">
+          <input id="InputSab2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center" >
+          <input id="InputSab3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Car</b></span>
+          <input id="InputCar1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center">
+          <input id="InputCar2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center" >
+          <input id="InputCar3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+      </ul>
+      <ul class="" style="display: flex;flex-direction: column;width: 25%;flex-wrap: wrap; margin: 0;">
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 35%;" class="input-group-addon input-sm"><b>HP:</b></span>
+          <input id="InputHPLeft" type="number" style="width: 50%;" placeholder="Atual" class="form-control input-sm" value="">
+          <input id="InputHPAll" type="number" style="width: 50%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" placeholder="Max" class="form-control input-sm" value="" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 67.5%;" class="input-group-addon input-sm"><b>BONUS DE PROEF.</b></span>
+          <input id="Inputproef" type="text" placeholder="ID" class="form-control input-sm" value="" disabled style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 67.5%;" class="input-group-addon input-sm"><b>CLASSE DE ARM.</b></span>
+          <input id="InputclasseArm" type="number" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 67.5%;" class="input-group-addon input-sm"><b>INSPIRAÇÃO</b></span>
+          <input id="Inputinspir" type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 67.5%;" class="input-group-addon input-sm"><b>INICIATIVA</b></span>
+          <input id="Inputiniciat" type="number" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <span style="width: 67.5%;" class="input-group-addon input-sm"><b>DESLOCAMENTO</b></span>
+          <input id="Inputdesloc" type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" >
+        </li>
+        <div class="filler"></div>
+      </ul>
+      <ul class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
+        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Adicionar Pericia</b>
+          </button>
+        </li>
+        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Pericia 1</b>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-selecionavel">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Pericia 2</b>
+            <span class="caret"></span>
+          </button>
+          <ul style="width: 100%;padding-right: 5px;" class="dropdown-menu dropdown-menu-selecionavel">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
+        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Adicionar Item</b>
+          </button>
+        </li>
+        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Classe</b>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-selecionavel">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <div class="input-group" style="padding-right: 5px;padding-bottom: 5px;">
+          <div class="input-group-btn" style="width:75%;">
+            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+              <b>Item 1</b>
+              <span class="caret"></span>
+            </button>
+            <!-- <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button> -->
+            <ul class="dropdown-menu dropdown-menu-selecionavel">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+          <input type="text" placeholder="Quant." class="form-control input-sm" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;">
+        </div>
+      </ul>
+    </div>
+
+    <div class="modal-body" style="display: flex;flex-wrap: wrap;">
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaTracos">Traços de Personalidade</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaTracos" rows="3"></textarea>
+      </div>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaIdeais">Ideais</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaIdeais" rows="3"></textarea>
+      </div>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaLigacoes">Ligações</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaLigacoes" rows="3"></textarea>
+      </div>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaDefeitos">Defeitos</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaDefeitos" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="modal-body" style="display: flex;flex-wrap: wrap;">
+      <ul class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
+        <label>Magias</label>
+        <div class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Adicionar Magia</b>
+          </button>
+        </div>
+        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Magia 1</b>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-selecionavel">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Magia 2</b>
+            <span class="caret"></span>
+          </button>
+          <ul style="width: 100%;padding-right: 5px;" class="dropdown-menu dropdown-menu-selecionavel">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaAtaques">Ataques e Magias</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 210px;height: 210px;resize: none;" id="TextareaAtaques" rows="3"></textarea>
+      </div>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaCarac">Caracteristicas e Habilidades</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 210px;height: 210px;resize: none;" id="TextareaCarac" rows="3"></textarea>
+      </div>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaEquip">Equipamentos e Notas</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 210px;height: 210px;resize: none;" id="TextareaEquip" rows="3"></textarea>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+    <button type="button" class="btn btn-warning">Editar Campos</button>
+    <button id="SalvarEdicaoPlayer" type="button" class="btn btn-primary" data-dismiss="modal">Salvar Alterações</button>
+  </div>
+</div>

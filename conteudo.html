@@ -443,590 +443,46 @@ document.write(`
               </a>
             </h4>
           </div>
-          <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree1">
-            <div class="panel-body">
+          <div id="collapseThree1" style="max-height: calc(100vh - 7 * 34px - 26px);" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree1">
+            <div class="panel-body" style="min-height: 200px;max-height: calc(100vh - 7 * 34px - 26px); overflow-x: hidden">
 
 
               <div class="btn-group btn-group-lg" role="group" aria-label="..." style="width: 100%;display: flex;">
-                <button type="button" class="btn btn-success" style="width: 50%;">Adicionar Player</button>
-                <button type="button" class="btn btn-danger" style="width: 50%;">Remover Player</button>
-              </div>
 
-              <!-- <div id="accordion1">
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne1">
-                    <h4 class="panel-title">
-                      <a  >
-                        Tabela de Monstros
-                      </a>
-                    </h4>
-                  </div>
-                  <div >
-                    <div class="panel-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
-                  </div>
+                <div class="btn-group btn-group-lg" style="width: 50%; role="group">
+                  <button type="button" style="width: 100%;" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add Player
+                    <span class="caret"></span>
+                  </button>
+                  <ul style="text-transform: Capitalize" class="dropdown-menu scrollable-menu">
+                    <li id="novoPlayer" data-toggle="modal" data-target="#ModalAdicionarPlayer"><a href="#">Novo Player</a></li>
+                    <li data-toggle="modal" data-target="#ModalAdicionarPlayer"><a href="#">ID</a></li>
+                  </ul>
                 </div>
-              </div> -->
-
+                <button type="button" class="btn btn-primary" style="width: 50%;">
+                  Players nos Grids
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                </button>
+              </div>
 
               <div id="PlayersAdicionados" class="panel-group" role="tablist" aria-multiselectable="true" style="width:100%;margin-top: 12px;margin-bottom: 12px;">
-                <div class="btn-group-vertical btn-group-lg" role="group" aria-label="..." style="width: 100%;">
-
-                  <div id="BotaoAbreDivPlayer1" role="button" data-toggle="collapse" data-parent="#PlayersAdicionados" href="#collapsePlayer1"
-                  aria-expanded="true" aria-controls="collapsePlayer1" class="btn btn-default delPlayerline" style="width: 100%;display: inline-block;">
-                    <p style="float: left;position: absolute;top:50%;transform: translateY(-50%);height: 75%;"><b>Immeral Varis - HP:46/25 - XP:5500</b></p>
-                    <button style="float: right;" type="button" class="btn btn-danger delPlayerbutton"  onclick="alert('teste')">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                  </div>
-
-                  <div id="collapsePlayer1" style="border: 1px solid #ccc;margin-top: -1px;margin-bottom: -1px;" class="panel-collapse collapse" role="tabpanel" aria-labelledby="BotaoAbreDivPlayer1">
-                    <div class="panel-body" style="padding: 7px">
-                      <div data-name="ataque certeiro" data-level="0" class="grid-item spell-item">
-                        <div class="spell-body">
-                        <div class="title">
-                            <div class="name">
-                                <p>Bardo</p>
-
-                                <p class="school">Nivel 8</p>
-                            </div>
-                            <button style="float: right;" type="button" class="btn btn-info delPlayerbutton" data-toggle="modal" data-target="#myModal">
-                              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                            </button>
-                            <!-- <div class="known">
-                                <img src="Lista Magias D&amp;D 5E_arquivos/unknown.svg">
-                            </div> -->
-                        </div>
-                        <div class="details">
-                            <div class="meta">
-                                <div class="meta-item">
-                                    <img src="Lista%20Magias%20D&amp;D%205E_arquivos/cast.svg">
-                                    <div class="meta-content">1 ação</div>
-                                </div>
-                                <div class="meta-item">
-                                    <img src="Lista%20Magias%20D&amp;D%205E_arquivos/range.svg">
-                                    <div class="meta-content">9 metros</div>
-                                </div>
-                                <div class="meta-item">
-                                    <img src="Lista%20Magias%20D&amp;D%205E_arquivos/components.svg">
-                                    <div class="meta-content">S</div>
-                                </div>
-                                <div class="meta-item">
-                                    <img src="Lista%20Magias%20D&amp;D%205E_arquivos/duration.svg">
-                                    <img src="Lista%20Magias%20D&amp;D%205E_arquivos/concentration.svg">
-                                    <div class="meta-content">até 1 rodada</div>
-                                </div>
-                            </div>
-                            <div class="description">
-                              <p>
-                                Você estende sua mão e aponta o dedo para um alvo no
-                                alcance. Sua magia garante a você uma breve intuição
-                                sobre as defesas do alvo. No seu próximo turno, você terá
-                                vantagem na primeira jogada de ataque contra o alvo,
-                                considerando que essa magia não tenha acabado.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    </div>
-                  </div>
-
-
-                  <div class="btn btn-default delPlayerline" style="width: 100%;display: inline-block;">
-                    <p style="float: left;position: absolute;top:50%;transform: translateY(-50%);">Player 2</p>
-                    <button style="float: right;" type="button" class="btn btn-danger delPlayerbutton" onclick="delDado(this)">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                  </div>
-
-                  <div class="btn btn-default delPlayerline" style="width: 100%;display: inline-block;">
-                    <p style="float: left;position: absolute;top:50%;transform: translateY(-50%);">Player 3</p>
-                    <button style="float: right;" type="button" class="btn btn-danger delPlayerbutton" onclick="delDado(this)">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                  </div>
-
-                  <button type="button" class="btn btn-default" style="width: 100%;">Remover Player</button>
+                <div id="AdicionaPlayers" class="btn-group-vertical btn-group-lg" role="group" aria-label="..." style="width: 100%;">
 
                 </div>
               </div>
 
-              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="overflow: hidden;">
+              <div class="modal fade" id="ModalAdicionarPlayer" tabindex="-1" role="dialog" aria-labelledby="ModalAdicionarPlayerLabel" style="overflow: hidden;">
                 <div class="vertical-alignment-helper">
 
                 <div class="modal-dialog modal-lg vertical-align-center" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title">Immeral Varis - Luan Henrique</h4>
-                    </div>
-                    <div class="" style="height: 80vh;max-height: 90vh;overflow-x: hidden;overflow-y: auto;">
+                  <div id="addPlayerModalDivContainer" class="modal-content">
 
 
-                      <div class="modal-body">
-
-                        <ul class="" style="display: flex;flex-wrap: wrap; margin: 0;">
-                          <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
-                            <span class="input-group-addon input-sm"><b>ID:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="21252362" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Raça</b>
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">Something else here</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="#">Separated link</a></li>
-                            </ul>
-                          </li>
-                          <!-- <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
-                            <span class="input-group-addon input-sm"><b>Nivel:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="Dropdown" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li> -->
-                          <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Alinhamento</b>
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Leal e Bom</a></li>
-                              <li><a href="#">Leal e Neutro</a></li>
-                              <li><a href="#">Leal e Mau</a></li>
-                              <li><a href="#">Neutro e Bom</a></li>
-                              <li><a href="#">Neutro e Neutro</a></li>
-                              <li><a href="#">Neutro e Mau</a></li>
-                              <li><a href="#">Caótico e Bom</a></li>
-                              <li><a href="#">Caótico e Neutro</a></li>
-                              <li><a href="#">Caótico e Mau</a></li>
-                            </ul>
-                          </li>
-                          <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Antecedentes</b>
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">Something else here</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="#">Separated link</a></li>
-                            </ul>
-                          </li>
-                          <li class="btn-group" role="group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
-                            <div class="btn-group" style="width: 70%;" role="group">
-                              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                                <b>Classe Base</b>
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Bárbaro</a></li>
-                                <li><a href="#">Bardo</a></li>
-                                <li><a href="#">Bruxo</a></li>
-                                <li><a href="#">Clérigo</a></li>
-                                <li><a href="#">Druida</a></li>
-                                <li><a href="#">Feiticeiro</a></li>
-                                <li><a href="#">Guerreiro</a></li>
-                                <li><a href="#">Ladino</a></li>
-                                <li><a href="#">Mago</a></li>
-                                <li><a href="#">Monge</a></li>
-                                <li><a href="#">Paladino</a></li>
-                                <li><a href="#">Patrulheiro</a></li>
-                              </ul>
-                            </div>
-                            <div class="btn-group" style="width: 30%;" role="group">
-                              <!-- </li> -->
-                              <!-- <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;"> -->
-                              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                                <b>Nivel</b>
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">8</a></li>
-                                <li><a href="#">9</a></li>
-                                <li><a href="#">10</a></li>
-                                <li><a href="#">11</a></li>
-                                <li><a href="#">12</a></li>
-                                <li><a href="#">13</a></li>
-                                <li><a href="#">14</a></li>
-                                <li><a href="#">15</a></li>
-                                <li><a href="#">16</a></li>
-                                <li><a href="#">17</a></li>
-                                <li><a href="#">18</a></li>
-                                <li><a href="#">19</a></li>
-                                <li><a href="#">20</a></li>
-                              </ul>
-                            </div>
-                          </li>
-                          <li class="btn-group" role="group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
-                            <div class="btn-group" style="width: 70%;" role="group">
-                              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                                <b>Multiclasse 1</b>
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Bárbaro</a></li>
-                                <li><a href="#">Bardo</a></li>
-                                <li><a href="#">Bruxo</a></li>
-                                <li><a href="#">Clérigo</a></li>
-                                <li><a href="#">Druida</a></li>
-                                <li><a href="#">Feiticeiro</a></li>
-                                <li><a href="#">Guerreiro</a></li>
-                                <li><a href="#">Ladino</a></li>
-                                <li><a href="#">Mago</a></li>
-                                <li><a href="#">Monge</a></li>
-                                <li><a href="#">Paladino</a></li>
-                                <li><a href="#">Patrulheiro</a></li>
-                              </ul>
-                            </div>
-                            <div class="btn-group" style="width: 30%;" role="group">
-                              <!-- </li> -->
-                              <!-- <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;"> -->
-                              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                                <b>Nivel</b>
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">8</a></li>
-                                <li><a href="#">9</a></li>
-                                <li><a href="#">10</a></li>
-                                <li><a href="#">11</a></li>
-                                <li><a href="#">12</a></li>
-                                <li><a href="#">13</a></li>
-                                <li><a href="#">14</a></li>
-                                <li><a href="#">15</a></li>
-                                <li><a href="#">16</a></li>
-                                <li><a href="#">17</a></li>
-                                <li><a href="#">18</a></li>
-                                <li><a href="#">19</a></li>
-                                <li><a href="#">20</a></li>
-                              </ul>
-                            </div>
-                          </li>
-                          <li class="btn-group" role="group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
-                            <div class="btn-group" style="width: 70%;" role="group">
-                              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                                <b>Multiclasse 2</b>
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Bárbaro</a></li>
-                                <li><a href="#">Bardo</a></li>
-                                <li><a href="#">Bruxo</a></li>
-                                <li><a href="#">Clérigo</a></li>
-                                <li><a href="#">Druida</a></li>
-                                <li><a href="#">Feiticeiro</a></li>
-                                <li><a href="#">Guerreiro</a></li>
-                                <li><a href="#">Ladino</a></li>
-                                <li><a href="#">Mago</a></li>
-                                <li><a href="#">Monge</a></li>
-                                <li><a href="#">Paladino</a></li>
-                                <li><a href="#">Patrulheiro</a></li>
-                              </ul>
-                            </div>
-                            <div class="btn-group" style="width: 30%;" role="group">
-                              <!-- </li> -->
-                              <!-- <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;"> -->
-                              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                                <b>Nivel</b>
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">8</a></li>
-                                <li><a href="#">9</a></li>
-                                <li><a href="#">10</a></li>
-                                <li><a href="#">11</a></li>
-                                <li><a href="#">12</a></li>
-                                <li><a href="#">13</a></li>
-                                <li><a href="#">14</a></li>
-                                <li><a href="#">15</a></li>
-                                <li><a href="#">16</a></li>
-                                <li><a href="#">17</a></li>
-                                <li><a href="#">18</a></li>
-                                <li><a href="#">19</a></li>
-                                <li><a href="#">20</a></li>
-                              </ul>
-                            </div>
-                          </li>
-                          <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
-                            <span class="input-group-addon input-sm"><b>XP:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <!-- <li class="input-group" style="width: 15%;padding-right: 5px;padding-bottom: 5px;">
-                            <span class="input-group-addon input-sm"><b>HP:</b></span>
-                            <input type="text" style="width: 50%;font-weight: bold;" placeholder="ID" class="form-control input-sm" value="" disabled="disabled">
-                            <input type="text" style="width: 50%;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" placeholder="ID" class="form-control input-sm" value="" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 50%;padding-right: 5px;padding-bottom: 5px;">
-                            <span class="input-group-addon input-sm"><b>Nivel:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="Dropdown" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li> -->
-                        </ul>
-
-                      </div>
-                      <div class="modal-body" style="display: flex;flex-wrap: wrap;">
-                        <ul class="" style="display: flex;width: 25%;flex-wrap: wrap; margin: 0;">
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 35%;" class="input-group-addon input-sm"><b>FOR:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;" disabled="disabled">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 34%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 35%;" class="input-group-addon input-sm"><b>DES:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;" disabled="disabled">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 34%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 35%;" class="input-group-addon input-sm"><b>CON:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;" disabled="disabled">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 34%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 35%;" class="input-group-addon input-sm"><b>SAB:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;" disabled="disabled">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 34%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 35%;" class="input-group-addon input-sm"><b>CAR:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;" disabled="disabled">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 34%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 35%;" class="input-group-addon input-sm"><b>INT:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 33%;font-weight: bold;" disabled="disabled">
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="width: 34%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <!-- <li class="input-group" style="width: 50%;padding-right: 5px;padding-bottom: 5px;">
-                            <span class="input-group-addon input-sm"><b>Nivel:</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="Dropdown" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li> -->
-                          <div class="filler"></div>
-                        </ul>
-                        <ul class="" style="display: flex;flex-direction: column;width: 25%;flex-wrap: wrap; margin: 0;">
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 35%;" class="input-group-addon input-sm"><b>HP:</b></span>
-                            <input type="text" style="width: 50%;" placeholder="ID" class="form-control input-sm" value="">
-                            <input type="text" style="width: 50%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" placeholder="ID" class="form-control input-sm" value="" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 67.5%;" class="input-group-addon input-sm"><b>BONUS DE PROEF.</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 67.5%;" class="input-group-addon input-sm"><b>CLASSE DE ARM.</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 67.5%;" class="input-group-addon input-sm"><b>INSPIRAÇÃO</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 67.5%;" class="input-group-addon input-sm"><b>INICIATIVA</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <span style="width: 67.5%;" class="input-group-addon input-sm"><b>DESLOCAMENTO</b></span>
-                            <input type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
-                          </li>
-                          <div class="filler"></div>
-                        </ul>
-                        <ul class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
-                          <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Adicionar Pericia</b>
-                            </button>
-                          </li>
-                          <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Pericia 1</b>
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">Something else here</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="#">Separated link</a></li>
-                            </ul>
-                          </li>
-                          <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Pericia 2</b>
-                              <span class="caret"></span>
-                            </button>
-                            <ul style="width: 100%;padding-right: 5px;" class="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">Something else here</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="#">Separated link</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                        <ul class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
-                          <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Adicionar Item</b>
-                            </button>
-                          </li>
-                          <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Classe</b>
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">Something else here</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="#">Separated link</a></li>
-                            </ul>
-                          </li>
-                          <div class="input-group" style="padding-right: 5px;padding-bottom: 5px;">
-                            <div class="input-group-btn" style="width:75%;">
-                              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                                <b>Item 1</b>
-                                <span class="caret"></span>
-                              </button>
-                              <!-- <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button> -->
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                            </div><!-- /btn-group -->
-                            <input type="text" placeholder="Quant." class="form-control input-sm" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;">
-                          </div>
-                        </ul>
-                      </div>
-
-                      <div class="modal-body" style="display: flex;flex-wrap: wrap;">
-                        <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-                          <label for="TextareaTracos">Traços de Personalidade</label>
-                          <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaTracos" rows="3"></textarea>
-                        </div>
-                        <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-                          <label for="TextareaIdeais">Ideais</label>
-                          <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaIdeais" rows="3"></textarea>
-                        </div>
-                        <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-                          <label for="TextareaLigacoes">Ligações</label>
-                          <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaLigacoes" rows="3"></textarea>
-                        </div>
-                        <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-                          <label for="TextareaDefeitos">Defeitos</label>
-                          <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaDefeitos" rows="3"></textarea>
-                        </div>
-                      </div>
-
-                      <div class="modal-body" style="display: flex;flex-wrap: wrap;">
-                        <ul class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
-                          <label>Magias</label>
-                          <div class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Adicionar Magia</b>
-                            </button>
-                          </div>
-                          <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Magia 1</b>
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">Something else here</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="#">Separated link</a></li>
-                            </ul>
-                          </li>
-                          <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-                              <b>Magia 2</b>
-                              <span class="caret"></span>
-                            </button>
-                            <ul style="width: 100%;padding-right: 5px;" class="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Action</a></li>
-                              <li><a href="#">Another action</a></li>
-                              <li><a href="#">Something else here</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="#">Separated link</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                        <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-                          <label for="TextareaDefeitos">Ataques e Magias</label>
-                          <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 210px;height: 210px;resize: none;" id="TextareaDefeitos" rows="3"></textarea>
-                        </div>
-                        <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-                          <label for="TextareaDefeitos">Caracteristicas e Habilidades</label>
-                          <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 210px;height: 210px;resize: none;" id="TextareaDefeitos" rows="3"></textarea>
-                        </div>
-                        <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-                          <label for="TextareaDefeitos">Equipamentos e Notas</label>
-                          <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 210px;height: 210px;resize: none;" id="TextareaDefeitos" rows="3"></textarea>
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                      <button type="button" class="btn btn-warning">Editar Campos</button>
-                      <button type="button" class="btn btn-primary">Salvar Alterações</button>
-                    </div>
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
 
                 </div>
               </div><!-- /.modal -->
-
-              <div class="btn-group btn-group-lg" role="group" aria-label="..." style="width: 100%;display: flex;">
-                <button type="button" class="btn btn-primary" style="width: 100%;">
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                  Adicionar Players aos Grids
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                </button>
-              </div>
-
 
             </div>
           </div>
@@ -1052,7 +508,7 @@ document.write(`
                       Nivel
                       <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu scrollable-menu">
+                    <ul class="dropdown-menu dropdown-menu-selecionavel scrollable-menu">
                       <li><a href="#">Aleatório</a></li>
                       <li><a href="#">Nivel 1</a></li>
                       <li><a href="#">Nivel 2</a></li>
@@ -1307,16 +763,15 @@ document.write(`
 
               const container = document.getElementById('example');
               const hot = new Handsontable(container, {
-                data: data,
                 rowHeaders: true,
                 colHeaders: true,
                 stretchH: 'all',
                 autoWrapRow: true,
                 height: 500,
                 maxRows: 22,
-                columnSorting: {
-                  indicator: true
-                },
+                startCols: 12,
+                startRows: 16,
+                colWidths: 30,
                 rowSorting: {
                   indicator: true
                 },
@@ -1333,8 +788,23 @@ document.write(`
                 multiColumnSorting: {
                   indicator: true
                 },
-                exportFile: true
+                renderAllRows: true,
+                exportFile: true,
+                showColumns: {
+                  columns: [1,2,3]
+                }
               });
+              // setTimeout(function(){$scope.recargarTabla()},10);
+              //
+              // $scope.recargarTabla = function(){
+              // $scope.hot.updateSettings({
+              // //
+              // });
+              // $scope.hot.render();
+              // };
+              // $(document).on('click', '#tabela-tab', function() {
+              //   hot.render();
+              // });
             </script>
 
           </div>
