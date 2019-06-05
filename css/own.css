@@ -70,12 +70,14 @@
 		border-radius: 0px 0px 0 0;
 }
 .btn {
+		/* font-size: 0.7vw !important; */
     font-size: 11px !important;
 }
 .newtab {
 		/* background-color: #d4d2d2 !important; */
 		color: white !important;
 		text-transform: uppercase;
+		/* font-size: 0.8vw !important; */
 		font-size: 12px !important;
 		font-weight: 600;
 		background-color: rgba(0, 0, 0, 0.86) !important;
@@ -93,7 +95,7 @@
 		background-color: rgba(0, 0, 0, 0.75) !important;
 		border-radius: 0px 0px 0 0;
 }
-a {
+a, input {
    outline: 0;
 }
 .dropdown-menu{
@@ -114,7 +116,8 @@ a {
 		color: (85, 85, 85) !important;
 } */
 .panel-body {
-    font-size: 11px !important;
+    /* font-size: 0.7vw !important; */
+		font-size: 11px !important;
     color: inherit;
 }
 
@@ -175,6 +178,41 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
+.custom-divider {
+	width: 100%;
+	height: 1px;
+	background: rgb(204, 204, 204);
+}
+.custom-divider-border {
+	width: calc(100% - 20px);
+	height: 1px;
+	background: rgb(204, 204, 204);
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.nav > li > a {
+    padding: 10px 0px !important;
+}
+
+/* .handsontable th {
+    background-color: rgba(0, 0, 0, 0.70) !important;
+    color: rgb(255, 255, 255) !important;
+    border-color: rgba(0, 0, 0, 0.80) !important;
+}
+
+.handsontable td {
+    border-color: rgba(0, 0, 0, 0.38) !important;
+}
+ */
+
+
+
+
+
+
+
 
 
 

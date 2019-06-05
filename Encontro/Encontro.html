@@ -1,0 +1,195 @@
+document.write(`
+      <li class="btn-group" style="width: 100%;">
+        <table class="table table-condensed" style="margin-bottom: 0px;">
+          <tbody>
+            <tr style="height: 2px">
+              <td id="XP1" style="text-align: center">Fácil:    <span>0 xp</span></td>
+              <td id="XP2" style="text-align: center">Médio:    <span>0 xp</span></td>
+              <td id="XP3" style="text-align: center">Difícil:  <span>0 xp</span></td>
+              <td id="XP4" style="text-align: center">Mortal:   <span>0 xp</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="custom-divider"></div>
+      </li>
+      <ul id="ulPlayersAdicionados" class="" style="display: flex;flex-wrap: wrap; margin: 0; padding: 10px;">
+        <li class="btn-group" style="width: 100%;height: min-content; ">
+          <button type="button" class="btn btn-default btn-sm" style="width: 57%;border-bottom-left-radius: 0;">Adicionar Players da Campanha</button>
+          <button id="botaoAddPlayerGerador" type="button" class="btn btn-default btn-sm" style="width: 43%;border-bottom-right-radius: 0;">Adicionar Outros Players</button>
+          <!-- <button type="button" id="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;">
+            <b>Players participando do Encontro</b>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-selecionavel">
+            <li><a href="#">Players da Campanha</a></li>
+            <li><a href="#">Players da Campanha + Outros</a></li>
+            <li><a href="#">Outros</a></li>
+          </ul> -->
+        </li>
+        <!-- <div class="btn-group" style="width: 100%;height: min-content;display: inline-flex;margin-top: -1px;" role="group" aria-label="...">
+          <div class="btn-group" style="width: 100%;">
+            <button type="button" id="BotaoQuantPlayers" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;border-top-left-radius: 0;">
+              <b>Quantidade</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel">
+              <li><a href="#">1 Player</a></li>
+              <li><a href="#">2 Players</a></li>
+              <li><a href="#">3 Players</a></li>
+              <li><a href="#">4 Players</a></li>
+              <li><a href="#">5 Players</a></li>
+              <li><a href="#">6 Players</a></li>
+              <li><a href="#">7 Players</a></li>
+              <li><a href="#">8 Players</a></li>
+              <li><a href="#">9 Players</a></li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-default btn-sm" disabled="" style="cursor: default;opacity: 1;">X</button>
+          <div class="btn-group" style="width: 100%;">
+            <button type="button" id="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;">
+              <b>Nivel</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel">
+              <li><a href="#">Nivel 1</a></li>
+              <li><a href="#">Nivel 2</a></li>
+              <li><a href="#">Nivel 3</a></li>
+              <li><a href="#">Nivel 4</a></li>
+              <li><a href="#">Nivel 5</a></li>
+              <li><a href="#">Nivel 6</a></li>
+              <li><a href="#">Nivel 7</a></li>
+              <li><a href="#">Nivel 8</a></li>
+              <li><a href="#">Nivel 9</a></li>
+              <li><a href="#">Nivel 10</a></li>
+              <li><a href="#">Nivel 11</a></li>
+              <li><a href="#">Nivel 12</a></li>
+              <li><a href="#">Nivel 13</a></li>
+              <li><a href="#">Nivel 14</a></li>
+              <li><a href="#">Nivel 15</a></li>
+              <li><a href="#">Nivel 16</a></li>
+              <li><a href="#">Nivel 17</a></li>
+              <li><a href="#">Nivel 18</a></li>
+              <li><a href="#">Nivel 19</a></li>
+              <li><a href="#">Nivel 20</a></li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-danger btn-sm" style="margin-right: 1px;border-top-right-radius: 0;">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </div>
+        <div class="btn-group" style="width: 100%;height: min-content;display: inline-flex;margin-top: -1px;" role="group" aria-label="...">
+          <div class="btn-group" style="width: 100%;">
+            <button type="button" id="BotaoQuantPlayers" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;border-top-left-radius: 0;">
+              <b>Quantidade</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel">
+              <li><a href="#">1 Player</a></li>
+              <li><a href="#">2 Players</a></li>
+              <li><a href="#">3 Players</a></li>
+              <li><a href="#">4 Players</a></li>
+              <li><a href="#">5 Players</a></li>
+              <li><a href="#">6 Players</a></li>
+              <li><a href="#">7 Players</a></li>
+              <li><a href="#">8 Players</a></li>
+              <li><a href="#">9 Players</a></li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-default btn-sm" disabled="" style="cursor: default;opacity: 1;">X</button>
+          <div class="btn-group" style="width: 100%;">
+            <button type="button" id="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;">
+              <b>Nivel</b>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-selecionavel">
+              <li><a href="#">Nivel 1</a></li>
+              <li><a href="#">Nivel 2</a></li>
+              <li><a href="#">Nivel 3</a></li>
+              <li><a href="#">Nivel 4</a></li>
+              <li><a href="#">Nivel 5</a></li>
+              <li><a href="#">Nivel 6</a></li>
+              <li><a href="#">Nivel 7</a></li>
+              <li><a href="#">Nivel 8</a></li>
+              <li><a href="#">Nivel 9</a></li>
+              <li><a href="#">Nivel 10</a></li>
+              <li><a href="#">Nivel 11</a></li>
+              <li><a href="#">Nivel 12</a></li>
+              <li><a href="#">Nivel 13</a></li>
+              <li><a href="#">Nivel 14</a></li>
+              <li><a href="#">Nivel 15</a></li>
+              <li><a href="#">Nivel 16</a></li>
+              <li><a href="#">Nivel 17</a></li>
+              <li><a href="#">Nivel 18</a></li>
+              <li><a href="#">Nivel 19</a></li>
+              <li><a href="#">Nivel 20</a></li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-danger btn-sm" style="margin-right: 1px;border-top-right-radius: 0;">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </div> -->
+      </ul>
+      <div class="custom-divider" style="margin-top: 10px;"></div>
+      <ul class="" style="display: flex;flex-wrap: wrap; margin: 0; /*! padding: 10px */">
+        <div style="max-height: calc(100vh - 7 * 34px - 4 * 32px - 52px); overflow-x: hidden; overflow-y: auto;width: 100%;/*! border: 1px solid rgb(204, 204, 204); */border-radius: 2px;">
+          <table style="hyphens: auto;margin-bottom: 0px;" class="table table-striped "> <!-- word-break: break-all; -->
+            <thead style="height: min-content;">
+              <tr class="">
+                <th style="width: max-content;padding-top: 4px;padding-bottom: 4px;"><b>Nome</b></th>
+                <th style="width: min-content;padding: 4px;"><b>CD</b></th>
+                <th style="width: min-content;padding-top: 4px;padding-bottom: 4px;"><b>XP</b></th>
+                <!-- <th style="width: 24%;"><b>Alinhamento</b></th> -->
+                <th style="width: min-content;padding-top: 4px;padding-bottom: 4px;"><b>HP</b></th>
+                <th style="width: min-content;padding-top: 4px;padding-bottom: 4px;"><b>Cor</b></th>
+                <th style="width: min-content;padding-top: 4px;padding-bottom: 4px;"><b>+</b></th>
+                <th style="width: min-content;padding-top: 4px;padding-bottom: 4px;"><b>+</b></th>
+              </tr>
+            </thead>
+            <tbody id="tbodyMonstrosSelecionados">
+              <!-- <tr>
+                <th>Abolete</th>
+                <th>8</th>
+                <th>15000</th>
+                <th>1</th>
+                <th style="padding: 3px;">
+                  <button class="btn btn-success" role="button" aria-expanded="true" style="padding-top: 3px;padding-bottom: 3px;padding-left: 6px;padding-right: 6px;">
+                    <span class="glyphicon glyphicon-plus"></span>
+                  </button>
+                </th>
+                <th style="padding: 3px;">
+                  <button class="btn btn-default" role="button" aria-expanded="true" style="padding-top: 3px;padding-bottom: 3px;padding-left: 6px;padding-right: 6px;">
+                    <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </th>
+                <th style="padding: 3px;">
+                  <button class="btn btn-danger" role="button" aria-expanded="true" style="padding-top: 3px;padding-bottom: 3px;padding-left: 6px;padding-right: 6px;">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+                </th>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </ul>
+      <div class="custom-divider" style="margin-bottom: 5px;"></div>
+      <div class="" style="display: flex;padding: 10px;">
+        <div class="" style="width:75%; text-align: left;font-size: 15px;">
+          <h4>Dificuldade: <span id="dificEncontro"></span></h4>
+          <div class="">
+            <button class="btn btn-danger btn-sm" onclick="delTodosMontrosEncontro(this)" type="button" name="button">Limpar Monstros</button>
+            <button class="btn btn-primary btn-sm" type="button" name="button">Monstros no Grid</button>
+          </div>
+        </div>
+        <div class="" style="width:50%; text-align: right;">
+          <h4 style="margin-bottom: 0px;font-size: 15px;">XP Total: <span id="valXp1">0</span></h4>
+          <span>(<span id="valXp3">0</span> por Player)</span>
+          <h4 style="margin-bottom: 0px;font-size: 15px;">XP Ajustado: <span id="valXp2">0</span></h4>
+          <span>(<span id="valXp4">0</span> por Player)</span>
+        </div>
+      </div>
+
+
+
+
+`)

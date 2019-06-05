@@ -315,16 +315,17 @@ document.write(`
 
                 </div>
               </div>
-              <div style="max-height: calc(100vh - 7 * 34px - 4 * 32px - 52px); overflow-x: hidden; overflow-y: auto;">
-                <table class="table table-striped table-condensed">
+              <div id="divtbodyMonstros" style="max-height: calc(100vh - 7 * 34px - 4 * 32px - 52px); overflow-x: hidden; overflow-y: auto;">
+                <table class="table table-striped table-condensed" style="hyphens: auto;"> <!-- word-break: break-all; -->
                   <thead>
                     <tr class="">
-                      <th><b>Nome</b></th>
-                      <th><b>CD</b></th>
-                      <th><b>Tipo</b></th>
-                      <th><b>Alinhamento</b></th>
-                      <th><b>Tamanho</b></th>
-                      <th><b>+</b></th>
+                      <th style="width: max-content;"><b>Nome</b></th>
+                      <th style="width: min-content;"><b>CD</b></th>
+                      <th style="width: 19%;"><b>Tipo</b></th>
+                      <th style="width: 18%;"><b>Alinham.</b></th>
+                      <th style="width: min-content;"><b>Tam.</b></th>
+                      <th style="width: min-content;text-align: center;"><b>+</b></th>
+                      <th style="width: min-content;text-align: center;"><b>+</b></th>
                     </tr>
                   </thead>
                   <tbody id="tbodyMonstros">
@@ -343,7 +344,7 @@ document.write(`
             <div class="panel-body" style="max-height: calc(100vh - 7 * 34px - 26px);overflow: auto;">
               <div class="topoMonstros" style="display: inline-flex; width: 100%">
                 <h1 style="float: left; width: 100%; font-weight: normal;font-size: 2.5rem; margin: 0 0 1rem;margin-bottom: 0px; padding: 0;" id="nomeMonstro">Aarakocra</h1>
-                <button style="float: right;" class="btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                <button style="float: right;" class="btn btn-default" onclick="voltaMonstro();" role="button">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </button>
                 <button style="float: right;" class="btn btn-primary" onclick="mostraMonstro();">
@@ -384,6 +385,7 @@ document.write(`
                     <span class="caret"></span>
                   </button>
                   <ul style="text-transform: Capitalize" id="ULdropdownClasse" class="dropdown-menu dropdown-menu-classe" aria-labelledby="dropdownClasses">
+                    <li><a href="#">Todas</a></li>
                     <li><a href="#">Bardo</a></li>
                     <li><a href="#">Bruxo</a></li>
                     <li><a href="#">Clérigo</a></li>
@@ -392,7 +394,6 @@ document.write(`
                     <li><a href="#">Mago</a></li>
                     <li><a href="#">Paladino</a></li>
                     <li><a href="#">Patrulheiro</a></li>
-                    <li><a href="#">Todas</a></li>
                   </ul>
                 </div>
                 <div class="dropdown clearfix" style="width: calc(50% + 1px); margin-left: -1px; ">
@@ -403,6 +404,7 @@ document.write(`
                     <span class="caret"></span>
                   </button>
                   <ul style="text-transform: Capitalize;" id="ULdropdownNivel" class="dropdown-menu dropdown-menu-nivel" aria-labelledby="dropdownNivel">
+                    <li><a href="#">Todos</a></li>
                     <li><a href="#">Nivel 0</a></li>
                     <li><a href="#">Nivel 1</a></li>
                     <li><a href="#">Nivel 2</a></li>
@@ -413,7 +415,6 @@ document.write(`
                     <li><a href="#">Nivel 7</a></li>
                     <li><a href="#">Nivel 8</a></li>
                     <li><a href="#">Nivel 9</a></li>
-                    <li><a href="#">Todos</a></li>
                   </ul>
                 </div>
               </div>
@@ -443,8 +444,8 @@ document.write(`
               </a>
             </h4>
           </div>
-          <div id="collapseThree1" style="max-height: calc(100vh - 7 * 34px - 26px);" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree1">
-            <div class="panel-body" style="min-height: 200px;max-height: calc(100vh - 7 * 34px - 26px); overflow-x: hidden">
+          <div id="collapseThree1" style="max-height: calc(100vh - 7 * 34px - 26px); overflow-x: hidden; overflow-y: auto" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree1">
+            <div class="panel-body" style="min-height: 120px;max-height: calc(100vh - 7 * 34px - 26px);">
 
 
               <div class="btn-group btn-group-lg" role="group" aria-label="..." style="width: 100%;display: flex;">
@@ -459,7 +460,7 @@ document.write(`
                     <li data-toggle="modal" data-target="#ModalAdicionarPlayer"><a href="#">ID</a></li>
                   </ul>
                 </div>
-                <button type="button" class="btn btn-primary" style="width: 50%;">
+                <button id="PlayerOnGridButton" type="button" class="btn btn-primary" style="width: 50%;">
                   Players nos Grids
                   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 </button>
@@ -471,7 +472,7 @@ document.write(`
                 </div>
               </div>
 
-              <div class="modal fade" id="ModalAdicionarPlayer" tabindex="-1" role="dialog" aria-labelledby="ModalAdicionarPlayerLabel" style="overflow: hidden;">
+              <div class="modal fade" id="ModalAdicionarPlayer" role="dialog" aria-labelledby="ModalAdicionarPlayerLabel" style="overflow: hidden;z-index: 1400;">
                 <div class="vertical-alignment-helper">
 
                 <div class="modal-dialog modal-lg vertical-align-center" role="document">
@@ -483,6 +484,79 @@ document.write(`
 
                 </div>
               </div><!-- /.modal -->
+
+              <div class="modal fade" id="ModalRemoverPlayer" style="z-index: 1600;" role="dialog" aria-labelledby="myModalLabel">
+                <div class="vertical-alignment-helper">
+
+                <div class="modal-dialog vertical-align-center" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      Deseja realmente apagar este player? Essa ação não poderá ser desfeita!
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                      <button type="button" id="ConfirmaApagarPlayer" class="btn btn-danger">Apagar</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              </div>
+
+              <div class="modal fade" id="ModalMudaCor" style="z-index: 1600;" role="dialog" aria-labelledby="ModalMudaCor">
+                <div class="vertical-alignment-helper">
+
+                <div class="modal-dialog vertical-align-center" role="document">
+                  <div class="modal-content" style="width: min-content;">
+                    <!-- <div id="cabecalhoCor" class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div> -->
+                    <div class="modal-body">
+                      <div id="colorPicker" style="height: 250px;" class="colorPicker"></div>
+                      <!-- <div id="values"></div> -->
+                    </div>
+                    <script type="text/javascript">
+                      $( document ).ready(function() {
+                        var colorPicker = new iro.ColorPicker("#colorPicker", {
+                          // color picker options
+                          // Option guide: https://iro.js.org/guide.html#color-picker-options
+                          sliderMargin: 200,
+                          width: 200,
+                          height: 300,
+                          color: "rgb(255, 0, 0)",
+                          borderWidth: 1,
+                          borderColor: "#fff",
+                        });
+
+                        var values = document.getElementById("values");
+
+                        // https://iro.js.org/guide.html#color-picker-events
+                        colorPicker.on(["color:init", "color:change"], function(color){
+                          // Show the current color in different formats
+                          // Using the selected color: https://iro.js.org/guide.html#selected-color-api
+                          $("#selecionarCor").css("background-color",color.hexString);
+                        });
+                        $(document).on("click","#selecionarCor", function(color){
+                          $("#inputcolor").css("background-color",$("#selecionarCor").css("background-color"));
+                          $("#inputcolor").val($("#selecionarCor").css("background-color"));
+                          $('#ModalMudaCor').modal('toggle');
+                        });
+                      });
+                    </script>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                      <button id="selecionarCor" type="button" class="btn btn-default">Selecionar Cor</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              </div>
 
             </div>
           </div>
@@ -588,7 +662,7 @@ document.write(`
         </div>
 
 
-        <div class="panel panel-default">
+        <!-- <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingFive1">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseFive1" aria-expanded="true" aria-controls="collapseFive1">
@@ -597,16 +671,11 @@ document.write(`
             </h4>
           </div>
           <div id="collapseFive1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive1">
-            <div class="panel-body">
-              Nome:
-              Classe:
-              Caracteristica:
-              Ideal:
-              Vinculo:
-              Defeito:
+            <div class="panel-body" style="padding: 0px;">
+              <script src="Encontro/Encontro.html"></script>
             </div>
           </div>
-        </div>
+        </div> -->
 
 
       </div>
@@ -618,43 +687,63 @@ document.write(`
 
 
         <ul id="myTabs" class="nav nav-tabs nav-justified" role="tablist" style="margin-left: 0px;padding-right: 0px;">
-          <li role="presentation" class="active black-tab"><a class="newtab" href="#bloco" id="bloco-tab" role="tab" data-toggle="tab" aria-controls="bloco" aria-expanded="true">Bloco de Notas</a></li>
-          <li role="presentation" class="black-tab"><a class="newtab" href="#tabela" role="tab" id="tabela-tab" data-toggle="tab" aria-controls="tabela" aria-expanded="false">Tabela</a></li>
+          <li role="presentation" class="active black-tab">
+            <a class="newtab" href="#PainelEditorTexto" id="PainelEditorTexto-tab" role="tab" data-toggle="tab" aria-controls="PainelEditorTexto" aria-expanded="true">Bloco de Notas</a>
+          </li>
+          <li role="presentation" class="black-tab">
+            <a class="newtab" href="#PainelEditorTabela" role="tab" id="PainelEditorTabela-tab" data-toggle="tab" aria-controls="PainelEditorTabela" aria-expanded="false">Tabela</a>
+          </li>
           <!-- <li role="presentation" class="black-tab"><a class="newtab" href="#grid" role="tab" id="grid-tab" data-toggle="tab" aria-controls="grid" aria-expanded="false">Grid</a></li> -->
           <li role="presentation" class="dropdown top_level expanded" style="padding-right: 0px;">
-            <a href="#" id="myTabDrop11" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDrop11-contents" aria-expanded="false">Grids<span class="caret"></span></a>
-            <ul class="dropdown-menu" aria-labelledby="myTabDrop11" id="myTabDrop11-contents">
-              <li><a href="#dropdown11" role="tab" id="dropdown11-tab" data-toggle="tab" aria-controls="dropdown11">Concreto</a></li>
-              <li><a href="#dropdown22" role="tab" id="dropdown22-tab" data-toggle="tab" aria-controls="dropdown22">Campo</a></li>
-              <li><a href="#dropdown33" role="tab" id="dropdown33-tab" data-toggle="tab" aria-controls="dropdown33">Floresta</a></li>
-              <li><a href="#dropdown44" role="tab" id="dropdown44-tab" data-toggle="tab" aria-controls="dropdown44">Deserto</a></li>
+            <a href="#" id="myTabDropA" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDrop11-contents" aria-expanded="false">Grids<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="myTabDropA" id="myTabDropA-contents">
+              <li><a href="#dropdownA1" role="tab" id="dropdownA1-tab" data-toggle="tab" aria-controls="dropdownA1">Concreto</a></li>
+              <li><a href="#dropdownA2" role="tab" id="dropdownA2-tab" data-toggle="tab" aria-controls="dropdownA2">Campo</a></li>
+              <li><a href="#dropdownA3" role="tab" id="dropdownA3-tab" data-toggle="tab" aria-controls="dropdownA3">Floresta</a></li>
+              <li><a href="#dropdownA4" role="tab" id="dropdownA4-tab" data-toggle="tab" aria-controls="dropdownA4">Deserto</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#" data-toggle="modal" data-target="#ModalEditarGrids">Configurações</a></li>
             </ul>
           </li>
           <!-- <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Tabela</a></li> -->
           <li role="presentation" class="dropdown top_level expanded" style="padding-right: 0px;">
-            <a href="#" id="myTabDrop1" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Progressão de Classes<span class="caret"></span></a>
-            <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
-              <li><a href="#dropdown1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">Todas</a></li>
-              <li><a href="#dropdown2" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">Bárbaro</a></li>
-              <li><a href="#dropdown3" role="tab" id="dropdown3-tab" data-toggle="tab" aria-controls="dropdown3">Bardo</a></li>
-              <li><a href="#dropdown4" role="tab" id="dropdown4-tab" data-toggle="tab" aria-controls="dropdown4">Bruxo</a></li>
-              <li><a href="#dropdown5" role="tab" id="dropdown5-tab" data-toggle="tab" aria-controls="dropdown5">Clérigo</a></li>
-              <li><a href="#dropdown6" role="tab" id="dropdown6-tab" data-toggle="tab" aria-controls="dropdown6">Druida</a></li>
-              <li><a href="#dropdown7" role="tab" id="dropdown7-tab" data-toggle="tab" aria-controls="dropdown7">Feiticeiro</a></li>
-              <li><a href="#dropdown8" role="tab" id="dropdown8-tab" data-toggle="tab" aria-controls="dropdown8">Guerreiro</a></li>
-              <li><a href="#dropdown9" role="tab" id="dropdown9-tab" data-toggle="tab" aria-controls="dropdown9">Ladino</a></li>
-              <li><a href="#dropdown10" role="tab" id="dropdown10-tab" data-toggle="tab" aria-controls="dropdown10">Mago</a></li>
-              <li><a href="#dropdown11" role="tab" id="dropdown11-tab" data-toggle="tab" aria-controls="dropdown11">Monge</a></li>
-              <li><a href="#dropdown12" role="tab" id="dropdown12-tab" data-toggle="tab" aria-controls="dropdown12">Paladino</a></li>
-              <li><a href="#dropdown13" role="tab" id="dropdown13-tab" data-toggle="tab" aria-controls="dropdown13">Patrulheiro</a></li>
+            <a href="#" id="myTabDropB" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Progressão de Classes<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="myTabDropB" id="myTabDropB-contents">
+              <li><a href="#dropdownB1" role="tab" id="dropdownB1-tab" data-toggle="tab" aria-controls="dropdownB1">Todas</a></li>
+              <li><a href="#dropdownB2" role="tab" id="dropdownB2-tab" data-toggle="tab" aria-controls="dropdownB2">Bárbaro</a></li>
+              <li><a href="#dropdownB3" role="tab" id="dropdownB3-tab" data-toggle="tab" aria-controls="dropdownB3">Bardo</a></li>
+              <li><a href="#dropdownB4" role="tab" id="dropdownB4-tab" data-toggle="tab" aria-controls="dropdownB4">Bruxo</a></li>
+              <li><a href="#dropdownB5" role="tab" id="dropdownB5-tab" data-toggle="tab" aria-controls="dropdownB5">Clérigo</a></li>
+              <li><a href="#dropdownB6" role="tab" id="dropdownB6-tab" data-toggle="tab" aria-controls="dropdownB6">Druida</a></li>
+              <li><a href="#dropdownB7" role="tab" id="dropdownB7-tab" data-toggle="tab" aria-controls="dropdownB7">Feiticeiro</a></li>
+              <li><a href="#dropdownB8" role="tab" id="dropdownB8-tab" data-toggle="tab" aria-controls="dropdownB8">Guerreiro</a></li>
+              <li><a href="#dropdownB9" role="tab" id="dropdownB9-tab" data-toggle="tab" aria-controls="dropdownB9">Ladino</a></li>
+              <li><a href="#dropdownB10" role="tab" id="dropdownB10-tab" data-toggle="tab" aria-controls="dropdownB10">Mago</a></li>
+              <li><a href="#dropdownB11" role="tab" id="dropdownB11-tab" data-toggle="tab" aria-controls="dropdownB11">Monge</a></li>
+              <li><a href="#dropdownB12" role="tab" id="dropdownB12-tab" data-toggle="tab" aria-controls="dropdownB12">Paladino</a></li>
+              <li><a href="#dropdownB13" role="tab" id="dropdownB13-tab" data-toggle="tab" aria-controls="dropdownB13">Patrulheiro</a></li>
+            </ul>
+          </li>
+          <li role="presentation" class="dropdown top_level expanded" style="padding-right: 0px;">
+            <a href="#" id="myTabDropC" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDropC-contents" aria-expanded="false">Gerador de Mapas<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="myTabDropC" id="myTabDropC-contents">
+              <li><a href="#dropdownC1" role="tab" id="dropdownC1-tab" data-toggle="tab" aria-controls="dropdownC1">Cidade</a></li>
+              <li><a href="#dropdownC2" role="tab" id="dropdownC2-tab" data-toggle="tab" aria-controls="dropdownC2">Mundo</a></li>
+              <li><a href="#dropdownC3" role="tab" id="dropdownC3-tab" data-toggle="tab" aria-controls="dropdownC3">Dungeon</a></li>
             </ul>
           </li>
         </ul>
 
+        <!-- <script type="text/javascript">
+          $(document).on("click","#dropdown111-tab", function(){
+
+            $("#dropdown111").load("http://fantasycities.watabou.ru/");
+          });
+        </script> -->
 
         <div id="myTabContent" class="tab-content" style="background-color: #ffffff;">
 
-          <div role="tabpanel" style="width: 100%;padding: 5px; height: calc(100vh - 140px)" class="tab-pane fade active in" id="bloco" aria-labelledby="bloco-tab">
+          <div role="tabpanel" id="PainelEditorTexto" style="width: 100%;padding: 5px; height: calc(100vh - 140px)" class="tab-pane fade active in" aria-labelledby="PainelEditorTexto-tab">
             <!-- <textarea name="content" id="editor">This is some sample content.</textarea> -->
             <div id="toolbar-container"></div>
             <main>
@@ -663,6 +752,10 @@ document.write(`
             			<div id="documenttoolbar" class="toolbar-container"></div>
             			<div id="documentcontent" class="content-container">
             				<div id="editor">
+                      <h2><span class="text-big"><strong>Olá! Bem vindo à Página do Mestre do DnD Helper!</strong></span></h2>
+                      <p><span class="text-big">Aqui você encontrará diversas ferramentas para auxiliar em sua mesa de D&amp;D,
+                      e melhorar suas mestragens!</span><br><span class="text-big">​​​​​​​Há varias ferramentas para agilizar sua pesquisa
+                      de magias, poder gerenciar seu grupo, melhorar os combates do seu personagem, tabelas úteis, grids, e muito mais!</span></p>
             				</div>
             			</div>
             		</div>
@@ -677,68 +770,25 @@ document.write(`
                 </script>
             	</div>
             </main>
+            <script>
+            	DecoupledEditor
+            		.create( document.querySelector( '#editor' ), {
+            			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+            		} )
+            		.then( editor => {
+            			const toolbarContainer = document.querySelector( 'main .toolbar-container' );
 
+            			toolbarContainer.prepend( editor.ui.view.toolbar.element );
 
-            <!-- This container will become the editable. -->
-            <!-- <div id="editor">
-                <p>This is the initial editor content.</p>
-            </div>
-             -->
-                <!-- <script>
-                  ClassicEditor
-                          .create( document.querySelector( '#editor' ), {
-                            toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'fontFamily', 'fontSize', 'undo', 'redo' ],
-                            fontFamily: {
-                                options: [
-                                    'default',
-                                    'Ubuntu, Arial, sans-serif',
-                                    'Ubuntu Mono, Courier New, Courier, monospace'
-                                ]
-                            },
-                            fontSize: {
-                                options: [
-                                    'tiny',
-                                    'default',
-                                    'big'
-                                ]
-                            },
-                            heading: {
-                                options: [
-                                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
-                                ]
-                            }
-                          } )
-                          .then( editor => {
-                                  console.log( editor );
-                          } )
-                          .catch( error => {
-                                  console.error( error );
-                          } );
-                </script> -->
-                <script>
-                	DecoupledEditor
-                		.create( document.querySelector( '#editor' ), {
-                			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-                		} )
-                		.then( editor => {
-                			const toolbarContainer = document.querySelector( 'main .toolbar-container' );
-
-                			toolbarContainer.prepend( editor.ui.view.toolbar.element );
-
-                			window.editor = editor;
-                		} )
-                		.catch( err => {
-                			console.error( err.stack );
-                		} );
-                </script>
-            <!-- <textarea name="area1" style="width: 100%; height: calc(100vh - 220px)">
-                 Faça suas anotações aqui.
-            </textarea><br/> -->
+            			window.editor = editor;
+            		} )
+            		.catch( err => {
+            			console.error( err.stack );
+            		} );
+            </script>
           </div>
 
-          <div role="tabpanel" class="tab-pane fade" id="tabela" aria-labelledby="tabela-tab">
+          <div role="tabpanel" id="PainelEditorTabela" class="tab-pane fade" aria-labelledby="PainelEditorTabela-tab">
 
             <div id="example"></div>
             <script>
@@ -761,6 +811,24 @@ document.write(`
                 ['', '', '', '', '', '', '', '', '', '', '', '']
               ];
 
+              var alturaTabela;
+              var comprimentoTabela;
+              var quantyTabela = 16;
+
+              $(document).on("click", "#PainelEditorTabela-tab", function() {
+
+                // var canvas = new fabric.Canvas('canvasGrid1');
+                alturaTabela = $("#PainelEditorTabela").height() - 20;
+                comprimentoTabela = $("#PainelEditorTabela").width() - 20;
+
+                // tamanho = Math.floor(comprimento/quantx);
+                // tamanhoalt = Math.floor(altura/quantx);
+                quantyTabela = Math.floor(alturaTabela/23);
+                alert(quantyTabela)
+                hot.render();
+
+              })
+
               const container = document.getElementById('example');
               const hot = new Handsontable(container, {
                 rowHeaders: true,
@@ -770,7 +838,7 @@ document.write(`
                 height: 500,
                 maxRows: 22,
                 startCols: 12,
-                startRows: 16,
+                startRows: quantyTabela,
                 colWidths: 30,
                 rowSorting: {
                   indicator: true
@@ -794,101 +862,100 @@ document.write(`
                   columns: [1,2,3]
                 }
               });
-              // setTimeout(function(){$scope.recargarTabla()},10);
-              //
-              // $scope.recargarTabla = function(){
-              // $scope.hot.updateSettings({
-              // //
-              // });
-              // $scope.hot.render();
-              // };
-              // $(document).on('click', '#tabela-tab', function() {
-              //   hot.render();
-              // });
             </script>
 
           </div>
 
-          <!-- <div role="tabpanel" class="tab-pane fade" id="grid" aria-labelledby="grid-tab">
-            <canvas id="canvas" width="100%" height="500"></canvas>
-          </div> -->
+          <div class="modal fade" id="ModalEditarGrids" style="z-index: 1600;" role="dialog" aria-labelledby="myModalLabel">
+            <div class="vertical-alignment-helper">
 
-          <!-- <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-          </div> -->
-
-          <div role="tabpanel" class="tab-pane fade" style="height: 600px; overflow-y: scroll;" id="dropdown11" aria-labelledby="dropdown11-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%;"></div>
-
-          <div role="tabpanel" class="tab-pane fade" id="dropdown22" aria-labelledby="dropdown22-tab">
-
-            <div class="info" data-type="monsters" data-slug="aarakocra">
-                <div class="row monster-icon">
-
-                        <a href="https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg" data-lightbox="aarakocra" data-title="&lt;a target=&#x27;_blank&#x27; href=&#x27;https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg&#x27; class=&#x27;link link-full&#x27;&gt;View Full Image&lt;/a&gt;">
-                            <div class="image" style="background-image: url('https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/441/100/100/636306375308314493.jpeg');"></div>
-                        </a>
-
-
+              <div class="modal-dialog vertical-align-center" role="document">
+                <div class="modal-content" style="width: 400px;">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Configurar Grids</h4>
+                  </div>
+                  <div class="modal-body">
+                    <script src="Grids/Configuracao.html"></script>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success">Confirmar</button>
+                  </div>
                 </div>
-                <div class="row monster-challenge">
-                    <span>1/4</span>
-                </div>
-                <div class="row monster-name">
-                     <span class="name">
+              </div>
 
-                        <a class="link" href="/monsters/aarakocra">Aarakocra</a>
-
-
-                    </span>
-                    <span class="source">Monster Manual</span>
-                </div>
-                <div class="row monster-type">
-                    <span class="type">Humanoid</span>
-                    <span class="subtype"> (aarakocra)</span>
-                </div>
-                <div class="row monster-size">
-                    <span>Medium</span>
-                </div>
-                <div class="row monster-alignment">
-                    <span>Neutral Good</span>
-                </div>
-                <div class="row monster-environment">
-                    <span>Mountain</span>
-
-                </div>
-                <div class="row monster-tags">
-
-
-                </div>
-                <div class="row fav-indicator">
-                    <i class="i-favorite"></i>
-                </div>
-                <div class="row monster-indicator open-indicator">
-                    <span id="open-indicator" class="monster-color plus"></span>
-                </div>
             </div>
-            <!-- <img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"> -->
-
           </div>
 
-          <div role="tabpanel" class="tab-pane fade" id="dropdown33" aria-labelledby="dropdown33-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown44" aria-labelledby="dropdown44-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
+          <div class="modal fade" id="ModalEditarObjeto" style="z-index: 1600;" role="dialog" aria-labelledby="myModalLabel">
+            <div class="vertical-alignment-helper">
+
+              <div class="modal-dialog vertical-align-center" role="document">
+                <div class="modal-content" style="width: 400px;">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Configurar Grids</h4>
+                  </div>
+                  <div class="modal-body">
+                    <script src="Grids/Configuracao.html"></script>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success">Confirmar</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" style="height: calc(100vh - 140px); overflow-y: auto;" id="dropdownA1" aria-labelledby="dropdownA1-tab">
+            <canvas id="canvasGrid1" style="width: 100%; height: 100%"></canvas>
+            <!-- <img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%;"> -->
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="dropdownA2" aria-labelledby="dropdownA2-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownA3" aria-labelledby="dropdownA3-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownA4" aria-labelledby="dropdownA4-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
 
 
 
-          <div role="tabpanel" class="tab-pane fade" id="dropdown1" aria-labelledby="dropdown1-tab"><img src="img/progressao/All.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledby="dropdown2-tab"><img src="img/progressao/All.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown3" aria-labelledby="dropdown3-tab"><img src="img/progressao/Bardo.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown4" aria-labelledby="dropdown4-tab"><img src="img/progressao/Bruxo.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown5" aria-labelledby="dropdown5-tab"><img src="img/progressao/Clerigo.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown6" aria-labelledby="dropdown6-tab"><img src="img/progressao/Druida.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown7" aria-labelledby="dropdown7-tab"><img src="img/progressao/Feiticeiro.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown8" aria-labelledby="dropdown8-tab"><img src="img/progressao/Bardo.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown9" aria-labelledby="dropdown9-tab"><img src="img/progressao/Bardo.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown10" aria-labelledby="dropdown10-tab"><img src="img/progressao/Mago.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown11" aria-labelledby="dropdown11-tab"><img src="img/progressao/Monge.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown12" aria-labelledby="dropdown12-tab"><img src="img/progressao/Paladino.PNG" alt="" style="width: 100%"></div>
-          <div role="tabpanel" class="tab-pane fade" id="dropdown13" aria-labelledby="dropdown13-tab"><img src="img/progressao/Patrulheiro.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB1" aria-labelledby="dropdownB1-tab"><img src="img/progressao/All.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB2" aria-labelledby="dropdownB2-tab"><img src="img/progressao/All.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB3" aria-labelledby="dropdownB3-tab"><img src="img/progressao/Bardo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB4" aria-labelledby="dropdownB4-tab"><img src="img/progressao/Bruxo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB5" aria-labelledby="dropdownB5-tab"><img src="img/progressao/Clerigo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB6" aria-labelledby="dropdownB6-tab"><img src="img/progressao/Druida.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB7" aria-labelledby="dropdownB7-tab"><img src="img/progressao/Feiticeiro.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB8" aria-labelledby="dropdownB8-tab"><img src="img/progressao/Bardo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB9" aria-labelledby="dropdownB9-tab"><img src="img/progressao/Bardo.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB10" aria-labelledby="dropdownB10-tab"><img src="img/progressao/Mago.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB11" aria-labelledby="dropdownB11-tab"><img src="img/progressao/Monge.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB12" aria-labelledby="dropdownB12-tab"><img src="img/progressao/Paladino.PNG" alt="" style="width: 100%"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownB13" aria-labelledby="dropdownB13-tab"><img src="img/progressao/Patrulheiro.PNG" alt="" style="width: 100%"></div>
+
+          <div role="tabpanel" class="tab-pane fade" id="dropdownC1" aria-labelledby="dropdownC1-tab" style="height: calc(100vh - 140px)">
+            <iframe id="iframeCidade" style="overflow: hidden; height: 100%; width: 100%"></iframe>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownC2" aria-labelledby="dropdownC2-tab" style="height: calc(100vh - 140px)">
+            <iframe id="iframeMundo"  frameborder="0" style="overflow: hidden; height: 100%; width: 100%"></iframe>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownC3" aria-labelledby="dropdownC3-tab">
+            <!-- <iframe id="iframeMundo" width="100%" frameborder="0" style="overflow: hidden; height: calc(100vh - 8 * 34px - 64px)"></iframe> -->
+          </div>
+          <script type="text/javascript">
+            var contMundo = 0;
+            $(document).on("click", "#dropdownC2-tab", function() {
+              if (contMundo == 0) { $("#iframeMundo").attr("src","MapaMundo/Azgaar's Fantasy Map Generator v 0.80b.htm"); contMundo = 1;}
+              // alert("foi")
+            })
+            var contCidade = 0;
+            $(document).on("click", "#dropdownC1-tab", function() {
+              if (contCidade == 0) { $("#iframeCidade").attr("src","http://fantasycities.watabou.ru/"); contCidade = 1;}
+              // alert("foi")
+            })
+          </script>
 
         </div>
 
@@ -900,6 +967,233 @@ document.write(`
       <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingZero2">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseZero2" aria-expanded="true" aria-controls="collapseZero2">
+                Gerador de Encontro
+              </a>
+            </h4>
+          </div>
+          <div id="collapseZero2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero2">
+            <div class="panel-body" style="padding: 0px;">
+              <li class="btn-group" style="width: 100%;">
+                <table class="table table-condensed" style="margin-bottom: 0px;">
+                  <tbody>
+                    <tr style="height: 2px">
+                      <td id="XP1" style="text-align: center">Fácil:    <span>0 xp</span></td>
+                      <td id="XP2" style="text-align: center">Médio:    <span>0 xp</span></td>
+                      <td id="XP3" style="text-align: center">Difícil:  <span>0 xp</span></td>
+                      <td id="XP4" style="text-align: center">Mortal:   <span>0 xp</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="custom-divider"></div>
+              </li>
+              <ul id="ulPlayersAdicionados" class="" style="display: flex;flex-wrap: wrap; margin: 0; padding: 10px;">
+                <li class="btn-group" style="width: 100%;height: min-content; ">
+                  <button id="botaoAddPlayersCampanha" type="button" class="btn btn-default btn-sm" style="width: 57%;border-bottom-left-radius: 0;">Adicionar Players da Campanha</button>
+                  <button id="botaoAddPlayerGerador" type="button" class="btn btn-default btn-sm" style="width: 43%;border-bottom-right-radius: 0;">Adicionar Outros Players</button>
+                  <!-- <button type="button" id="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;">
+                    <b>Players participando do Encontro</b>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-selecionavel">
+                    <li><a href="#">Players da Campanha</a></li>
+                    <li><a href="#">Players da Campanha + Outros</a></li>
+                    <li><a href="#">Outros</a></li>
+                  </ul> -->
+                </li>
+                <!-- <div class="btn-group" style="width: 100%;height: min-content;display: inline-flex;margin-top: -1px;" role="group" aria-label="...">
+                  <div class="btn-group" style="width: 100%;">
+                    <button type="button" id="BotaoQuantPlayers" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;border-top-left-radius: 0;">
+                      <b>Quantidade</b>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-selecionavel">
+                      <li><a href="#">1 Player</a></li>
+                      <li><a href="#">2 Players</a></li>
+                      <li><a href="#">3 Players</a></li>
+                      <li><a href="#">4 Players</a></li>
+                      <li><a href="#">5 Players</a></li>
+                      <li><a href="#">6 Players</a></li>
+                      <li><a href="#">7 Players</a></li>
+                      <li><a href="#">8 Players</a></li>
+                      <li><a href="#">9 Players</a></li>
+                    </ul>
+                  </div>
+                  <button type="button" class="btn btn-default btn-sm" disabled="" style="cursor: default;opacity: 1;">X</button>
+                  <div class="btn-group" style="width: 100%;">
+                    <button type="button" id="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;">
+                      <b>Nivel</b>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-selecionavel">
+                      <li><a href="#">Nivel 1</a></li>
+                      <li><a href="#">Nivel 2</a></li>
+                      <li><a href="#">Nivel 3</a></li>
+                      <li><a href="#">Nivel 4</a></li>
+                      <li><a href="#">Nivel 5</a></li>
+                      <li><a href="#">Nivel 6</a></li>
+                      <li><a href="#">Nivel 7</a></li>
+                      <li><a href="#">Nivel 8</a></li>
+                      <li><a href="#">Nivel 9</a></li>
+                      <li><a href="#">Nivel 10</a></li>
+                      <li><a href="#">Nivel 11</a></li>
+                      <li><a href="#">Nivel 12</a></li>
+                      <li><a href="#">Nivel 13</a></li>
+                      <li><a href="#">Nivel 14</a></li>
+                      <li><a href="#">Nivel 15</a></li>
+                      <li><a href="#">Nivel 16</a></li>
+                      <li><a href="#">Nivel 17</a></li>
+                      <li><a href="#">Nivel 18</a></li>
+                      <li><a href="#">Nivel 19</a></li>
+                      <li><a href="#">Nivel 20</a></li>
+                    </ul>
+                  </div>
+                  <button type="button" class="btn btn-danger btn-sm" style="margin-right: 1px;border-top-right-radius: 0;">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+                </div>
+                <div class="btn-group" style="width: 100%;height: min-content;display: inline-flex;margin-top: -1px;" role="group" aria-label="...">
+                  <div class="btn-group" style="width: 100%;">
+                    <button type="button" id="BotaoQuantPlayers" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;border-top-left-radius: 0;">
+                      <b>Quantidade</b>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-selecionavel">
+                      <li><a href="#">1 Player</a></li>
+                      <li><a href="#">2 Players</a></li>
+                      <li><a href="#">3 Players</a></li>
+                      <li><a href="#">4 Players</a></li>
+                      <li><a href="#">5 Players</a></li>
+                      <li><a href="#">6 Players</a></li>
+                      <li><a href="#">7 Players</a></li>
+                      <li><a href="#">8 Players</a></li>
+                      <li><a href="#">9 Players</a></li>
+                    </ul>
+                  </div>
+                  <button type="button" class="btn btn-default btn-sm" disabled="" style="cursor: default;opacity: 1;">X</button>
+                  <div class="btn-group" style="width: 100%;">
+                    <button type="button" id="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;">
+                      <b>Nivel</b>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-selecionavel">
+                      <li><a href="#">Nivel 1</a></li>
+                      <li><a href="#">Nivel 2</a></li>
+                      <li><a href="#">Nivel 3</a></li>
+                      <li><a href="#">Nivel 4</a></li>
+                      <li><a href="#">Nivel 5</a></li>
+                      <li><a href="#">Nivel 6</a></li>
+                      <li><a href="#">Nivel 7</a></li>
+                      <li><a href="#">Nivel 8</a></li>
+                      <li><a href="#">Nivel 9</a></li>
+                      <li><a href="#">Nivel 10</a></li>
+                      <li><a href="#">Nivel 11</a></li>
+                      <li><a href="#">Nivel 12</a></li>
+                      <li><a href="#">Nivel 13</a></li>
+                      <li><a href="#">Nivel 14</a></li>
+                      <li><a href="#">Nivel 15</a></li>
+                      <li><a href="#">Nivel 16</a></li>
+                      <li><a href="#">Nivel 17</a></li>
+                      <li><a href="#">Nivel 18</a></li>
+                      <li><a href="#">Nivel 19</a></li>
+                      <li><a href="#">Nivel 20</a></li>
+                    </ul>
+                  </div>
+                  <button type="button" class="btn btn-danger btn-sm" style="margin-right: 1px;border-top-right-radius: 0;">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+                </div> -->
+              </ul>
+              <div class="custom-divider" style="margin-top: 10px;"></div>
+              <ul class="" style="display: flex;flex-wrap: wrap; margin: 0; /*! padding: 10px */">
+                <div style="max-height: calc(100vh - 7 * 34px - 4 * 32px - 52px); overflow-x: hidden; overflow-y: auto;width: 100%;/*! border: 1px solid rgb(204, 204, 204); */border-radius: 2px;">
+                  <table style="hyphens: auto;margin-bottom: 0px;" class="table table-striped "> <!-- word-break: break-all; -->
+                    <thead style="height: min-content;">
+                      <tr class="">
+                        <th style="width: 100%;padding-top: 4px;padding-bottom: 4px;"><b>Nome</b></th>
+                        <th style="width: min-content;text-align: center;padding: 4px;"><b>CD</b></th>
+                        <th style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;"><b>XP</b></th>
+                        <!-- <th style="width: 24%;"><b>Alinhamento</b></th> -->
+                        <th style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;"><b>HP</b></th>
+                        <th style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;padding-left: 2px;padding-right: 2px;"><b>Cor</b></th>
+                        <th style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;"><b>+</b></th>
+                        <th style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;"><b>+</b></th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbodyMonstrosSelecionados">
+
+                    </tbody>
+                  </table>
+                </div>
+              </ul>
+              <div class="custom-divider" style="margin-bottom: 5px;"></div>
+              <div class="" style="display: flex;padding: 10px;">
+                <div class="" style="width:70%; text-align: left;font-size: 15px;">
+                  <h4>Dificuldade: <span id="dificEncontro"></span></h4>
+                  <div class="">
+                    <button class="btn btn-danger btn-sm" onclick="delTodosMontrosEncontro(this)" type="button" name="button">Limpar Monstros</button>
+                    <button class="btn btn-primary btn-sm" id="buttonAdicionaMontrosNoGrid" type="button" name="button">Monstros no Grid</button>
+                  </div>
+                </div>
+                <div class="" style="width:30%; text-align: right;">
+                  <!-- <h4 style="margin-bottom: 0px;font-size: 0.95vw">XP Total: <span id="valXp1">0</span></h4> -->
+                  <h4 style="margin-bottom: 0px;font-size: 15px;">XP Total: <span id="valXp1">0</span></h4>
+                  <span>(<span id="valXp3">0</span> por Player)</span>
+                  <!-- <h4 style="margin-bottom: 0px;font-size: 0.95vw">XP Ajustado: <span id="valXp2">0</span></h4> -->
+                  <h4 style="margin-bottom: 0px;font-size: 15px;">XP Ajustado: <span id="valXp2">0</span></h4>
+                  <span>(<span id="valXp4">0</span> por Player)</span>
+                </div>
+              </div>
+
+              <div class="modal fade" id="ModalMudaCorMonstro" style="z-index: 1600;" role="dialog" aria-labelledby="ModalMudaCorMonstro">
+                <div class="vertical-alignment-helper">
+
+                <div class="modal-dialog vertical-align-center" role="document">
+                  <div class="modal-content" style="width: min-content;">
+                    <div class="modal-body">
+                      <div id="colorPicker2" style="height: 250px;" class="colorPicker2"></div>
+                    </div>
+                    <script type="text/javascript">
+                      $( document ).ready(function() {
+                        var colorPicker2 = new iro.ColorPicker("#colorPicker2", {
+                          // color picker options
+                          // Option guide: https://iro.js.org/guide.html#color-picker-options
+                          sliderMargin: 200,
+                          width: 200,
+                          height: 300,
+                          color: "rgb(255, 0, 0)",
+                          borderWidth: 1,
+                          borderColor: "#fff",
+                        });
+
+                        var values = document.getElementById("values");
+
+                        // https://iro.js.org/guide.html#color-picker-events
+                        colorPicker2.on(["color:init", "color:change"], function(color){
+                          // Show the current color in different formats
+                          // Using the selected color: https://iro.js.org/guide.html#selected-color-api
+                          $("#selecionarCor2").css("background-color",color.hexString);
+                        });
+                      });
+                    </script>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                      <button id="selecionarCor2" type="button" class="btn btn-default">Selecionar Cor</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              </div>
+              <!-- <script src="Encontro/Encontro.html"></script> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingOne2">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
@@ -907,7 +1201,7 @@ document.write(`
               </a>
             </h4>
           </div>
-          <div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne2">
+          <div id="collapseOne2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne2">
             <div class="panel-body">
               <img src="img/collapse/exp.PNG" alt="" style="width: 100%">
             </div>

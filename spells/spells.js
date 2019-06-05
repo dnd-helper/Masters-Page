@@ -2,7 +2,7 @@ $(document).on('click', '.dropdown-menu-classe li a', function() {
   $(".btn-classe:first-child").text($(this).text());
   $(".btn-classe:first-child").val($(this).text());
 
-  var nivelSelecionado = $("#dropdownNivel").val();
+  var nivelSelecionado = $(".btn-nivel:first-child").val().replace('Nivel ','');
   var className = $(".btn-classe:first-child").val();
   visibleSpells = spellByClass[className];
 
@@ -18,7 +18,6 @@ $(document).on('click', '.dropdown-menu-classe li a', function() {
     });
   }
   else {
-    nivelSelecionado = nivelSelecionado.replace('Nivel ','');
     $.each(visibleSpells, function(index, value) {
       if (visibleSpells[index][1] == nivelSelecionado) {
         $("#ULdropdownMagia").append(
@@ -35,7 +34,7 @@ $(document).on('click', '.dropdown-menu-nivel li a', function() {
   $(".btn-nivel:first-child").text($(this).text());
   $(".btn-nivel:first-child").val($(this).text());
 
-  var nivelSelecionado = $(".btn-nivel:first-child").val();
+  var nivelSelecionado = $(".btn-nivel:first-child").val().replace('Nivel ','');
   var className = $("#dropdownClasses").val();
   visibleSpells = spellByClass[className];
 
@@ -43,16 +42,17 @@ $(document).on('click', '.dropdown-menu-nivel li a', function() {
   $("#spell-list").empty();
 
   //ADICIONA CADA OPCAO DE MAGIA
-  if (className == "Todas") {
+  if (nivelSelecionado == "Todos") {
     $.each(visibleSpells, function(index, value) {
-      $("#ULdropdownMagia").append(
-        "<li><a href=\"#\">"+visibleSpells[index][0]+"</a></li>"
-      );
+      // if (visibleSpells[index][1] == nivelSelecionado) {
+        $("#ULdropdownMagia").append(
+          "<li><a href=\"#\">"+visibleSpells[index][0]+"</a></li>"
+        );
+      // }
     });
   }
   else {
-    nivelSelecionado = nivelSelecionado.replace('Nivel ','');
-      $.each(visibleSpells, function(index, value) {
+    $.each(visibleSpells, function(index, value) {
       if (visibleSpells[index][1] == nivelSelecionado) {
         $("#ULdropdownMagia").append(
           "<li><a href=\"#\">"+visibleSpells[index][0]+"</a></li>"

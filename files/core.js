@@ -765,7 +765,7 @@ window.ark.mediasGallery = function() {
 
 	} else {
 
-		window.jQuery(".medias-gallery .fancybox").fancybox({});
+		// window.jQuery(".medias-gallery .fancybox").fancybox({});
 
 	}
 
@@ -784,5 +784,5 @@ window.ark.addEvt(window, "resize", window.ark.checkLiveStreamsHeight);
 
 
 window.jQuery(document).ready(function($) {
-	$("img").unveil(800);
+	// $("img").unveil(800);
 });

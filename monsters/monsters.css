@@ -80,3 +80,13 @@ div .variant	{background-color:#DBE2C2;
   .ads	{display:none}
   .adsCel {display:inline-block; width:100%; padding:0;}
 }
+
+#divtbodyMonstros .table-condensed > thead > tr > th,
+#divtbodyMonstros .table-condensed > tbody > tr > th,
+#divtbodyMonstros .table-condensed > tfoot > tr > th,
+#divtbodyMonstros .table-condensed > thead > tr > td,
+#divtbodyMonstros .table-condensed > tbody > tr > td,
+#divtbodyMonstros .table-condensed > tfoot > tr > td {
+    padding: 2px;
+    vertical-align: inherit;
+}
