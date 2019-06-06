@@ -86483,14 +86483,14 @@ com_watabou_towngenerator_Options.defValues = (function($this) {
 		_g.h["text_size"] = 0;
 	}
 	if(__map_reserved["labels"] != null) {
-		_g.setReserved("labels",false);
+		_g.setReserved("labels",true);
 	} else {
-		_g.h["labels"] = false;
+		_g.h["labels"] = true;
 	}
 	if(__map_reserved["city_name"] != null) {
-		_g.setReserved("city_name",false);
+		_g.setReserved("city_name",true);
 	} else {
-		_g.h["city_name"] = false;
+		_g.h["city_name"] = true;
 	}
 	if(__map_reserved["scale_bar"] != null) {
 		_g.setReserved("scale_bar",true);
