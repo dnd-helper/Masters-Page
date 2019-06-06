@@ -22,7 +22,7 @@ function editLegends(id, name) {
 
   // open a dialog
   $("#legendEditor").dialog({
-    title: "Legends Editor", minWidth: Math.min(svgWidth, 400),
+    title: "Editar Legendas", minWidth: Math.min(svgWidth, 400),
     position: {my: "center", at: "center", of: "svg"}
   });
 
@@ -72,7 +72,7 @@ function editLegends(id, name) {
       });
       return;
     }
-    
+
     highlightElement(element); // if element is found
   }
 

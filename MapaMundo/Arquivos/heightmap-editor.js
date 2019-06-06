@@ -4,15 +4,15 @@
 function editHeightmap() {
   void function selectEditMode() {
     alertMessage.innerHTML = `<p>Heightmap is a core element on which all other data (rivers, burgs, states etc) is based.
-    So the best edit approach is to <i>erase</i> the secondary data and let the system automatically regenerate it on edit completion.</p> 
+    So the best edit approach is to <i>erase</i> the secondary data and let the system automatically regenerate it on edit completion.</p>
 
     <p>You can also <i>keep</i> all the data as is, but you won't be able to change the coastline.</p>
 
-    <p>If you need to change the coastline and keep the data, you may try the <i>risk</i> edit option. 
-    The secondary data will be kept with burgs placed on water being removed, 
+    <p>If you need to change the coastline and keep the data, you may try the <i>risk</i> edit option.
+    The secondary data will be kept with burgs placed on water being removed,
     but the landmass change can cause unexpected data fluctuation and errors.</p>`;
 
-    $("#alert").dialog({resizable: false, title: "Edit Heightmap", width: 300,
+    $("#alert").dialog({resizable: false, title: "Editar Altitude", width: 300,
       buttons: {
         Erase: function() {enterHeightmapEditMode("erase");},
         Keep: function() {enterHeightmapEditMode("keep");},
@@ -246,7 +246,7 @@ function editHeightmap() {
         pack.cells.r[i] = r[g];
         pack.cells.conf[i] = conf[g];
         pack.cells.fl[i] = fl[g];
-        if (land && !biome[g]) pack.cells.biome[i] = getBiomeId(grid.cells.prec[g], grid.cells.temp[g]); else 
+        if (land && !biome[g]) pack.cells.biome[i] = getBiomeId(grid.cells.prec[g], grid.cells.temp[g]); else
         if (!land && biome[g]) pack.cells.biome[i] = 0; else
         pack.cells.biome[i] = biome[g];
       }
@@ -314,7 +314,7 @@ function editHeightmap() {
   function updateStatistics() {
     const landCells = grid.cells.h.reduce((s, h) => h >= 20 ? s+1 : s);
     landmassCounter.innerHTML = `${landCells} (${rn(landCells/grid.cells.i.length*100)}%)`;
-    landmassAverage.innerHTML = rn(d3.mean(grid.cells.h));    
+    landmassAverage.innerHTML = rn(d3.mean(grid.cells.h));
   }
 
   function updateHistory(noStat) {
@@ -340,9 +340,9 @@ function editHeightmap() {
     grid.cells.h = edits[edits.n - 1].slice();
     mockHeightmap();
     updateStatistics();
-    
+
     if (document.getElementById("preview")) drawHeightmapPreview(); // update heightmap preview if opened
-    if ($("#perspectivePanel").is(":visible")) drawPerspective(); // update perspective view if opened    
+    if ($("#perspectivePanel").is(":visible")) drawPerspective(); // update perspective view if opened
   }
 
   // restart edits from 1st step
@@ -368,15 +368,15 @@ function editHeightmap() {
     document.getElementById("brushesButtons").addEventListener("click", e => toggleBrushMode(e));
     document.getElementById("changeOnlyLand").addEventListener("click", e => changeOnlyLandClick(e));
     document.getElementById("undo").addEventListener("click", () => restoreHistory(edits.n-1));
-    document.getElementById("redo").addEventListener("click", () => restoreHistory(edits.n+1));  
+    document.getElementById("redo").addEventListener("click", () => restoreHistory(edits.n+1));
     document.getElementById("rescaleShow").addEventListener("click", () => {
       document.getElementById("modifyButtons").style.display = "none";
-      document.getElementById("rescaleSection").style.display = "block";    
+      document.getElementById("rescaleSection").style.display = "block";
     });
     document.getElementById("rescaleHide").addEventListener("click", () => {
       document.getElementById("modifyButtons").style.display = "block";
-      document.getElementById("rescaleSection").style.display = "none";    
-    }); 
+      document.getElementById("rescaleSection").style.display = "none";
+    });
     document.getElementById("rescaler").addEventListener("change", (e) => rescale(e.target.valueAsNumber));
     document.getElementById("rescaleCondShow").addEventListener("click", () => {
       document.getElementById("modifyButtons").style.display = "none";
@@ -390,7 +390,7 @@ function editHeightmap() {
     document.getElementById("smoothHeights").addEventListener("click", smoothAllHeights);
     document.getElementById("disruptHeights").addEventListener("click", disruptAllHeights);
     document.getElementById("brushClear").addEventListener("click", startFromScratch);
-    
+
     function exitBrushMode() {
       const pressed = document.querySelector("#brushesButtons > button.pressed");
       if (!pressed) return;
@@ -419,7 +419,7 @@ function editHeightmap() {
         moveCircle(p[0], p[1], r, "#333");
         const inRadius = findGridAll(p[0], p[1], r);
         const selection = changeOnlyLand.checked ? inRadius.filter(i => grid.cells.h[i] >= 20) : inRadius;
-        if (selection && selection.length) changeHeightForSelection(selection, start);        
+        if (selection && selection.length) changeHeightForSelection(selection, start);
       });
 
       d3.event.on("end", updateHeightmap);
@@ -470,7 +470,7 @@ function editHeightmap() {
       if (operator === "add") HeightmapGenerator.modify(range, operand, 1, 0); else
       if (operator === "subtract") HeightmapGenerator.modify(range, -1 * operand, 1, 0); else
       if (operator === "exponent") HeightmapGenerator.modify(range, 0, 1, operand);
-      
+
       updateHeightmap();
     }
 
@@ -483,7 +483,7 @@ function editHeightmap() {
       grid.cells.h = grid.cells.h.map(h => h < 17 ? h : lim(h + 2 - Math.random()*4));
       updateHeightmap();
     }
-  
+
     function startFromScratch() {
       if (changeOnlyLand.checked) {tip("Not allowed when 'Change only land cells' mode is set", false, "error"); return;}
       const someHeights = grid.cells.h.some(h => h);
@@ -492,7 +492,7 @@ function editHeightmap() {
       terrs.selectAll("*").remove();
       updateHistory();
     }
-    
+
   }
 
   function openTemplateEditor() {
@@ -504,16 +504,16 @@ function editHeightmap() {
 
     if (modules.openTemplateEditor) return;
     modules.openTemplateEditor = true;
-    
+
     $("#templateBody").sortable({items: "div:not(.elType)"});
 
     // add listeners
     document.getElementById("templateTools").addEventListener("click", e => addStepOnClick(e));
-    document.getElementById("templateSelect").addEventListener("change", e => selectTemplate(e)); 
-    document.getElementById("templateRun").addEventListener("click", executeTemplate); 
-    document.getElementById("templateSave").addEventListener("click", downloadTemplate); 
-    document.getElementById("templateLoad").addEventListener("click", e => templateToLoad.click()); 
-    document.getElementById("templateToLoad").addEventListener("change", uploadTemplate); 
+    document.getElementById("templateSelect").addEventListener("change", e => selectTemplate(e));
+    document.getElementById("templateRun").addEventListener("click", executeTemplate);
+    document.getElementById("templateSave").addEventListener("click", downloadTemplate);
+    document.getElementById("templateLoad").addEventListener("click", e => templateToLoad.click());
+    document.getElementById("templateToLoad").addEventListener("change", uploadTemplate);
 
     function addStepOnClick(e) {
       if (e.target.tagName !== "BUTTON") return;
@@ -524,7 +524,7 @@ function editHeightmap() {
     }
 
     function addStep(type, count, dist, arg4, arg5) {
-      const body = document.getElementById("templateBody"); 
+      const body = document.getElementById("templateBody");
       body.insertAdjacentHTML("beforeend", getStepHTML(type, count, dist, arg4, arg5));
       const elDist = body.querySelector("div:last-child").querySelector(".templateDist");
       if (elDist) elDist.addEventListener("change", setRange);
@@ -569,7 +569,7 @@ function editHeightmap() {
       const body = document.getElementById("templateBody");
       const steps = body.querySelectorAll("div").length;
       const changed = +body.getAttribute("data-changed");
-      const template = e.target.value;      
+      const template = e.target.value;
       if (!steps || !changed) {changeTemplate(template); return;}
 
       alertMessage.innerHTML = "Are you sure you want to select a different template? All changes will be lost.";
@@ -658,7 +658,7 @@ function editHeightmap() {
         addStep("Hill", ".5", "30-50", "25-35", "30-70");
         addStep("Smooth", 1);
         addStep("Multiply", .2, "25-100");
-        addStep("Hill", ".5", "10-20", "50-55", "48-52"); 
+        addStep("Hill", ".5", "10-20", "50-55", "48-52");
       }
 
       else if (template === "templateMediterranean") {
@@ -797,7 +797,7 @@ function editHeightmap() {
           addStep(step[0], step[1], step[2], step[3], step[4]);
         }
       }
-      
+
       fileReader.readAsText(fileToLoad, "UTF-8");
     }
   }
@@ -818,7 +818,7 @@ function editHeightmap() {
     canvas.height = graphHeight;
     document.body.insertBefore(canvas, optionsContainer);
     setOverlayOpacity(0);
-    
+
     document.getElementById("convertImageLoad").classList.add("glow"); // add glow effect
     tip('Image Converter is opened. Upload the image and assign the colors to desired heights', true); // main tip
 
@@ -939,13 +939,13 @@ function editHeightmap() {
       const height = +this.getAttribute("data-color");
       const rgb = color(1 - height/100);
 
-      const selectedColor = imageConverter.querySelector("div.selectedColor");      
+      const selectedColor = imageConverter.querySelector("div.selectedColor");
       selectedColor.style.backgroundColor = rgb;
       selectedColor.setAttribute("data-color", rgb);
       selectedColor.setAttribute("data-height", height);
 
       terrs.selectAll(".selectedCell").each(function() {
-        this.setAttribute("fill", rgb); 
+        this.setAttribute("fill", rgb);
         this.setAttribute("data-height", height);
       });
 
@@ -967,18 +967,18 @@ function editHeightmap() {
         const normalized = type === "hue" ? rn(normalize(lab.b + lab.a / 2, -50, 200), 2) : rn(normalize(lab.l, 0, 100), 2);
         const colorTo = color(1 - normalized);
         const heightTo = normalized * 100;
-        
+
         terrs.selectAll("polygon[fill='" + colorFrom + "']").attr("fill", colorTo).attr("data-height", heightTo);
         el.style.backgroundColor = colorTo;
         el.setAttribute("data-color", colorTo);
         el.setAttribute("data-height", heightTo);
-        colorsAssigned.appendChild(el);        
+        colorsAssigned.appendChild(el);
       });
-      
+
       colorsAssigned.style.display = "block";
-      colorsUnassigned.style.display = "none";   
+      colorsUnassigned.style.display = "none";
     }
-    
+
     function changeConvertColorsNumber(change) {
       const number = Math.max(Math.min(+convertColors.value + change, 255), 3);
       convertColors.value = number;
@@ -1009,8 +1009,8 @@ function editHeightmap() {
 
       terrs.selectAll("polygon").remove();
       updateHeightmap();
-    }    
-    
+    }
+
   }
 
   function toggleHeightmapPreview() {
@@ -1105,6 +1105,6 @@ function editHeightmap() {
   function projectIsometric(x, y) {
     const scale = 1, yProj = 4;
     return [(x - y) * scale, (x + y) / yProj * scale];
-  }  
+  }
 
 }

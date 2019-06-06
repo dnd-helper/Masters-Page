@@ -36,7 +36,7 @@
   const updateChain = (b) => chains[b] = nameBase[b] ? calculateChain(b) : null;
 
   // update chains for all used bases
-  const updateChains = () => chains.forEach((c, i) => chains[i] = nameBase[i] ? calculateChain(i) : null); 
+  const updateChains = () => chains.forEach((c, i) => chains[i] = nameBase[i] ? calculateChain(i) : null);
 
   // generate name using Markov's chain
   const getBase = function(base, min, max, dupl, multi) {
@@ -45,8 +45,8 @@
 
     const data = chains[base];
     if (!data || data[" "] === undefined) {
-      tip("Namesbase " + base + " is incorrect. Please checl in namesbase editor", false, "error"); 
-      console.error("nameBase " + base + " is incorrect!"); 
+      tip("Namesbase " + base + " is incorrect. Please checl in namesbase editor", false, "error");
+      console.error("nameBase " + base + " is incorrect!");
       return "ERROR";
     }
 
@@ -94,15 +94,15 @@
 
   // generate name for culture
   const getCulture = function(culture, min, max, dupl, multi) {
-    if (culture === undefined) {console.error("Please define a culture"); return;}
+    if (culture === undefined) {console.error("Favor definir uma Cultura"); return;}
     const base = pack.cultures[culture].base;
     return getBase(base, min, max, dupl, multi);
   }
 
   // generate state name based on capital or random name and culture-specific suffix
   const getState = function(name, culture) {
-    if (name === undefined) {console.error("Please define a base name"); return;}
-    if (culture === undefined) {console.error("Please define a culture"); return;}
+    if (name === undefined) {console.error("Favor definir um nome base"); return;}
+    if (culture === undefined) {console.error("Favor definir uma Cultura"); return;}
     const base = pack.cultures[culture].base;
 
     // exclude endings inappropriate for states name

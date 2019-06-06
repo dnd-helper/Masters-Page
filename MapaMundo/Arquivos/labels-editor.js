@@ -9,7 +9,7 @@ function editLabel() {
   viewbox.on("touchmove mousemove", showEditorTips);
 
   $("#labelEditor").dialog({
-    title: "Edit Label: " + node.innerHTML, resizable: false,
+    title: "Editar Nome: " + node.innerHTML, resizable: false,
     position: {my: "center top+10", at: "bottom", of: node, collision: "fit"},
     close: closeLabelEditor
   });
@@ -33,7 +33,7 @@ function editLabel() {
   document.getElementById("labelTextShow").addEventListener("click", showTextSection);
   document.getElementById("labelTextHide").addEventListener("click", hideTextSection);
   document.getElementById("labelText").addEventListener("input", changeText);
-  document.getElementById("labelTextRandom").addEventListener("click", generateRandomName); 
+  document.getElementById("labelTextRandom").addEventListener("click", generateRandomName);
 
   document.getElementById("labelSizeShow").addEventListener("click", showSizeSection);
   document.getElementById("labelSizeHide").addEventListener("click", hideSizeSection);
@@ -66,7 +66,7 @@ function editLabel() {
   function updateValues(node) {
     document.getElementById("labelText").value = node.innerHTML;
     document.getElementById("labelStartOffset").value = parseFloat(node.getAttribute("startOffset"));
-    document.getElementById("labelRelativeSize").value = parseFloat(node.getAttribute("font-size"));  
+    document.getElementById("labelRelativeSize").value = parseFloat(node.getAttribute("font-size"));
   }
 
   function drawControlPointsAndLine() {
@@ -103,7 +103,7 @@ function editLabel() {
   }
 
   function clickControlPoint() {
-    this.remove(); 
+    this.remove();
     redrawLabelPath();
   }
 
@@ -137,7 +137,7 @@ function editLabel() {
   function dragLabel() {
     const tr = parseTransform(elSelected.attr("transform"));
     const dx = +tr[0] - d3.event.x, dy = +tr[1] - d3.event.y;
-  
+
     d3.event.on("drag", function() {
       const x = d3.event.x, y = d3.event.y;
       const transform = `translate(${(dx+x)},${(dy+y)})`;
@@ -156,7 +156,7 @@ function editLabel() {
     document.getElementById("labelGroupSection").style.display = "none";
     document.getElementById("labelGroupInput").style.display = "none";
     document.getElementById("labelGroupInput").value = "";
-    document.getElementById("labelGroupSelect").style.display = "inline-block"; 
+    document.getElementById("labelGroupSelect").style.display = "inline-block";
   }
 
   function changeGroup() {
@@ -171,7 +171,7 @@ function editLabel() {
     } else {
       labelGroupInput.style.display = "none";
       labelGroupSelect.style.display = "inline-block";
-    }   
+    }
   }
 
   function createNewGroup() {
@@ -209,7 +209,7 @@ function editLabel() {
     const group = elSelected.node().parentNode.id;
     const basic = group === "states" || group === "addedLabels";
     const count = elSelected.node().parentNode.childElementCount;
-    alertMessage.innerHTML = `Are you sure you want to remove 
+    alertMessage.innerHTML = `Are you sure you want to remove
       ${basic ? "all elements in the group" : "the entire label group"}?
       <br><br>Labels to be removed: ${count}`;
     $("#alert").dialog({resizable: false, title: "Remove route group",
@@ -228,7 +228,7 @@ function editLabel() {
       }
     });
   }
-  
+
   function showTextSection() {
     document.querySelectorAll("#labelEditor > button").forEach(el => el.style.display = "none");
     document.getElementById("labelTextSection").style.display = "inline-block";
@@ -238,13 +238,13 @@ function editLabel() {
     document.querySelectorAll("#labelEditor > button").forEach(el => el.style.display = "inline-block");
     document.getElementById("labelTextSection").style.display = "none";
   }
-  
+
   function changeText() {
     const text = document.getElementById("labelText").value;
     elSelected.select("textPath").text(text);
     if (elSelected.attr("id").slice(0,10) === "stateLabel") {
       const id = +elSelected.attr("id").slice(10);
-      pack.states[id].name = text;    
+      pack.states[id].name = text;
     }
   }
 

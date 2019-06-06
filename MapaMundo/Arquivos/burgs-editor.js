@@ -12,7 +12,7 @@ function editBurgs() {
   if (modules.editBurgs) return;
   modules.editBurgs = true;
 
-  $("#burgsEditor").dialog({title: "Burgs Editor", width: fitContent(), close: exitAddBurgMode,
+  $("#burgsEditor").dialog({title: "Editor de Cidades", width: fitContent(), close: exitAddBurgMode,
     position: {my: "right top", at: "right-10 top+10", of: "svg", collision: "fit"}
   });
 
@@ -310,7 +310,7 @@ function editBurgs() {
         }
       });
     }
-    
+
     fileReader.readAsText(fileToLoad, "UTF-8");
   }
 
@@ -334,4 +334,3 @@ function editBurgs() {
   }
 
 }
-

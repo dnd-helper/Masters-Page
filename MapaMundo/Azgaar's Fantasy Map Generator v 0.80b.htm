@@ -3,22 +3,22 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Azgaar's Fantasy Map Generator v 0.80b</title>
-  <meta name="application-name" content="Azgaar's Fantasy Map Generator">
-  <meta name="author" content="Azgaar (Max Ganiev)">
-  <meta name="description" content="Azgaar's Fantasy Map Generator and Editor">
+  <title>DnD Helper Map Generator v1.0</title>
+  <meta name="application-name" content="DnD Helper Map Generator and Editor">
+  <meta name="author" content="Dnd Helper (Luan Henrique Sirtoli)">
+  <meta name="description" content="DnD Helper Map Generator and Editor">
   <meta name="google" content="notranslate">
-  <meta property="og:url" content="https://azgaar.github.io/Fantasy-Map-Generator">
-  <meta property="og:title" content="Azgaar's Fantasy Map Generator">
+  <meta property="og:url" content="https://dnd-helper.github.io/">
+  <meta property="og:title" content="DnD Helper Map Generator">
   <meta property="og:description" content="Based on Voronoi diagram rendered to svg">
   <meta property="og:image" content="images/preview.png">
   <link rel="icon" type="image/png" href="https://azgaar.github.io/Fantasy-Map-Generator/images/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="https://azgaar.github.io/Fantasy-Map-Generator/images/favicon-16x16.png" sizes="16x16">
-  <link rel="canonical" href="https://azgaar.github.io/Fantasy-Map-Generator/">
+  <link rel="canonical" href="https://dnd-helper.github.io/">
 
-  <link rel="stylesheet" type="text/css" href="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/index.css">
-  <link rel="stylesheet" type="text/css" href="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/icons.css">
-  <link rel="stylesheet" type="text/css" href="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="Arquivos/index.css">
+  <link rel="stylesheet" type="text/css" href="Arquivos/icons.css">
+  <link rel="stylesheet" type="text/css" href="Arquivos/jquery-ui.css">
 </head>
 <body>
   <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
@@ -295,7 +295,7 @@
           <li id="toggleCells" data-tip="Cells structure: click to toggle, drag to raise or lower the layer. Shortcut: E" class="buttonoff" onclick="toggleCells()">Células</li>
           <li id="toggleGrid" data-tip="Grid: click to toggle, drag to raise or lower. Select type in styles dropdown below. Shortcut: G" class="buttonoff" onclick="toggleGrid()">Grids</li>
           <li id="toggleCoordinates" data-tip="Coordinate grid: click to toggle, drag to raise or lower the layer. Shortcut: O" class="buttonoff" onclick="toggleCoordinates()">Coordenadas</li>
-          <li id="toggleCompass" data-tip="Compass (Wind) Rose: click to toggle, drag to raise or lower the layer. Shortcut: W" class="buttonoff" onclick="toggleCompass()">Compasso</li>
+          <li id="toggleCompass" data-tip="Compass (Wind) Rose: click to toggle, drag to raise or lower the layer. Shortcut: W" class="buttonoff" onclick="toggleCompass()">Bússola</li>
           <li id="toggleRivers" data-tip="Rivers: click to toggle, drag to raise or lower the layer. Shortcut: V" onclick="toggleRivers()">Rios</li>
           <li id="toggleRelief" data-tip="Relief and biome icons: click to toggle, drag to raise or lower the layer. Shortcut: R" class="buttonoff" onclick="toggleRelief()">Relevo</li>
           <li id="toggleCultures" data-tip="Cultures: click to toggle, drag to raise or lower the layer. Shortcut: C" class="buttonoff" onclick="toggleCultures()">Culturas</li>
@@ -312,12 +312,12 @@
           <li id="toggleScaleBar" data-tip="Scale Bar: click to toggle, drag to move. Shortcut: - (minus)" onclick="toggleScaleBar()" class="solid">Escala</li>
         </ul>
 
-        <p data-tip="Selecione um elemento para editar seu estilo" style="display: inline-block;">Select element:</p>
+        <p data-tip="Selecione um elemento para editar seu estilo" style="display: inline-block;">Selecione um elemento:</p>
         <select data-tip="Selecione um elemento para editar seu estilo (a lista está ordenada alfabéticamente)" id="styleElementSelect" style="width:42%">
           <option value="terrs">Altitudes</option>
           <option value="biomes">Biomas</option>
           <option value="cells">Células</option>
-          <option value="compass">Compasso</option>
+          <option value="compass">Bússola</option>
           <option value="landmass">Continentes</option>
           <option value="coordinates">Coordenadas</option>
           <option value="coastline">Costas</option>
@@ -425,64 +425,62 @@
                   <option value="images/textures/iran-small.jpg">Iran, Pequena</option>
                   <option value="images/textures/spain-small.jpg">Espanha, Pequena</option>
                 </select>
-                <button data-tip="Click and provide a URL to image to be set as a texture" class="icon-plus styleButton" onclick="textureProvideURL()"></button>
+                <button data-tip="Clique aqui e informe a URL da imagem a ser exibida como textura." class="icon-plus styleButton" onclick="textureProvideURL()"></button>
               </td>
             </tr>
 
-            <!-- Parei Aqui -->
-
-            <tr data-tip="Shift the texture by axes">
-              <td>Shift by axes</td>
+            <tr data-tip="Mover a textura utilizando valores dos eixos">
+              <td>Mover a textura</td>
               <td>
-                <input id="styleTextureShiftX" type="number" value=0 data-tip="Shift texture by x axis in pixels">
-                <input id="styleTextureShiftY" type="number" value=0 data-tip="Shift texture by y axis in pixels">
+                <input id="styleTextureShiftX" type="number" value=0 data-tip="Mover a textura utilizando valor do eixo X em pixels">
+                <input id="styleTextureShiftY" type="number" value=0 data-tip="Mover a textura utilizando valor do eixo Y em pixels">
               </td>
             </tr>
 
           </tbody>
 
           <tbody id="styleOcean">
-            <tr data-tip="Select ocean pattern">
-              <td>Pattern</td>
+            <tr data-tip="Selecione uma textura do Oceano">
+              <td>Textura</td>
               <td>
                 <select id="styleOceanPattern">
-                  <option value="url(#emptyImage)">No pattern</option>
-                  <option value="url(#mottling)" chacked>Mottling</option>
-                  <option value="url(#pattern1)" chacked>Pattern 1</option>
-                  <option value="url(#pattern2)" chacked>Pattern 2</option>
-                  <option value="url(#pattern3)" chacked>Pattern 3</option>
-                  <option value="url(#pattern4)" chacked>Pattern 4</option>
-                  <option value="url(#pattern5)" chacked>Pattern 5</option>
-                  <option value="url(#pattern6)" chacked>Pattern 6</option>
+                  <option value="url(#emptyImage)">Sem textura</option>
+                  <option value="url(#mottling)" chacked>Manchado</option>
+                  <option value="url(#pattern1)" chacked>Textura 1</option>
+                  <option value="url(#pattern2)" chacked>Textura 2</option>
+                  <option value="url(#pattern3)" chacked>Textura 3</option>
+                  <option value="url(#pattern4)" chacked>Textura 4</option>
+                  <option value="url(#pattern5)" chacked>Textura 5</option>
+                  <option value="url(#pattern6)" chacked>Textura 6</option>
                 </select>
               </td>
             </tr>
 
-            <tr data-tip="Define the coast outline contours scheme">
-              <td>Ocean layers</td>
+            <tr data-tip="Defina o esquema contorno da Costa no Oceano">
+              <td>Camadas do Oceano</td>
               <td>
                 <select id="outlineLayersInput">
-                  <option value="none">No outline</option>
+                  <option value="none">Sem contorno</option>
                   <option value="random">Random</option>
-                  <option value="-6,-3,-1" selected>Standard 3</option>
-                  <option value="-6,-4,-2">Indented 3</option>
-                  <option value="-9,-6,-3,-1">Standard 4</option>
-                  <option value="-6,-5,-4,-3,-2,-1">Smooth 6</option>
-                  <option value="-9,-8,-7,-6,-5,-4,-3,-2,-1">Smooth 9</option>
+                  <option value="-6,-3,-1" selected>Padrão 3</option>
+                  <option value="-6,-4,-2">Indentada 3</option>
+                  <option value="-9,-6,-3,-1">Padrão 4</option>
+                  <option value="-6,-5,-4,-3,-2,-1">Suave 6</option>
+                  <option value="-9,-8,-7,-6,-5,-4,-3,-2,-1">Suave 9</option>
                 </select>
               </td>
             </tr>
 
-            <tr data-tip="Set background color. Not visible if opacity is 1">
-              <td>Background</td>
+            <tr data-tip="Defina a cor de fundo. Não é visível se a opacidade for 1">
+              <td>Fundo</td>
               <td>
                 <input id="styleOceanBack" type="color" value="#000000"/>
                 <output id="styleOceanBackOutput">#000000</output>
               </td>
             </tr>
 
-            <tr data-tip="Set foreground color. Visible if opacity > 0">
-              <td>Foreground</td>
+            <tr data-tip="Cor do Oceano. É visível se a opacidade for > 0">
+              <td>Cor do Oceano</td>
               <td>
                 <input id="styleOceanFore" type="color" value="#53679f"/>
                 <output id="styleOceanForeOutput">#53679f</output>
@@ -492,19 +490,19 @@
           </tbody>
 
           <tbody id="styleGrid">
-            <tr data-tip="Select grid overlay type">
-              <td>Type</td>
+            <tr data-tip="Selecione o tipo de Grid utilizado">
+              <td>Tipo</td>
               <td>
                 <select id="styleGridType">
-                  <option value="pointyHex">Hex grid (pointy)</option>
-                  <option value="flatHex">Hex grid (flat)</option>
-                  <option value="square">Square grid</option>
+                  <option value="pointyHex">Grid Hexagonal (vertical)</option>
+                  <option value="flatHex">Grid Hexagonal (horizontal)</option>
+                  <option value="square">Grid Quadrado</option>
                 </select>
               </td>
             </tr>
 
-            <tr data-tip="Set grid cells spacing (size)">
-              <td>Size</td>
+            <tr data-tip="Defina o tamanho das células do Grid">
+              <td>Tamanho</td>
               <td>
                 <input id="styleGridSize" type="range" min=2 max=50 step=.1 value=10 style="width:42%">
                 <output id="styleGridSizeOutput" data-tip="Grid cells spacing in pixels">10</output>
@@ -514,35 +512,35 @@
           </tbody>
 
           <tbody id="styleShift">
-            <tr data-tip="Shift the element by axes">
+            <tr data-tip="Mover o Grid utilizando valores dos eixos">
               <td>Shift by axes</td>
               <td>
-                <input id="styleShiftX" type="number" value=0 data-tip="Shift by x axis in pixels">
-                <input id="styleShiftY" type="number" value=0 data-tip="Shift by y axis in pixels">
+                <input id="styleShiftX" type="number" value=0 data-tip="Mover o Grid utilizando valor do eixo X em pixels">
+                <input id="styleShiftY" type="number" value=0 data-tip="Mover o Grid utilizando valor do eixo Y em pixels">
               </td>
             </tr>
           </tbody>
 
           <tbody id="styleCompass">
-            <tr data-tip="Set compass rose size">
-              <td>Size</td>
+            <tr data-tip="Defina o tamanho da Bússola">
+              <td>Tamanho</td>
               <td>
                 <input id="styleCompassSizeInput" type="range" min=.02 max=1 step=.01 value=.25>
                 <output id="styleCompassSizeOutput">.25</output>
               </td>
             </tr>
 
-            <tr data-tip="Shift compass rose by axes">
+            <tr data-tip="Mova a Bússola utilizando valores dos eixos">
               <td>Shift by axes</td>
               <td>
-                <input id="styleCompassShiftX" type="number" value=0 data-tip="Shift by x axis in pixels">
-                <input id="styleCompassShiftY" type="number" value=0 data-tip="Shift by y axis in pixels">
+                <input id="styleCompassShiftX" type="number" value=0 data-tip="Mover a Bússola utilizando valor do eixo X em pixels">
+                <input id="styleCompassShiftY" type="number" value=0 data-tip="Mover a Bússola utilizando valor do eixo Y em pixels">
               </td>
             </tr>
           </tbody>
 
           <tbody id="styleRelief">
-            <tr data-tip="Define the size of relief icons">
+            <tr data-tip="Defina o tamanho dos Ícones de Relevo">
               <td>Size</td>
               <td>
                 <input id="styleReliefSizeInput" data-stored="reliefSize" type="range" min=.2 max=3 step=.01 value=1>
@@ -550,8 +548,8 @@
               </td>
             </tr>
 
-            <tr data-tip="Define the density of relief icons. Highly affects performance!">
-              <td>Density</td>
+            <tr data-tip="Defina a densidade dos Ícones de Relevo. Afeta MUITO a performance!">
+              <td>Densidade</td>
               <td>
                 <input id="styleReliefDensityInput" data-stored="reliefDensity" type="range" min=.3 max=1 step=.01 value=.4>
                 <output id="styleReliefDensityOutput">40%</output>
@@ -560,8 +558,8 @@
           </tbody>
 
           <tbody id="styleFill">
-            <tr data-tip="Set fill color">
-              <td>Fill</td>
+            <tr data-tip="Defina a cor de Preenchimento">
+              <td>Preenchimento</td>
               <td>
                 <input id="styleFillInput" type="color" value="#5E4FA2"/>
                 <output id="styleFillOutput">#5E4FA2</output>
@@ -570,8 +568,8 @@
           </tbody>
 
           <tbody id="styleStroke">
-            <tr data-tip="Set stroke color">
-              <td>Stroke</td>
+            <tr data-tip="Defina a cor do Traçado">
+              <td>Traçado</td>
               <td>
                 <input id="styleStrokeInput" type="color" value="#5E4FA2"/>
                 <output id="styleStrokeOutput">#5E4FA2</output>
@@ -580,8 +578,8 @@
           </tbody>
 
           <tbody id="styleStrokeWidth">
-            <tr data-tip="Set stroke width">
-              <td>Stroke width</td>
+            <tr data-tip="Defina a Espessura do Traçado">
+              <td>Espessura do Traçado</td>
               <td>
                 <input id="styleStrokeWidthInput" type="range" min=0 max=3 step=.01 value=1>
                 <output id="styleStrokeWidthOutput">1</output>
@@ -605,19 +603,19 @@
           </tbody>
 
           <tbody id="styleFont">
-            <tr data-tip="Select font">
-              <td>Font</td>
+            <tr data-tip="Selecione a Fonte">
+              <td>Fonte</td>
               <td>
                 <select id="styleSelectFont"></select>
-                <input id="styleInputFont" data-tip="Provide a link to @font-face declaration or type Google font name" type="text" placeholder="link to @font-face">
-                <button id="styleFontAdd" data-tip="Add custom font from the web" class="icon-plus styleButton"></button>
+                <input id="styleInputFont" data-tip="Cole um link para uma declaração de @font-face ou pesquise o nome da fonte" type="text" placeholder="link para a @font-face">
+                <button id="styleFontAdd" data-tip="Adicione uma fonte customizada da internet" class="icon-plus styleButton"></button>
               </td>
             </tr>
           </tbody>
 
           <tbody id="styleSize">
-            <tr data-tip="Set font size">
-              <td>Font size</td>
+            <tr data-tip="Defina o tamanho da Fonte">
+              <td>Tamanho da Fonte</td>
               <td>
                 <button id="styleFontPlus" data-tip="Multiply font size by 1.1" class="whiteButton">+</button>
                 <button id="styleFontMinus" data-tip="Multiply font size by 0.9" class="whiteButton" >-</button>
@@ -627,8 +625,8 @@
           </tbody>
 
           <tbody id="styleRadius">
-            <tr data-tip="Set icon size">
-              <td>Radius</td>
+            <tr data-tip="Defina o Tamanho do Ícone">
+              <td>Raio</td>
               <td>
                 <button id="styleRadiusPlus" data-tip="Multiply radius by 1.1" class="whiteButton">+</button>
                 <button id="styleRadiusMinus" data-tip="Multiply radius by 1.1" class="whiteButton">-</button>
@@ -638,8 +636,8 @@
           </tbody>
 
           <tbody id="styleIconSize">
-            <tr data-tip="Set icon size">
-              <td>Size</td>
+            <tr data-tip="Defina o Tamanho do Ícone">
+              <td>Tamanho</td>
               <td>
                 <button id="styleIconSizePlus" data-tip="Multiply size by 1.1" class="whiteButton">+</button>
                 <button id="styleIconSizeMinus" data-tip="Multiply size by 1.1" class="whiteButton">-</button>
@@ -649,42 +647,42 @@
           </tbody>
 
           <tbody id="styleCoastline">
-            <tr data-tip="Allow system to apply filter automatically based on zoom level">
+            <tr data-tip="Permita o sistema aplicar o filtro automaticamente baseado no nível de zoom">
               <td colspan=2>
                 <input id="styleCoastlineAuto" class="checkbox" type="checkbox" checked onchange="$('#styleFilter').toggle();">
-                <label for="styleCoastlineAuto" class="checkbox-label">Automatically change filter on zoom</label>
+                <label for="styleCoastlineAuto" class="checkbox-label">Automaticamente mudar filtro com zoom</label>
               </td>
             </tr>
           </tbody>
 
           <tbody id="styleMarkers">
-            <tr data-tip="Rescale Markers on zoom change">
+            <tr data-tip="Reescalar Marcadores baseado no nível de zoom">
               <td colspan=2>
                 <input id="styleRescaleMarkers" class="checkbox" type="checkbox" checked onchange="invokeActiveZooming()">
-                <label for="styleRescaleMarkers" class="checkbox-label">Rescale on zoom change</label>
+                <label for="styleRescaleMarkers" class="checkbox-label">Reescalar com mudança no zoom</label>
               </td>
             </tr>
           </tbody>
 
           <tbody id="styleTemperature">
-            <tr data-tip="Define transparency of temperature leyer. Set to 0 to make it fully transparent">
-              <td>Fill opacity</td>
+            <tr data-tip="Defina a transparencia da camada de Temperaturas. Defina como 0 para faze-la completamente transparente.">
+              <td>Opacidade do Preenchimento</td>
               <td>
                 <input id="styleTemperatureFillOpacityInput" type="range" min=0 max=1 step=.01 value=.3/>
                 <output id="styleTemperatureFillOpacityOutput">0.3</output>
               </td>
             </tr>
 
-            <tr data-tip="Set labels size">
-              <td>Labels size</td>
+            <tr data-tip="Defina o Tamanho dos Nomes">
+              <td>Tamanho dos Nomes</td>
               <td>
                 <input id="styleTemperatureFontSizeInput" type="range" min=0 max=30 value=8/>
                 <output id="styleTemperatureFontSizeOutput">8</output>
               </td>
             </tr>
 
-            <tr data-tip="Set labels color">
-              <td>Labels color</td>
+            <tr data-tip="Defina o Cor dos Nomes">
+              <td>Cor dos Nomes</td>
               <td>
                 <input id="styleTemperatureFillInput" type="color"/>
                 <output id="styleTemperatureFillOutput">#000</output>
@@ -693,14 +691,14 @@
           </tbody>
 
           <tbody id="styleHeightmap">
-            <tr data-tip="Select color scheme for the element">
-              <td>Color scheme</td>
+            <tr data-tip="Defina o esquema de cores para o elemento">
+              <td>Esquema de cores</td>
               <td>
                 <select id="styleHeightmapSchemeInput" onchange="drawHeightmap()">
-                  <option value="bright" selected>Bright</option>
-                  <option value="light">Light</option>
-                  <option value="green">Green</option>
-                  <option value="monochrome">Monochrome</option>
+                  <option value="bright" selected>Claro</option>
+                  <option value="light">Leve</option>
+                  <option value="green">Esverdeado</option>
+                  <option value="monochrome">Monocromático</option>
                 </select>
               </td>
             </tr>
@@ -728,68 +726,68 @@
               </td>
             </tr>
 
-            <tr data-tip="Select line interpolation type">
-              <td>Line style</td>
+            <tr data-tip="Selecione o tipo de interpolação da linha">
+              <td>Estilo da Linha</td>
               <td>
                 <select id="styleHeightmapCurveInput" onchange="drawHeightmap()">
-                  <option value=0 selected>Curved</option>
+                  <option value=0 selected>Curvada</option>
                   <option value=1>Linear</option>
-                  <option value=2>Rectangular</option>
+                  <option value=2>Retangular</option>
                 </select>
               </td>
             </tr>
           </tbody>
 
           <tbody id="styleFilter" style="display: block">
-            <tr data-tip="Select filter for element. Please note filters may cause performance issues!">
-              <td>Filter</td>
+            <tr data-tip="Selecione um filtro para o elemento. Tenha em mente que filtros podem causar problemas de performance!">
+              <td>Filtro</td>
               <td>
                 <select id="styleFilterInput">
-                  <option value="" selected>None</option>
+                  <option value="" selected>Nenhum</option>
                   <option value="url(#blurFilter)">Blur 0.2</option>
                   <option value="url(#blur1)">Blur 1</option>
                   <option value="url(#blur5)">Blur 5</option>
                   <option value="url(#blur10)">Blur 10</option>
                   <option value="url(#splotch)">Splotch</option>
                   <option value="url(#bluredSplotch)">Blured Splotch</option>
-                  <option value="url(#dropShadow01)">Shadow 0.1</option>
-                  <option value="url(#dropShadow05)">Shadow 0.5</option>
-                  <option value="url(#dropShadow)">Shadow 2</option>
-                  <option value="url(#outline)">Outline</option>
-                  <option value="url(#pencil)">Pencil</option>
-                  <option value="url(#turbulence)">Turbulence</option>
+                  <option value="url(#dropShadow01)">Sombra 0.1</option>
+                  <option value="url(#dropShadow05)">Sombra 0.5</option>
+                  <option value="url(#dropShadow)">Sombra 2</option>
+                  <option value="url(#outline)">Contorno</option>
+                  <option value="url(#pencil)">Lápis</option>
+                  <option value="url(#turbulence)">Turbulencia</option>
                 </select>
               </td>
             </tr>
           </tbody>
 
           <tbody id="styleClipping">
-            <tr data-tip="Set clipping. Only non-clipped part will be visible">
-              <td>Clipping</td>
+            <tr data-tip="Defina o recorte. Somente partes não recortadas serão visíveis">
+              <td>Recorte</td>
               <td>
                 <select id="styleClippingInput">
-                  <option value="" selected>No clipping</option>
-                  <option value="url(#land)">Clip water</option>
-                  <option value="url(#water)">Clip land</option>
+                  <option value="" selected>Sem recorte</option>
+                  <option value="url(#land)">Recortar Água</option>
+                  <option value="url(#water)">Recortar Terra</option>
                 </select>
               </td>
             </tr>
           </tbody>
 
           <tbody id="styleVisibility">
-            <tr data-tip="Define displayed label groups">
+            <tr data-tip="Define os nomes dos grupos a serem exibidos">
               <td colspan=2>
                 <input id="hideLabels" class="checkbox" type="checkbox" onchange="invokeActiveZooming()" checked>
-                <label for="hideLabels" data-tip="Allow system to hide labels if their size in too small or too big on that scale" class="checkbox-label">Toggle visibility automatically</label>
+                <label for="hideLabels" data-tip="Permite o sistema esconder os nomes se seus tamanhos forem muito grandes ou pequenos em relação à escala" class="checkbox-label">Mudar visibilidade automaticamente</label>
               </td>
             </tr>
           </tbody>
         </table>
 
-        <div id="mapFilters" data-tip="Set a filter to be applied to the map in general">
-          <p>Toggle filters:</p>
-          <button id="grayscale" class="radio">Grayscale</button>
-          <button id="sepia" class="radio">Sepia</button>
+        <div id="mapFilters" data-tip="Selecione um Filtro a ser aplicado no mapa">
+          <p>Selecione o Filtro:</p>
+          <button id="grayscale" class="radio">Cinza</button>
+          <button id="sepia" class="radio">Sépia</button>
           <button id="dingy" class="radio">Dingy</button>
           <button id="tint" class="radio">Tint</button>
         </div>
@@ -797,39 +795,39 @@
       </div>
 
       <div id="optionsContent" class="tabcontent">
-        <p data-tip="Map generation settings. Generate a new map to apply the settings">Map Generation (new map to apply):</p>
+        <p data-tip="Configurações de geração de Mapa. Gere um novo mapa para aplicar as configurações">Geração do Mapa (Aplicado à um novo mapa):</p>
         <table>
 
-          <tr data-tip="Map height and width in pixels. Please consider reducing map size in case of performance issues">
+          <tr data-tip="Altura e Largura do mapa em pixels. Favor considerar reduzir o tamanho do mapa em caso de problemas de performance.">
             <td></td>
-            <td>Map size</td>
+            <td>Tamanho do Mapa</td>
             <td>
-              <span data-tip="Map width in pixels">width</span>
-              <input data-tip="Map width in pixels" id="mapWidthInput" class="paired" type="number" min=240 value=960>
-              <span data-tip="Map height in pixels">height</span>
-              <input data-tip="Map height in pixels" id="mapHeightInput" class="paired" type="number" min=135 value=540>
+              <span data-tip="Largura do mapa em pixels">Larg.</span>
+              <input data-tip="Largura do mapa em pixels" id="mapWidthInput" class="paired" type="number" min=240 value=960>
+              <span data-tip="Altura do mapa em pixels">Alt.</span>
+              <input data-tip="Altura do mapa em pixels" id="mapHeightInput" class="paired" type="number" min=135 value=540>
             </td>
             <td>
-              <i data-tip="Toggle between screen size and initial map size" id="toggleFullscreen" class="icon-resize-full-alt"></i>
+              <i data-tip="Alterne entre o tamanho da tela e o tamanho inicial do mapa" id="toggleFullscreen" class="icon-resize-full-alt"></i>
             </td>
           </tr>
 
-          <tr data-tip="Map seed number. Seed produces the same map only if map size and options are the same">
+          <tr data-tip="Código do Mapa. Este código produz o mesmo mapa somente se o tamanho e as opções forem as mesma.">
             <td>
-              <i data-tip="Click to generate a map for this seed" id="optionsSeedGenerate"></i>
+              <i data-tip="Clique para gerar um mapa para este Código!" id="optionsSeedGenerate"></i>
             </td>
-            <td>Map seed</td>
+            <td>Código do Mapa</td>
             <td>
               <input id="optionsSeed" class="long" type="number" min=1 max=999999999 step=1>
             </td>
             <td>
-              <i data-tip="Show seed history to apply a previous seed" id="optionsMapHistory" class="icon-history"></i>
+              <i data-tip="Mostra o histórico de códigos para aplicar um código anterior" id="optionsMapHistory" class="icon-history"></i>
             </td>
           </tr>
 
-          <tr data-tip="Set number of points to be used for graph generation. Highly affects performance">
+          <tr data-tip="Define o número de pontos a serem utilizados para geração do gráfico. Afeta muito a performance">
             <td></td>
-            <td>Points number</td>
+            <td>Número de pontos</td>
             <td>
               <input id="densityInput" type="range" min=1 max=10 value=1>
             </td>
@@ -838,33 +836,33 @@
             </td>
           </tr>
 
-          <tr data-tip="Select template to be used for a Heightmap generation">
+          <tr data-tip="Selecione um template para ser utilizado na geração do mapa de Altitudes">
             <td>
               <i data-locked=0 id="lock_template" class="icon-lock-open"></i>
             </td>
-            <td>Map template</td>
+            <td>Template do Mapa</td>
             <td>
               <select id="templateInput" data-stored="template">
-                <option value="Volcano">Volcano</option>
-                <option value="High Island">High Island</option>
-                <option value="Low Island">Low Island</option>
-                <option value="Continents">Continents</option>
-                <option value="Archipelago">Archipelago</option>
-                <option value="Atoll">Atoll</option>
-                <option value="Mediterranean">Mediterranean</option>
+                <option value="Volcano">Vulcão</option>
+                <option value="High Island">Ilha Alta</option>
+                <option value="Low Island">Ilha Baixa</option>
+                <option value="Continents">Continentes</option>
+                <option value="Archipelago">Arquipelago</option>
+                <option value="Atoll">Atól</option>
+                <option value="Mediterranean">Mediterrâneo</option>
                 <option value="Peninsula">Peninsula</option>
                 <option value="Pangea">Pangea</option>
-                <option value="Isthmus">Isthmus</option>
+                <option value="Isthmus">Istmo</option>
               </select>
             </td>
             <td></td>
           </tr>
 
-          <tr data-tip="Define how many Cultures should be generated">
+          <tr data-tip="Defina quantas Culturas devem ser geradas">
             <td>
               <i data-locked=0 id="lock_cultures" class="icon-lock-open"></i>
             </td>
-            <td>Cultures number</td>
+            <td>Número de Culturas</td>
             <td>
               <input id="culturesInput" data-stored="cultures" type="range" min=1 max=30 value=14>
             </td>
@@ -873,11 +871,11 @@
             </td>
           </tr>
 
-          <tr data-tip="Define how many states and capitals should be generated">
+          <tr data-tip="Defina quantos Estados e Capitais devem ser geradas">
             <td>
               <i data-locked=0 id="lock_regions" class="icon-lock-open"></i>
             </td>
-            <td>States number</td>
+            <td>Número de Países</td>
             <td>
               <input id="regionsInput" data-stored="regions" type="range" min=0 max=99 value=13>
             </td>
@@ -886,11 +884,11 @@
             </td>
           </tr>
 
-          <tr data-tip="Define how much states and cultures can vary in size. Defines expansionism value">
+          <tr data-tip="Defina o quanto Estados e Culturas podem variar em tamanho. Define o valor de expansionismo">
             <td>
               <i data-locked=0 id="lock_power" class="icon-lock-open"></i>
             </td>
-            <td>Size variety</td>
+            <td>Variedade de Tamanho</td>
             <td>
               <input id="powerInput" data-stored="power" type="range" min=0 max=10 step=.2 value=5>
             </td>
@@ -899,11 +897,11 @@
             </td>
           </tr>
 
-          <tr data-tip="Define state and cultures growth rate. Defines how many lands will stay neutral">
+          <tr data-tip="Defina a Taxa de Crescimento de Estados e Culturas. Define quantas regiões irão se manter neutras">
             <td>
               <i data-locked=0 id="lock_neutral" class="icon-lock-open"></i>
             </td>
-            <td>Growth rate</td>
+            <td>Taxa de Crescimento</td>
             <td>
               <input id="neutralInput" data-stored="neutral" type="range" min=.1 max=2 step=.1 value=1>
             </td>
@@ -912,11 +910,11 @@
             </td>
           </tr>
 
-          <tr data-tip="Define how many towns (non-capital burgs) should be generated">
+          <tr data-tip="Define quantas cidades (não-capitais) serão geradas">
             <td>
               <i data-locked=0 id="lock_manors" class="icon-lock-open"></i>
             </td>
-            <td>Towns number</td>
+            <td>Número de Cidades</td>
             <td>
               <input id="manorsInput" data-stored="manors" type="range" min=0 max=1000 step=1 value=1000>
             </td>
@@ -927,11 +925,11 @@
 
         </table>
 
-        <p data-tip="Interface settings that don't affect generation. They are applied immediately on change">User Interface:</p>
+        <p data-tip="Configurações da Interface não afetam a geração. As mesmas são aplicadas logo após a mudança dos valores.">Interface do Usuário:</p>
         <table>
-          <tr data-tip="Set user interface size">
+          <tr data-tip="Define o Tamanho da Interface do Usuário">
             <td></td>
-            <td>Interface size</td>
+            <td>Tamanho da Interface</td>
             <td>
               <input id="uiSizeInput" data-stored="uiSize" type="range" min=.6 max=1.4 step=.1 value=1>
             </td>
@@ -940,9 +938,9 @@
             </td>
           </tr>
 
-          <tr data-tip="Set tooltips size">
+          <tr data-tip="Define tamanho das Dicas">
             <td></td>
-            <td>Tooltips size</td>
+            <td>Tamanho das Dicas</td>
             <td>
               <input id="tooltipSizeInput" data-stored="tooltipSize" type="range" min=4 max=24 value=12>
             </td>
@@ -951,9 +949,9 @@
             </td>
           </tr>
 
-          <tr data-tip="Set dialog and tool windows transparency">
+          <tr data-tip="Define a transparencia das janelas">
             <td></td>
-            <td>Transparency</td>
+            <td>Transparência</td>
             <td>
               <input id="transparencyInput" data-stored="transparency" type="range" min=0 max=100 value=30>
             </td>
@@ -962,9 +960,9 @@
             </td>
           </tr>
 
-          <tr data-tip="Define relative size of a saved png image. Saving big images is slow and may cause a browser crash">
+          <tr data-tip="Define o tamanho rellativo de uma imagem png salva. Salvar imagens grandes é demorado, e pode causar travamentos no navegador.">
             <td></td>
-            <td>PNG resolution</td>
+            <td>Resolução do PNG</td>
             <td>
               <input id="pngResolutionInput" data-stored="pngResolution" type="range" min=1 max=8 value=5>
             </td>
@@ -973,122 +971,122 @@
             </td>
           </tr>
 
-          <tr data-tip="Set minimum and maximum possible zoom level">
+          <tr data-tip="Define o máximo e mínimo zoom possivel.">
             <td></td>
-            <td>Zoom extent</td>
+            <td>Extensão do Zoom</td>
             <td>
-              <span data-tip="Mimimal possible zoom level">min</span>
-              <input data-tip="Mimimal possible zoom level" id="zoomExtentMin" class="paired" type="number" min=.2 step=.1 max=20 value=1>
-              <span data-tip="Maximal possible zoom level">max</span>
-              <input data-tip="Maximal possible zoom level" id="zoomExtentMax" class="paired" type="number" min=1 max=50 value=20>
+              <span data-tip="Mínimo zoom possivel">min</span>
+              <input data-tip="Mínimo zoom possivel" id="zoomExtentMin" class="paired" type="number" min=.2 step=.1 max=20 value=1>
+              <span data-tip="Máximo zoom possivel">max</span>
+              <input data-tip="Máximo zoom possivel" id="zoomExtentMax" class="paired" type="number" min=1 max=50 value=20>
             </td>
             <td>
-              <i data-tip="Restore default [1, 20] zoom extent" id="zoomExtentDefault" class="icon-ccw"></i>
+              <i data-tip="Restaura o padrão para o Zoom [1, 20]" id="zoomExtentDefault" class="icon-ccw"></i>
             </td>
           </tr>
 
         </table>
 
-        <button id="configureWorld" data-tip="Click to open world configurator to setup position on globe and world climate" onclick="editWorld()">Configure World</button>
+        <button id="configureWorld" data-tip="Clique para abrir a configuração do mundo, para definir a posição no globo e o clima mundial" onclick="editWorld()">Configure o Mundo</button>
 
-        <button id="optionsReset" data-tip="Click to restore default options (page will be reloaded)" onclick="restoreDefaultOptions()">Reset to defaults</button>
+        <button id="optionsReset" data-tip="Clique para restaurar as opções padrão (a página será recarregada)" onclick="restoreDefaultOptions()">Restaura para o padrão</button>
 
       </div>
 
       <div id="toolsContent" class="tabcontent">
         <div id="openEditor">
-          <p>Click to configure:</p>
-          <button id="editHeightmapButton" data-tip="Click to open Heightmap customization menu">Heightmap</button>
-          <button id="editBiomesButton" data-tip="Click to open Biomes Editor">Biomes</button>
-          <button id="editStatesButton" data-tip="Click to open States Editor">States</button>
-          <button id="editCulturesButton" data-tip="Click to open Cultures Editor">Cultures</button>
-          <button id="editNamesBaseButton" data-tip="Click to open Namesbase Editor">Namesbase</button>
-          <button id="editBurgsButton" data-tip="Click to open Burgs Editor">Burgs</button>
-          <button id="editUnitsButton" data-tip="Click to open Units Editor">Units</button>
+          <p>Clique para Configurar:</p>
+          <button id="editHeightmapButton" data-tip="Clique para abrir o menu de customização das Altitudes">Altitudes</button>
+          <button id="editBiomesButton" data-tip="Clique para abrir o Editor de Biomas">Biomas</button>
+          <button id="editStatesButton" data-tip="Clique para abrir o Editor de Países">Países</button>
+          <button id="editCulturesButton" data-tip="Clique para abrir o Editor de Culturas">Culturas</button>
+          <button id="editNamesBaseButton" data-tip="Clique para abrir o Editor da Base de Nomes">Base de Nomes</button>
+          <button id="editBurgsButton" data-tip="Clique para abrir o Editor de Cidades">Cidades</button>
+          <button id="editUnitsButton" data-tip="Clique para abrir o Editor de Unidades">Unidades</button>
         </div>
 
         <div id="regenerateFeature">
-          <p>Click to regenerate:</p>
-          <button id="regenerateStateLabels" data-tip="Click to update state labels placement based on current borders">State labels</button>
-          <button id="regenerateReliefIcons" data-tip="Click to regenerate all relief icons based on current cell biome and elevation">Relief icons</button>
-          <button id="regenerateRoutes" data-tip="Click to regenerate all routes">Routes</button>
-          <button id="regenerateRivers" data-tip="Click to regenerate all rivers. Please note map heights can be changed by water flow">Rivers</button>
-          <button id="regeneratePopulation" data-tip="Click to recalculate rural and urban population">Population</button>
+          <p>Clique para re-gerar:</p>
+          <button id="regenerateStateLabels" data-tip="Clique para atualizar a posição dos Nome dos Países baseada em suas atuais fronteiras">Nome dos Países</button>
+          <button id="regenerateReliefIcons" data-tip="Clique para re-gerar todos os Ícones de Relevo baseado em suas atuais células de Bioma e Elevação">Ícones de Relevo</button>
+          <button id="regenerateRoutes" data-tip="Clique para re-gerar todas as Rotas">Rotas</button>
+          <button id="regenerateRivers" data-tip="Clique para re-gerar todas os Rios. Tenha em mente que as Altitudes do Mapa podem ser modificadas pelo curso da água">Rios</button>
+          <button id="regeneratePopulation" data-tip="Clique para recalcular a população rural e urbana">População</button>
         </div>
 
         <div id="addFeature">
-          <p>Click to add:</p>
-          <button id="addBurgTool" data-tip="Click on map to place a burg. Hold Shift to add multiple">Burg</button>
-          <button id="addLabel" data-tip="Click on map to place label. Hold Shift to add multiple">Label</button>
-          <button id="addRiver" data-tip="Click on map to place a river. Hold Shift to add multiple">River</button>
-          <button id="addRoute" data-tip="Click on map to place a route">Route</button>
-          <button id="addMarker" data-tip="Click on map to place a marker. Hold Shift to add multiple">Marker</button>
+          <p>Clique para adicionar:</p>
+          <button id="addBurgTool" data-tip="Clique no mapa para adicionar uma Cidade. Segure Shift para adicionar várias">Cidade</button>
+          <button id="addLabel" data-tip="Clique no mapa para adicionar um Nome. Segure Shift para adicionar vários">Nome</button>
+          <button id="addRiver" data-tip="Clique no mapa para adicionar um Rio. Segure Shift para adicionar vários">Rio</button>
+          <button id="addRoute" data-tip="Clique no mapa para adicionar uma Rota">Rota</button>
+          <button id="addMarker" data-tip="Clique no mapa para adicionar um Marcador. Segure Shift para adicionar vários">Marcador</button>
         </div>
 
-        <p>Cell info: <i data-tip="Click to toggle the section" class="collapsible icon-down-open pointer"></i></p>
+        <p>Informação da Célula: <i data-tip="Click to toggle the section" class="collapsible icon-down-open pointer"></i></p>
         <div id="cellInfo" style="display: none">
           <div>
             Coord: <span id="infoX">0</span>/<span id="infoY">0</span><br>
-            Cell: <span id="infoCell">0</span><br>
-            Area: <span id="infoArea">0</span><br>
+            Célula: <span id="infoCell">0</span><br>
+            Área: <span id="infoArea">0</span><br>
           </div>
           <div>
-            Type: <span id="infoFeature">n/a</span><br>
+            Tipo: <span id="infoFeature">n/a</span><br>
             Precip: <span id="infoPrec">0</span><br>
-            Population: <span id="infoPopulation">0</span>
+            População: <span id="infoPopulation">0</span>
           </div>
           <div>
-            Height: <span id="infoHeight">0</span><br>
-            Temperature: <span id="infoTemp">0</span><br>
-            Biome: <span id="infoBiome">n/a</span><br>
-            State: <span id="infoState">n/a</span><br>
-            Culture: <span id="infoCulture">n/a</span><br>
-            Burg: <span id="infoBurg">n/a</span>
+            Altitude: <span id="infoHeight">0</span><br>
+            Temperatura: <span id="infoTemp">0</span><br>
+            Bioma: <span id="infoBiome">n/a</span><br>
+            País: <span id="infoState">n/a</span><br>
+            Cultura: <span id="infoCulture">n/a</span><br>
+            Cidade: <span id="infoBurg">n/a</span>
           </div>
         </div>
       </div>
 
       <div id="customizationMenu" class="tabcontent">
-        <p>Heightmap customization tools:</p>
+        <p>Ferramentas de customização do Mapa de Altitudes:</p>
         <div id="customizeTools">
-          <button data-tip="Display brushes panel" id="paintBrushes">Paint Brushes</button>
-          <button data-tip="Open template editor" id="applyTemplate" style="display: none">Template Editor</button>
-          <button data-tip="Open Image Converter" id="convertImage" style="display: none">Image Converter</button>
-          <button data-tip="Render heightmap data as a small monochrome image" id="heightmapPreview">Heightmap Preview</button>
-          <button data-tip="Render heightmap in perspective" id="perspectiveView">Perspective View</button>
+          <button data-tip="Abrir painel de Pincéis" id="paintBrushes">Pincéis de Pintura</button>
+          <button data-tip="Abrir editor de template" id="applyTemplate" style="display: none">Editor de Template</button>
+          <button data-tip="Abrir Conversor de Imagem" id="convertImage" style="display: none">Conversor de Imagem</button>
+          <button data-tip="Renderizar Mapa de Altitudes como uma pequena imagem monocromática" id="heightmapPreview">Prever Mapa de Altitudes</button>
+          <button data-tip="Renderizar Mapa de Altitudes em perspectiva" id="perspectiveView">Vista em Perspectiva</button>
         </div>
 
         <div id="customizeOptions">
-          <p>Options:</p>
-          <div data-tip="Heightmap edit mode">Edit mode: <span id="heightmapEditMode"></span></div>
-          <div data-tip="Render cells below the sea level (with height less than 20)">
+          <p>Opções:</p>
+          <div data-tip="Modo de Edição do Mapa de Altitudes">Modo de Edição: <span id="heightmapEditMode"></span></div>
+          <div data-tip="Renderizar células abaixo do nível do mar (com altutides menores que 20)">
             <input id="renderOcean" class="checkbox" type="checkbox">
-            <label for="renderOcean" class="checkbox-label">Render ocean cells</label>
+            <label for="renderOcean" class="checkbox-label">Renderizar células do Oceano</label>
           </div>
-          <div data-tip="Allow water flow to change heights on heightmap edit completion">
+          <div data-tip="Permitir o fluxo de Água modificar altitudes na conclusão do Mapa de Altitudes">
             <input id="changeHeights" class="checkbox" type="checkbox" checked>
-            <label for="changeHeights" class="checkbox-label">Allow water erosion</label>
+            <label for="changeHeights" class="checkbox-label">Permitir Erosão da Água</label>
           </div>
         </div>
 
         <div>
-          <p>Statistics:</p>
-          <span>Land cells: </span><span id="landmassCounter">0</span>
+          <p>Estatisticas:</p>
+          <span>Células de Terreno: </span><span id="landmassCounter">0</span>
           <span style="margin-left:8px">Mean height: </span><span id="landmassAverage">0</span>
         </div>
 
         <div>
-          <p>Cell info:</p>
+          <p>Informação das Células:</p>
           <span>Coord: </span><span id="heightmapInfoX"></span>/<span id="heightmapInfoY"></span>
-          <span style="margin-left:8px">Cell: </span><span id="heightmapInfoCell"></span>
-          <span style="margin-left:8px">Height: </span><span id="heightmapInfoHeight"></span>
+          <span style="margin-left:8px">Células: </span><span id="heightmapInfoCell"></span>
+          <span style="margin-left:8px">Altitude: </span><span id="heightmapInfoHeight"></span>
         </div>
 
-        <button data-tip="Finalize the heightmap and exit the edit mode" id="finalizeHeightmap" class="glow">Exit Customization</button>
+        <button data-tip="Finalizar o Mapa de Alturas e sair do Modo de Edição" id="finalizeHeightmap" class="glow">Sair da Customização</button>
       </div>
 
       <div id="aboutContent" class="tabcontent">
-        <p><a href="https://github.com/Azgaar/Fantasy-Map-Generator" target="_blank">Fantasy Map Generator</a> is a free <a href="https://github.com/Azgaar/Fantasy-Map-Generator/blob/master/LICENSE" target="_blank">open source</a> tool which procedurally generates fantasy maps. You may use auto-generated maps as they are, edit them or even create a new map from scratch. Check out the <a href="https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Quick-Start-Tutorial" target="_blank">quick start tutorial</a> and <a href="https://github.com/Azgaar/Fantasy-Map-Generator/wiki" target="_blank">project wiki</a> for guidance.</p>
+        <!-- <p><a href="https://github.com/Azgaar/Fantasy-Map-Generator" target="_blank">Fantasy Map Generator</a> is a free <a href="https://github.com/Azgaar/Fantasy-Map-Generator/blob/master/LICENSE" target="_blank">open source</a> tool which procedurally generates fantasy maps. You may use auto-generated maps as they are, edit them or even create a new map from scratch. Check out the <a href="https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Quick-Start-Tutorial" target="_blank">quick start tutorial</a> and <a href="https://github.com/Azgaar/Fantasy-Map-Generator/wiki" target="_blank">project wiki</a> for guidance.</p>
         <p>Join our <a href="https://www.reddit.com/r/FantasyMapGenerator/" target="_blank">Reddit Community</a> if you have questions, need help, have a suggestion or want to share a created map. You may support the project on <a href='https://www.patreon.com/azgaar' target='_blank'>Patreon</a>.</p>
         <p>The project is under active development. For older versions see the <a href="https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Changelog" target="_blank">changelog</a>. To track the development progress see the <a href="https://trello.com/b/7x832DG4/fantasy-map-generator" target="_blank">devboard</a>. Please report bugs <a href="https://github.com/Azgaar/Fantasy-Map-Generator/issues" target="_blank">here</a>. You can also contact me directly via <a href="mailto:maxganiev@yandex.ru" target="_blank">email</a>.</p>
         <p>A special thanks to all supporters! <i data-tip="Click to see supporters names" class="collapsible icon-down-open pointer"></i></p>
@@ -1100,19 +1098,19 @@
           <li><a href="http://www.tumblr.com/share?v=3&u=https%3A%2F%2Fazgaar.github.io%2FFantasy-Map-Generator" target="_blank" data-tip="Post to Tumblr"><img alt="Post to Tumblr" src="images/Tumblr.png" /></a></li>
           <li><a href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fazgaar.github.io%2FFantasy-Map-Generator" target="_blank" data-tip="Pin it"><img alt="Pin it" src="images/Pinterest.png" /></a></li>
           <li><a href="http://www.reddit.com/submit?url=https%3A%2F%2Fazgaar.github.io%2FFantasy-Map-Generator" target="_blank" data-tip="Submit to Reddit"><img alt="Submit to Reddit" src="images/Reddit.png" /></a></li>
-        </ul>
+        </ul> -->
       </div>
 
       <div id="sticked">
-        <button id="newMapButton" data-tip="Generate a new map based on options. Shortcut: F7">New Map</button>
-        <button id="saveButton" data-tip="Select file format to save map">Save as</button>
+        <button id="newMapButton" data-tip="Gerar um novo mapa baseado nas opções escolhidas. Atalho: F7">Novo Mapa</button>
+        <button id="saveButton" data-tip="Selecione o formato do arquivo para salvar o mapa">Salvar Como</button>
         <div id="saveDropdown">
-          <div id="saveMap" data-tip="Save as fully functional map in .map format. Shortcut: Ctrl + M">.map</div>
-          <div id="saveSVG" data-tip="Download the map as .svg image (open in browser or Inkscape). Shortcut: Ctrl + S">.svg</div>
-          <div id="savePNG" data-tip="Download visible part of the map as image. Texture will not be shown. Shortcut: Ctrl + P">.png</div>
+          <div id="saveMap" data-tip="Salvar como um mapa completamente funcional no formato .map. Atalho: Ctrl + M">.map</div>
+          <div id="saveSVG" data-tip="Baixar o mapa como uma imagem .svg (abrir no navegador ou no Inkscape). Atalho: Ctrl + S">.svg</div>
+          <div id="savePNG" data-tip="Baixar a parte visivel do mapa como uma imagem .png. As texturas não serão exibidas. Atalho: Ctrl + P">.png</div>
         </div>
-        <button id="loadMap" data-tip="Load fully functional map in a .map format. Shortcut: Ctrl + L">Load</button>
-        <button id="zoomReset" data-tip="Reset map zoom. Shortcut: 0">Reset Zoom</button>
+        <button id="loadMap" data-tip="Carregar o mapa completamente funcional no formato .map. Atalho: Ctrl + L">Carregar</button>
+        <button id="zoomReset" data-tip="Resetar o zoom do mapa. Atalho: 0">Reset Zoom</button>
       </div>
 
     </div>
@@ -1123,49 +1121,49 @@
     <div id="worldConfigurator" class="dialog stable" style="display: none">
 
       <div id="worldControls">
-        <label data-tip="Set temerature at equator">
+        <label data-tip="Definir temperatura no equador">
           <i data-locked=0 id="lock_temperatureEquator" class="icon-lock-open"></i>
-          <i>Equator:</i>
+          <i>Equador:</i>
           <input id="temperatureEquatorInput" data-stored="temperatureEquator"  type="number" min="-30" max="30" style="width:32px"/>°C =
           <span id="temperatureEquatorF"></span>°F
           <input id="temperatureEquatorOutput" data-stored="temperatureEquator" type="range" min="-30" max="30"/>
         </label>
-        <label data-tip="Set temerature at poles">
+        <label data-tip="Definir temperatura nos polos">
           <i data-locked=0 id="lock_temperaturePole" class="icon-lock-open"></i>
-          <i>Poles:</i>
+          <i>Polos:</i>
           <input id="temperaturePoleInput" data-stored="temperaturePole" type="number" min="-30" max="30" style="width:32px"/>°C =
           <span id="temperaturePoleF"></span>°F
           <input id="temperaturePoleOutput" data-stored="temperaturePole" type="range" min="-30" max="30"/>
         </label>
-        <label data-tip="Set equator Y position relative to map">
+        <label data-tip="Definir posição Y do equador relativo ao mapa">
           <i data-locked=0 id="lock_equator" class="icon-lock-open"></i>
-          <i>Equator Y:</i>
+          <i>Equador Y:</i>
           <input id="equatorInput" data-stored="equator" type="number" style="width:45px">
           <input id="equatorOutput" data-stored="equator" type="range">
         </label>
-        <label data-tip="Set distance from equator to poles. It actually controls world size">
+        <label data-tip="Definir distância do equador até os polos. Isso realmente controla o tamanho do mundo">
           <i data-locked=0 id="lock_equidistance" class="icon-lock-open"></i>
-          <i>Equidistance:</i>
+          <i>Equidistância:</i>
           <input id="equidistanceInput" data-stored="equidistance" type="number" style="width:45px">
           <input id="equidistanceOutput" data-stored="equidistance" type="range">
         </label>
-        <label data-tip="Set precipitation - water amount clouds can bring. Defines rivers and biomes generation">
+        <label data-tip="Definir precipitação - Quantidade de água que as npuvens podem trazer. Define rios e geração de Biomas">
           <i data-locked=0 id="lock_prec" class="icon-lock-open"></i>
-          <i>Precipitation:</i>
+          <i>Precipitção:</i>
           <input id="precInput" data-stored="prec" type="number" style="width:34px">%
           <input id="precOutput" data-stored="prec" type="range" min="0" max="500" value="50">
         </label>
-        <label data-tip="Map size. Can be changed in general options">
-          <i>Map size:</i><br>
+        <label data-tip="Tamanho do mapa. Pode ser modificado nas opções gerais">
+          <i>Tamanho do Mapa:</i><br>
           <span id="mapSize"></span> px = <span id="mapSizeFriendly"></span>
         </label>
         <label>
-          <i data-tip="Length of Medirian. Doubled equidistance or almost half of the equator length">Meridian length:</i><br>
-          <span id="meridianLength" data-tip="Length of Medirian in pixels"></span> px =
-          <span id="meridianLengthFriendly" data-tip="Length of Medirian is friendly units (depends on user configuration)"></span>
-          <span id="meridianLengthEarth" data-tip="Fantasy world medirian length relative to real-world Earth (20k km)"></span>
+          <i data-tip="Comprimento do Meridiano. Dobro da equidistancia ou quase metade do comprimento do equador">Comprimento do Meridiano:</i><br>
+          <span id="meridianLength" data-tip="Comprimento do Meridiano em pixels"></span> px =
+          <span id="meridianLengthFriendly" data-tip="Comprimento do Meridiano unidades Padrão (depende da configuração do usuário)"></span>
+          <span id="meridianLengthEarth" data-tip="Comprimento do Meridiano do mundo gerado em relação à Terra Real (20.000 km)"></span>
         </label>
-        <label data-tip="Map coordinates on globe"><i>Coords:</i> <span id="mapCoordinates"></span></label>
+        <label data-tip="Coordenadas do Mapa no Globo"><i>Coords:</i> <span id="mapCoordinates"></span></label>
       </div>
 
       <svg id="globe" width="222" height="222" viewBox="-20 -15 240 225">
@@ -1189,7 +1187,7 @@
           <line x1="5" x2="220" y1="187" y2="187"></line>
           <line x1="5" x2="220" y1="200" y2="200"></line>
         </g>
-        <g id="globeWindArrows" data-tip="Click to change wind direction">
+        <g id="globeWindArrows" data-tip="Clique para mudar a direção do Vento">
           <circle cx=210 cy=6 r=12></circle>
           <path data-tier=0 d="M210,11 v-10 l-3,3 m6,0 l-3,-3" transform="rotate(225 210 6)"></path>
           <circle cx=210 cy=30 r=12></circle>
@@ -1204,9 +1202,9 @@
           <path data-tier=5 d="M210,199 v-10 l-3,3 m6,0 l-3,-3" transform="rotate(315 210 194)"></path>
         </g>
         <g id="globaAxisLabels">
-          <text x="82%" y="-4%">wind</text>
-          <text x="-8%" y="-4%">latitude</text>
-          <text id="restoreWind" data-tip="Click to restore default wind directions" x="60%" y="95%">restore default</text>
+          <text x="82%" y="-4%">Vento</text>
+          <text x="-8%" y="-4%">Latitude</text>
+          <text id="restoreWind" data-tip="Clique para restaurar as direções padrão do vento" x="60%" y="95%">Restaurar padrões</text>
         </g>
         <g id="globeLatLabels">
           <text x="-15" y="5">90°</text>
@@ -1226,135 +1224,135 @@
     </div>
 
     <div id="labelEditor" class="dialog" style="display: none">
-      <button id="labelGroupShow" data-tip="Show the group selection" class="icon-tags"></button>
+      <button id="labelGroupShow" data-tip="Mostrar a seleção de grupos" class="icon-tags"></button>
       <div id="labelGroupSection" style="display: none">
-        <button id="labelGroupHide" data-tip="Hide the group selection" class="icon-tags"></button>
-        <select id="labelGroupSelect" data-tip="Select a group for this label" style="width:113px"></select>
-        <input id="labelGroupInput" placeholder="new group name" data-tip="Provide a name for the new group" style="display:none; width:109px; height:10px"/>
-        <span id="labelGroupNew" data-tip="Create new group for this label" class="icon-plus pointer"></span>
-        <span id="labelGroupRemove" data-tip="Remove the Group with all labels" class="icon-trash-empty pointer"></span>
+        <button id="labelGroupHide" data-tip="Esconder a seleção de grupos" class="icon-tags"></button>
+        <select id="labelGroupSelect" data-tip="Selecione um grupo para este Nome" style="width:113px"></select>
+        <input id="labelGroupInput" placeholder="new group name" data-tip="Defina um Nome para este Grupo" style="display:none; width:109px; height:10px"/>
+        <span id="labelGroupNew" data-tip="Crie um novo Grupo para este Nome" class="icon-plus pointer"></span>
+        <span id="labelGroupRemove" data-tip="Remove o Grupo com todos os Nomes" class="icon-trash-empty pointer"></span>
       </div>
 
-      <button id="labelTextShow" data-tip="Show the edit label text section" class="icon-pencil"></button>
+      <button id="labelTextShow" data-tip="Mostrar a seção de edição do nome" class="icon-pencil"></button>
       <div id="labelTextSection" style="display: none">
-        <button id="labelTextHide" data-tip="Hide the edit label text section" class="icon-pencil"></button>
+        <button id="labelTextHide" data-tip="Esconder a seção de edição do nome" class="icon-pencil"></button>
         <input id="labelText" style="width: 121px; height:12px"/>
-        <span id="labelTextRandom" data-tip="Generate random name" class="icon-shuffle pointer"></span>
+        <span id="labelTextRandom" data-tip="Gerar um nome aleatóriamente" class="icon-shuffle pointer"></span>
       </div>
 
-      <button id="labelSizeShow" data-tip="Show the font size section" class="icon-text-height"></button>
+      <button id="labelSizeShow" data-tip="Mostrar a seção de edição de fonte" class="icon-text-height"></button>
       <div id="labelSizeSection" style="display: none">
-        <button id="labelSizeHide" data-tip="Hide the font size section" class="icon-text-height"></button>
-        <input id="labelStartOffset" data-tip="Set starting offset for the particular label" type="range" min=20 max=80 style="width:79px">
+        <button id="labelSizeHide" data-tip="Esconder a seção de edição de fonte" class="icon-text-height"></button>
+        <input id="labelStartOffset" data-tip="Definir a margem de início para este nome, em particular" type="range" min=20 max=80 style="width:79px">
         <i class="icon-text-height"></i>
-        <input id="labelRelativeSize" data-tip="Set relative size for the particular label" type="number" min=30 max=300 step=1 style="width:36px">
+        <input id="labelRelativeSize" data-tip="Definir o tamanho relativo para este nome, em particular" type="number" min=30 max=300 step=1 style="width:36px">
       </div>
 
-      <button id="labelLegend" data-tip="Edit free text notes (legend) for this label" class="icon-edit"></button>
-      <button id="labelRemoveSingle" data-tip="Remove the label. Shortcut: Delete" class="icon-trash"></button>
+      <button id="labelLegend" data-tip="Editar as notas de texto livres (legenda) para este nome" class="icon-edit"></button>
+      <button id="labelRemoveSingle" data-tip="Remover o nome. Atalho: Delete" class="icon-trash"></button>
     </div>
 
     <div id="riverEditor" class="dialog" style="display: none">
-      <button id="riverWidthShow" data-tip="Show the river width and widening change section" class="icon-resize-full"></button>
+      <button id="riverWidthShow" data-tip="Mostrar a seção de modificação da largura de Rio" class="icon-resize-full"></button>
       <div id="riverWidthSection" style="display: none">
-        <button id="riverWidthHide" data-tip="Hide the river width and widening change section" class="icon-resize-full"></button>
+        <button id="riverWidthHide" data-tip="Esconder a seção de modificação da largura de Rio" class="icon-resize-full"></button>
         <i id="riverWidthIcon" class="icon-w"></i>
-        <input id="riverWidthInput" data-tip="Change river width" value="1" type="range" min=.2 max=5 step=.1>
+        <input id="riverWidthInput" data-tip="Modificar a largura do Rio" value="1" type="range" min=.2 max=5 step=.1>
         <i id="riverIncrementIcon" class="icon-i"></i>
-        <input id="riverIncrement" data-tip="Change river bed increment (widening speed)" type="range" min=.02 max=2 step=.02>
+        <input id="riverIncrement" data-tip="Modificar o incremento da nascente do Rio (velocidade de alargamento)" type="range" min=.02 max=2 step=.02>
       </div>
 
-      <button id="riverResizeShow" data-tip="Show river transformation section" class="icon-ccw"></button>
+      <button id="riverResizeShow" data-tip="Mostrar a seção de transformação do Rio" class="icon-ccw"></button>
       <div id="riverResizeSection" style="display: none">
-        <button id="riverResizeHide" data-tip="Hide river transformation section" class="icon-ccw"></button>
+        <button id="riverResizeHide" data-tip="Esconder a seção de transformação do Rio" class="icon-ccw"></button>
         <i id="riverAngleIcon" class="icon-a"></i>
-        <input id="riverAngle" data-tip="Rotate river by angle" type="range" min="-90" max=90 step=.2>
+        <input id="riverAngle" data-tip="Rotacionar o Rio com um ângulo" type="range" min="-90" max=90 step=.2>
         <span id="riverAngleValue">0&#8457;</span>
         <i id="riverScaleIcon" class="icon-s"></i>
-        <input id="riverScale" data-tip="Change river scale" value="1" type="number" min=.1 max=3 step=.01>
-        <span id="riverReset" data-tip="Reset transformation to default" class="icon-cancel pointer"></span>
+        <input id="riverScale" data-tip="Mudar escala do Rio" value="1" type="number" min=.1 max=3 step=.01>
+        <span id="riverReset" data-tip="Resetar transformação para os padrões" class="icon-cancel pointer"></span>
       </div>
 
-      <button id="riverLength" data-tip="Route length in selected units">0</button>
-      <button id="riverCopy" data-tip="Copy river" class="icon-clone"></button>
-      <button id="riverNew" data-tip="Create new river clicking on map" class="icon-map-pin"></button>
-      <button id="riverLegend" data-tip="Edit free text notes (legend) for the river" class="icon-edit"></button>
-      <button id="riverRemove" data-tip="Remove river. Shortcut: Delete" class="icon-trash"></button>
+      <button id="riverLength" data-tip="Comprimento do Rio na unidade selecionada">0</button>
+      <button id="riverCopy" data-tip="Copiar Rio" class="icon-clone"></button>
+      <button id="riverNew" data-tip="Criar novo Rioo clicando no Mapa" class="icon-map-pin"></button>
+      <button id="riverLegend" data-tip="Editar as notas de texto livres (legenda) para o Rio" class="icon-edit"></button>
+      <button id="riverRemove" data-tip="Remover Rio. Atalho: Delete" class="icon-trash"></button>
     </div>
 
     <div id="routeEditor" class="dialog" style="display: none">
-      <button id="routeGroupsShow" data-tip="Show the group selection" class="icon-tags"></button>
+      <button id="routeGroupsShow" data-tip="Mostrar janela de seleção de Grupo" class="icon-tags"></button>
       <div id="routeGroupsSelection" style="display: none">
-        <button id="routeGroupsHide" data-tip="Hide the group section" class="icon-tags"></button>
-        <select id="routeGroup" data-tip="Select a group for this route" style="width:135px"></select>
-        <input id="routeGroupName" placeholder="new group name" data-tip="Provide a name for the new group" style="display:none; width:131px; height:10px"/>
-        <span id="routeGroupAdd" data-tip="Create new group for this route" class="icon-plus pointer"></span>
-        <span id="routeGroupRemove" data-tip="Remove all routes of this group" class="icon-trash-empty pointer"></span>
+        <button id="routeGroupsHide" data-tip="Esconder janela de seleção de Grupo" class="icon-tags"></button>
+        <select id="routeGroup" data-tip="Selecionar um grupo para esta Rota" style="width:135px"></select>
+        <input id="routeGroupName" placeholder="new group name" data-tip="Dê um nome para o novo Grupo" style="display:none; width:131px; height:10px"/>
+        <span id="routeGroupAdd" data-tip="Criar um novo Grupo para esta Rota" class="icon-plus pointer"></span>
+        <span id="routeGroupRemove" data-tip="Remover todas as Rotas deste Grupo" class="icon-trash-empty pointer"></span>
       </div>
-      <button id="routeLength" data-tip="River length in selected units">0</button>
-      <button id="routeSplit" data-tip="Click on a control point to split the route" class="icon-unlink"></button>
-      <button id="routeLegend" data-tip="Edit free text notes (legend) for the route" class="icon-edit"></button>
-      <button id="routeNew" data-tip="Create new route clicking on map" class="icon-map-pin"></button>
-      <button id="routeRemove" data-tip="Remove route. Shortcut: Delete" class="icon-trash"></button>
+      <button id="routeLength" data-tip="Comprimento do Rio na unidade Selecionada">0</button>
+      <button id="routeSplit" data-tip="Clique num ponto de controle para bifurcar a Rota" class="icon-unlink"></button>
+      <button id="routeLegend" data-tip="Editar as notas de texto livres (legenda) para a Rota" class="icon-edit"></button>
+      <button id="routeNew" data-tip="Criar nova rota clicando no Mapa" class="icon-map-pin"></button>
+      <button id="routeRemove" data-tip="Remover Rota. Atalho: Delete" class="icon-trash"></button>
     </div>
 
     <div id="reliefEditor" class="dialog" style="display: none">
 
-      <div id="reliefTools" data-tip="Select mode of operation">
-        <div>Mode:</div>
-        <button id="reliefIndividual" data-tip="Edit individual selected icon" class="icon-info pressed"></button>
-        <button id="reliefBulkAdd" data-tip="Place icons in a bulk" class="icon-brush"></button>
-        <button id="reliefBulkRemove" data-tip="Remove icons in a bulk" class="icon-eraser"></button>
+      <div id="reliefTools" data-tip="Selecionar modo de Operação">
+        <div>Modo:</div>
+        <button id="reliefIndividual" data-tip="Editar cada item selecionado individualmente" class="icon-info pressed"></button>
+        <button id="reliefBulkAdd" data-tip="Colocar icones em massa" class="icon-brush"></button>
+        <button id="reliefBulkRemove" data-tip="Remover icones em massa" class="icon-eraser"></button>
       </div>
 
-      <div id="reliefSizeDiv" data-tip="Set icon size for individual icon or for bulk placement">
-        <div>Size:</div>
+      <div id="reliefSizeDiv" data-tip="Definir tamanho dos Ícones individualmente ou em massa">
+        <div>Tamanho:</div>
         <input id="reliefSize" type="range" min=2 max=30 step=1 value=5>
         <input id="reliefSizeNumber" type="number" min=2 max=30 step=1 value=5>
       </div>
 
-      <div id="reliefRadiusDiv" data-tip="Set brush radius for icons placement on deletion" style="display:none">
-        <div>Radius:</div>
+      <div id="reliefRadiusDiv" data-tip="Definir raio do Pincel para colocar ou remover Ícones" style="display:none">
+        <div>Raio:</div>
         <input id="reliefRadius" oninput="reliefRadiusNumber.value = this.value" type="range" min=1 max=50 value=15>
         <input id="reliefRadiusNumber" oninput="reliefRadius.value = this.value" type="number" min=1 max=50 value=15>
       </div>
 
-      <div id="reliefSpacingDiv" data-tip="Set spacing between relief icons" style="display:none">
-        <div>Spacing:</div>
+      <div id="reliefSpacingDiv" data-tip="Definir espaçamento entre Ícones de Relevo" style="display:none">
+        <div>Espaçamento:</div>
         <input id="reliefSpacing" oninput="reliefSpacingNumber.value = this.value" type="range" min=2 max=20 value=5>
         <input id="reliefSpacingNumber" oninput="reliefSpacing.value = this.value" type="number" min=2 max=20 value=5>
       </div>
 
       <div id="reliefIconsDiv" data-tip="Select icon">
-        <button data-type="#relief-mount-1" data-tip="Select Mountain icon">
+        <button data-type="#relief-mount-1" data-tip="Selecionar Ícone de Montanha">
           <svg class="button" viewBox="5 0 90 90" height="22" width="20">
             <path d="m3,69 16,-12 31,-32 15,20 30,24" fill="#fff" stroke="#000" stroke-width="1"></path>
             <path d="m3,69 16,-12 31,-32 -14,44" fill="#333"></path>
           </svg>
         </button>
 
-        <button data-type="#relief-hill-1" data-tip="Select Hill icon">
+        <button data-type="#relief-hill-1" data-tip="Selecionar Ícone de Colina">
           <svg class="button" viewBox="14 0 74 74" height="22" width="20">
             <path d="m20,55 q30,-28 60,0" fill="#333" stroke="#000"></path>
             <path d="m38,55 q13,-24 40,0" fill="#fff"></path>
           </svg>
         </button>
 
-        <button data-type="#relief-deciduous-1" data-tip="Select Deciduous tree icon">
+        <button data-type="#relief-deciduous-1" data-tip="Selecionar Ícone de Árvore de Folhas Secas">
           <svg class="button" viewBox="27 20 48 48" height="22" width="20">
             <path d="m50,52 v7 h1 v-7 h-0.5 q13,-7 0,-16 q-13,9 0,16" fill="#fff" stroke="#000"></path>
             <path d="m50,52 q-12,-7 0,-16 q-3.5,10 0,15.5" fill="#333"></path>
           </svg>
         </button>
 
-        <button data-type="#relief-conifer-1" data-tip="Select Conifer tree icon">
+        <button data-type="#relief-conifer-1" data-tip="Selecionar Ícone de Árvore Conífera">
           <svg class="button" viewBox="28 23 44 44" height="22" width="20">
             <path d="m50,55 v4 h1 v-4 l4.5,0 -4,-8 l3.5,0 -4.5,-9 -4,9 3,0 -3.5,8 7,0" fill="#fff" stroke="#000"></path>
             <path d="m46,55 l4,-8 -4,0 5,-9 -2.5,9 l1.5,0 -2,8" fill="#333"></path>
           </svg>
         </button>
 
-        <button data-type="#relief-palm-1" data-tip="Select Palm tree icon">
+        <button data-type="#relief-palm-1" data-tip="Selecionar Ícone de Palmeira">
           <svg class="button" viewBox="27 20 44 44" height="22" width="20">
             <path d="m 48.1,55.5 2.1,0 c 0,0 1.3,-5.5 1.2,-8.6 0,-3.2 -1.1,-5.5 -1.1,-5.5 l -0.5,-0.4 -0.2,0.1 c 0,0 0.9,2.7 0.5,6.2 -0.5,3.8 -2.1,8.2 -2.1,8.2 z" fill="#000"></path>
             <path d="m 54.9,48.8 c 0,0 1.9,-2.5 0.3,-5.4 -1.4,-2.6 -4.3,-3.2 -4.3,-3.2 0,0 1.6,-0.6 3.3,-0.3 1.7,0.3 4.1,2.5 4.1,2.5 0,0 -0.6,-3.6 -3.6,-4.4 -2.2,-0.6 -4.2,1.3 -4.2,1.3 0,0 0.3,-1.5 -0.2,-2.9 -0.6,-1.4 -2.6,-1.9 -2.6,-1.9 0,0 0.8,1.1 1.2,2.2 0.3,0.9 0.3,2 0.3,2 0,0 -1.3,-1.8 -3.7,-1.5 -2.5,0.2 -3.7,2.5 -3.7,2.5 0,0 2.3,-0.6 3.4,-0.6 1.1,0.1 2.6,0.8 2.6,0.8 l -0.4,0.2 c 0,0 -1.2,-0.4 -2.7,0.4 -1.9,1.1 -2.9,3.7 -2.9,3.7 0,0 1.4,-1.4 2.3,-1.9 0.5,-0.3 1.8,-0.7 1.8,-0.7 0,0 -0.7,1.3 -0.9,3.1 -0.1,2.5 1.1,4.6 1.1,4.6 0,0 0.1,-3.4 1.2,-5.6 1,-1.9 2.3,-2.6 2.3,-2.6 l 0.4,-0.2 c 0,0 1.5,0.7 2.8,2.8 1,1.7 2.3,5 2.3,5 z" fill="#fff" stroke="#000" stroke-width=".8"></path>
@@ -1363,26 +1361,26 @@
           </svg>
         </button>
 
-        <button data-type="#relief-acacia-1" data-tip="Select Acacia tree icon">
+        <button data-type="#relief-acacia-1" data-tip="Selecionar Ícone de Acácia">
           <svg class="button" viewBox="27 22 44 44" height="22" width="20">
             <path d="m52 38 c-2.3 -0.1 -4.3 1.1 -4.9 1.1 -2.2 -0.2 -5 0.2 -6.4 1 -1.3 0.7 -2.8 1.6 -3.7 2.1 -1 0.6 -3.4 1.8 -2.2 2.7 1.1 0.9 3.1 -0.2 4.2 0.3 1.4 0.8 2.9 1 4.5 0.9 1.1 -0.1 2.2 -0.4 2.4 1 0.3 1.9 1.1 3.5 2.1 5.1 0.8 2.4 1 2.8 1 6.8 l2 0 c 0 -1.1 -0.1 -4 1.2 -5.7 1.1 -1.4 1.4 -3.4 3 -4.4 0.9 -1.4 2 -2.6 3.8 -2.7 1.7 -0.3 3.8 0.8 5.1 0.3 0.9 -0.1 3.2 1 3.5 -1 0.1 -2 -2.2 -2.1 -3.2 -3.3 -1.1 -1.5 -3.3 -1.9 -4.9 -1.8 -1 -0.5 -2 -2.5 -7.3 -2.5 z m -0.5 0.4 c2.7338 -0.2 5.6 0.2 7.5 2.4 1.7 0 3.7 0 4.8 1.5 1 1.2 3.4 1.8 3.4 3 0 2.1 -3.2 0.5 -3.6 0.1 -1.3 -1.4 -2.9 -0.6 -4.5 -0.7 -1.6 -0.1 -3.2 0.4 -4.6 -0.6 -1.1 -0.7 -2.5 0.1 -3.8 -0.1 -1.8 -0.2 -4 -0.4 -5.9 -0.1 -1.4 0 -2.8 0.1 -4.2 0 -1.7 0.5 -5.5 1.1 -5.4 0.4 0.2 -1.1 4.5 -3.2 5.9 -3.9 1.9 -0.9 3.7 -1.1 6.2 -0.8 0.7 -0.2 1.7 -1.1 4.3 -1.3 z m2 6 c1.6 0.3 2 2.2 1.2 3.3 -1 1.3 -1 -1.3 -1.3 -2 -0.2 -0.5 -0.8 -1.3 0.1 -1.3 z m -12.9 0.2 c1 -0.1 3.5 -0.3 3.1 0.9 -1.4 0 -3.4 0.1 -4.4 -0.6 0.4 -0.2 0.9 -0.2 1.3 -0.3 z m5.6 -0.1 c0.8 0.1 3.1 -0.3 3 0.5 -1.3 0.6 -1.6 2.2 -2.1 3.1 -0.4 -1.2 -0.7 -2.7 -2.1 -3.2 -0.9 -0.6 1 -0.5 1.3 -0.4 z m5.3 0.3 c1.1 0.1 1.6 2.4 0.1 1.3 -1.6 -1.2 -0.6 -1.3 -0.1 -1.3 z m7.5 0.4 c1.2 0 3.3 -0.2 2.9 0.2 -1.4 1.2 -3 -0.3 -4.8 0.8 -0.9 0.5 -2 0.8 -1.1 -0.4 0.5 -0.6 1.3 -0.5 3 -0.6 z m -8.9 0.1 c0.7 1.2 2.1 1.5 2.9 2.1 0.9 1.6 -0.5 3.1 -1.3 4.5 -0.9 1.5 -1.9 2.2 -2.4 0.3 -0.1 -0.5 -1.8 -2.2 -1.2 -3.7 0.3 -1.3 0.6 -2.6 2 -3.2 z m12.5 0.1 c0.6 0.2 1.3 1.1 0.2 0.9 -1.4 -0.1 -1.4 -0.3 -0.2 -0.9 z" fill="#000"></path>
             <path d="m47 42.33 c2 0.1 4.1 0.5 6.1 -0.3 1.4 -0.3 2.6 0.8 3.6 1.6 0.7 0.4 2.5 0.7 2.7 1.2 -2.2 -0.1 -3.6 0.4 -4.8 -0.4 -1 -0.7 -2.2 -0.3 -3 -0.2 -0.9 0.1 -3 -0.4 -5.5 -0.2 -2.6 0.2 -5.1 -0.1 -7.2 0.5 -3.6 0.6 -3.7 0 -3.7 0 2.2 -2 9.1 -1.7 11.9 -2.2 z" fill="#999"/>
           </svg>
         </button>
 
-        <button data-type="#relief-grass-1" data-tip="Select Grass icon">
+        <button data-type="#relief-grass-1" data-tip="Selecionar Ícone de Grama">
           <svg class="button" viewBox="43 41 15 15" height="22" width="20">
             <path d="m 49.5,53.1 c 0,-3.4 -2.4,-4.8 -3,-5.4 1,1.8 2.4,3.7 1.8,5.4 z M 51,53.2 C 51.4,49.6 49.6,47.9 48,46.8 c 1.1,1.8 2.8,4.6 1.8,6.5 z M 51.4,51.4 c 0.6,-1.9 1.8,-3.4 3,-4.3 -0.8,0.3 -2.9,1.5 -3.4,2.8 0.2,0.4 0.3,0.8 0.4,1.5 z M 52.9,53.2 c -0.7,-1.9 0.5,-3.3 1.5,-4.4 -1.7,1 -3,2.2 -2.7,4.4 z" fill="#5c5c70" stroke="none"></path>
           </svg>
         </button>
 
-        <button data-type="#relief-swamp-1" data-tip="Select Swamp icon">
+        <button data-type="#relief-swamp-1" data-tip="Selecionar Ícone de Pântano">
           <svg class="button" viewBox="36 34 29 29" height="22" width="20">
             <path d="m50,46 v6 l3,-4 m-3,4 l-3,-4 m-7,4.5 h4 m4,0 h4 m4,0 h4" fill="none" stroke="#000"></path>
           </svg>
         </button>
 
-        <button data-type="#relief-dune-1" data-tip="Select Dune icon">
+        <button data-type="#relief-dune-1" data-tip="Selecionar Ícone de Duna">
           <svg class="button" viewBox="23 20 48 48" height="22" width="20">
             <path d="m 28.7,52.8 c 5,-3.9 10,-8.2 15.8,-8.3 4.5,0 10.8,3.8 15.2,6.5 3.5,2.2 6.8,2 6.8,2" fill="none" stroke="#000" stroke-width="1.3"></path>
             <path d="m 44.2,47.6 c -3.2,3.2 3.5,5.7 5.9,7.8" fill="none" stroke="#000"></path>
@@ -1393,21 +1391,21 @@
       </div>
 
       <div id="reliefBottom">
-        <button id="reliefCopy" data-tip="Copy selected relief icon" class="icon-clone"></button>
-        <button id="reliefMoveFront" data-tip="Move selected relief icon to front" class="icon-level-up"></button>
-        <button id="reliefMoveBack" data-tip="Move selected relief icon back" class="icon-level-down"></button>
-        <button id="reliefRemove" data-tip="Remove selected relief icon. Shortcut: Delete" class="icon-trash"></button>
+        <button id="reliefCopy" data-tip="Copiar Ícone de Relevo selecionado" class="icon-clone"></button>
+        <button id="reliefMoveFront" data-tip="Mover Ícone de Relevo selecionado para a Frente" class="icon-level-up"></button>
+        <button id="reliefMoveBack" data-tip="Mover Ícone de Relevo selecionado para a Trás" class="icon-level-down"></button>
+        <button id="reliefRemove" data-tip="Remover Ícone de Relevo selecionado. Atalho: Delete" class="icon-trash"></button>
       </div>
     </div>
 
     <div id="burgEditor" class="dialog" style="display: none">
-      <button id="burgGroupShow" data-tip="Show group change section" class="icon-tags"></button>
+      <button id="burgGroupShow" data-tip="Mostrar seção de mudança de Grupo" class="icon-tags"></button>
       <div id="burgGroupSection" style="display: none">
-        <button id="burgGroupHide" data-tip="Hide group change section" class="icon-tags"></button>
-        <select id="burgSelectGroup" data-tip="Select a group for this burg" style="width: 117px;"></select>
-        <input id="burgInputGroup" placeholder="new group name" data-tip="Create new Group for the Burg" style="display: none; width: 113px; height: 10px"/>
-        <i id="burgAddGroup" data-tip="Create new group for the burg" class="icon-plus pointer"></i>
-        <i id="burgRemoveGroup" data-tip="Remove selected burg group" class="icon-trash pointer"></i>
+        <button id="burgGroupHide" data-tip="Esconder seção de mudança de Grupo" class="icon-tags"></button>
+        <select id="burgSelectGroup" data-tip="Selecionar um Grupo para esta Cidade" style="width: 117px;"></select>
+        <input id="burgInputGroup" placeholder="Nome do novo grupo" data-tip="Criar novo Grupo para a Cidade" style="display: none; width: 113px; height: 10px"/>
+        <i id="burgAddGroup" data-tip="Criar novo Grupo para a Cidade" class="icon-plus pointer"></i>
+        <i id="burgRemoveGroup" data-tip="Remover Grupo de Cidade selecionado" class="icon-trash pointer"></i>
       </div>
 
       <button id="burgNameShow" data-tip="Show name change section" class="icon-pencil"></button>
@@ -1418,9 +1416,9 @@
         <span id="burgNameReRandom" data-tip="Generate random name for the burg" class="icon-globe pointer"></span>
       </div>
 
-      <button id="burgSeeInMFCG" data-tip="Open the burg representation in the Medieval Fantasy City Generator by Watabou" class="icon-map-o"></button>
+      <button id="burgSeeInMFCG" data-tip="Abrir esta cidade no Mapa de Cidades!" class="icon-map-o"></button>
       <button id="burgRelocate" data-tip="Relocate burg" class="icon-target"></button>
-      <button id="burglLegend" data-tip="Edit free text notes (legend) for this burg" class="icon-edit"></button>
+      <button id="burglLegend" data-tip="Editar as notas de texto livres (legenda) for this burg" class="icon-edit"></button>
       <button id="burgRemove" data-tip="Remove non-capital burg. Shortcut: Delete" class="icon-trash"></button>
     </div>
 
@@ -1754,15 +1752,15 @@
       <div id="burgsBody" class="table"></div>
 
       <div id="burgsFilters" data-tip="Apply a filter">
-        <span>State: </span>
+        <span>País: </span>
         <select id="burgsFilterState" style="width:33%"></select>
-        <span>Culture:</span>
+        <span>Cultura:</span>
         <select id="burgsFilterCulture" style="width:33%"></select>
       </div>
 
       <div id="burgsFooter" class="totalLine">
-        <div data-tip="Burgs displayed" style="margin-left: 4px">Burgs:&nbsp;<span id="burgsFooterBurgs">0</span></div>
-        <div data-tip="Average population" style="margin-left: 14px">Average population:&nbsp;<span id="burgsFooterPopulation">0</span></div>
+        <div data-tip="Burgs displayed" style="margin-left: 4px">Cidades:&nbsp;<span id="burgsFooterBurgs">0</span></div>
+        <div data-tip="Average population" style="margin-left: 14px">População Média:&nbsp;<span id="burgsFooterPopulation">0</span></div>
       </div>
 
       <div id="burgsBottom">
@@ -2021,50 +2019,50 @@
     <input type="file" accept=".txt" id="namesbaseToLoad">
   </div>
 
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/jquery-3.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/d3.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/priority-queue.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/delaunator.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/utils.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/voronoi.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/heightmap-generator.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/ocean-layers.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/river-generator.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/names-generator.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/cultures-generator.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/burgs-and-states.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/routes-generator.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/polylabel.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/jquery-ui.js"></script>
-  <script src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/seedrandom.js"></script>
+  <script src="Arquivos/jquery-3.js"></script>
+  <script src="Arquivos/d3.js"></script>
+  <script src="Arquivos/priority-queue.js"></script>
+  <script src="Arquivos/delaunator.js"></script>
+  <script src="Arquivos/utils.js"></script>
+  <script src="Arquivos/voronoi.js"></script>
+  <script src="Arquivos/heightmap-generator.js"></script>
+  <script src="Arquivos/ocean-layers.js"></script>
+  <script src="Arquivos/river-generator.js"></script>
+  <script src="Arquivos/names-generator.js"></script>
+  <script src="Arquivos/cultures-generator.js"></script>
+  <script src="Arquivos/burgs-and-states.js"></script>
+  <script src="Arquivos/routes-generator.js"></script>
+  <script src="Arquivos/polylabel.js"></script>
+  <script src="Arquivos/jquery-ui.js"></script>
+  <script src="Arquivos/seedrandom.js"></script>
 
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/general.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/options.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/measurers.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/main.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/relief-icons.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/layers.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/tools.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/world-configurator.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/heightmap-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/states-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/burgs-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/biomes-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/cultures-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/namesbase-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/routes-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/labels-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/rivers-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/relief-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/markers-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/burg-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/burgs-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/units-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/legends-editor.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/editors.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/save-and-load.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/quantize.js"></script>
-  <script defer="defer" src="Azgaar's%20Fantasy%20Map%20Generator%20v%200.80b_arquivos/jquery.js"></script>
+  <script defer="defer" src="Arquivos/general.js"></script>
+  <script defer="defer" src="Arquivos/options.js"></script>
+  <script defer="defer" src="Arquivos/measurers.js"></script>
+  <script defer="defer" src="Arquivos/main.js"></script>
+  <script defer="defer" src="Arquivos/relief-icons.js"></script>
+  <script defer="defer" src="Arquivos/layers.js"></script>
+  <script defer="defer" src="Arquivos/tools.js"></script>
+  <script defer="defer" src="Arquivos/world-configurator.js"></script>
+  <script defer="defer" src="Arquivos/heightmap-editor.js"></script>
+  <script defer="defer" src="Arquivos/states-editor.js"></script>
+  <script defer="defer" src="Arquivos/burgs-editor.js"></script>
+  <script defer="defer" src="Arquivos/biomes-editor.js"></script>
+  <script defer="defer" src="Arquivos/cultures-editor.js"></script>
+  <script defer="defer" src="Arquivos/namesbase-editor.js"></script>
+  <script defer="defer" src="Arquivos/routes-editor.js"></script>
+  <script defer="defer" src="Arquivos/labels-editor.js"></script>
+  <script defer="defer" src="Arquivos/rivers-editor.js"></script>
+  <script defer="defer" src="Arquivos/relief-editor.js"></script>
+  <script defer="defer" src="Arquivos/markers-editor.js"></script>
+  <script defer="defer" src="Arquivos/burg-editor.js"></script>
+  <script defer="defer" src="Arquivos/burgs-editor.js"></script>
+  <script defer="defer" src="Arquivos/units-editor.js"></script>
+  <script defer="defer" src="Arquivos/legends-editor.js"></script>
+  <script defer="defer" src="Arquivos/editors.js"></script>
+  <script defer="defer" src="Arquivos/save-and-load.js"></script>
+  <script defer="defer" src="Arquivos/quantize.js"></script>
+  <script defer="defer" src="Arquivos/jquery.js"></script>
 
 
 <a target="_blank" download="fantasy_map_1559693110341.svg" href="blob:https://azgaar.github.io/703cffb6-f173-4311-b200-52c766ea0171"></a></body></html>

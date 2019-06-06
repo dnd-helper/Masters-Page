@@ -75,7 +75,7 @@ function editWorld() {
     globe.select("#globeArea").attr("d", round(path(area.outline()))); // map area
   }
 
-  function updateGlobeTemperature() {   
+  function updateGlobeTemperature() {
     const tEq = +document.getElementById("temperatureEquatorOutput").value;
     document.getElementById("temperatureEquatorF").innerHTML = rn(tEq * 9/5 + 32);
     const tPole = +document.getElementById("temperaturePoleOutput").value;
@@ -103,7 +103,7 @@ function editWorld() {
     const mapTiers = d3.range(mapCoordinates.latN, mapCoordinates.latS, -30).map(c => (90-c) / 30 | 0);
     if (mapTiers.includes(tier)) updateWorld();
   }
-  
+
   function restoreDefaultWinds() {
     const defaultWinds = [225, 45, 225, 315, 135, 315];
     const mapTiers = d3.range(mapCoordinates.latN, mapCoordinates.latS, -30).map(c => (90-c) / 30 | 0);

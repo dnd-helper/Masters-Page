@@ -7,7 +7,7 @@ function editUnits() {
   modules.editUnits = true;
 
   $("#unitsEditor").dialog({
-    title: "Units Editor",
+    title: "Editor de Unidades",
     position: {my: "right top", at: "right-10 top+10", of: "svg", collision: "fit"}
   });
 
@@ -164,4 +164,3 @@ function editUnits() {
 
 
 }
-

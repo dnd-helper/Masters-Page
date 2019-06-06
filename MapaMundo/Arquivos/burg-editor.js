@@ -15,7 +15,7 @@ function editBurg() {
   const at = elSelected.attr("id") == d3.event.target.id ? "top" : "bottom";
 
   $("#burgEditor").dialog({
-    title: "Edit Burg: " + elSelected.text(), resizable: false,
+    title: "Editar Cidade: " + elSelected.text(), resizable: false,
     position: {my, at, of: d3.event.target, collision: "fit"},
     close: closeBurgEditor
   });

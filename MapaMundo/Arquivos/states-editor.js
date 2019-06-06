@@ -14,7 +14,7 @@ function editStates() {
   modules.editStates = true;
 
   $("#statesEditor").dialog({
-    title: "States Editor", width: fitContent(), close: closeStatesEditor,
+    title: "Editor de Países", width: fitContent(), close: closeStatesEditor,
     position: {my: "right top", at: "right-10 top+10", of: "svg", collision: "fit"}
   });
 
@@ -51,7 +51,7 @@ function editStates() {
       states[s].area += cells.area[i];
       states[s].rural += cells.pop[i];
       if (cells.burg[i]) {
-        states[s].urban += pack.burgs[cells.burg[i]].population; 
+        states[s].urban += pack.burgs[cells.burg[i]].population;
         states[s].burgs++;
       }
     }
@@ -76,7 +76,7 @@ function editStates() {
 
       if (!s.i) {
         // Neutral line
-        lines += `<div class="states" data-id=${s.i} data-name="${s.name}" data-cells=${s.cells} data-area=${area} 
+        lines += `<div class="states" data-id=${s.i} data-name="${s.name}" data-cells=${s.cells} data-area=${area}
         data-population=${population} data-burgs=${s.burgs} data-color="" data-capital="" data-culture="" data-type="" data-expansionism="">
           <input class="stateColor placeholder" type="color">
           <input data-tip="State name. Click and type to change" class="stateName italic" value="${s.name}" autocorrect="off" spellcheck="false">
@@ -105,7 +105,7 @@ function editStates() {
         <span data-tip="State capital. Click to zoom into view" class="icon-star-empty pointer"></span>
         <input data-tip="Capital name. Click and type to rename" class="stateCapital" value="${capital}" autocorrect="off" spellcheck="false"/>
         <select data-tip="Dominant culture. Click to change" class="stateCulture">${getCultureOptions(s.culture)}</select>
-        <select data-tip="State type. Click to change" class="cultureType ${hidden}">${getTypeOptions(s.type)}</select>      
+        <select data-tip="State type. Click to change" class="cultureType ${hidden}">${getTypeOptions(s.type)}</select>
         <span data-tip="State expansionism" class="icon-resize-full ${hidden}"></span>
         <input data-tip="Expansionism (defines competitive size). Change to re-calculate states based on new value" class="statePower ${hidden}" type="number" min=0 max=99 step=.1 value=${s.expansionism}>
         <span data-tip="Cells count" class="icon-check-empty"></span>
@@ -147,7 +147,7 @@ function editStates() {
     applySorting(statesHeader);
     $("#statesEditor").dialog();
   }
-  
+
   function getCultureOptions(culture) {
     let options = "";
     pack.cultures.slice(1).forEach(c => options += `<option ${c.i === culture ? "selected" : ""} value="${c.i}">${c.name}</option>`);
@@ -181,7 +181,7 @@ function editStates() {
     const i = d3.interpolateString("0," + l, l + "," + l);
     return t => i(t);
   }
-  
+
   function removePath(path) {
     path.transition().duration(1000).attr("opacity", 0).remove();
   }
@@ -212,7 +212,7 @@ function editStates() {
     this.parentNode.dataset.capital = this.value;
     const capital = pack.states[state].capital;
     if (!capital) return;
-    pack.burgs[capital].name = this.value; 
+    pack.burgs[capital].name = this.value;
     document.querySelector("#burgLabel"+capital).textContent = this.value;
   }
 
@@ -254,12 +254,12 @@ function editStates() {
     pack.burgs.forEach(b => {if(b.state === state) b.state = 0;});
     pack.cells.state.forEach((s, i) => {if(s === state) pack.cells.state[i] = 0;});
     pack.states[state].removed = true;
-    
+
     const capital = pack.states[state].capital;
     pack.burgs[capital].capital = false;
     pack.burgs[capital].state = 0;
     moveBurgToGroup(capital, "towns");
-    
+
     if (!layerIsOn("toggleStates")) toggleStates(); else drawStatesWithBorders();
     refreshStatesEditor();
   }
@@ -376,7 +376,7 @@ function editStates() {
 
     const found = r > 5 ? findAll(p[0], p[1], r) : [findCell(p[0], p[1], r)];
     const selection = found.filter(isLand);
-    if (selection) changeStateForSelection(selection);    
+    if (selection) changeStateForSelection(selection);
   }
 
   // change state within selection
@@ -423,7 +423,7 @@ function editStates() {
     }
     exitStatesManualAssignment();
   }
- 
+
   function exitStatesManualAssignment() {
     customization = 0;
     regions.select("#temp").remove();
@@ -437,7 +437,7 @@ function editStates() {
     const selected = body.querySelector("div.selected");
     if (selected) selected.classList.remove("selected");
   }
-  
+
   function enterAddStateMode() {
     if (this.classList.contains("pressed")) {exitAddStateMode(); return;};
     customization = 3;
@@ -486,7 +486,7 @@ function editStates() {
     body.querySelectorAll("div > *").forEach(e => e.disabled = false);
     if (statesAdd.classList.contains("pressed")) statesAdd.classList.remove("pressed");
   }
-  
+
   function downloadStatesData() {
     const unit = areaUnit.value === "square" ? distanceUnit.value + "2" : areaUnit.value;
     let data = "Id,State,Color,Capital,Culture,Type,Expansionism,Cells,Burgs,Area "+unit+",Population\n"; // headers
@@ -512,7 +512,7 @@ function editStates() {
     link.download = "states_data" + Date.now() + ".csv";
     link.href = url;
     link.click();
-    window.setTimeout(function() {window.URL.revokeObjectURL(url);}, 2000);    
+    window.setTimeout(function() {window.URL.revokeObjectURL(url);}, 2000);
   }
 
   function closeStatesEditor() {

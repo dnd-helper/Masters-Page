@@ -5,14 +5,14 @@ function editReliefIcon() {
   if (!layerIsOn("toggleRelief")) toggleRelief();
 
   terrain.selectAll("use").call(d3.drag().on("drag", dragReliefIcon)).classed("draggable", true);
-  elSelected = d3.select(d3.event.target); 
+  elSelected = d3.select(d3.event.target);
 
   restoreEditMode();
   updateReliefIconSelected();
   updateReliefSizeInput();
 
   $("#reliefEditor").dialog({
-    title: "Edit Relief Icons", resizable: false,
+    title: "Editar Ícones de Relevo", resizable: false,
     position: {my: "center top+40", at: "top", of: d3.event, collision: "fit"},
     close: closeReliefEditor
   });
@@ -87,7 +87,7 @@ function editReliefIcon() {
 
     const pressedType = reliefIconsDiv.querySelector("button.pressed");
     if (pressedType.id === "reliefIconsSeletionAny") { // in "any" is pressed, select first type
-      reliefIconsSeletionAny.classList.remove("pressed"); 
+      reliefIconsSeletionAny.classList.remove("pressed");
       reliefIconsDiv.querySelector("button").classList.add("pressed");
     }
 

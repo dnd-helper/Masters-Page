@@ -81,31 +81,31 @@ function showMapTooltip(e, i, g) {
   const land = pack.cells.h[i] >= 20;
 
   // specific elements
-  if (group === "rivers") {tip("Click to edit the River"); return;}
-  if (group === "routes") {tip("Click to edit the Route"); return;}
-  if (group === "terrain") {tip("Click to edit the Relief Icon"); return;}
-  if (subgroup === "burgLabels" || subgroup === "burgIcons") {tip("Click to open Burg Editor"); return;}
-  if (group === "labels") {tip("Click to edit the Label"); return;}
-  if (group === "markers") {tip("Click to edit the Marker"); return;}
+  if (group === "rivers") {tip("Clique para editar o Rio"); return;}
+  if (group === "routes") {tip("Clique para editar a Rota"); return;}
+  if (group === "terrain") {tip("Clique para editar o Ícone de Relevo"); return;}
+  if (subgroup === "burgLabels" || subgroup === "burgIcons") {tip("Clique para abrir o Editor de Cidades"); return;}
+  if (group === "labels") {tip("Clique para editar o Nome"); return;}
+  if (group === "markers") {tip("Clique para editar o Marcador"); return;}
   if (group === "ruler") {
-    if (tag === "rect") {tip("Drag to split the ruler into 2 parts"); return;}
-    if (tag === "circle") {tip("Drag to adjust the measurer"); return;}
-    if (tag === "path" || tag === "line") {tip("Drag to move the measurer"); return;}
-    if (tag === "text") {tip("Click to remove the measurer"); return;}
+    if (tag === "rect") {tip("Arraste para bifurcar a Régua em 2 partes"); return;}
+    if (tag === "circle") {tip("Arraste para ajustar o medidor"); return;}
+    if (tag === "path" || tag === "line") {tip("Arraste para mover o medidor"); return;}
+    if (tag === "text") {tip("Clique para remover o medidor"); return;}
   }
-  if (subgroup === "burgIcons") {tip("Click to edit the Burg"); return;}
-  if (subgroup === "burgLabels") {tip("Click to edit the Burg"); return;}
-  if (subgroup === "freshwater" && !land) {tip("Freshwater lake"); return;}
-  if (subgroup === "salt" && !land) {tip("Salt lake"); return;}
+  if (subgroup === "burgIcons") {tip("Clique para editar a Cidade"); return;}
+  if (subgroup === "burgLabels") {tip("Clique para editar a Cidade"); return;}
+  if (subgroup === "freshwater" && !land) {tip("Lago de Água Fresca"); return;}
+  if (subgroup === "salt" && !land) {tip("Lago de Água Salgada"); return;}
 
   // covering elements
-  if (layerIsOn("togglePrec") && land) tip("Annual Precipitation: "+ getFriendlyPrecipitation(i)); else
-  if (layerIsOn("togglePopulation")) tip("Population: "+ getFriendlyPopulation(i)); else
-  if (layerIsOn("toggleTemp")) tip("Temperature: " + convertTemperature(grid.cells.temp[g])); else
-  if (layerIsOn("toggleBiomes") && pack.cells.biome[i]) tip("Biome: " + biomesData.name[pack.cells.biome[i]]); else
-  if (layerIsOn("toggleStates") && pack.cells.state[i]) tip("State: " + pack.states[pack.cells.state[i]].name); else
-  if (layerIsOn("toggleCultures") && pack.cells.culture[i]) tip("Culture: " + pack.cultures[pack.cells.culture[i]].name); else
-  if (layerIsOn("toggleHeight")) tip("Height: " + getFriendlyHeight(pack.cells.h[i]));
+  if (layerIsOn("togglePrec") && land) tip("Precipitação Anual: "+ getFriendlyPrecipitation(i)); else
+  if (layerIsOn("togglePopulation")) tip("População: "+ getFriendlyPopulation(i)); else
+  if (layerIsOn("toggleTemp")) tip("Temperatura: " + convertTemperature(grid.cells.temp[g])); else
+  if (layerIsOn("toggleBiomes") && pack.cells.biome[i]) tip("Bioma: " + biomesData.name[pack.cells.biome[i]]); else
+  if (layerIsOn("toggleStates") && pack.cells.state[i]) tip("País: " + pack.states[pack.cells.state[i]].name); else
+  if (layerIsOn("toggleCultures") && pack.cells.culture[i]) tip("Cultura: " + pack.cultures[pack.cells.culture[i]].name); else
+  if (layerIsOn("toggleHeight")) tip("Altitude: " + getFriendlyHeight(pack.cells.h[i]));
 }
 
 // get cell info on mouse move
@@ -158,18 +158,18 @@ function getFriendlyPrecipitation(i) {
 // get user-friendly (real-world) population value from map data
 function getFriendlyPopulation(i) {
   const rural = pack.cells.pop[i] * populationRate.value;
-  const urban = pack.cells.burg[i] ? pack.burgs[pack.cells.burg[i]].population * populationRate.value * urbanization.value : 0;  
+  const urban = pack.cells.burg[i] ? pack.burgs[pack.cells.burg[i]].population * populationRate.value * urbanization.value : 0;
   return si(rural+urban);
 }
 
-// assign lock behavior  
+// assign lock behavior
 document.querySelectorAll("[data-locked]").forEach(function(e) {
   e.addEventListener("mouseover", function(event) {
     if (this.className === "icon-lock") tip("Click to unlock the option and allow it to be randomized on new map generation");
     else tip("Click to lock the option and always use the current value on new map generation");
     event.stopPropagation();
   });
-  
+
   e.addEventListener("click", function(event) {
     const id = (this.id).slice(5);
     if (this.className === "icon-lock") unlock(id);
@@ -180,13 +180,13 @@ document.querySelectorAll("[data-locked]").forEach(function(e) {
 // lock option
 function lock(id) {
   const input = document.querySelector("[data-stored='"+id+"']");
-  if (input) localStorage.setItem(id, input.value);  
+  if (input) localStorage.setItem(id, input.value);
   const el = document.getElementById("lock_" + id);
   if(!el) return;
   el.dataset.locked = 1;
   el.className = "icon-lock";
 }
- 
+
 // unlock option
 function unlock(id) {
   localStorage.removeItem(id);
@@ -205,7 +205,7 @@ function locked(id) {
 // Hotkeys, see github.com/Azgaar/Fantasy-Map-Generator/wiki/Hotkeys
 document.addEventListener("keydown", function(event) {
   const active = document.activeElement.tagName;
-  if (active === "INPUT" || active === "SELECT" || active === "TEXTAREA") return; // don't trigger if user inputs a text 
+  if (active === "INPUT" || active === "SELECT" || active === "TEXTAREA") return; // don't trigger if user inputs a text
   const key = event.keyCode, ctrl = event.ctrlKey, shift = event.shiftKey;
   if (key === 118) regenerateMap(); // "F7" for new map
   else if (key === 27) {closeDialogs(); hideOptions();} // Escape to close all dialogs

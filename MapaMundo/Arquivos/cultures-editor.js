@@ -7,7 +7,7 @@ function editCultures() {
   if (layerIsOn("toggleBiomes")) toggleBiomes();
 
   const body = document.getElementById("culturesBody");
-  const animate = d3.transition().duration(2000).ease(d3.easeSinIn);  
+  const animate = d3.transition().duration(2000).ease(d3.easeSinIn);
   drawCultureCenters();
   refreshCulturesEditor();
 
@@ -15,7 +15,7 @@ function editCultures() {
   modules.editCultures = true;
 
   $("#culturesEditor").dialog({
-    title: "Cultures Editor", width: fitContent(), close: closeCulturesEditor,
+    title: "Editar Cultura", width: fitContent(), close: closeCulturesEditor,
     position: {my: "right top", at: "right-10 top+10", of: "svg"}
   });
 
@@ -136,13 +136,13 @@ function editCultures() {
     types.forEach(t => options += `<option ${type === t ? "selected" : ""} value="${t}">${t}</option>`);
     return options;
   }
-  
+
   function getBaseOptions(base) {
     let options = "";
     nameBases.forEach((n, i) => options += `<option ${base === i ? "selected" : ""} value="${i}">${n.name}</option>`);
     return options;
   }
- 
+
   function cultureHighlightOn(event) {
     if (customization === 4) return;
     const culture = +event.target.dataset.id;
@@ -162,13 +162,13 @@ function editCultures() {
     const culture = +this.parentNode.dataset.id;
     pack.cultures[culture].color = this.value;
     cults.select("#culture"+culture).attr("fill", this.value).attr("stroke", this.value);
-    debug.select("#cultureCenter"+culture).attr("fill", this.value);    
+    debug.select("#cultureCenter"+culture).attr("fill", this.value);
   }
 
   function cultureChangeName() {
     const culture = +this.parentNode.dataset.id;
     this.parentNode.dataset.name = this.value;
-    pack.cultures[culture].name = this.value;    
+    pack.cultures[culture].name = this.value;
   }
 
   function cultureChangeExpansionism() {
@@ -241,7 +241,7 @@ function editCultures() {
       recalculateCultures();
     });
   }
-  
+
   function togglePercentageMode() {
     if (body.dataset.type === "absolute") {
       body.dataset.type = "percentage";
@@ -272,13 +272,13 @@ function editCultures() {
     pack.burgs.forEach(b => b.culture = pack.cells.culture[b.cell]);
     refreshCulturesEditor();
   }
-  
+
   function enterCultureManualAssignent() {
-    if (!layerIsOn("toggleCultures")) toggleCultures();  
+    if (!layerIsOn("toggleCultures")) toggleCultures();
     customization = 4;
     cults.append("g").attr("id", "temp");
     document.querySelectorAll("#culturesBottom > button").forEach(el => el.style.display = "none");
-    document.getElementById("culturesManuallyButtons").style.display = "inline-block";    
+    document.getElementById("culturesManuallyButtons").style.display = "inline-block";
     debug.select("#cultureCenters").style("display", "none");
 
     tip("Click on culture to select, drag the circle to change culture", true);
@@ -294,7 +294,7 @@ function editCultures() {
   function selectCultureOnLineClick(i) {
     if (customization !== 4) return;
     body.querySelector("div.selected").classList.remove("selected");
-    this.classList.add("selected");    
+    this.classList.add("selected");
   }
 
   function selectCultureOnMapClick() {
@@ -308,7 +308,7 @@ function editCultures() {
     body.querySelector("div.selected").classList.remove("selected");
     body.querySelector("div[data-id='"+culture+"']").classList.add("selected");
   }
-  
+
   function dragCultureBrush() {
     const p = d3.mouse(this);
     const r = +culturesManuallyBrush.value;
@@ -316,7 +316,7 @@ function editCultures() {
 
     const found = r > 5 ? findAll(p[0], p[1], r) : [findCell(p[0], p[1], r)];
     const selection = found.filter(isLand);
-    if (selection) changeCultureForSelection(selection);    
+    if (selection) changeCultureForSelection(selection);
   }
 
   // change culture within selection
@@ -360,7 +360,7 @@ function editCultures() {
     }
     exitCulturesManualAssignment();
   }
- 
+
   function exitCulturesManualAssignment() {
     customization = 0;
     cults.select("#temp").remove();
@@ -374,7 +374,7 @@ function editCultures() {
     const selected = body.querySelector("div.selected");
     if (selected) selected.classList.remove("selected");
   }
-  
+
   function addCulture() {
     const defaultCultures = Cultures.getDefault();
     let culture, base, name;
@@ -401,7 +401,7 @@ function editCultures() {
   function downloadCulturesData() {
     const unit = areaUnit.value === "square" ? distanceUnit.value + "2" : areaUnit.value;
     let data = "Id,Culture,Color,Cells,Expansionism,Type,Area "+unit+",Population,Namesbase\n"; // headers
-    
+
     body.querySelectorAll(":scope > div").forEach(function(el) {
       data += el.dataset.id + ",";
       data += el.dataset.name + ",";
@@ -424,7 +424,7 @@ function editCultures() {
     link.click();
     window.setTimeout(function() {window.URL.revokeObjectURL(url);}, 2000);
   }
-  
+
   function closeCulturesEditor() {
     debug.select("#cultureCenters").remove();
     exitCulturesManualAssignment();

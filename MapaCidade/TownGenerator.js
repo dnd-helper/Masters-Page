@@ -19979,7 +19979,7 @@ com_watabou_towngenerator_wards_ShantyTown.__name__ = ["com","watabou","towngene
 com_watabou_towngenerator_wards_ShantyTown.__super__ = com_watabou_towngenerator_wards_AlleysWard;
 com_watabou_towngenerator_wards_ShantyTown.prototype = $extend(com_watabou_towngenerator_wards_AlleysWard.prototype,{
 	getLabel: function() {
-		return "Shanty town";
+		return "Favelas";
 	}
 	,getParams: function() {
 		var f = (com_watabou_utils_Random.seed = com_watabou_utils_Random.seed * 48271.0 % 2147483647 | 0) / 2147483647;
