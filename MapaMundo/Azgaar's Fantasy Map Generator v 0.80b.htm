@@ -312,42 +312,42 @@
           <li id="toggleScaleBar" data-tip="Scale Bar: click to toggle, drag to move. Shortcut: - (minus)" onclick="toggleScaleBar()" class="solid">Escala</li>
         </ul>
 
-        <p data-tip="Select an element to edit its style" style="display: inline-block;">Select element:</p>
-        <select data-tip="Select an element to edit its style (list is ordered alphabetically)" id="styleElementSelect" style="width:42%">
-          <option value="anchors">Anchor Icons</option>
-          <option value="biomes">Biomes</option>
-          <option value="borders">Borders</option>
-          <option value="burgIcons">Burg Icons</option>
-          <option value="cells">Cells</option>
-          <option value="coastline">Coastline</option>
-          <option value="compass">Compass</option>
-          <option value="coordinates">Coordinates</option>
-          <option value="cults">Cultures</option>
-          <option value="gridOverlay">Grid</option>
-          <option value="terrs">Heightmap</option>
-          <option value="labels">Labels</option>
-          <option value="lakes">Lakes</option>
-          <option value="landmass">Landmass</option>
-          <option value="markers">Markers</option>
-          <option value="ocean">Ocean</option>
-          <option value="population">Population</option>
-          <option value="prec">Precipitation</option>
-          <option value="terrain">Relief Icons</option>
-          <option value="rivers">Rivers</option>
-          <option value="routes">Routes</option>
-          <option value="ruler">Rulers</option>
-          <option value="statesBody" selected>States</option>
-          <option value="temperature">Temperature</option>
-          <option value="texture">Texture</option>
+        <p data-tip="Selecione um elemento para editar seu estilo" style="display: inline-block;">Select element:</p>
+        <select data-tip="Selecione um elemento para editar seu estilo (a lista está ordenada alfabéticamente)" id="styleElementSelect" style="width:42%">
+          <option value="terrs">Altitudes</option>
+          <option value="biomes">Biomas</option>
+          <option value="cells">Células</option>
+          <option value="compass">Compasso</option>
+          <option value="landmass">Continentes</option>
+          <option value="coordinates">Coordenadas</option>
+          <option value="coastline">Costas</option>
+          <option value="cults">Culturas</option>
+          <option value="borders">Fronteiras</option>
+          <option value="gridOverlay">Grids</option>
+          <option value="anchors">Icones de Âncora</option>
+          <option value="burgIcons">Icones de Cidades</option>
+          <option value="terrain">Icones de Relevo</option>
+          <option value="lakes">Lagos</option>
+          <option value="markers">Marcadores</option>
+          <option value="labels">Nomes</option>
+          <option value="ocean">Oceano</option>
+          <option value="statesBody" selected>Países</option>
+          <option value="population">População</option>
+          <option value="prec">Precipitação</option>
+          <option value="ruler">Réguas</option>
+          <option value="rivers">Rios</option>
+          <option value="routes">Rotas</option>
+          <option value="temperature">Temperatura</option>
+          <option value="texture">Textura</option>
         </select>
-        <button id="restoreStyle" data-tip="Click to restore default style for all elements" class="icon-ccw styleButton" onclick="askToRestoreDefaultStyle()"></button>
+        <button id="restoreStyle" data-tip="Clique para restaurar os estilos padrões de todos os elementos" class="icon-ccw styleButton" onclick="askToRestoreDefaultStyle()"></button>
 
         <table id="styleElements">
-          <caption id="styleIsOff" data-tip="The selected layer is not visible. See the buttons above to toggle it on">Please ensure the element is toggled on!</caption>
+          <caption id="styleIsOff" data-tip="A camada selecionada não está visível. Veja os botões acima para ativa-la">Por favor, tenha certeza que o elemento está ativo!</caption>
 
           <tbody id="styleGroup">
             <tr data-tip="Select element group">
-              <td>Group</td>
+              <td>Grupo</td>
               <td>
                 <select id="styleGroupSelect"><option value="statesBody">statesBody</option></select>
               </td>
@@ -356,7 +356,7 @@
 
           <tbody id="styleOpacity" style="display: block">
             <tr data-tip="Set opacity. 0: transparent, 1: solid">
-              <td>Opacity</td>
+              <td>Opacidade</td>
               <td>
                 <input id="styleOpacityInput" type="range" min=0 max=1 step=0.01 value=.4>
                 <output id="styleOpacityOutput">0.4</output>
@@ -366,7 +366,7 @@
 
           <tbody id="styleStates" style="display: block">
             <tr data-tip="Set states halo effect width">
-              <td>Halo width</td>
+              <td>Espessura das Sombras</td>
               <td>
                 <input id="styleStatesHaloWidth" type="range" min=0 max=30 step=.1 value=10>
                 <output id="styleStatesHaloWidthOutput">10</output>
@@ -374,7 +374,7 @@
             </tr>
 
             <tr data-tip="Set states halo effect opacity. 0: invisible, 1: solid">
-              <td>Halo opacity</td>
+              <td>Opacidade das Sombras</td>
               <td>
                 <input id="styleStatesHaloOpacity" type="range" min=0 max=1 step=0.01 value=.4>
                 <output id="styleStatesHaloOpacityOutput">0.4</output>
@@ -384,7 +384,7 @@
 
           <tbody id="stylePopulation">
             <tr data-tip="Set bar color for rural population">
-              <td>Rural color</td>
+              <td>Cor Rural</td>
               <td>
                 <input id="stylePopulationRuralStrokeInput" type="color" value="#0000ff"/>
                 <output id="stylePopulationRuralStrokeOutput">#0000ff</output>
@@ -392,7 +392,7 @@
             </tr>
 
             <tr data-tip="Set bar color for urban population">
-              <td>Urban color</td>
+              <td>Cor Urbana</td>
               <td>
                 <input id="stylePopulationUrbanStrokeInput" type="color" value="#ff0000"/>
                 <output id="stylePopulationUrbanStrokeOutput">#ff0000</output>
@@ -402,32 +402,34 @@
 
           <tbody id="styleTexture">
             <tr data-tip="Select texture image. Big textures can highly affect performance">
-              <td>Image</td>
+              <td>Imagem</td>
               <td>
                 <select id="styleTextureInput">
-                  <option value="">None</option>
-                  <option value="images/textures/marble-small.jpg" selected>Marble small</option>
-                  <option value="images/textures/marble-big.jpg">Marble big</option>
-                  <option value="images/textures/marble-blue-small.jpg">Marble Blue</option>
-                  <option value="images/textures/marble-blue-big.jpg">Marble Blue big</option>
-                  <option value="images/textures/stone-small.jpg">Stone small</option>
-                  <option value="images/textures/stone-big.jpg">Stone big</option>
-                  <option value="images/textures/timbercut-small.jpg">Timber Cut small</option>
-                  <option value="images/textures/timbercut-big.jpg">Timber Cut big</option>
-                  <option value="images/textures/antique-small.jpg">Antique small</option>
-                  <option value="images/textures/antique-big.jpg">Antique big</option>
-                  <option value="images/textures/pergamena-small.jpg">Pergamena small</option>
-                  <option value="images/textures/mars-small.jpg">Mars small</option>
-                  <option value="images/textures/mars-big.jpg">Mars big</option>
-                  <option value="images/textures/mercury-small.jpg">Mercury small</option>
-                  <option value="images/textures/mercury-big.jpg">Mercury big</option>
-                  <option value="images/textures/mauritania-small.jpg">Mauritania small</option>
-                  <option value="images/textures/iran-small.jpg">Iran small</option>
-                  <option value="images/textures/spain-small.jpg">Spain small</option>
+                  <option value="">Nenhuma</option>
+                  <option value="images/textures/marble-small.jpg" selected>Marmore, Pequena</option>
+                  <option value="images/textures/marble-big.jpg">Marmore, Grande</option>
+                  <option value="images/textures/marble-blue-small.jpg">Marmore, Azul</option>
+                  <option value="images/textures/marble-blue-big.jpg">Marmore, Azul, Grande</option>
+                  <option value="images/textures/stone-small.jpg">Pedra, Pequena</option>
+                  <option value="images/textures/stone-big.jpg">Pedra, Grande</option>
+                  <option value="images/textures/timbercut-small.jpg">Corte de Madeira, Pequena</option>
+                  <option value="images/textures/timbercut-big.jpg">Corte de Madeira, Grande</option>
+                  <option value="images/textures/antique-small.jpg">Antiga, Pequena</option>
+                  <option value="images/textures/antique-big.jpg">Antiga, Grande</option>
+                  <option value="images/textures/pergamena-small.jpg">Pergaminho, Pequena</option>
+                  <option value="images/textures/mars-small.jpg">Marte, Pequena</option>
+                  <option value="images/textures/mars-big.jpg">Marte, Grande</option>
+                  <option value="images/textures/mercury-small.jpg">Mercúrio, Pequena</option>
+                  <option value="images/textures/mercury-big.jpg">Mercúrio, Grande</option>
+                  <option value="images/textures/mauritania-small.jpg">Mauritania, Pequena</option>
+                  <option value="images/textures/iran-small.jpg">Iran, Pequena</option>
+                  <option value="images/textures/spain-small.jpg">Espanha, Pequena</option>
                 </select>
                 <button data-tip="Click and provide a URL to image to be set as a texture" class="icon-plus styleButton" onclick="textureProvideURL()"></button>
               </td>
             </tr>
+
+            <!-- Parei Aqui -->
 
             <tr data-tip="Shift the texture by axes">
               <td>Shift by axes</td>
