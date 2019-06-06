@@ -73,7 +73,7 @@ function editBurg() {
     document.getElementById("burgGroupSection").style.display = "none";
     document.getElementById("burgInputGroup").style.display = "none";
     document.getElementById("burgInputGroup").value = "";
-    document.getElementById("burgSelectGroup").style.display = "inline-block"; 
+    document.getElementById("burgSelectGroup").style.display = "inline-block";
   }
 
   function changeGroup() {
@@ -154,7 +154,7 @@ function editBurg() {
     const burgsToRemove = burgsInGroup.filter(b => !pack.burgs[b].capital);
     const capital = burgsToRemove.length < burgsInGroup.length;
 
-    alertMessage.innerHTML = `Are you sure you want to remove 
+    alertMessage.innerHTML = `Are you sure you want to remove
       ${basic || capital ? "all elements in the group" : "the entire burg group"}?
       <br>Please note that capital burgs will not be deleted.
       <br><br>Burgs to be removed: ${burgsToRemove.length}`;
@@ -229,8 +229,10 @@ function editBurg() {
     const shanty = pop > 40 && half || pop > 60 && most || pop > 80 ? 1 : 0;
     const temple = pop > 50 && half || pop > 80 && most || pop > 100 ? 1 : 0;
 
-    const url = `http://fantasycities.watabou.ru/?name=${name}&size=${size}&seed=${s}&hub=${hub}&random=0&continuous=0&river=${river}&coast=${coast}&citadel=${half}&plaza=${half}&temple=${temple}&walls=${walls}&shantytown=${shanty}`;
-    window.open(url, '_blank');
+    const url = `MapaCidade/index.html?name=${name}&size=${size}&seed=${s}&hub=${hub}&random=0&continuous=0&river=${river}&coast=${coast}&citadel=${half}&plaza=${half}&temple=${temple}&walls=${walls}&shantytown=${shanty}`;
+    window.contCidade = 1;
+    window.parent.$('#dropdownC1-tab').trigger('click');
+    window.parent.$("#iframeCidade").attr("src",url);
   }
 
   function toggleRelocateBurg() {

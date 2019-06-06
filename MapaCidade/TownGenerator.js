@@ -8639,7 +8639,7 @@ com_watabou_towngenerator_SVG.prototype = {
 		this.setStroke(xml,strokeColor != -1 ? strokeColor : fillColor,strokeWidth);
 	}
 	,style: function(xml,style) {
-		xml.set("style",style);
+		xml.set("estilos",style);
 	}
 	,addTransform: function(xml,addition) {
 		var transform = xml.get("transform");
@@ -10562,7 +10562,7 @@ com_watabou_towngenerator_wards_CraftsmenWard.__name__ = ["com","watabou","towng
 com_watabou_towngenerator_wards_CraftsmenWard.__super__ = com_watabou_towngenerator_wards_AlleysWard;
 com_watabou_towngenerator_wards_CraftsmenWard.prototype = $extend(com_watabou_towngenerator_wards_AlleysWard.prototype,{
 	getLabel: function() {
-		return "Craftsmen";
+		return "Artesaos";
 	}
 	,getParams: function() {
 		var f = (com_watabou_utils_Random.seed = com_watabou_utils_Random.seed * 48271.0 % 2147483647 | 0) / 2147483647;
@@ -10581,7 +10581,7 @@ com_watabou_towngenerator_wards_MerchantWard.rateLocation = function(model,patch
 com_watabou_towngenerator_wards_MerchantWard.__super__ = com_watabou_towngenerator_wards_AlleysWard;
 com_watabou_towngenerator_wards_MerchantWard.prototype = $extend(com_watabou_towngenerator_wards_AlleysWard.prototype,{
 	getLabel: function() {
-		return "Merchant";
+		return "Mercadores";
 	}
 	,getParams: function() {
 		var f = (com_watabou_utils_Random.seed = com_watabou_utils_Random.seed * 48271.0 % 2147483647 | 0) / 2147483647;
@@ -10626,7 +10626,7 @@ com_watabou_towngenerator_wards_Cathedral.prototype = $extend(com_watabou_townge
 		}
 	}
 	,getLabel: function() {
-		return "Temple";
+		return "Templo";
 	}
 	,__class__: com_watabou_towngenerator_wards_Cathedral
 });
@@ -10649,7 +10649,7 @@ com_watabou_towngenerator_wards_AdministrationWard.rateLocation = function(model
 com_watabou_towngenerator_wards_AdministrationWard.__super__ = com_watabou_towngenerator_wards_AlleysWard;
 com_watabou_towngenerator_wards_AdministrationWard.prototype = $extend(com_watabou_towngenerator_wards_AlleysWard.prototype,{
 	getLabel: function() {
-		return "Administration";
+		return "Administracao";
 	}
 	,getParams: function() {
 		var f = (com_watabou_utils_Random.seed = com_watabou_utils_Random.seed * 48271.0 % 2147483647 | 0) / 2147483647;
@@ -10661,14 +10661,14 @@ var com_watabou_towngenerator_wards_Slum = function(model,patch) {
 	com_watabou_towngenerator_wards_AlleysWard.call(this,model,patch);
 };
 $hxClasses["com.watabou.towngenerator.wards.Slum"] = com_watabou_towngenerator_wards_Slum;
-com_watabou_towngenerator_wards_Slum.__name__ = ["com","watabou","towngenerator","wards","Slum"];
+com_watabou_towngenerator_wards_Slum.__name__ = ["com","watabou","towngenerator","wards","Favela"];
 com_watabou_towngenerator_wards_Slum.rateLocation = function(model,patch) {
 	return -com_watabou_geom__$Polygon_Polygon_$Impl_$.distance(patch.shape,model.plaza != null ? com_watabou_geom__$Polygon_Polygon_$Impl_$.get_center(model.plaza.shape) : model.center);
 };
 com_watabou_towngenerator_wards_Slum.__super__ = com_watabou_towngenerator_wards_AlleysWard;
 com_watabou_towngenerator_wards_Slum.prototype = $extend(com_watabou_towngenerator_wards_AlleysWard.prototype,{
 	getLabel: function() {
-		return "Slum";
+		return "Favela";
 	}
 	,getParams: function() {
 		var f = (com_watabou_utils_Random.seed = com_watabou_utils_Random.seed * 48271.0 % 2147483647 | 0) / 2147483647;
@@ -10710,7 +10710,7 @@ com_watabou_towngenerator_wards_PatriciateWard.rateLocation = function(model,pat
 com_watabou_towngenerator_wards_PatriciateWard.__super__ = com_watabou_towngenerator_wards_AlleysWard;
 com_watabou_towngenerator_wards_PatriciateWard.prototype = $extend(com_watabou_towngenerator_wards_AlleysWard.prototype,{
 	getLabel: function() {
-		return "Patriciate";
+		return "Patriciado";
 	}
 	,getParams: function() {
 		var f = (com_watabou_utils_Random.seed = com_watabou_utils_Random.seed * 48271.0 % 2147483647 | 0) / 2147483647;
@@ -10722,7 +10722,7 @@ var com_watabou_towngenerator_wards_Market = function(model,patch) {
 	com_watabou_towngenerator_wards_Ward.call(this,model,patch);
 };
 $hxClasses["com.watabou.towngenerator.wards.Market"] = com_watabou_towngenerator_wards_Market;
-com_watabou_towngenerator_wards_Market.__name__ = ["com","watabou","towngenerator","wards","Market"];
+com_watabou_towngenerator_wards_Market.__name__ = ["com","watabou","towngenerator","wards","Mercado"];
 com_watabou_towngenerator_wards_Market.rateLocation = function(model,patch) {
 	var _g = 0;
 	var neighbours = [];
@@ -10787,7 +10787,7 @@ com_watabou_towngenerator_wards_Market.prototype = $extend(com_watabou_towngener
 		this.geometry = [object];
 	}
 	,getLabel: function() {
-		return "Market";
+		return "Mercado";
 	}
 	,__class__: com_watabou_towngenerator_wards_Market
 });
@@ -14351,9 +14351,9 @@ var com_watabou_towngenerator_scenes_EditorScene = function() {
 	this.addChild(this.brush);
 	this.buttons = new openfl_display_Sprite();
 	this.addChild(this.buttons);
-	var save = new com_watabou_towngenerator_ui_Button("Apply",$bind(this,this.onSave));
+	var save = new com_watabou_towngenerator_ui_Button("Aplicar",$bind(this,this.onSave));
 	this.buttons.addChild(save);
-	var discard = new com_watabou_towngenerator_ui_Button("Discard",$bind(this,this.onDiscard));
+	var discard = new com_watabou_towngenerator_ui_Button("Cancelar",$bind(this,this.onDiscard));
 	discard.set_y(save.get_height() + 1);
 	this.buttons.addChild(discard);
 	this.segments = [];
@@ -14664,7 +14664,7 @@ var com_watabou_towngenerator_scenes_ViewScene = function() {
 	var small = new com_watabou_towngenerator_ui_CitySizeButton("Pequena",6,12);
 	var medium = new com_watabou_towngenerator_ui_CitySizeButton("Media",12,24);
 	var large = new com_watabou_towngenerator_ui_CitySizeButton("Grande",24,48);
-	var warp = new com_watabou_towngenerator_ui_Button("Modificar",$bind(this,this.onWarp));
+	var warp = new com_watabou_towngenerator_ui_Button("Editar",$bind(this,this.onWarp));
 	var options = new com_watabou_towngenerator_ui_Button("Opcoes",$bind(this,this.onOptions));
 	var $export = new com_watabou_towngenerator_ui_Button("Exportar",$bind(this,this.onExport));
 	var pos = 0.0;
@@ -14677,7 +14677,7 @@ var com_watabou_towngenerator_scenes_ViewScene = function() {
 		pos += btn.get_height() + 1;
 		this.buttons.addChild(btn);
 	}
-	this.overworld = new com_watabou_towngenerator_ui_Button("Overworld",$bind(this,this.onOverworld));
+	this.overworld = new com_watabou_towngenerator_ui_Button("Mundo",$bind(this,this.onOverworld));
 	this.overworld.resize(43,13);
 	this.addChild(this.overworld);
 	this.fader = com_watabou_processes_Tweener.create(1,$bind(this,this.onFadeOut));
@@ -14802,11 +14802,14 @@ com_watabou_towngenerator_scenes_ViewScene.prototype = $extend(com_watabou_towng
 		}
 	}
 	,onOverworld: function() {
-		var request = new openfl_net_URLRequest("");
-		request.method = "GET";
-		request.data = com_watabou_towngenerator_building_Model.instance.getFMGParams();
-		request.data.from = "MFCG";
-		openfl_Lib.getURL(request,"fmg");
+		// window.contCidade = 1;
+    window.parent.$('#dropdownC2-tab').trigger('click');
+    // window.parent.$("#iframeCidade").attr("src",url);
+		// var request = new openfl_net_URLRequest("");  //Link para quando clicar no Mapa Mundo
+		// request.method = "GET";
+		// request.data = com_watabou_towngenerator_building_Model.instance.getFMGParams();
+		// request.data.from = "MFCG";
+		// openfl_Lib.getURL(request,"fmg");
 	}
 	,reset: function() {
 		com_watabou_towngenerator_scenes_ViewScene.options = null;
@@ -18317,17 +18320,17 @@ com_watabou_towngenerator_ui__$MenuItem_MenuItemView.prototype = $extend(openfl_
 var com_watabou_towngenerator_ui_OptionsMenu = function() {
 	var _gthis = this;
 	com_watabou_towngenerator_ui_PopupMenu.call(this);
-	var style = this.addSubmenu("Style");
+	var style = this.addSubmenu("Estilos");
 	var layout = this.addSubmenu("Layout");
-	this.hub = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("More roads"));
+	this.hub = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Mais estradas"));
 	this.hub.click.add(function(item) {
 		com_watabou_towngenerator_Options.set("hub",!_gthis.hub.get_checked());
 	});
-	this.farms = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Farm fields"));
+	this.farms = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Campos de Fazendas"));
 	this.farms.click.add(function(item1) {
 		com_watabou_towngenerator_Options.set("farms",!_gthis.farms.get_checked());
 	});
-	this.gradient = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Elevation"));
+	this.gradient = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Elevacao"));
 	this.gradient.click.add(function(item2) {
 		com_watabou_towngenerator_Options.set("elevation",!_gthis.gradient.get_checked());
 	});
@@ -18336,36 +18339,36 @@ var com_watabou_towngenerator_ui_OptionsMenu = function() {
 		com_watabou_towngenerator_Options.set("random",!_gthis.random.get_checked());
 	});
 	layout.addSeparator();
-	this.citadel = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Citadel"));
+	this.citadel = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Cidadela"));
 	this.citadel.click.add(function(item4) {
 		com_watabou_towngenerator_Options.set("citadel",!_gthis.citadel.get_checked());
 	});
-	this.plaza = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Plaza"));
+	this.plaza = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Praca"));
 	this.plaza.click.add(function(item5) {
 		com_watabou_towngenerator_Options.set("plaza",!_gthis.plaza.get_checked());
 	});
-	this.temple = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Temple"));
+	this.temple = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Templo"));
 	this.temple.click.add(function(item6) {
 		com_watabou_towngenerator_Options.set("temple",!_gthis.temple.get_checked());
 	});
-	this.walls = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Walls"));
+	this.walls = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Muralha"));
 	this.walls.click.add(function(item7) {
 		com_watabou_towngenerator_Options.set("walls",!_gthis.walls.get_checked());
 	});
-	this.shanty = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Shanty town"));
+	this.shanty = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Favelas"));
 	this.shanty.click.add(function(item8) {
 		com_watabou_towngenerator_Options.set("shantytown",!_gthis.shanty.get_checked());
 	});
-	this.river = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("River"));
+	this.river = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Rio"));
 	this.river.click.add(function(item9) {
 		com_watabou_towngenerator_Options.set("river",!_gthis.river.get_checked());
 	});
-	this.coast = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Coast"));
+	this.coast = layout.addItem(new com_watabou_towngenerator_ui_MenuItem("Costa"));
 	this.coast.click.add(function(item10) {
 		com_watabou_towngenerator_Options.set("coast",!_gthis.coast.get_checked());
 	});
-	this.palettes = style.addSubmenu("Palette");
-	this.watercolours = this.palettes.addItem(new com_watabou_towngenerator_ui_MenuItem("Watercolours"));
+	this.palettes = style.addSubmenu("Cores");
+	this.watercolours = this.palettes.addItem(new com_watabou_towngenerator_ui_MenuItem("Aquarela"));
 	this.watercolours.click.add(function(item11) {
 		com_watabou_towngenerator_Options.set("watercolours",_gthis.watercolours.set_checked(!_gthis.watercolours.get_checked()));
 	});
@@ -18374,42 +18377,43 @@ var com_watabou_towngenerator_ui_OptionsMenu = function() {
 	this.palettes.onClick(function(index) {
 		com_watabou_towngenerator_Options.set("palette",com_watabou_towngenerator_Options.PALETTE_NAMES[index]);
 	});
-	this.annotations = style.addSubmenu("Annotations");
+	this.annotations = style.addSubmenu("Escrita");
 	this.annotations.group(["Pequena","Media","Grande"]);
 	this.annotations.onClick(function(index1) {
+		alert(index1)
 		com_watabou_towngenerator_Options.set("text_size",index1);
 		_gthis.annotations.radio(index1);
 	});
 	this.annotations.addSeparator();
-	this.wardsLabels = this.annotations.addItem(new com_watabou_towngenerator_ui_MenuItem("Wards"));
+	this.wardsLabels = this.annotations.addItem(new com_watabou_towngenerator_ui_MenuItem("Nome dos Locais"));
 	this.wardsLabels.click.add(function(item12) {
 		com_watabou_towngenerator_Options.set("labels",_gthis.wardsLabels.set_checked(!_gthis.wardsLabels.get_checked()));
 	});
-	this.cityName = this.annotations.addItem(new com_watabou_towngenerator_ui_MenuItem("City name"));
+	this.cityName = this.annotations.addItem(new com_watabou_towngenerator_ui_MenuItem("Nome da Cidade"));
 	this.cityName.click.add(function(item13) {
 		com_watabou_towngenerator_Options.set("city_name",_gthis.cityName.set_checked(!_gthis.cityName.get_checked()));
 	});
-	this.scaleBar = this.annotations.addItem(new com_watabou_towngenerator_ui_MenuItem("Scale bar"));
+	this.scaleBar = this.annotations.addItem(new com_watabou_towngenerator_ui_MenuItem("Escala"));
 	this.scaleBar.click.add(function(item14) {
 		com_watabou_towngenerator_Options.set("scale_bar",_gthis.scaleBar.set_checked(!_gthis.scaleBar.get_checked()));
 	});
-	this.legend = this.annotations.addItem(new com_watabou_towngenerator_ui_MenuItem("Legend"));
+	this.legend = this.annotations.addItem(new com_watabou_towngenerator_ui_MenuItem("Legendas"));
 	this.legend.click.add(function(item15) {
 		com_watabou_towngenerator_Options.set("legend",_gthis.legend.set_checked(!_gthis.legend.get_checked()));
 	});
-	this.hatching = style.addItem(new com_watabou_towngenerator_ui_MenuItem("Hatching"));
+	this.hatching = style.addItem(new com_watabou_towngenerator_ui_MenuItem("Rascunho"));
 	this.hatching.click.add(function(item16) {
 		com_watabou_towngenerator_Options.set("hatching",_gthis.hatching.set_checked(!_gthis.hatching.get_checked()));
 	});
-	this.thinLines = style.addItem(new com_watabou_towngenerator_ui_MenuItem("Thin lines"));
+	this.thinLines = style.addItem(new com_watabou_towngenerator_ui_MenuItem("Linhas Finas"));
 	this.thinLines.click.add(function(item17) {
 		com_watabou_towngenerator_Options.set("thin_lines",_gthis.thinLines.set_checked(!_gthis.thinLines.get_checked()));
 	});
 	style.addSeparator();
-	this.towers = style.addRadioSubmenu("Towers",com_watabou_towngenerator_Options.TOWER_SHAPES,function(choice) {
+	this.towers = style.addRadioSubmenu("Torres",com_watabou_towngenerator_Options.TOWER_SHAPES,function(choice) {
 		com_watabou_towngenerator_Options.set("towers",choice);
 	});
-	this.buildings = style.addSubmenu("Buildings");
+	this.buildings = style.addSubmenu("Construcoes");
 	this.noStroke = this.buildings.addItem(new com_watabou_towngenerator_ui_MenuItem("No stroke"));
 	this.noStroke.click.add(function(item18) {
 		com_watabou_towngenerator_Options.set("no_stroke",_gthis.noStroke.set_checked(!_gthis.noStroke.get_checked()));
@@ -18420,7 +18424,7 @@ var com_watabou_towngenerator_ui_OptionsMenu = function() {
 		com_watabou_towngenerator_Options.set("buildings",com_watabou_towngenerator_Options.BUILDING_OPTIONS[index2]);
 		_gthis.buildings.radio(index2);
 	});
-	var waterOptions = style.addSubmenu("Water");
+	var waterOptions = style.addSubmenu("Agua");
 	this.isolines = waterOptions.addItem(new com_watabou_towngenerator_ui_MenuItem("Isolines"));
 	this.isolines.click.add(function(item19) {
 		com_watabou_towngenerator_Options.set("isolines",_gthis.isolines.set_checked(!_gthis.isolines.get_checked()));
@@ -19638,7 +19642,7 @@ var com_watabou_towngenerator_wards_Castle = function(model,patch) {
 	this.wall = new com_watabou_towngenerator_building_CurtainWall(true,model,[patch],tmp);
 };
 $hxClasses["com.watabou.towngenerator.wards.Castle"] = com_watabou_towngenerator_wards_Castle;
-com_watabou_towngenerator_wards_Castle.__name__ = ["com","watabou","towngenerator","wards","Castle"];
+com_watabou_towngenerator_wards_Castle.__name__ = ["com","watabou","towngenerator","wards","Castelo"];
 com_watabou_towngenerator_wards_Castle.__super__ = com_watabou_towngenerator_wards_Ward;
 com_watabou_towngenerator_wards_Castle.prototype = $extend(com_watabou_towngenerator_wards_Ward.prototype,{
 	wall: null
@@ -19649,7 +19653,7 @@ com_watabou_towngenerator_wards_Castle.prototype = $extend(com_watabou_towngener
 		this.geometry = [com_watabou_towngenerator_wards_Ward.createBuilding(keep,Math.sqrt(com_watabou_geom__$Polygon_Polygon_$Impl_$.get_area(keep)) * 2)];
 	}
 	,getLabel: function() {
-		return "Castle";
+		return "Castelo";
 	}
 	,__class__: com_watabou_towngenerator_wards_Castle
 });
@@ -19661,7 +19665,7 @@ com_watabou_towngenerator_wards_DocksWard.__name__ = ["com","watabou","towngener
 com_watabou_towngenerator_wards_DocksWard.__super__ = com_watabou_towngenerator_wards_AlleysWard;
 com_watabou_towngenerator_wards_DocksWard.prototype = $extend(com_watabou_towngenerator_wards_AlleysWard.prototype,{
 	getLabel: function() {
-		return "Docks";
+		return "Docas";
 	}
 	,getParams: function() {
 		var f = (com_watabou_utils_Random.seed = com_watabou_utils_Random.seed * 48271.0 % 2147483647 | 0) / 2147483647;
@@ -19673,7 +19677,7 @@ var com_watabou_towngenerator_wards_Farm = function(model,patch) {
 	com_watabou_towngenerator_wards_Ward.call(this,model,patch);
 };
 $hxClasses["com.watabou.towngenerator.wards.Farm"] = com_watabou_towngenerator_wards_Farm;
-com_watabou_towngenerator_wards_Farm.__name__ = ["com","watabou","towngenerator","wards","Farm"];
+com_watabou_towngenerator_wards_Farm.__name__ = ["com","watabou","towngenerator","wards","Fazenda"];
 com_watabou_towngenerator_wards_Farm.__super__ = com_watabou_towngenerator_wards_Ward;
 com_watabou_towngenerator_wards_Farm.prototype = $extend(com_watabou_towngenerator_wards_Ward.prototype,{
 	furrows: null
@@ -19881,7 +19885,7 @@ com_watabou_towngenerator_wards_Farm.prototype = $extend(com_watabou_towngenerat
 		return result;
 	}
 	,getLabel: function() {
-		return "Farm";
+		return "Fazenda";
 	}
 	,__class__: com_watabou_towngenerator_wards_Farm
 });
@@ -19893,7 +19897,7 @@ com_watabou_towngenerator_wards_GateWard.__name__ = ["com","watabou","towngenera
 com_watabou_towngenerator_wards_GateWard.__super__ = com_watabou_towngenerator_wards_AlleysWard;
 com_watabou_towngenerator_wards_GateWard.prototype = $extend(com_watabou_towngenerator_wards_AlleysWard.prototype,{
 	getLabel: function() {
-		return "Gate";
+		return "Portoes";
 	}
 	,getParams: function() {
 		var f = (com_watabou_utils_Random.seed = com_watabou_utils_Random.seed * 48271.0 % 2147483647 | 0) / 2147483647;
@@ -19905,7 +19909,7 @@ var com_watabou_towngenerator_wards_Harbour = function(model,patch) {
 	com_watabou_towngenerator_wards_Ward.call(this,model,patch);
 };
 $hxClasses["com.watabou.towngenerator.wards.Harbour"] = com_watabou_towngenerator_wards_Harbour;
-com_watabou_towngenerator_wards_Harbour.__name__ = ["com","watabou","towngenerator","wards","Harbour"];
+com_watabou_towngenerator_wards_Harbour.__name__ = ["com","watabou","towngenerator","wards","Porto"];
 com_watabou_towngenerator_wards_Harbour.__super__ = com_watabou_towngenerator_wards_Ward;
 com_watabou_towngenerator_wards_Harbour.prototype = $extend(com_watabou_towngenerator_wards_Ward.prototype,{
 	createGeometry: function() {
@@ -19963,7 +19967,7 @@ com_watabou_towngenerator_wards_Harbour.prototype = $extend(com_watabou_towngene
 		}
 	}
 	,getLabel: function() {
-		return "Harbour";
+		return "Porto";
 	}
 	,__class__: com_watabou_towngenerator_wards_Harbour
 });
@@ -86435,7 +86439,7 @@ com_watabou_towngenerator_Options.SHANTYTOWN = "shantytown";
 com_watabou_towngenerator_Options.RIVER = "river";
 com_watabou_towngenerator_Options.COAST = "coast";
 com_watabou_towngenerator_Options.PALETTES = [com_watabou_towngenerator_mapping_Palette.DEFAULT,com_watabou_towngenerator_mapping_Palette.INK,com_watabou_towngenerator_mapping_Palette.BW,com_watabou_towngenerator_mapping_Palette.NIGHT,com_watabou_towngenerator_mapping_Palette.BLUEPRINT,com_watabou_towngenerator_mapping_Palette.SANGUINE,com_watabou_towngenerator_mapping_Palette.ANCIENT,com_watabou_towngenerator_mapping_Palette.COLOUR];
-com_watabou_towngenerator_Options.PALETTE_NAMES = ["Default","Ink","Black & White","Night","Blueprint","Sanguine","Ancient","Color"];
+com_watabou_towngenerator_Options.PALETTE_NAMES = ["Padrao","Tinta","Preto & Branco","Noite","Blueprint","Sanguine","Ancient","Colorido"];
 com_watabou_towngenerator_Options.ROUND = "Round";
 com_watabou_towngenerator_Options.SQUARE = "Square";
 com_watabou_towngenerator_Options.BASTIONS = "Bastions";
@@ -86454,9 +86458,9 @@ com_watabou_towngenerator_Options.defValues = (function($this) {
 		_g.h["palette"] = "Default";
 	}
 	if(__map_reserved["watercolours"] != null) {
-		_g.setReserved("watercolours",false);
+		_g.setReserved("watercolours",true);
 	} else {
-		_g.h["watercolours"] = false;
+		_g.h["watercolours"] = true;
 	}
 	if(__map_reserved["hatching"] != null) {
 		_g.setReserved("hatching",false);
@@ -86474,9 +86478,9 @@ com_watabou_towngenerator_Options.defValues = (function($this) {
 		_g.h["no_stroke"] = false;
 	}
 	if(__map_reserved["text_size"] != null) {
-		_g.setReserved("text_size",1);
+		_g.setReserved("text_size",0);
 	} else {
-		_g.h["text_size"] = 1;
+		_g.h["text_size"] = 0;
 	}
 	if(__map_reserved["labels"] != null) {
 		_g.setReserved("labels",false);
@@ -86484,9 +86488,9 @@ com_watabou_towngenerator_Options.defValues = (function($this) {
 		_g.h["labels"] = false;
 	}
 	if(__map_reserved["city_name"] != null) {
-		_g.setReserved("city_name",true);
+		_g.setReserved("city_name",false);
 	} else {
-		_g.h["city_name"] = true;
+		_g.h["city_name"] = false;
 	}
 	if(__map_reserved["scale_bar"] != null) {
 		_g.setReserved("scale_bar",true);

@@ -945,14 +945,14 @@ document.write(`
             <!-- <iframe id="iframeMundo" width="100%" frameborder="0" style="overflow: hidden; height: calc(100vh - 8 * 34px - 64px)"></iframe> -->
           </div>
           <script type="text/javascript">
-            var contMundo = 0;
-            $(document).on("click", "#dropdownC2-tab", function() {
-              if (contMundo == 0) { $("#iframeMundo").attr("src","MapaMundo/Azgaar's Fantasy Map Generator v 0.80b.htm"); contMundo = 1;}
-              // alert("foi")
-            })
             var contCidade = 0;
             $(document).on("click", "#dropdownC1-tab", function() {
               if (contCidade == 0) { $("#iframeCidade").attr("src","MapaCidade/index.html"); contCidade = 1;}
+              // alert("foi")
+            })
+            var contMundo = 0;
+            $(document).on("click", "#dropdownC2-tab", function() {
+              if (contMundo == 0) { $("#iframeMundo").attr("src","MapaMundo/Azgaar's Fantasy Map Generator v 0.80b.htm"); contMundo = 1;}
               // alert("foi")
             })
           </script>

@@ -252,64 +252,64 @@
   </svg>
 
   <div id="loading" style="opacity:1">
-    <div id="title_name">Azgaar's</div>
-    <div id="title">Fantasy Map Generator</div>
-    <div id="version">v. 0.8b</div>
-    <p id="loading-text">LOADING<span>.</span><span>.</span><span>.</span></p>
+    <div id="title_name">DnD Helper</div>
+    <div id="title">Gerador de Mapas</div>
+    <div id="version">v. 1.0</div>
+    <p id="loading-text">CARREGANDO<span>.</span><span>.</span><span>.</span></p>
   </div>
 
   <div id="optionsContainer" style="opacity:0">
 
     <div id="collapsible">
-      <button id="optionsTrigger" data-tip="Click to show options pane. Shortcut: Tab" class="options glow" onclick="showOptions(event)" style="padding:7px 5px">►</button>
-      <button id="regenerate" data-tip="Click to generate a new map. Shortcut: F7" onclick="regeneratePrompt()" class="options" style="display:none; padding:7px 8px">New Map!</button>
+      <button id="optionsTrigger" data-tip="Clique para mostrar o painel de opções. Atalho: Tab" class="options glow" onclick="showOptions(event)" style="padding:7px 5px">►</button>
+      <button id="regenerate" data-tip="Clique para gerar um novo mapa. Atalho: F7" onclick="regeneratePrompt()" class="options" style="display:none; padding:7px 8px">Novo Mapa!</button>
     </div>
 
     <div id="options" style="display:none">
-      <div class="drag-trigger" data-tip="Drag to move options pane"></div>
+      <div class="drag-trigger" data-tip="Arraste para mover o painel de opções"></div>
 
       <div class="tab">
-        <button id="optionsHide" data-tip="Click to hide options pane. Shortcut: Tab to close this or Esc to close all dialogs" class="options" onclick="hideOptions(event)">◄</button>
-        <button id="styleTab" data-tip="Click to open style menu" class="options active">Style</button>
-        <button id="optionsTab" data-tip="Click to change generation and UI options" class="options">Options</button>
-        <button id="toolsTab" data-tip="Click to open tools menu" class="options">Tools</button>
-        <button id="aboutTab" data-tip="Click to see Generator info" class="options">About</button>
+        <button id="optionsHide" data-tip="Clique para esconder o painel de opções. Atalho: Tab para fechar este ou Esc para fechar todos as janelas" class="options" onclick="hideOptions(event)">◄</button>
+        <button id="styleTab" data-tip="Clique para abrir o Menu de Estilos" class="options active">Estilos</button>
+        <button id="optionsTab" data-tip="Clique para configurar a geração do mapa e as opções da Interface do Usuário" class="options">Opções</button>
+        <button id="toolsTab" data-tip="Clique para abrir o Menu de Ferramentas" class="options">Ferram.</button>
+        <button id="aboutTab" data-tip="Clique para ver informações sobre o gerador" class="options">Sobre</button>
       </div>
 
       <div id="styleContent" class="tabcontent" style="display: block">
-        <p data-tip="Select a map layers preset" style="display: inline-block;">Layers preset:</p>
-        <select data-tip="Select a map layers preset" id="layersPreset" onchange="changePreset(this.value)" style="width:45%">
-          <option value="political" selected>Political map</option>
-          <option value="cultural">Cultural map</option>
-          <option value="heightmap">Heightmap</option>
-          <option value="biomes">Biomes map</option>
-          <option value="landmass">Pure landmass</option>
-          <option hidden value="custom">Custom</option>
+        <p data-tip="Selecione um preset das camadas do mapa" style="display: inline-block;">Camadas (Presets):</p>
+        <select data-tip="Selecione um preset das camadas do mapa" id="layersPreset" onchange="changePreset(this.value)" style="width:45%">
+          <option value="political" selected>Mapa Político</option>
+          <option value="cultural">Mapa Cultural</option>
+          <option value="heightmap">Mapa de Altitudes</option>
+          <option value="biomes">Mapa de Biomas</option>
+          <option value="landmass">Somente Terras</option>
+          <option hidden value="custom">Customizado</option>
         </select>
 
-        <p data-tip="Click to toggle a layer, drag to raise or lower a layer">Displayed layers:</p>
+        <p data-tip="Click to toggle a layer, drag to raise or lower a layer">Camadas Exibidas:</p>
         <ul data-tip="Click to toggle a layer, drag to raise or lower a layer" id="mapLayers">
-          <li id="toggleTexture" data-tip="Texture overlay: click to toggle, drag to raise or lower the layer. Shortcut: X" class="buttonoff" onclick="toggleTexture()">Texture</li>
-          <li id="toggleHeight" data-tip="Heightmap: click to toggle, drag to raise or lower the layer. Shortcut: H" class="buttonoff" onclick="toggleHeight()">Heightmap</li>
-          <li id="toggleBiomes" data-tip="Biomes: click to toggle, drag to raise or lower the layer. Shortcut: B" class="buttonoff" onclick="toggleBiomes()">Biomes</li>
-          <li id="toggleCells" data-tip="Cells structure: click to toggle, drag to raise or lower the layer. Shortcut: E" class="buttonoff" onclick="toggleCells()">Cells</li>
-          <li id="toggleGrid" data-tip="Grid: click to toggle, drag to raise or lower. Select type in styles dropdown below. Shortcut: G" class="buttonoff" onclick="toggleGrid()">Grid</li>
-          <li id="toggleCoordinates" data-tip="Coordinate grid: click to toggle, drag to raise or lower the layer. Shortcut: O" class="buttonoff" onclick="toggleCoordinates()">Coordinates</li>
-          <li id="toggleCompass" data-tip="Compass (Wind) Rose: click to toggle, drag to raise or lower the layer. Shortcut: W" class="buttonoff" onclick="toggleCompass()">Compass Rose</li>
-          <li id="toggleRivers" data-tip="Rivers: click to toggle, drag to raise or lower the layer. Shortcut: V" onclick="toggleRivers()">Rivers</li>
-          <li id="toggleRelief" data-tip="Relief and biome icons: click to toggle, drag to raise or lower the layer. Shortcut: R" class="buttonoff" onclick="toggleRelief()">Relief</li>
-          <li id="toggleCultures" data-tip="Cultures: click to toggle, drag to raise or lower the layer. Shortcut: C" class="buttonoff" onclick="toggleCultures()">Cultures</li>
-          <li id="toggleStates" data-tip="States: click to toggle, drag to raise or lower the layer. Shortcut: S" onclick="toggleStates()">States</li>
-          <li id="toggleBorders" data-tip="State borders: click to toggle, drag to raise or lower the layer. Shortcut: D" onclick="toggleBorders()">Borders</li>
-          <li id="toggleRoutes"data-tip="Trade routes: click to toggle, drag to raise or lower the layer. Shortcut: U" onclick="toggleRoutes()">Routes</li>
-          <li id="toggleTemp" data-tip="Temperature map: click to toggle, drag to raise or lower the layer. Shortcut: T" class="buttonoff" onclick="toggleTemp()">Temperature</li>
-          <li id="togglePopulation" data-tip="Population map: click to toggle, drag to raise or lower the layer. Shortcut: P" class="buttonoff" onclick="togglePopulation()">Population</li>
-          <li id="togglePrec" data-tip="Precipitation map: click to toggle, drag to raise or lower the layer. Shortcut: A" class="buttonoff" onclick="togglePrec()">Precipitation</li>
-          <li id="toggleLabels" data-tip="Labels: click to toggle, drag to raise or lower the layer. Shortcut: L" onclick="toggleLabels()">Labels</li>
-          <li id="toggleIcons" data-tip="Burg icons: click to toggle, drag to raise or lower the layer. Shortcut: I" onclick="toggleIcons()">Icons</li>
-          <li id="toggleMarkers" data-tip="Markers: click to toggle, drag to raise or lower the layer. Shortcut: M" onclick="toggleMarkers()">Markers</li>
-          <li id="toggleRulers" data-tip="Rulers: click to toggle, drag to move, click on label to delete. Shortcut: = (equal)" class="buttonoff" onclick="toggleRulers()">Rulers</li>
-          <li id="toggleScaleBar" data-tip="Scale Bar: click to toggle, drag to move. Shortcut: - (minus)" onclick="toggleScaleBar()" class="solid">Scale Bar</li>
+          <li id="toggleTexture" data-tip="Texture overlay: click to toggle, drag to raise or lower the layer. Shortcut: X" class="buttonoff" onclick="toggleTexture()">Texturas</li>
+          <li id="toggleHeight" data-tip="Heightmap: click to toggle, drag to raise or lower the layer. Shortcut: H" class="buttonoff" onclick="toggleHeight()">Altitudes</li>
+          <li id="toggleBiomes" data-tip="Biomes: click to toggle, drag to raise or lower the layer. Shortcut: B" class="buttonoff" onclick="toggleBiomes()">Biomas</li>
+          <li id="toggleCells" data-tip="Cells structure: click to toggle, drag to raise or lower the layer. Shortcut: E" class="buttonoff" onclick="toggleCells()">Células</li>
+          <li id="toggleGrid" data-tip="Grid: click to toggle, drag to raise or lower. Select type in styles dropdown below. Shortcut: G" class="buttonoff" onclick="toggleGrid()">Grids</li>
+          <li id="toggleCoordinates" data-tip="Coordinate grid: click to toggle, drag to raise or lower the layer. Shortcut: O" class="buttonoff" onclick="toggleCoordinates()">Coordenadas</li>
+          <li id="toggleCompass" data-tip="Compass (Wind) Rose: click to toggle, drag to raise or lower the layer. Shortcut: W" class="buttonoff" onclick="toggleCompass()">Compasso</li>
+          <li id="toggleRivers" data-tip="Rivers: click to toggle, drag to raise or lower the layer. Shortcut: V" onclick="toggleRivers()">Rios</li>
+          <li id="toggleRelief" data-tip="Relief and biome icons: click to toggle, drag to raise or lower the layer. Shortcut: R" class="buttonoff" onclick="toggleRelief()">Relevo</li>
+          <li id="toggleCultures" data-tip="Cultures: click to toggle, drag to raise or lower the layer. Shortcut: C" class="buttonoff" onclick="toggleCultures()">Culturas</li>
+          <li id="toggleStates" data-tip="States: click to toggle, drag to raise or lower the layer. Shortcut: S" onclick="toggleStates()">Países</li>
+          <li id="toggleBorders" data-tip="State borders: click to toggle, drag to raise or lower the layer. Shortcut: D" onclick="toggleBorders()">Fronteiras</li>
+          <li id="toggleRoutes"data-tip="Trade routes: click to toggle, drag to raise or lower the layer. Shortcut: U" onclick="toggleRoutes()">Rotas</li>
+          <li id="toggleTemp" data-tip="Temperature map: click to toggle, drag to raise or lower the layer. Shortcut: T" class="buttonoff" onclick="toggleTemp()">Temperatura</li>
+          <li id="togglePopulation" data-tip="Population map: click to toggle, drag to raise or lower the layer. Shortcut: P" class="buttonoff" onclick="togglePopulation()">População</li>
+          <li id="togglePrec" data-tip="Precipitation map: click to toggle, drag to raise or lower the layer. Shortcut: A" class="buttonoff" onclick="togglePrec()">Precipitação</li>
+          <li id="toggleLabels" data-tip="Labels: click to toggle, drag to raise or lower the layer. Shortcut: L" onclick="toggleLabels()">Nomes</li>
+          <li id="toggleIcons" data-tip="Burg icons: click to toggle, drag to raise or lower the layer. Shortcut: I" onclick="toggleIcons()">Icones</li>
+          <li id="toggleMarkers" data-tip="Markers: click to toggle, drag to raise or lower the layer. Shortcut: M" onclick="toggleMarkers()">Marcadores</li>
+          <li id="toggleRulers" data-tip="Rulers: click to toggle, drag to move, click on label to delete. Shortcut: = (equal)" class="buttonoff" onclick="toggleRulers()">Régua</li>
+          <li id="toggleScaleBar" data-tip="Scale Bar: click to toggle, drag to move. Shortcut: - (minus)" onclick="toggleScaleBar()" class="solid">Escala</li>
         </ul>
 
         <p data-tip="Select an element to edit its style" style="display: inline-block;">Select element:</p>
@@ -1855,7 +1855,7 @@
         <input id="legendName" data-tip="Type to change object name" autocorrect="off" spellcheck="false" style="width: 120px;">
       </div>
       <div>
-        <span>Legend:</span><br>
+        <span>Legenda:</span><br>
         <textarea id="legendText" cols="70" rows="7" data-tip="Legend is a free text note, enter any object description you like" placeholder="Legend is a free text note, enter any object description you like"></textarea>
       </div>
       <div>
@@ -1870,29 +1870,29 @@
       <div id="unitsBody" style="margin-left:1.1em">
         <div class="unitsHeader" style="margin-top:.4em">
           <span class="icon-map-signs"></span>
-          <div>Distance:</div>
+          <div>Distância:</div>
         </div>
 
         <div data-tip="Select a distance unit or provide a custom name">
-          <div>Distance unit: </div>
+          <div>Unid. de Distância: </div>
           <select id="distanceUnit">
-            <option value="mi" selected>Mile (mi)</option>
-            <option value="km">Kilometer (km)</option>
-            <option value="lg">League (lg)</option>
+            <option value="mi">Milha (mi)</option>
+            <option value="km" selected>Kilometro (km)</option>
+            <option value="lg">Liga (lg)</option>
             <option value="vr">Versta (vr)</option>
-            <option value="custom_name">Custom name</option>
+            <option value="custom_name">Nome Customizado</option>
           </select>
         </div>
 
         <div data-tip="Select how many distance units are in one pixel">
-          <div>1 map pixel =</div>
+          <div>1 pixel do mapa=</div>
           <input id="distanceScaleSlider" type="range" min=.1 max=10 step=.1 value=3>
           <input id="distanceScale" type="number" min=.1 max=10 step=.1 step=.1 value=3 data-value=3>
           <span id="distanceUnitOutput">mi</span>
         </div>
 
         <div data-tip='Area unit name, type "square" to add ² to the distance unit'>
-          <div>Area unit:</div>
+          <div>Unid. de Área:</div>
           <input id="areaUnit" type="text" value="square">
         </div>
 
@@ -1902,12 +1902,12 @@
         </div>
 
         <div data-tip="Select an altitude unit or provide a custom name">
-          <div>Height unit:</div>
+          <div>Unid. de Altitude:</div>
           <select id="heightUnit">
-            <option value="ft" selected>Feet (ft)</option>
-            <option value="m">Meters (m)</option>
+            <option value="ft">Pés (ft)</option>
+            <option value="m" selected>Metros (m)</option>
             <option value="f">Fathoms (f)</option>
-            <option value="custom_name">Custom name</option>
+            <option value="custom_name">Nome Customizado</option>
           </select>
         </div>
 
@@ -1919,36 +1919,36 @@
 
         <div class="unitsHeader" data-tip="Select Temperature scale">
           <span class="icon-asterisk"></span>
-          <div>Temperature:</div>
+          <div>Temperatura:</div>
         </div>
 
         <div>
-          <div>Temperature scale: </div>
+          <div>Escala de Temperatura: </div>
           <select id="temperatureScale">
-            <option value="°C" selected>degree Celsius (°C)</option>
-            <option value="°F">degree Fahrenheit (°F)</option>
+            <option value="°C" selected>graus Celsius (°C)</option>
+            <option value="°F">graus Fahrenheit (°F)</option>
             <option value="K">Kelvin (K)</option>
-            <option value="°R">degree Rankine (°R)</option>
-            <option value="°De">degree Delisle (°De)</option>
-            <option value="°N">degree Newton (°N)</option>
-            <option value="°Ré">degree Réaumur (°Ré)</option>
-            <option value="°Rø">degree Rømer (°Rø)</option>
+            <option value="°R">graus Rankine (°R)</option>
+            <option value="°De">graus Delisle (°De)</option>
+            <option value="°N">graus Newton (°N)</option>
+            <option value="°Ré">graus Réaumur (°Ré)</option>
+            <option value="°Rø">graus Rømer (°Rø)</option>
           </select>
         </div>
 
         <div class="unitsHeader">
           <span class="icon-minus"></span>
-          <div>Scale bar:</div>
+          <div>Barra de Escala:</div>
         </div>
 
         <div data-tip="Set scale bar size">
-          <div>Bar size:</div>
+          <div>Tamanho da Barra:</div>
           <input id="barSizeSlider" type="range" min=.5 max=5 value=2 step=.1>
           <input id="barSize" type="number" min=.5 max=5 value=2 step=.1>
         </div>
 
         <div data-tip="Type scale bar label, leave blank to hide label">
-          <div>Bar label:</div>
+          <div>Título da Barra:</div>
           <input id="barLabel" type="text" placeholder="hidden" value="">
         </div>
 
@@ -1991,16 +1991,16 @@
     </div>
 
     <div id="alert" style="display: none" class="dialog">
-      <p id="alertMessage">Warning!</p>
+      <p id="alertMessage">Atenção!</p>
     </div>
 
     <div id="alert2" style="display: none">
-      <p id="alertMessage2">Warning!</p>
+      <p id="alertMessage2">Atenção!</p>
     </div>
   </div>
 
   <div id="map-dragged" class="shadowed" style="display: none">
-    <p>Drop a .map file to open</p>
+    <p>Solte um arquivo .map para abri-lo</p>
   </div>
 
   <div id="legend">
@@ -2008,7 +2008,7 @@
     <div id="legendBody"></div>
   </div>
 
-  <div id="tooltip" style="opacity:0" data-main="Сlick the arrow button for options. Zoom in to see the map in details">Сlick the arrow button for options. Zoom in to see the map in details</div>
+  <div id="tooltip" style="opacity:0" data-main="Сlique na seta para outras opções. Dê um zoom para ver os detalhes do mapa">Сlique na seta para outras opções. Dê um zoom para ver os detalhes do mapa</div>
 
   <div id="fileInputs" class="hidden">
     <input type="file" accept=".map" id="mapToLoad">
