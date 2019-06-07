@@ -824,7 +824,7 @@ thead .htCollapseButton:after {
 .ht_master .wtHolder {
   overflow: auto;
   width: 100% !important;
-  height: 500px !important;
+  /* height: 500px !important; */
 }
 
 .handsontable .ht_master thead,

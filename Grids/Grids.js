@@ -1,26 +1,30 @@
+var altura;
+var comprimento;
+var quantx;
+var tamanho;
+var quanty;
+var paddingWid;
+var paddingHei;
 
 $( document ).ready(function() {
 
-  var altura;
-  var comprimento;
-  var quantx;
-  var tamanho;
-  var tamanhoalt;
-  var quanty;
-
   // var canvas = new fabric.Canvas('canvasGrid1');
-  altura = $("#dropdownA1").height() - 10;
-  comprimento = $("#dropdownA1").width() - 10;
-
+  altura = $("#myTabContent").height();
+  comprimento = $("#myTabContent").width();
   quantx = 16;
 
   tamanho = Math.floor(comprimento/quantx);
-  tamanhoalt = Math.floor(altura/quantx);
   quanty = Math.floor(altura/tamanho);
-  // alert(altura);
-  // alert(tamanhoalt);
-  // alert(quanty);
 
+  paddingWid = ((comprimento-(quantx*tamanho))/2)-1;
+  paddingHei = ((altura-(quanty*tamanho))/2)-1;
+  $("#dropdownA1").css({"padding-left":paddingWid-1, "padding-right":paddingWid, "padding-top":paddingHei-1, "padding-bottom":paddingHei});
+
+  // var paddingUti;
+  // if (paddingWid > paddingHei)  { paddingUti = paddingHei }
+  // if (paddingWid <= paddingHei) { paddingUti = paddingWid }
+  // $("#dropdownA1").css({"padding-left":paddingUti-1, "padding-right":paddingUti, "padding-top":paddingUti-1, "padding-bottom":paddingUti});
+  // $("#dropdownA1").css("height", ((quanty*tamanho)+2*paddingUti) )
 
   var canvas = new fabric.CanvasEx(canvasGrid1,{
     selection: false,
@@ -82,36 +86,36 @@ $( document ).ready(function() {
     canvas.add(vertical);
   };
 
-  var rect = new fabric.Rect({
-    id: "rect01",
-    left: 0,
-    top: 0,
-    fill: 'red',
-    width: tamanho,
-    height: tamanho,
-    hasControls: false,
-    hasBorders: false
-  });
-  rect.on('object:dblclick', function (options) {
-    window.alert(rect.id);
-  });
-  canvas.add(rect);
+  // var rect = new fabric.Rect({
+  //   id: "rect01",
+  //   left: 0,
+  //   top: 0,
+  //   fill: 'red',
+  //   width: tamanho,
+  //   height: tamanho,
+  //   hasControls: false,
+  //   hasBorders: false
+  // });
+  // rect.on('object:dblclick', function (options) {
+  //   window.alert(rect.id);
+  // });
+  // canvas.add(rect);
 
-  var cicle = new fabric.Circle({
-    left: 300,
-    top: 300,
-    radius: tamanho,
-    fill: 'black',
-    originX: 'left',
-    originY: 'top',
-    centeredRotation: true,
-    hasControls: false,
-    hasBorders: false
-  });
-  cicle.on('object:dblclick', function (options) {
-    window.alert(cicle.id);
-  });
-  canvas.add(cicle);
+  // var cicle = new fabric.Circle({
+  //   left: 300,
+  //   top: 300,
+  //   radius: tamanho,
+  //   fill: 'black',
+  //   originX: 'left',
+  //   originY: 'top',
+  //   centeredRotation: true,
+  //   hasControls: false,
+  //   hasBorders: false
+  // });
+  // cicle.on('object:dblclick', function (options) {
+  //   window.alert(cicle.id);
+  // });
+  // canvas.add(cicle);
 
   canvas.on('object:moving', function(options) {
     options.target.set({
@@ -192,10 +196,10 @@ $( document ).ready(function() {
   $(document).on('click', '#buttonAdicionaMontrosNoGrid', function() {
     $.each(monstrosAdicionados["Campanha1"], function(index, value) {
       // removeObjectFromCanvas()
-      const canvasObject = window.canvas.getObjects().filter((item) => {
+      const canvasObject = canvas.getObjects().filter((item) => {
         return item.id === parseInt(monstrosAdicionados["Campanha1"][index][7])
       })
-      window.canvas.remove(canvasObject)
+      canvas.remove(canvasObject)
       // canvas.forEachObject(function(obj) {
       //     if (obj.id && obj.id === monstrosAdicionados["Campanha1"][index][7]) {
       //         obj.set('active', true);
