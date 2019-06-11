@@ -770,6 +770,7 @@ function EditarPlayer(ctl) {
         if (todosPlayers[index][44] != "") { $("#TextareaEquip").val(todosPlayers[index][44]); }
         if (todosPlayers[index][45] != "") {
           $("#inputcolor").css("background-color",todosPlayers[index][45]);
+          $("#inputcolor").css("border-color", "rgba(0, 0, 0, 0.42)");
           $("#inputcolor").val(todosPlayers[index][45]);
         }
       }

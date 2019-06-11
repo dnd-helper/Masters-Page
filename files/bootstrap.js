@@ -2794,9 +2794,9 @@ if (typeof jQuery === 'undefined') {
   var clickHandler = function (e) {
     e.preventDefault()
     Plugin.call($(this), 'show')
-    setTimeout(function (){
-      hot.render();
-    }, 200);
+    // setTimeout(function (){
+    //   hot.render();
+    // }, 200);
   }
 
   $(document)

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html style="overflow: hidden;">
+  <head>
+    <!-- <title>Random Dungeon Generator v1.0.3</title> -->
+
+    <link rel="stylesheet" type="text/css" href="https://dnd-helper.github.io/Masters-Page/css/own.css">
+    <link rel="stylesheet" type="text/css" href="https://dnd-helper.github.io/Masters-Page/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://dnd-helper.github.io/Masters-Page/css/core.css">
+    <link rel="stylesheet" type="text/css" href="https://dnd-helper.github.io/Masters-Page/css/styles-extended.css">
+    <script src="prototype.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://dnd-helper.github.io/Masters-Page/files/jquery-3.3.1.js"></script>
+
+    <script type="text/javascript">
+      jQuery.noConflict();
+      if (Prototype.BrowserFeatures.ElementExtensions) {
+          var disablePrototypeJS = function (method, pluginsToDisable) {
+                  var handler = function (event) {
+                      event.target[method] = undefined;
+                      setTimeout(function () {
+                          delete event.target[method];
+                      }, 0);
+                  };
+                  pluginsToDisable.each(function (plugin) {
+                      jQuery(window).on(method + '.bs.' + plugin, handler);
+                  });
+              },
+              pluginsToDisable = ['collapse', 'dropdown', 'modal', 'tooltip', 'popover'];
+          disablePrototypeJS('show', pluginsToDisable);
+          disablePrototypeJS('hide', pluginsToDisable);
+      }
+      jQuery(document).ready(function ($) {
+          $('.bs-example-tooltips').children().each(function () {
+              $(this).tooltip();
+          });
+          $('.bs-example-popovers').children().each(function () {
+                  $(this).popover();
+          });
+      });
+    </script>
+    <style media="screen">
+      .custom-select{
+        display: inline-block;
+        width: 100%;
+        padding: .375rem 1.75rem .375rem .75rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        vertical-align: middle;
+        background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+        background-color: rgba(0, 0, 0, 0);
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        height: calc(1.5em + .5rem + 2px);
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+        font-size: 1.1rem;
+      }
+    </style>
+
+</head>
+<body style="background-color: white;">
+
+
+<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true" style="margin-bottom: 0px; overflow: hidden">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne3">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+          Configurações
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne3">
+      <div class="panel-body" style="padding: 6px" >
+
+        <form method="get" onsubmit="return false;" style="flex-wrap: wrap;display: inline-flex;">
+          <!-- <h1>Random Dungeon Generator</h1> -->
+          <table id="form" class="center">
+            <tr>
+              <ul class="" style="width: 100%;flex-wrap: wrap; margin: 0;padding-right: 0px;">
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;"">Tamanho da Sala Inicial</label>
+                <input class="custom-select" id="dungeon_name" style="width: 79%;" /> &nbsp;
+                <input class="btn btn-primary btn-sm" style="width:19%" type="button" id="new_name" value="New" />
+              </ul>
+              <ul class="" style="width: 33.3%;flex-wrap: wrap; margin: 0;padding-right: 0px;padding-bottom: 10px;padding-right: 5px;">
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Estilo do Mapa</label>
+                <select class="custom-select" id="map_style"></select>
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Tipo de Grid</label>
+                <select class="custom-select" id="grid"></select>
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Layout da Dungeon</label>
+                <select class="custom-select" id="dungeon_layout"></select>
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Tamanho da Dungeon</label>
+                <select class="custom-select" id="dungeon_size"></select>
+              </ul>
+              <ul class="" style="width: 33.3%;flex-wrap: wrap; margin: 0;padding-right: 0px;padding-bottom: 10px;padding-right: 5px;">
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Adicionar Escadas</label>
+                <select class="custom-select" id="add_stairs"></select>
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Layout das Salas</label>
+                <select class="custom-select" id="room_layout"></select>
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Tamanho das Salas</label>
+                <select class="custom-select" id="room_size"></select>
+                <label for="" style="margin-bottom: 0px; margin-top: 10px;line-height: initial;"></label>
+                <input type="button" class="btn btn-primary btn-sm" style="width:100%" value="Save as PNG" onclick="save_map();" />
+
+              </ul>
+              <ul class="" style="width: 33.3%;flex-wrap: wrap; margin: 0;padding-right: 0px;padding-bottom: 10px;padding-right: 5px;">
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Portas Especiais</label>
+                <select class="custom-select" id="doors"></select>
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Layout dos Corredores</label>
+                <select class="custom-select" id="corridor_layout"></select>
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Remover Caminhos sem Saída</label>
+                <select class="custom-select" id="remove_deadends"></select>
+                <label for="" style="margin-bottom: 0px; margin-top: 10px;line-height: initial;"></label>
+                <input type="button" class="btn btn-primary btn-sm" style="width:100%" value="Print" onclick="window.print();" />
+              </ul>
+            </tr>
+            <!-- <tr>
+              <td colspan="6" class="center" style="background: #dedede;">
+              </td>
+            </tr> -->
+          </table>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo3">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3" aria-expanded="true" aria-controls="collapseTwo3">
+          Mapa da Dungeon
+        </a>
+      </h4>
+    </div>
+
+    <div id="collapseTwo3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo3" style="overflow: auto; max-height: calc(90vh - 68px); margin-top: 52px;" aria-expanded="true">
+      <div class="panel-body" style="text-align: center;margin-top: 0px;">
+        <div class="" style="flex-wrap: wrap;display: flex;position: fixed;width: calc(100% - 2px);background-color: #fff;padding-left: -15px;margin-left: -15px;margin-top: -68px;padding-top: 15px;padding-right: 15px;border: 1px rgb(221, 221, 221);border-bottom-width: 1px;border-bottom-style: solid;">
+          <h1 style="width: 84%; font-weight: bold;margin-left: 8%;" id="dungeon_title" class="title">The Barrow of Arcane Horror</h1>
+          <div style="width: 16%; margin-left: -8%;" class="">
+            <button onclick="botaoMais(this)" style="width: 31%;font-weight: bold;font-size: 17px !important;margin-top: -7px;margin-bottom: 7px;" class="btn btn-primary btn-sm" type="button" name="button">+</button>
+            <button onclick="botaoMenos(this)" style="width: 31%;font-weight: bold;font-size: 17px !important;margin-top: -7px;margin-bottom: 7px;" class="btn btn-primary btn-sm" type="button" name="button">-</button>
+            <button onclick="botaoMenosMenos(this)" style="width: 31%;font-weight: bold;font-size: 17px !important;margin-top: -7px;margin-bottom: 7px;" class="btn btn-primary btn-sm" type="button" name="button">--</button>
+
+          </div>
+        </div>
+        <canvas id="map" style="max-width: 100%; max-height: 100%" width="1027" height="1027"><p>Your web browser does not appear to support the HTML5 &lt;canvas&gt; element.</p></canvas><br>
+        <img src="observations.gif" alt="">
+      </div>
+    </div>
+
+    <!-- <div id="collapseTwo3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo3" style="overflow: auto;max-height: 88vh;">
+      <div class="panel-body" style="text-align: center;">
+        <div class="" style="flex-wrap: wrap;display: flex;position: fixed;width: 100%;background-color: #fff;padding-left: -15px;margin-left: -15px;margin-top: -16px;padding-top: 15px;padding-right: 15px;">
+          <h1 style="width: 90%" id="dungeon_title" class="title">The Barrow of Arcane Horror</h1>
+          <button onclick="botaoMais(this)" style="width: 5%;font-weight: bold;font-size: 17px !important;" class="btn btn-primary btn-sm" type="button" name="button">+</button>
+          <button onclick="botaoMenos(this)" style="width: 5%;font-weight: bold;font-size: 17px !important;" class="btn btn-primary btn-sm" type="button" name="button">-</button>
+          <button onclick="botaoMenosMenos(this)" style="width: 5%;font-weight: bold;font-size: 17px !important;" class="btn btn-primary btn-sm" type="button" name="button">--</button>
+        </div>
+        <div class="" style="flex-wrap: wrap;display: flex;">
+          <h1 style="width: 85%" id="dungeon_title" class="title"></h1>
+          <button onclick="botaoMais(this)" style="width: 5%;font-weight: bold;font-size: 17px !important;" class="btn btn-primary btn-sm" type="button" name="button">+</button>
+          <button onclick="botaoMenos(this)" style="width: 5%;font-weight: bold;font-size: 17px !important;" class="btn btn-primary btn-sm" type="button" name="button">-</button>
+          <button onclick="botaoMenosMenos(this)" style="width: 5%;font-weight: bold;font-size: 17px !important;" class="btn btn-primary btn-sm" type="button" name="button">--</button>
+        </div>
+        <canvas id="map" style="max-width: 100%; max-height: 100%"><p>Your web browser does not appear to support the HTML5 &lt;canvas&gt; element.</p></canvas><br>
+        <img src="observations.gif" alt="">
+      </div>
+    </div> -->
+    <script type="text/javascript">
+      function botaoMais(ctl) {
+        document.getElementById("map").style.maxHeight = ""
+        document.getElementById("map").style.maxWidth = ""
+      }
+      function botaoMenos(ctl) {
+        document.getElementById("map").style.maxHeight = ""
+        document.getElementById("map").style.maxWidth = "100%"
+      }
+      function botaoMenosMenos(ctl) {
+        document.getElementById("map").style.maxWidth = ""
+        document.getElementById("map").style.maxHeight = "calc(70vh - 16px)"
+      }
+      $(document).ready( function() {
+
+      //   $(document).on("click", "#botaoMais", function() {$("#map").attr("style", "max-height: 100%")});
+      //   $(document).on("click", "#botaoMenos", function() {$("#map").attr("style", "max-width: 100%; max-height: 100%")});
+      })
+    </script>
+  </div>
+</div>
+<script src="prng.js" charset="utf-8"></script>
+<script src="dice.js" charset="utf-8"></script>
+<script src="generator.js" charset="utf-8"></script>
+<script src="name.js" charset="utf-8"></script>
+<script src="gen_data.js" charset="utf-8"></script>
+<script src="name_set.js" charset="utf-8"></script>
+<script src="canvas.js" charset="utf-8"></script>
+<script src="dungeon.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://dnd-helper.github.io/Masters-Page/files/bootstrap.js"></script>
+
+</body>
+</html>

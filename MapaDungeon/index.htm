@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en" class="js js csstransitions">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- <script src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.pt_BR.AwqMkAGOHxo.O/m=client/rt=j/sv=1/d=1/ed=1/am=wQE/rs=AGLTcCNMKDh-U-CCiGRaByxqmdifFvpnXw/cb=gapi.loaded_0" async=""></script> -->
+  <meta name="" content="">
+	<title>Random Dungeon Generator Launcher - v 0.1.12 beta</title>
+	<!-- <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script language="JavaScript1.2">
+
+
+	var NS = (document.layers) ? 1 : 0;
+	var NS6 = (document.getElementById) ? 1 : 0;
+	var IE = (document.all) ? 1 : 0;
+
+	var browser = navigator.appName;
+	var version = navigator.appVersion;
+	var bVer = browser + " " + version;
+
+	var xFilter = 1;
+	var xSeed = "";
+	var xSeed2 = "";
+
+	function loadData() {
+		var seedvalue = document.form1.load.value;
+
+		if (seedvalue != null && seedvalue != "") {
+			var data = seedvalue.split(',');
+			for (i = 0; (i < data.length); i++) {
+			    data[i] = unescape(data[i]);
+			}
+			document.form1.halllength.value = data[0];
+			document.form1.dungeonrooms.value = data[1] ;
+			document.form1.hallways.value = data[2] ;
+			document.form1.size.value = data[3] ;
+			document.form1.exits.value = data[4] ;
+			document.form1.secretdoors.value = data[5] ;
+			document.form1.portcullises.value = data[6] ;
+
+			document.form1.skin.value = data[7] ;
+			document.form1.startroomtype.value = data[8] ;
+			document.form1.startexits.value = data[9] ;
+			document.form1.grid.value = data[10] ;
+			xSeed = data[11] ;
+			document.form1.level.value = data[12] ;
+			document.form1.map.value = data[13] ;
+			xSeed2 = data[14] ;
+			document.form1.details.value = data[15] ;
+			xFilter = data[16] ;
+			document.form1.theme.value = data[17] ;
+			xSrcdata = data[18]
+
+			if (xSrcdata.search(/C/i) >=0) { document.form1.corebooks.checked = 1 } else { document.form1.corebooks.checked = 0 };
+			if (xSrcdata.search(/2/i) >=0) { document.form1.mm2.checked = 1 } else { document.form1.mm2.checked = 0 };
+			if (xSrcdata.search(/3/i) >=0) { document.form1.mm3.checked = 1 } else { document.form1.mm3.checked = 0 };
+			if (xSrcdata.search(/4/i) >=0) { document.form1.mm4.checked = 1 } else { document.form1.mm4.checked = 0 };
+			if (xSrcdata.search(/F/i) >=0) { document.form1.ff.checked = 1 } else { document.form1.ff.checked = 0 };
+			if (xSrcdata.search(/X/i) >=0) { document.form1.xph.checked = 1 } else { document.form1.xph.checked = 0 };
+			if (xSrcdata.search(/P/i) >=0) { document.form1.cpsi.checked = 1 } else { document.form1.cpsi.checked = 0 };
+			if (xSrcdata.search(/H/i) >=0) { document.form1.fci.checked = 1 } else { document.form1.fci.checked = 0 };
+			if (xSrcdata.search(/L/i) >=0) { document.form1.lm.checked = 1 } else { document.form1.lm.checked = 0 };
+			if (xSrcdata.search(/A/i) >=0) { document.form1.ab.checked = 1 } else { document.form1.ab.checked = 0 };
+
+			document.form1.intro.value = data[19] ;
+			document.form1.features.value = data[20] ;
+			document.form1.traps.value = data[21] ;
+			document.form1.hooks.value = data[22] ;
+			document.form1.randenc.value = data[23] ;
+			document.form1.advseed.value = data[24] ;
+
+			alert("Save Value Loaded");
+			sendData()
+		}
+	}
+
+	function sendData() {
+
+		var data = new Array();
+		data[0] = document.form1.halllength.value;
+		data[1] = document.form1.dungeonrooms.value;
+		data[2] = document.form1.hallways.value;
+		data[3] = document.form1.size.value;
+		data[4] = document.form1.exits.value;
+		data[5] = document.form1.secretdoors.value;
+		data[6] = document.form1.portcullises.value;
+		data[7] = document.form1.skin.value;
+		data[8] = document.form1.startroomtype.value;
+		data[9] = document.form1.startexits.value;
+		data[10] = document.form1.grid.value;
+		data[11] = xSeed;
+		data[12] = document.form1.level.value;
+		data[13] = document.form1.map.value;
+		data[14] = xSeed2;
+		data[15] = document.form1.details.value;
+		data[16] = xFilter;
+		data[17] = document.form1.theme.value;
+
+		var srcdata = "";
+
+		if (document.form1.corebooks.checked == 1) { srcdata += document.form1.corebooks.value };
+		if (document.form1.mm2.checked == 1) { srcdata += document.form1.mm2.value };
+		if (document.form1.mm3.checked == 1) { srcdata += document.form1.mm3.value };
+		if (document.form1.mm4.checked == 1) { srcdata += document.form1.mm4.value };
+		if (document.form1.ff.checked == 1) { srcdata += document.form1.ff.value };
+		if (document.form1.xph.checked == 1) { srcdata += document.form1.xph.value };
+		if (document.form1.cpsi.checked == 1) { srcdata += document.form1.cpsi.value };
+		if (document.form1.fci.checked == 1) { srcdata += document.form1.fci.value };
+		if (document.form1.lm.checked == 1) { srcdata += document.form1.lm.value };
+		if (document.form1.ab.checked == 1) { srcdata += document.form1.ab.value };
+
+		data[18] = srcdata;
+
+		data[19] = document.form1.intro.value;
+		data[20] = document.form1.features.value;
+		data[21] = document.form1.traps.value;
+		data[22] = document.form1.hooks.value;
+		data[23] = document.form1.randenc.value;
+		data[24] = document.form1.advseed.value;
+
+		// alert (srcdata);
+
+		//corebooks
+		//mm2
+		//mm3
+		//mm4
+		//ff
+		//xph
+		//cpsi
+		//fci
+		//lm
+
+	  // Initialize packed or we get the word 'undefined'
+	  var packed = "";
+	  for (i = 0; (i < data.length); i++) {
+	    if (i > 0) {
+	      packed += ",";
+	    }
+	    packed += escape(data[i]);
+	  }
+		//alert("mapper.htm?" + packed);
+		//  window.location = "mapper.htm?" + packed;
+		pagedisp = "<a id=\"" + packed + "\"><b id=\"ButtonIframe\">GENERATE</b></a>";
+    alert(pagedisp)
+    alert(data)
+
+		display("generate", pagedisp);
+	}
+
+
+	// =======================================================
+
+	function display(id, str) {
+	  if (NS) {
+	    with (document[id].document) {
+		  open();
+	      write(str);
+	      close();
+	    }
+	  } else if (NS6) {
+	    document.getElementById(id).innerHTML = str;
+	  }	else {
+	    document.all[id].innerHTML = str;
+	  }
+	}
+</script>
+
+<style type="text/css">
+	.bodytext {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-decoration: none; color: #000000}
+	.bodytext2 {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none; color: #000000}
+  select { width: 100%}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+</head>
+
+<body bgcolor="#FFFFFF" style="display: flex;">
+	<form method="post" action="" name="form1">
+
+	  <!-- <table width="700" cellspacing="0" cellpadding="0" border="0">
+	    <tbody>
+				<tr>
+		      <td valign="top"> -->
+					  <!-- <table width="350" cellspacing="2" cellpadding="2" border="0" bgcolor="#ededed">
+					    <tbody> -->
+
+								<!-- <tr> -->
+						      <td class="bodytext" colspan="2"><b>Configurações da Dungeon</b></td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Tamanho da Sala Inicial</td>
+						      <td>
+						        <select name="startroomtype" size="1" onchange="sendData();">
+						          <option value="0">Teste Special 1</option>
+						          <option value="1">Teste Special 2</option>
+						          <option value="2">Teste Special 3</option>
+						          <option value="3">Random - Pequena</option>
+						          <option value="4" selected="selected">Random - Média</option>
+						          <option value="5">Random - Grande</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Saidas da Sala Inicial</td>
+						      <td>
+						        <select name="startexits" size="1" onchange="sendData();">
+						          <option value="10">33% Cada Parede</option>
+						          <option value="8">50% Cada Parede</option>
+						          <option value="6">66% Cada Parede</option>
+						          <option value="4" selected="selected">100% Cada Parede</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Tamanho das Salas da Dungeon</td>
+						      <td>
+						        <select name="dungeonrooms" size="1" onchange="sendData();">
+						          <option value="4">Pequena</option>
+						          <option value="6" selected="selected">Média</option>
+						          <option value="8">Grande</option>
+                      <option value="10">Gigante</option>
+                      <option value="13">Colossal</option>
+						          <option value="16">Gargantuan</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Comprimento do Corredor</td>
+						      <td>
+						        <select name="halllength" size="1" onchange="sendData();">
+						          <option value="4">Curto</option>
+						          <option value="6">Médio</option>
+                      <option value="8" selected="selected">Longo</option>
+						          <option value="10">Muito Longo</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Relação Corredor x Salas</td>
+						      <td>
+						        <select name="hallways" size="1" onchange="sendData();">
+                      <option value="90">Muito Mais Corredores</option>
+						          <option value="75" selected="selected">Mais Corredores</option>
+						          <option value="50">Meio a Meio</option>
+						          <option value="25">Mais Salas</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Tamanho da Dungeon</td>
+						      <td>
+						        <select name="size" size="1" onchange="sendData();">
+						          <option value="1">Minúscula</option>
+						          <option value="2">Pequena</option>
+						          <option value="3" selected="selected">Média</option>
+						          <option value="4">Grande</option>
+                      <option value="5">Gigante</option>
+                      <option value="6">Enorme</option>
+                      <option value="7">Colossal</option>
+						          <option value="8">Gargantuan</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Saidas das Salas</td>
+						      <td>
+						        <select name="exits" size="1" onchange="sendData();">
+						          <option value="8">Poucas</option>
+						          <option value="6" selected="selected">Normal</option>
+						          <option value="4">Muitas</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">- Portas Secretas</td>
+						      <td>
+						        <select name="secretdoors" size="1" onchange="sendData();">
+						          <option value="0">Nenhuma</option>
+						          <option value="1" selected="selected">Algumas</option>
+						          <option value="2">Muitas</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">- Portões</td>
+						      <td>
+						        <select name="portcullises" size="1" onchange="sendData();">
+						          <option value="0" selected="selected">Nenhum</option>
+						          <option value="1">Alguns</option>
+						          <option value="2">Muitos</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Esquema de Cores</td>
+						      <td>
+						        <select name="skin" size="1" onchange="sendData();">
+						          <option value="0" selected="selected">Preto &amp; Branco</option>
+						          <option value="1">Colorida</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Grid (5 foot lines)</td>
+						      <td>
+						        <select name="grid" size="1" onchange="sendData();">
+						          <option value="0" selected="selected">ON</option>
+						          <option value="1">OFF</option>
+						        </select>
+						      </td>
+						    <!-- </tr>
+						    <tr> -->
+						      <td class="bodytext" width="150">Mapa/Aventura</td>
+						      <td>
+						        <select name="map" size="1" onchange="sendData();">
+						          <option value="0">Mapa Somente</option>
+						          <option value="1" selected="selected">Mapa e Aventura</option>
+						        </select>
+						      </td>
+						    <!-- </tr> -->
+						  <!-- </tbody>
+						</table> -->
+					  <table width="350" cellspacing="2" cellpadding="2" border="0" bgcolor="#ecf4ff">
+					    <tbody>
+								<tr>
+						      <td class="bodytext" colspan="2"><b>Configurações da Aventura</b></td>
+						    </tr>
+						    <tr>
+						      <td class="bodytext" width="150">Nivel da Dungeon</td>
+						      <td>
+						        <select name="level" size="1" onchange="sendData();">
+						          <option value="1">1</option>
+						          <option value="2">2</option>
+						          <option value="3" selected="selected">3</option>
+						          <option value="4">4</option>
+						          <option value="5">5</option>
+						          <option value="6">6</option>
+						          <option value="7">7</option>
+						          <option value="8">8</option>
+						          <option value="9">9</option>
+						          <option value="10">10</option>
+						          <option value="11">11</option>
+						          <option value="12">12</option>
+						          <option value="13">13</option>
+						          <option value="14">14</option>
+						          <option value="15">15</option>
+						          <option value="16">16</option>
+						          <option value="17">17</option>
+						          <option value="18">18</option>
+						          <option value="19">19</option>
+						          <option value="20">20</option>
+						        </select>
+						      </td>
+						    </tr>
+						    <tr>
+						      <td class="bodytext" width="150">Tema</td>
+						      <td>
+						        <select name="theme" size="1" onchange="sendData();">
+						          <option value="A" selected="selected">Generic</option>
+						          <option value="C">Crypt</option>
+						          <option value="S">Sewer</option>
+						        </select>
+						      </td>
+						    </tr>
+						    <tr>
+						      <td class="bodytext" width="150">DM Details</td>
+						      <td>
+						        <select name="details" size="1" onchange="sendData();">
+						          <option value="0" selected="selected">ON</option>
+						          <option value="1">OFF</option>
+						        </select>
+						      </td>
+						    </tr>
+
+						    <tr>
+						      <td class="bodytext" width="150">Intro Text</td>
+						      <td>
+						        <select name="intro" size="1" onchange="sendData();">
+						          <option value="0" selected="selected">ON</option>
+						          <option value="1">OFF</option>
+						        </select>
+						      </td>
+						    </tr>
+						    <tr>
+						      <td class="bodytext" width="150">Features Text</td>
+						      <td>
+						        <select name="features" size="1" onchange="sendData();">
+						          <option value="0" selected="selected">ON</option>
+						          <option value="1">OFF</option>
+						        </select>
+						      </td>
+						    </tr>
+						    <tr>
+						      <td class="bodytext" width="150">Wandering Monsters</td>
+						      <td>
+						        <select name="randenc" size="1" onchange="sendData();">
+						          <option value="0" selected="selected">ON</option>
+						          <option value="1">OFF</option>
+						        </select>
+						      </td>
+						    </tr>
+						    <tr>
+						      <td class="bodytext" width="150">Trap Summary</td>
+						      <td>
+						        <select name="traps" size="1" onchange="sendData();">
+						          <option value="0" selected="selected">ON</option>
+						          <option value="1">OFF</option>
+						        </select>
+						      </td>
+						    </tr>
+							<tr>
+					      <td class="bodytext" width="150">Simple Adventure Hooks</td>
+					      <td>
+					        <select name="hooks" size="1" onchange="sendData();">
+					          <option value="0">None</option>
+					          <option value="1">1</option>
+					          <option value="2">2</option>
+					          <option value="3" selected="selected">3</option>
+					          <option value="4">4</option>
+					          <option value="5">5</option>
+					        </select>
+					      </td>
+						  </tbody>
+						</table>
+		 			<!-- </td>
+		 			<td valign="top"> -->
+					  <table width="350" cellspacing="2" cellpadding="2" border="0" bgcolor="#fff2f2">
+					    <tbody>
+								<tr>
+						      <td class="bodytext" colspan="2"><b>Monster Sources</b></td>
+						    </tr>
+					 			<tr>
+						      <td width="40" align="right">
+										<input type="checkbox" name="corebooks" value="C" onclick="sendData();" checked="checked">
+						      </td>
+					      	<td class="bodytext">Core Books (DMG, PHB, MM)</td>
+					    	</tr>
+							 	<tr>
+						      <td width="40" align="right">
+										<input type="checkbox" name="mm2" onclick="sendData();" value="2">
+						      </td>
+						      <td class="bodytext">Monster Manual II</td>
+						    </tr>
+					 			<tr>
+					      	<td width="40" align="right">
+										<input type="checkbox" name="mm3" onclick="sendData();" value="3">
+					      	</td>
+					      	<td class="bodytext">Monster Manual III</td>
+					    	</tr>
+						 		<tr>
+						    	<td width="40" align="right">
+										<input type="checkbox" name="mm4" onclick="sendData();" value="4">
+						      </td>
+						      <td class="bodytext">Monster Manual IV</td>
+						    </tr>
+						 		<tr>
+					      	<td width="40" align="right">
+										<input type="checkbox" name="ff" onclick="sendData();" value="F">
+						      </td>
+						      <td class="bodytext">Fiend Folio</td>
+						    </tr>
+						 		<tr>
+						      <td width="40" align="right">
+										<input type="checkbox" name="xph" onclick="sendData();" value="X">
+						      </td>
+						      <td class="bodytext">Expanded Psionics Handbook</td>
+						    </tr>
+						 		<tr>
+						      <td width="40" align="right">
+										<input type="checkbox" name="cpsi" onclick="sendData();" value="P">
+						      </td>
+						      <td class="bodytext">Complete Psionic</td>
+						    </tr>
+						 		<tr>
+						      <td width="40" align="right">
+										<input type="checkbox" name="fci" onclick="sendData();" value="H">
+						      </td>
+						      <td class="bodytext">Fiendish Codex I: Hordes of the Abyss</td>
+						    </tr>
+						 		<tr>
+						      <td width="40" align="right">
+										<input type="checkbox" name="lm" onclick="sendData();" value="L">
+						      </td>
+						      <td class="bodytext">Libris Mortis</td>
+						    </tr>
+						 		<tr>
+						      <td width="40" align="right">
+										<input type="checkbox" name="ab" onclick="sendData();" value="A">
+						      </td>
+						      <td class="bodytext">Lords of Madness</td>
+						    </tr>
+						  </tbody>
+						</table>
+		  			<table width="350" cellspacing="2" cellpadding="2" border="0" bgcolor="#ffffbb">
+				      <tbody>
+								<tr>
+				      		<td class="bodytext" colspan="2"><b>Adventure Seeds</b></td>
+				    		</tr>
+				 				<tr>
+				      		<td class="bodytext" width="100">Seed Title</td>
+					      	<td>
+						        <select name="advseed" size="1" onchange="sendData();">
+						          <option value="0" selected="selected">None</option>
+						          <option value="1">Lair of the Mad Alchemist</option>
+						          <option value="2">The Monastary Cellar</option>
+						        </select>
+					      	</td>
+				    		</tr>
+				      	<tr>
+				      		<td class="bodytext" colspan="2"><b>This section is not fully implemented.</b></td>
+				    		</tr>
+				  		</tbody>
+						</table>
+		  		<!-- </td>
+		  	</tr>
+		  </tbody>
+		</table> -->
+
+	  <table width="350" cellspacing="2" cellpadding="2" border="0">
+	    <tbody>
+				<tr>
+	      	<td class="bodytext">Load Value</td>
+	      	<td>
+	 					<input type="text" name="load" size="30" maxlength="100" onchange="loadData();"> <a href="javascript:loadData();"><b>Load</b></a>
+	      	</td>
+	    	</tr>
+	    	<tr>
+	      	<td colspan="2" align="center">
+            <div id="generate">
+              <a href="#" id="6,6,50,3,6,1,0,0,4,4,0,,3,1,,0,1,A,C,0,0,0,3,0,0">
+                <b>GENERATE</b>
+              </a>
+            </div>
+          </td>
+	    	</tr>
+	  	</tbody>
+		</table>
+
+    <script type="text/javascript">
+      $(document).on("click", "#ButtonIframe", function() {
+        var value = "mapper.htm?" + $("#generate").children("a").attr("id");
+        // alert("O Link é "+value)
+        $("#IframeMapLoad").attr("src", value)
+      })
+    </script>
+  </form>
+
+	<div id="update" style="position: relative; width:100%; height: 97vh; overflow-y: auto; border-width: 1px; border-color: #000000; border-style: solid; z-index: 1;">
+    <iframe id="IframeMapLoad" src="" width="99%" height="99%"></iframe>
+
+
+  	<!-- <table cellspacing="2" cellpadding="2" border="0">
+			<tbody>
+				<tr>
+					<td class="bodytext2">
+						<b>0.1.12 Beta</b><br>
+						- Added the beginings of the adventure seed system (still not functional).<br>
+						- Added 40 new room descriptions, mostly for the two smallest room sizes.<br>
+						- Added wandering monster chart generator.<br>- Added wandering monster generator on/off toggle.<br>
+						- Added "dungeon features" text to the intro area.<br>
+						- Added a very simple adventure hook generator that can generate up to 5 hooks (appears after the adventure text).<br>
+						- Added on/off toggle for Intro Text (including features)<br>
+						- Added on/off toggle for Dungeon features (only)<br>
+						- Added on/off toggle for the Trap Summary.<br>
+						- Added a adventure hook selector so that you can select to generate from 0 to 5 adventure hooks.<br><br><b>0.1.11 Beta</b><br>
+						- Added some adventure intro and DM prep text (this will be expanded in future versions).<br>
+						- Added some new art pieces (from the wizards.com message boards) to the treasure generation system.<br>
+						- Added monsters from Monster Manual 2, Monster Manual 3, Monster Manual 4, Expanded Psionics Handbook, Complete Psionic, Fiend Folio, Lords of Madness, Fiendish Codex I: Hordes of the Abyss, and Libris Mortis to the monster generation system.<br>
+						<br>
+						<b>0.1.10 Beta</b><br>
+						- Enough changes were made to cause old saves not to work with this version.<br>
+						- Added selector drop downs for secret doors and portcullises to the launcher. None=0%, Some=5% More=10% chance.<br>
+						- Added secret doors, both regular 75% and well-hidden 25%.<br>
+						- Added portcullises, both wooden 25% and iron 75%.<br>
+						- Minor cosmetic change, monster names now display bolded to better match published adventures.<br>
+						- Added a "Total Value" line for treasure.<br>
+						- Added formating to gp treasure values so that commas are in the proper spots. For instance 10000 is properly formated as 10,000 etc.<br>
+						<br>
+						<b>0.1.9 Beta</b><br>
+						- Hidden treasure generation added. Mundane and Magic Items not yet implemented.<br>
+						- Room traps added.<br>
+						- Trap descriptions moved to a trap summary at the end of the adventure.<br>
+						- Room features added.<br>
+						- Support for dungeon themes added. Nothing has yet been flagged for Crypt or Sewer so use Generic(All) for now.<br>
+						-
+						 Support for different source books added. Core monsters implemented and
+						 a single MM IV monster at dungeon level 6 has been added. We are
+						currently compiling the data for the other source books that are listed
+						with more to follow.<br>
+						- Launcher updated to reflect these additions. Old saves will no longer work in this version.<br>
+						-
+						 Launch date of Aug 11th has been selected for this generator so I will
+						be working on it a little more often to get it ready for launch.<br><br><b>0.1.8 Beta</b><br>
+						-
+						 Added an on/off toggle for DM details. This lets you turn on and off
+						the additional info such as door HP or monster source info. This is for
+						DMs that are mostly interested in the basic info and can do the heavy
+						lifting on their own.<br>
+						- Changed door description display slightly to make it more readable<br>
+						-
+						 Monsters have been implemented. This was a very large task and I had to
+						 type alot of data into a spreadsheet for this. The charts don't match
+						the ones in the DMG 100 percent but they are very close. One monster
+						from the Monster Manual IV has been added and more will be added soon.<br><br><b>0.1.7 Beta</b><br>
+						-
+						 Started work on the room contents (Monster, features, hidden treasure,
+						and traps) section of the generator. This is at a very early stage.<br>
+						- Added all traps from all three tables in the DMG (CR 1-10).<br>
+						-
+						 Changed the CR selector to Dungeon Level selector to match the random
+						tables in the DMG. Max CR for traps will be half of the dungeon level.
+						The trap tables for the appropriate CR and two CR below max will be used
+						 for random generation.<br>
+						- Added a rather simple map compass. Rather
+						than force it into the map before the rooms are  generated I decided to
+						let the generator check the corners of the map to see if that space is
+						empty and place the compass in an empty corner. If none of the corners
+						end up empty there will be no compass. This shouldn't happen that often
+						if ever.<br>
+						- Added a selector to allow you to generate just a map with no adventure or a map plus an adventure.<br>
+						-
+						 Added a second save/load value that lets you save only the map without
+						the adventure. This will allow you to load a map and generate several
+						different adventures for that same map.<br>
+						- Added links at the bottom
+						of the mapper page that will allow you to generate an adventure (or new
+						adventure) for the currently displayed map.<br>
+						- Copyright notice has been added to the launcher and mapper.<br><br><b>0.1.6 Beta</b><br>
+						- Completely re-coded how room descriptions are handled to get rid of several bugs.<br>
+						- Corrected the break DC of doors.<br>
+						- Added door traps (CR 1-3).<br>
+						- Added CR selection to the launcher (1-3 only so far) this will cause all old saves to be unusable.<br>
+						- Changed hallways door code to remove all doors that aren't connected to a room.<br><br><b>0.1.5 Beta</b><br>
+						- Added door descriptions however I didn't yet add trap information. I need to implement CR value selection at the same time.<br>
+						- Added a shaded box to the description text.<br>
+						-
+						 Changed settings on the launcher (combined random start room size with
+						start room type) this will unfortunately cause an existing saved
+						dungeons to not build correctly ... I have a feeling this will happen a
+						few more times before were done -- sorry.<br>
+						- Added code to prevent a
+						room description from being generated more than once, however
+						occasionally XXX will appear as a description, I am not certain why this
+						 is happening yet.<br>
+						- Removed seed box from launcher and added an alert that tells you when you have successfully loaded a dungeon.<br><br><b>0.1.4 Beta</b><br>
+						- Changed room description code to make it expandable and still allow the save/load feature to work.<br>
+						- Changed how the mapper renders the thatch layer to accomodate special tiles.<br>
+						- Changed how the mapper identifies where to place walls to accomodate special tiles.<br>
+						- Added some special tiles to the sample special starting rooms 1 and 2. <br>
+						- Fixed a few typos that were causing the starting room size to be incorrect.<br>
+						- Changed how the save/load value is displayed (in a form box) to make it easier to copy and paste.<br><br><b>0.1.3 Beta</b><br>
+						-
+						 Changed wall and corner display to a single layer (1200 images) instead
+						 of eight (9600 images) which should greatly decrease the time to render
+						 the map.<br>
+						- Added 5 foot line ON/OFF toggle. This required a change
+						in the way data is passed between the launcher and the mapper so maps
+						you have previously saved will not work unless you add ,0 before the
+						last value (the seed value) for example 6,6,50,3,6,0,3,4(add ,0
+						here),1144262546356<br><br><b>0.1.2 Beta</b><br>
+						- Added a save/load
+						feature. After generating a map there will be a save value at the
+						bottom. Simply copy and paste that value into a document (like a .txt
+						file) and save it. You just need to paste it in the launcher load spot
+						and press Load followed by Generate and it will create the exact same
+						dungeon.<br>
+						- Random number code rewritten.<br>
+						- Some hallways and door code cleaned up.
+						<br><br><b>0.1.1 Beta</b><br>
+						- Changed hallways exit code to be more consistent.<br>
+						- Hallway doors can now (50%) be a door or be removed. Room doors unaffected.<br>
+						- Start room exit code brought in line with hallway exits code.<br>
+						- Start room door percentage now selectable.<br>
+						- Maps should no longer overflow the edge of the available map area.<br>
+						- It's really only cosmetic but I got the corner black pixel working for walls.<br>
+						- Seperated some of the room descriptions to better match room size.<br><br><b>0.1.0 Beta</b><br>
+						- Beta opened for select wizards community volunteers.
+					</td>
+				</tr>
+			</tbody>
+		</table> -->
+	</div>
+	<br>
+	<br>
+	<table style="display: none" width="700" cellspacing="3" cellpadding="3" border="0">
+		<tbody>
+			<tr>
+				<td align="center"> � 2006 Wizards of the Coast, Inc., a subsidiary of Hasbro, Inc. All Rights Reserved.<br>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+		sendData();
+	</script>
+
+
+	<script id="f5_cspm">
+		(function(){var f5_cspm={f5_p:'IHDBHLACPAMFIPAIMPOAEMDHJIDCIDFAEPMAGICLDPECCAEFJDIPIIKOFKKLOBGHEHIOCIAMKNBBKIGCOFHCBKKMALHAAFIKAAHELJPNJEBMFBGNAAIBLAPAHLEPNMDL',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,48,(latency>>8));str=f5_cspm.set_byte(str,49,(latency&0xff));str=f5_cspm.set_byte(str,43,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avr1896477765aaaaaaaaaaaaaaaa='+encodeURIComponent(cookie_val)+';path=/';}
+		return;}}
+		catch(err){return;}
+		setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);
+			for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'&&pair[1]=='1234')
+		{var d=new Date();d.setTime(d.getTime()-1000);window.document.cookie='f5_cspm=;expires='+d.toUTCString()+';path=/;';setTimeout(f5_cspm.wait_perf_data,100);}}}}
+		f5_cspm.go();}());
+	</script>
+
+  <script type="text/javascript" src="bootstrap.js"></script>
+
+</body>
+</html>

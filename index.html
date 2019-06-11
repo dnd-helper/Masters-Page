@@ -57,6 +57,37 @@
 
   <script src="Encontro/Encontro.js"></script>
 
+  <!-- <script src="MapaDungeon/MapaDungeon.js"></script> -->
+  <!-- <script src="Dungeon2.0/prototype.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    jQuery.noConflict();
+    if (Prototype.BrowserFeatures.ElementExtensions) {
+        var disablePrototypeJS = function (method, pluginsToDisable) {
+                var handler = function (event) {
+                    event.target[method] = undefined;
+                    setTimeout(function () {
+                        delete event.target[method];
+                    }, 0);
+                };
+                pluginsToDisable.each(function (plugin) {
+                    jQuery(window).on(method + '.bs.' + plugin, handler);
+                });
+            },
+            pluginsToDisable = ['collapse', 'dropdown', 'modal', 'tooltip', 'popover'];
+        disablePrototypeJS('show', pluginsToDisable);
+        disablePrototypeJS('hide', pluginsToDisable);
+    }
+    jQuery(document).ready(function ($) {
+        $('.bs-example-tooltips').children().each(function () {
+            $(this).tooltip();
+        });
+        $('.bs-example-popovers').children().each(function () {
+                $(this).popover();
+        });
+    });
+  </script> -->
+
   <script type="text/javascript" src="files/core.js"></script>
 
   <!-- https://handsontable.com/docs/7.0.3/tutorial-introduction.html -->
@@ -138,6 +169,15 @@
   <script type="text/javascript" src="files/bootstrap.js"></script>
   <script type="text/javascript" src="dice.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@jaames/iro/dist/iro.min.js"></script>
+
+  <!-- <script src="Dungeon2.0/prng.js" charset="utf-8"></script> -->
+  <!-- <script src="Dungeon2.0/dice.js" charset="utf-8"></script> -->
+  <!-- <script src="Dungeon2.0/generator.js" charset="utf-8"></script> -->
+  <!-- <script src="Dungeon2.0/name.js" charset="utf-8"></script> -->
+  <!-- <script src="Dungeon2.0/gen_data.js" charset="utf-8"></script> -->
+  <!-- <script src="Dungeon2.0/name_set.js" charset="utf-8"></script> -->
+  <!-- <script src="Dungeon2.0/canvas.js" charset="utf-8"></script> -->
+  <!-- <script src="Dungeon2.0/dungeon.js" charset="utf-8"></script> -->
 
 </body>
 </html>
