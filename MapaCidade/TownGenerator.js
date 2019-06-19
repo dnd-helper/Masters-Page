@@ -8993,6 +8993,13 @@ com_watabou_towngenerator_StateManager.pushParams = function() {
 		}
 	}
 	var url = search1 != "" ? loc.href.split(search1).join(search2) : loc.href + search2;
+	// alert(url)
+
+	if ( window.location !== window.parent.location ) {
+	  window.parent.$("#linkCidade").attr("value",url);
+	} else {
+	  // The page is not in an iframe
+	}
 	window.history.replaceState({ size : com_watabou_towngenerator_StateManager.size, seed : com_watabou_towngenerator_StateManager.seed},"",url);
 };
 var com_watabou_towngenerator_building_Canal = function(course,smooth) {

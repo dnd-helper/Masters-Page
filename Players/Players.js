@@ -15,13 +15,13 @@ $(document).on('click', '#ConfirmaApagarPlayer', function() {
   var idParaApagar = $("#IDPlayer").val();
   var indice;
 
-  $.each(listaDePlayers["Campanha1"], function(index, value) {
-    if (idParaApagar == listaDePlayers["Campanha1"][index][0]) {
+  $.each(usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"], function(index, value) {
+    if (idParaApagar == usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][0]) {
       indice = index;
     }
   });
-  listaDePlayers["Campanha1"].splice(indice, 1);
-  alert(listaDePlayers["Campanha1"])
+  usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].splice(indice, 1);
+  // alert(usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"])
   $('#ModalRemoverPlayer').modal('hide');
   $('#ModalAdicionarPlayer').modal('hide');
   $('#'+idParaApagar+'CabecalhoButton').remove();
@@ -33,8 +33,8 @@ $(document).on('click', '#ConfirmaApagarPlayer', function() {
 $(document).on('click', '#novoPlayer', function() {
   $("#addPlayerModalDivContainer").empty();
   $("#addPlayerModalDivContainer").load('Players/AddPlayers.html div[id="addPlayerModalDiv"]', function() {
-    numPlayers = listaDePlayers["Campanha1"].length;
-    if (numPlayers > 0) { idUltimoPlayer = listaDePlayers["Campanha1"][numPlayers-1][0]; }
+    numPlayers = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].length;
+    if (numPlayers > 0) { idUltimoPlayer = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][numPlayers-1][0]; }
 
     if (idUltimoPlayer != 0) { $("#IDPlayer").val(eval(idUltimoPlayer)+1); }
     if (idUltimoPlayer == 0) { $("#IDPlayer").val(2019000001); }
@@ -45,16 +45,33 @@ $(document).on('click', '#NovaPericia', function() {
 
   var stringNovaPericia =
   "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-    +"<button type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;\">"
+    +"<button type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
       +"<b>Pericia</b>"
       +"<span class=\"caret\"></span>"
     +"</button>"
-    +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\">"
+    +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
+      +"<input onkeyup=\"filtrarEste(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
+      +"<li role=\"separator\" class=\"divider\"></li>"
       +"<li><a id=\"deleta\" href=\"#\">Deletar Perícia</a></li>"
       +"<li role=\"separator\" class=\"divider\"></li>"
-      +"<li><a href=\"#\">Another action</a></li>"
-      +"<li><a href=\"#\">Something else here</a></li>"
-      +"<li><a href=\"#\">Separated link</a></li>"
+      +"<li><a href=\"#\">Acrobacia</a></li>"
+      +"<li><a href=\"#\">Arcanismo</a></li>"
+      +"<li><a href=\"#\">Atletismo</a></li>"
+      +"<li><a href=\"#\">Atuação</a></li>"
+      +"<li><a href=\"#\">Blefar</a></li>"
+      +"<li><a href=\"#\">Furtividade</a></li>"
+      +"<li><a href=\"#\">História</a></li>"
+      +"<li><a href=\"#\">Intimidação</a></li>"
+      +"<li><a href=\"#\">Intução</a></li>"
+      +"<li><a href=\"#\">Investigação</a></li>"
+      +"<li><a href=\"#\">Lidar com Animais</a></li>"
+      +"<li><a href=\"#\">Medicina</a></li>"
+      +"<li><a href=\"#\">Natureza</a></li>"
+      +"<li><a href=\"#\">Percepção</a></li>"
+      +"<li><a href=\"#\">Persuasão</a></li>"
+      +"<li><a href=\"#\">Prestidigitação</a></li>"
+      +"<li><a href=\"#\">Religião</a></li>"
+      +"<li><a href=\"#\">Sobrevivência</a></li>"
     +"</ul>"
   +"</li>";
   $("#ulPericias").append(stringNovaPericia);
@@ -65,11 +82,13 @@ $(document).on('click', '#NovoItem', function() {
 
   var stringNovoItem =
   "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-    +"<button type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;\">"
+    +"<button type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
       +"<b>Item Mágico</b>"
       +"<span class=\"caret\"></span>"
     +"</button>"
-    +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\">"
+    +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
+      +"<input onkeyup=\"filtrarEste(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
+      +"<li role=\"separator\" class=\"divider\"></li>"
       +"<li><a id=\"deleta\" href=\"#\">Deletar Item</a></li>"
       +"<li role=\"separator\" class=\"divider\"></li>"
       +"<li><a href=\"#\">Another action</a></li>"
@@ -85,23 +104,384 @@ $(document).on('click', '#NovaMagia', function() {
 
   var stringNovaMagias =
   "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-    +"<button type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;\">"
+    +"<button type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
       +"<b>Magia</b>"
       +"<span class=\"caret\"></span>"
     +"</button>"
-    +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\">"
-      +"<li><a id=\"deleta\" href=\"#\">Deletar Item</a></li>"
+    +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
+      +"<input onkeyup=\"filtrarEste(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
       +"<li role=\"separator\" class=\"divider\"></li>"
-      +"<li><a href=\"#\">Another action</a></li>"
-      +"<li><a href=\"#\">Something else here</a></li>"
-      +"<li><a href=\"#\">Separated link</a></li>"
+      +"<li><a id=\"deleta\" href=\"#\">Deletar Magia</a></li>"
+      +"<li role=\"separator\" class=\"divider\"></li>"
+      +"<li><a href=\"#\">acalmar emoções</a></li>"
+      +"<li><a href=\"#\">adivinhação</a></li>"
+      +"<li><a href=\"#\">ajuda</a></li>"
+      +"<li><a href=\"#\">alarme</a></li>"
+      +"<li><a href=\"#\">aliado planar</a></li>"
+      +"<li><a href=\"#\">aljava veloz</a></li>"
+      +"<li><a href=\"#\">alterar forma</a></li>"
+      +"<li><a href=\"#\">alterar-se</a></li>"
+      +"<li><a href=\"#\">amizade animal</a></li>"
+      +"<li><a href=\"#\">amizade</a></li>"
+      +"<li><a href=\"#\">ampliar plantas</a></li>"
+      +"<li><a href=\"#\">âncora planar</a></li>"
+      +"<li><a href=\"#\">andar na água</a></li>"
+      +"<li><a href=\"#\">animar mortos</a></li>"
+      +"<li><a href=\"#\">animar objetos</a></li>"
+      +"<li><a href=\"#\">antipatia/simpatia</a></li>"
+      +"<li><a href=\"#\">aprimorar habilidade</a></li>"
+      +"<li><a href=\"#\">aprisionamento</a></li>"
+      +"<li><a href=\"#\">arca secreta de leomund</a></li>"
+      +"<li><a href=\"#\">área escorregadia</a></li>"
+      +"<li><a href=\"#\">arma elemental</a></li>"
+      +"<li><a href=\"#\">arma espiritual</a></li>"
+      +"<li><a href=\"#\">arma mágica</a></li>"
+      +"<li><a href=\"#\">armadura arcana</a></li>"
+      +"<li><a href=\"#\">armadura de agathys</a></li>"
+      +"<li><a href=\"#\">arrombar</a></li>"
+      +"<li><a href=\"#\">assassino fantasmagórico</a></li>"
+      +"<li><a href=\"#\">ataque certeiro</a></li>"
+      +"<li><a href=\"#\">ataque visual</a></li>"
+      +"<li><a href=\"#\">augúrio</a></li>"
+      +"<li><a href=\"#\">aumentar/reduzir</a></li>"
+      +"<li><a href=\"#\">aura de pureza</a></li>"
+      +"<li><a href=\"#\">aura de vida</a></li>"
+      +"<li><a href=\"#\">aura de vitalidade</a></li>"
+      +"<li><a href=\"#\">aura mágica de nystul</a></li>"
+      +"<li><a href=\"#\">aura sagrada</a></li>"
+      +"<li><a href=\"#\">auxílio divino</a></li>"
+      +"<li><a href=\"#\">banimento</a></li>"
+      +"<li><a href=\"#\">banquete dos heróis</a></li>"
+      +"<li><a href=\"#\">barreira de lâminas</a></li>"
+      +"<li><a href=\"#\">boca encantada</a></li>"
+      +"<li><a href=\"#\">bola de fogo controlável</a></li>"
+      +"<li><a href=\"#\">bola de fogo</a></li>"
+      +"<li><a href=\"#\">bom fruto</a></li>"
+      +"<li><a href=\"#\">bordão místico</a></li>"
+      +"<li><a href=\"#\">braços de hadar</a></li>"
+      +"<li><a href=\"#\">bruxaria</a></li>"
+      +"<li><a href=\"#\">bênção</a></li>"
+      +"<li><a href=\"#\">caminhar em árvores</a></li>"
+      +"<li><a href=\"#\">caminhar no vento</a></li>"
+      +"<li><a href=\"#\">campo antimagia</a></li>"
+      +"<li><a href=\"#\">carne para pedra</a></li>"
+      +"<li><a href=\"#\">cativar</a></li>"
+      +"<li><a href=\"#\">cegueira/surdez</a></li>"
+      +"<li><a href=\"#\">chama contínua</a></li>"
+      +"<li><a href=\"#\">chama sagrada</a></li>"
+      +"<li><a href=\"#\">chicote de espinhos</a></li>"
+      +"<li><a href=\"#\">chuva de meteoros</a></li>"
+      +"<li><a href=\"#\">clarividência</a></li>"
+      +"<li><a href=\"#\">clone</a></li>"
+      +"<li><a href=\"#\">coluna de chamas</a></li>"
+      +"<li><a href=\"#\">comando</a></li>"
+      +"<li><a href=\"#\">compreender idiomas</a></li>"
+      +"<li><a href=\"#\">compulsão</a></li>"
+      +"<li><a href=\"#\">comunhão com a natureza</a></li>"
+      +"<li><a href=\"#\">comunhão</a></li>"
+      +"<li><a href=\"#\">cone de frio</a></li>"
+      +"<li><a href=\"#\">confusão</a></li>"
+      +"<li><a href=\"#\">conhecimento lendário</a></li>"
+      +"<li><a href=\"#\">conjurar animais</a></li>"
+      +"<li><a href=\"#\">conjurar celestial</a></li>"
+      +"<li><a href=\"#\">conjurar elementais menores</a></li>"
+      +"<li><a href=\"#\">conjurar elemental</a></li>"
+      +"<li><a href=\"#\">conjurar fada</a></li>"
+      +"<li><a href=\"#\">conjurar rajada</a></li>"
+      +"<li><a href=\"#\">conjurar saraivada</a></li>"
+      +"<li><a href=\"#\">conjurar seres da floresta</a></li>"
+      +"<li><a href=\"#\">consagrar</a></li>"
+      +"<li><a href=\"#\">consertar</a></li>"
+      +"<li><a href=\"#\">constrição</a></li>"
+      +"<li><a href=\"#\">contato extraplanar</a></li>"
+      +"<li><a href=\"#\">contingência</a></li>"
+      +"<li><a href=\"#\">contramágica</a></li>"
+      +"<li><a href=\"#\">controlar a água</a></li>"
+      +"<li><a href=\"#\">controlar o clima</a></li>"
+      +"<li><a href=\"#\">convocar familiar</a></li>"
+      +"<li><a href=\"#\">convocar montaria</a></li>"
+      +"<li><a href=\"#\">convocar relâmpagos</a></li>"
+      +"<li><a href=\"#\">cordão de flechas</a></li>"
+      +"<li><a href=\"#\">coroa da loucura</a></li>"
+      +"<li><a href=\"#\">corrente de relâmpagos</a></li>"
+      +"<li><a href=\"#\">crescer espinhos</a></li>"
+      +"<li><a href=\"#\">criar alimentos</a></li>"
+      +"<li><a href=\"#\">criar chamas</a></li>"
+      +"<li><a href=\"#\">criar mortos-vivos</a></li>"
+      +"<li><a href=\"#\">criar ou destruir água</a></li>"
+      +"<li><a href=\"#\">criar passagem</a></li>"
+      +"<li><a href=\"#\">criação</a></li>"
+      +"<li><a href=\"#\">cura completa em massa</a></li>"
+      +"<li><a href=\"#\">cura completa</a></li>"
+      +"<li><a href=\"#\">curar ferimentos em massa</a></li>"
+      +"<li><a href=\"#\">curar ferimentos</a></li>"
+      +"<li><a href=\"#\">cão fiel de mordenkainen</a></li>"
+      +"<li><a href=\"#\">círculo da morte</a></li>"
+      +"<li><a href=\"#\">círculo de poder</a></li>"
+      +"<li><a href=\"#\">círculo de teletransporte</a></li>"
+      +"<li><a href=\"#\">círculo mágico</a></li>"
+      +"<li><a href=\"#\">cúpula antivida</a></li>"
+      +"<li><a href=\"#\">dança irresistível de otto</a></li>"
+      +"<li><a href=\"#\">dedo da morte</a></li>"
+      +"<li><a href=\"#\">desejo</a></li>"
+      +"<li><a href=\"#\">desintegrar</a></li>"
+      +"<li><a href=\"#\">despedaçar</a></li>"
+      +"<li><a href=\"#\">despertar</a></li>"
+      +"<li><a href=\"#\">despistar</a></li>"
+      +"<li><a href=\"#\">destruição banidora</a></li>"
+      +"<li><a href=\"#\">destruição cegante</a></li>"
+      +"<li><a href=\"#\">destruição colérica</a></li>"
+      +"<li><a href=\"#\">destruição estonteante</a></li>"
+      +"<li><a href=\"#\">destruição lancinante</a></li>"
+      +"<li><a href=\"#\">destruição trovejante</a></li>"
+      +"<li><a href=\"#\">detectar magia</a></li>"
+      +"<li><a href=\"#\">detectar o bem e mal</a></li>"
+      +"<li><a href=\"#\">detectar pensamentos</a></li>"
+      +"<li><a href=\"#\">detectar veneno e doença</a></li>"
+      +"<li><a href=\"#\">dificultar detecção</a></li>"
+      +"<li><a href=\"#\">disco flutuante de tenser</a></li>"
+      +"<li><a href=\"#\">disfarçar-se</a></li>"
+      +"<li><a href=\"#\">dissipar magia</a></li>"
+      +"<li><a href=\"#\">dissipar o bem e mal</a></li>"
+      +"<li><a href=\"#\">doença plena</a></li>"
+      +"<li><a href=\"#\">dominar besta</a></li>"
+      +"<li><a href=\"#\">dominar monstro</a></li>"
+      +"<li><a href=\"#\">dominar pessoa</a></li>"
+      +"<li><a href=\"#\">druidismo</a></li>"
+      +"<li><a href=\"#\">duelo compelido</a></li>"
+      +"<li><a href=\"#\">encarnação fantasmagórica</a></li>"
+      +"<li><a href=\"#\">encontrar armadilhas</a></li>"
+      +"<li><a href=\"#\">encontrar o caminho</a></li>"
+      +"<li><a href=\"#\">enfeitiçar pessoa</a></li>"
+      +"<li><a href=\"#\">enfraquecer intelecto</a></li>"
+      +"<li><a href=\"#\">enviar mensagem</a></li>"
+      +"<li><a href=\"#\">escrita ilusória</a></li>"
+      +"<li><a href=\"#\">escudo arcano</a></li>"
+      +"<li><a href=\"#\">escudo da fé</a></li>"
+      +"<li><a href=\"#\">escudo de fogo</a></li>"
+      +"<li><a href=\"#\">escuridão</a></li>"
+      +"<li><a href=\"#\">esfera congelante de otiluke</a></li>"
+      +"<li><a href=\"#\">esfera flamejante</a></li>"
+      +"<li><a href=\"#\">esfera resiliente de otiluke</a></li>"
+      +"<li><a href=\"#\">espada de mordenkainen</a></li>"
+      +"<li><a href=\"#\">espirro ácido</a></li>"
+      +"<li><a href=\"#\">espíritos guardiões</a></li>"
+      +"<li><a href=\"#\">esquentar metal</a></li>"
+      +"<li><a href=\"#\">estabilizar</a></li>"
+      +"<li><a href=\"#\">explosão solar</a></li>"
+      +"<li><a href=\"#\">fabricar</a></li>"
+      +"<li><a href=\"#\">falar com animais</a></li>"
+      +"<li><a href=\"#\">falar com os mortos</a></li>"
+      +"<li><a href=\"#\">falar com plantas</a></li>"
+      +"<li><a href=\"#\">flecha relampejante</a></li>"
+      +"<li><a href=\"#\">flecha ácida de melf</a></li>"
+      +"<li><a href=\"#\">fogo das fadas</a></li>"
+      +"<li><a href=\"#\">fome de hadar</a></li>"
+      +"<li><a href=\"#\">forjar morte</a></li>"
+      +"<li><a href=\"#\">forma etérea</a></li>"
+      +"<li><a href=\"#\">forma gasosa</a></li>"
+      +"<li><a href=\"#\">formas animais</a></li>"
+      +"<li><a href=\"#\">força fantasmagórica</a></li>"
+      +"<li><a href=\"#\">glifo de vigilância</a></li>"
+      +"<li><a href=\"#\">globo de invulnerabilidade</a></li>"
+      +"<li><a href=\"#\">globos de luz</a></li>"
+      +"<li><a href=\"#\">golpe constritor</a></li>"
+      +"<li><a href=\"#\">guardião da fé</a></li>"
+      +"<li><a href=\"#\">heroísmo</a></li>"
+      +"<li><a href=\"#\">identificação</a></li>"
+      +"<li><a href=\"#\">idiomas</a></li>"
+      +"<li><a href=\"#\">ilusão menor</a></li>"
+      +"<li><a href=\"#\">ilusão programada</a></li>"
+      +"<li><a href=\"#\">imagem maior</a></li>"
+      +"<li><a href=\"#\">imagem silenciosa</a></li>"
+      +"<li><a href=\"#\">imobilizar monstro</a></li>"
+      +"<li><a href=\"#\">imobilizar pessoa</a></li>"
+      +"<li><a href=\"#\">infligir ferimentos</a></li>"
+      +"<li><a href=\"#\">inseto gigante</a></li>"
+      +"<li><a href=\"#\">inverter a gravidade</a></li>"
+      +"<li><a href=\"#\">invisibilidade maior</a></li>"
+      +"<li><a href=\"#\">invisibilidade</a></li>"
+      +"<li><a href=\"#\">invocação instantânea de drawmij</a></li>"
+      +"<li><a href=\"#\">isolamento</a></li>"
+      +"<li><a href=\"#\">labirinto</a></li>"
+      +"<li><a href=\"#\">lentidão</a></li>"
+      +"<li><a href=\"#\">leque cromático</a></li>"
+      +"<li><a href=\"#\">levitação</a></li>"
+      +"<li><a href=\"#\">ligação telepática de rary</a></li>"
+      +"<li><a href=\"#\">limpar a mente</a></li>"
+      +"<li><a href=\"#\">localizar animais ou plantas</a></li>"
+      +"<li><a href=\"#\">localizar criatura</a></li>"
+      +"<li><a href=\"#\">localizar objeto</a></li>"
+      +"<li><a href=\"#\">loquacidade</a></li>"
+      +"<li><a href=\"#\">lufada de vento</a></li>"
+      +"<li><a href=\"#\">luz do dia</a></li>"
+      +"<li><a href=\"#\">luz</a></li>"
+      +"<li><a href=\"#\">lâmina flamejante</a></li>"
+      +"<li><a href=\"#\">malogro</a></li>"
+      +"<li><a href=\"#\">mansão magnífica de mordenkainen</a></li>"
+      +"<li><a href=\"#\">manto do cruzado</a></li>"
+      +"<li><a href=\"#\">marca da punição</a></li>"
+      +"<li><a href=\"#\">marca do caçador</a></li>"
+      +"<li><a href=\"#\">medo</a></li>"
+      +"<li><a href=\"#\">mensageiro animal</a></li>"
+      +"<li><a href=\"#\">mensagem</a></li>"
+      +"<li><a href=\"#\">mesclar-se às rochas</a></li>"
+      +"<li><a href=\"#\">metamorfose verdadeira</a></li>"
+      +"<li><a href=\"#\">metamorfose</a></li>"
+      +"<li><a href=\"#\">miragem</a></li>"
+      +"<li><a href=\"#\">missão</a></li>"
+      +"<li><a href=\"#\">modificar memória</a></li>"
+      +"<li><a href=\"#\">moldar rochas</a></li>"
+      +"<li><a href=\"#\">montaria fantasmagórica</a></li>"
+      +"<li><a href=\"#\">mover terra</a></li>"
+      +"<li><a href=\"#\">movimentação livre</a></li>"
+      +"<li><a href=\"#\">muralha de energia</a></li>"
+      +"<li><a href=\"#\">muralha de espinhos</a></li>"
+      +"<li><a href=\"#\">muralha de fogo</a></li>"
+      +"<li><a href=\"#\">muralha de gelo</a></li>"
+      +"<li><a href=\"#\">muralha de pedra</a></li>"
+      +"<li><a href=\"#\">muralha de vento</a></li>"
+      +"<li><a href=\"#\">muralha prismática</a></li>"
+      +"<li><a href=\"#\">mão de bigby</a></li>"
+      +"<li><a href=\"#\">mãos flamejantes</a></li>"
+      +"<li><a href=\"#\">mãos mágicas</a></li>"
+      +"<li><a href=\"#\">mísseis mágicos</a></li>"
+      +"<li><a href=\"#\">nevasca</a></li>"
+      +"<li><a href=\"#\">nublar</a></li>"
+      +"<li><a href=\"#\">nuvem de adagas</a></li>"
+      +"<li><a href=\"#\">nuvem incendiária</a></li>"
+      +"<li><a href=\"#\">névoa fétida</a></li>"
+      +"<li><a href=\"#\">névoa mortal</a></li>"
+      +"<li><a href=\"#\">névoa obscurecente</a></li>"
+      +"<li><a href=\"#\">olho arcano</a></li>"
+      +"<li><a href=\"#\">onda destrutiva</a></li>"
+      +"<li><a href=\"#\">onda trovejante</a></li>"
+      +"<li><a href=\"#\">oração curativa</a></li>"
+      +"<li><a href=\"#\">orbe cromática</a></li>"
+      +"<li><a href=\"#\">orientação</a></li>"
+      +"<li><a href=\"#\">padrão hipnótico</a></li>"
+      +"<li><a href=\"#\">palavra curativa em massa</a></li>"
+      +"<li><a href=\"#\">palavra curativa em massa</a></li>"
+      +"<li><a href=\"#\">palavra curativa</a></li>"
+      +"<li><a href=\"#\">palavra de poder atordoar</a></li>"
+      +"<li><a href=\"#\">palavra de poder curar</a></li>"
+      +"<li><a href=\"#\">palavra de poder matar</a></li>"
+      +"<li><a href=\"#\">palavra de recordação</a></li>"
+      +"<li><a href=\"#\">palavra divina</a></li>"
+      +"<li><a href=\"#\">parar o tempo</a></li>"
+      +"<li><a href=\"#\">passo nebuloso</a></li>"
+      +"<li><a href=\"#\">passos longos</a></li>"
+      +"<li><a href=\"#\">passos sem pegadas</a></li>"
+      +"<li><a href=\"#\">patas de aranha</a></li>"
+      +"<li><a href=\"#\">pele de pedra</a></li>"
+      +"<li><a href=\"#\">pele de árvore</a></li>"
+      +"<li><a href=\"#\">pequena cabana de leomund</a></li>"
+      +"<li><a href=\"#\">perdição</a></li>"
+      +"<li><a href=\"#\">piscar</a></li>"
+      +"<li><a href=\"#\">porta dimensional</a></li>"
+      +"<li><a href=\"#\">portal arcano</a></li>"
+      +"<li><a href=\"#\">portal</a></li>"
+      +"<li><a href=\"#\">praga de insetos</a></li>"
+      +"<li><a href=\"#\">praga</a></li>"
+      +"<li><a href=\"#\">prestidigitação</a></li>"
+      +"<li><a href=\"#\">prisão de energia</a></li>"
+      +"<li><a href=\"#\">proibição</a></li>"
+      +"<li><a href=\"#\">projetar imagem</a></li>"
+      +"<li><a href=\"#\">projeção astral</a></li>"
+      +"<li><a href=\"#\">proteger fortaleza</a></li>"
+      +"<li><a href=\"#\">proteção contra a morte</a></li>"
+      +"<li><a href=\"#\">proteção contra energia</a></li>"
+      +"<li><a href=\"#\">proteção contra lâminas</a></li>"
+      +"<li><a href=\"#\">proteção contra o bem e mal</a></li>"
+      +"<li><a href=\"#\">proteção contra veneno</a></li>"
+      +"<li><a href=\"#\">purificar alimentos</a></li>"
+      +"<li><a href=\"#\">queda suave</a></li>"
+      +"<li><a href=\"#\">raio adoecente</a></li>"
+      +"<li><a href=\"#\">raio ardente</a></li>"
+      +"<li><a href=\"#\">raio de bruxa</a></li>"
+      +"<li><a href=\"#\">raio de fogo</a></li>"
+      +"<li><a href=\"#\">raio de gelo</a></li>"
+      +"<li><a href=\"#\">raio do enfraquecimento</a></li>"
+      +"<li><a href=\"#\">raio guiador</a></li>"
+      +"<li><a href=\"#\">raio lunar</a></li>"
+      +"<li><a href=\"#\">raio solar</a></li>"
+      +"<li><a href=\"#\">rajada de veneno</a></li>"
+      +"<li><a href=\"#\">rajada mística</a></li>"
+      +"<li><a href=\"#\">rajada prismática</a></li>"
+      +"<li><a href=\"#\">recipiente arcano</a></li>"
+      +"<li><a href=\"#\">recuo acelerado</a></li>"
+      +"<li><a href=\"#\">reencarnação</a></li>"
+      +"<li><a href=\"#\">reflexos</a></li>"
+      +"<li><a href=\"#\">regeneração</a></li>"
+      +"<li><a href=\"#\">relâmpago</a></li>"
+      +"<li><a href=\"#\">remover maldição</a></li>"
+      +"<li><a href=\"#\">repouso tranquilo</a></li>"
+      +"<li><a href=\"#\">repreensão infernal</a></li>"
+      +"<li><a href=\"#\">resistência</a></li>"
+      +"<li><a href=\"#\">respirar na água</a></li>"
+      +"<li><a href=\"#\">ressurreição verdadeira</a></li>"
+      +"<li><a href=\"#\">ressurreição</a></li>"
+      +"<li><a href=\"#\">restauração maior</a></li>"
+      +"<li><a href=\"#\">restauração menor</a></li>"
+      +"<li><a href=\"#\">reviver os mortos</a></li>"
+      +"<li><a href=\"#\">revivificar</a></li>"
+      +"<li><a href=\"#\">riso histérico de tasha</a></li>"
+      +"<li><a href=\"#\">rogar maldição</a></li>"
+      +"<li><a href=\"#\">salto</a></li>"
+      +"<li><a href=\"#\">santuário particular de mordenkainen</a></li>"
+      +"<li><a href=\"#\">santuário</a></li>"
+      +"<li><a href=\"#\">saraivada de espinhos</a></li>"
+      +"<li><a href=\"#\">semiplano</a></li>"
+      +"<li><a href=\"#\">sentido bestial</a></li>"
+      +"<li><a href=\"#\">servo invisível</a></li>"
+      +"<li><a href=\"#\">sexto sentido</a></li>"
+      +"<li><a href=\"#\">silêncio</a></li>"
+      +"<li><a href=\"#\">similaridade</a></li>"
+      +"<li><a href=\"#\">simulacro</a></li>"
+      +"<li><a href=\"#\">sinal de esperança</a></li>"
+      +"<li><a href=\"#\">sonho</a></li>"
+      +"<li><a href=\"#\">sono</a></li>"
+      +"<li><a href=\"#\">sugestão em massa</a></li>"
+      +"<li><a href=\"#\">sugestão</a></li>"
+      +"<li><a href=\"#\">sussurros dissonantes</a></li>"
+      +"<li><a href=\"#\">símbolo</a></li>"
+      +"<li><a href=\"#\">taumaturgia</a></li>"
+      +"<li><a href=\"#\">teia</a></li>"
+      +"<li><a href=\"#\">telecinésia</a></li>"
+      +"<li><a href=\"#\">telepatia</a></li>"
+      +"<li><a href=\"#\">teletransporte por árvores</a></li>"
+      +"<li><a href=\"#\">teletransporte</a></li>"
+      +"<li><a href=\"#\">tempestade da vingança</a></li>"
+      +"<li><a href=\"#\">tempestade de fogo</a></li>"
+      +"<li><a href=\"#\">tempestade de gelo</a></li>"
+      +"<li><a href=\"#\">tentáculos negros de evard</a></li>"
+      +"<li><a href=\"#\">terremoto</a></li>"
+      +"<li><a href=\"#\">terreno alucinógeno</a></li>"
+      +"<li><a href=\"#\">toque arrepiante</a></li>"
+      +"<li><a href=\"#\">toque chocante</a></li>"
+      +"<li><a href=\"#\">toque vampírico</a></li>"
+      +"<li><a href=\"#\">tranca arcana</a></li>"
+      +"<li><a href=\"#\">truque de corda</a></li>"
+      +"<li><a href=\"#\">tsunami</a></li>"
+      +"<li><a href=\"#\">velocidade</a></li>"
+      +"<li><a href=\"#\">ver o invisível</a></li>"
+      +"<li><a href=\"#\">viagem planar</a></li>"
+      +"<li><a href=\"#\">vidência</a></li>"
+      +"<li><a href=\"#\">vinha esmagadora</a></li>"
+      +"<li><a href=\"#\">visão da verdade</a></li>"
+      +"<li><a href=\"#\">visão no escuro</a></li>"
+      +"<li><a href=\"#\">vitalidade falsa</a></li>"
+      +"<li><a href=\"#\">voo</a></li>"
+      +"<li><a href=\"#\">vínculo protetor</a></li>"
+      +"<li><a href=\"#\">zombaria viciosa</a></li>"
+      +"<li><a href=\"#\">zona da verdade</a></li>"
     +"</ul>"
   +"</li>";
   $("#ulMagias").append(stringNovaMagias);
 
 });
 
-$(document).on('change', '#listaStatusPlayer li input:nth-child(3)', function() { //FUNCAO PARA ATUALIZAR BONIFICACAO DA SEGUNDA COLUNA
+$(document).on('change', '#listaStatusPlayer li input:nth-child(4)', function() { //FUNCAO PARA ATUALIZAR BONIFICACAO DA SEGUNDA COLUNA
     var valorCampo = $(this).val();
     var nomeCampo = $(this).prev().prev().text();
     if (valorCampo >= 1 && valorCampo <= 1) {
@@ -139,7 +519,7 @@ $(document).on('change', '#listaStatusPlayer li input:nth-child(3)', function() 
     }
 });
 
-$(document).on('change', '#listaStatusPlayer li input:nth-child(2)', function() { //FUNCAO PARA ATUALIZAR BONIFICACAO DA PRIMEIRA COLUNA
+$(document).on('change', '#listaStatusPlayer li input:nth-child(3)', function() { //FUNCAO PARA ATUALIZAR BONIFICACAO DA PRIMEIRA COLUNA
     var valorCampo = $(this).val();
     var nomeCampo = $(this).prev().text();
     if (valorCampo == "") { valorCampo = 0; }
@@ -175,12 +555,12 @@ var racaCar = 0;
 $(document).on('click', '.botao-raca li a', function() {  //FUNCAO PARA ADICIONAR BONIFICADORES DE RACA NOS STATUS
     var valorCampo = $(this).text(); //NOME DA RACA
 
-    racaFor = database["Racas"][valorCampo][0][0];
-    racaDes = database["Racas"][valorCampo][0][1];
-    racaCon = database["Racas"][valorCampo][0][2];
-    racaInt = database["Racas"][valorCampo][0][3];
-    racaSab = database["Racas"][valorCampo][0][4];
-    racaCar = database["Racas"][valorCampo][0][5];
+    racaFor = database["Racas"][valorCampo][0];
+    racaDes = database["Racas"][valorCampo][1];
+    racaCon = database["Racas"][valorCampo][2];
+    racaInt = database["Racas"][valorCampo][3];
+    racaSab = database["Racas"][valorCampo][4];
+    racaCar = database["Racas"][valorCampo][5];
 
     var somaFor = $("#InputFor1").val();
     var somaDes = $("#InputDes1").val();
@@ -309,7 +689,7 @@ $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERS
     linhaPAdicionar.push(corPlayer);                    //45
 
 
-    listaDePlayers["Campanha1"].push(linhaPAdicionar);
+    usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].push(linhaPAdicionar);
     AppendNovoPlayer();
     SalvaPericias();
     SalvaItens();
@@ -332,7 +712,7 @@ $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERS
 
 
     linhaDePericias[1] = (numDePericias);
-    listaDePericias["Campanha1"].push(linhaDePericias);
+    usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"].push(linhaDePericias);
   }
 
   function SalvaItens() {
@@ -352,7 +732,7 @@ $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERS
 
 
     linhaDeItens[1] = (numDeItens);
-    listaDeItens["Campanha1"].push(linhaDeItens);
+    usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"].push(linhaDeItens);
   }
 
   function SalvaMagias() {
@@ -372,7 +752,7 @@ $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERS
 
 
     linhaDeMagias[1] = (numDeMagias);
-    listaDeMagias["Campanha1"].push(linhaDeMagias);
+    usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"].push(linhaDeMagias);
   }
 
 });
@@ -427,59 +807,59 @@ $(document).on('click', '#SalvarEdicaoPlayer', function() {  //FUNCAO PARA SALVA
     var corPlayer = $("#inputcolor").val();
 
 
-    var todosPlayers = listaDePlayers["Campanha1"];
+    var todosPlayers = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"];
     var linhaSelecionada;
 
     $.each(todosPlayers, function(index, value) {
       if (idPlayer == todosPlayers[index][0]) {
 
-        listaDePlayers["Campanha1"][index][1] = (nomePersonagem);               //1
-        listaDePlayers["Campanha1"][index][2] = (nomePlayer);                   //2
-        listaDePlayers["Campanha1"][index][3] = (racaPlayer);                   //3
-        listaDePlayers["Campanha1"][index][4] = (alinhamentoPlayer);            //4
-        listaDePlayers["Campanha1"][index][5] = (antecedentesPlayer);           //5
-        listaDePlayers["Campanha1"][index][6] = (xpPlayer);                     //6
-        listaDePlayers["Campanha1"][index][7] = (classebasePlayer);             //7
-        listaDePlayers["Campanha1"][index][8] = (nivelclassebasePlayer);        //8
-        listaDePlayers["Campanha1"][index][9] = (multiclasse1Player);           //9
-        listaDePlayers["Campanha1"][index][10] = (nivelmulticlasse1Player);      //10
-        listaDePlayers["Campanha1"][index][11] = (multiclasse2Player);           //11
-        listaDePlayers["Campanha1"][index][12] = (nivelmulticlasse2Player);      //12
-        listaDePlayers["Campanha1"][index][13] = (forPlayer1);                   //13
-        listaDePlayers["Campanha1"][index][14] = (desPlayer1);                   //14
-        listaDePlayers["Campanha1"][index][15] = (conPlayer1);                   //15
-        listaDePlayers["Campanha1"][index][16] = (intPlayer1);                   //16
-        listaDePlayers["Campanha1"][index][17] = (sabPlayer1);                   //17
-        listaDePlayers["Campanha1"][index][18] = (carPlayer1);                   //18
-        listaDePlayers["Campanha1"][index][19] = (forPlayer2);                   //19
-        listaDePlayers["Campanha1"][index][20] = (desPlayer2);                   //20
-        listaDePlayers["Campanha1"][index][21] = (conPlayer2);                   //21
-        listaDePlayers["Campanha1"][index][22] = (intPlayer2);                   //22
-        listaDePlayers["Campanha1"][index][23] = (sabPlayer2);                   //23
-        listaDePlayers["Campanha1"][index][24] = (carPlayer2);                   //24
-        listaDePlayers["Campanha1"][index][25] = (forPlayer3);                   //25
-        listaDePlayers["Campanha1"][index][26] = (desPlayer3);                   //26
-        listaDePlayers["Campanha1"][index][27] = (conPlayer3);                   //27
-        listaDePlayers["Campanha1"][index][28] = (intPlayer3);                   //28
-        listaDePlayers["Campanha1"][index][29] = (sabPlayer3);                   //29
-        listaDePlayers["Campanha1"][index][30] = (carPlayer3);                   //30
-        listaDePlayers["Campanha1"][index][31] = (hpLeftPlayer);                 //31
-        listaDePlayers["Campanha1"][index][32] = (hpAllPlayer);                  //32
-        listaDePlayers["Campanha1"][index][33] = (proefPlayer);                  //33
-        listaDePlayers["Campanha1"][index][34] = (classeArmPlayer);              //34
-        listaDePlayers["Campanha1"][index][35] = (inspirPlayer);                 //35
-        listaDePlayers["Campanha1"][index][36] = (iniciatPlayer);                //36
-        listaDePlayers["Campanha1"][index][37] = (deslocPlayer);                 //37
-        listaDePlayers["Campanha1"][index][38] = (tracosPlayer);                 //38
-        listaDePlayers["Campanha1"][index][39] = (ideaisPlayer);                 //39
-        listaDePlayers["Campanha1"][index][40] = (ligacoesPlayer);               //40
-        listaDePlayers["Campanha1"][index][41] = (defeitosPlayer);               //41
-        listaDePlayers["Campanha1"][index][42] = (ataquesPlayer);                //42
-        listaDePlayers["Campanha1"][index][43] = (caracEhabilPlayer);            //43
-        listaDePlayers["Campanha1"][index][44] = (equipamentosPlayer);           //44
-        listaDePlayers["Campanha1"][index][45] = (corPlayer);                    //45
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][1] = (nomePersonagem);               //1
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][2] = (nomePlayer);                   //2
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][3] = (racaPlayer);                   //3
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][4] = (alinhamentoPlayer);            //4
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][5] = (antecedentesPlayer);           //5
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][6] = (xpPlayer);                     //6
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][7] = (classebasePlayer);             //7
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][8] = (nivelclassebasePlayer);        //8
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][9] = (multiclasse1Player);           //9
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][10] = (nivelmulticlasse1Player);      //10
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][11] = (multiclasse2Player);           //11
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][12] = (nivelmulticlasse2Player);      //12
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][13] = (forPlayer1);                   //13
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][14] = (desPlayer1);                   //14
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][15] = (conPlayer1);                   //15
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][16] = (intPlayer1);                   //16
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][17] = (sabPlayer1);                   //17
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][18] = (carPlayer1);                   //18
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][19] = (forPlayer2);                   //19
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][20] = (desPlayer2);                   //20
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][21] = (conPlayer2);                   //21
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][22] = (intPlayer2);                   //22
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][23] = (sabPlayer2);                   //23
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][24] = (carPlayer2);                   //24
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][25] = (forPlayer3);                   //25
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][26] = (desPlayer3);                   //26
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][27] = (conPlayer3);                   //27
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][28] = (intPlayer3);                   //28
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][29] = (sabPlayer3);                   //29
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][30] = (carPlayer3);                   //30
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][31] = (hpLeftPlayer);                 //31
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][32] = (hpAllPlayer);                  //32
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][33] = (proefPlayer);                  //33
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][34] = (classeArmPlayer);              //34
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][35] = (inspirPlayer);                 //35
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][36] = (iniciatPlayer);                //36
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][37] = (deslocPlayer);                 //37
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][38] = (tracosPlayer);                 //38
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][39] = (ideaisPlayer);                 //39
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][40] = (ligacoesPlayer);               //40
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][41] = (defeitosPlayer);               //41
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][42] = (ataquesPlayer);                //42
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][43] = (caracEhabilPlayer);            //43
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][44] = (equipamentosPlayer);           //44
+        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][45] = (corPlayer);                    //45
 
-        linhaSelecionada = listaDePlayers["Campanha1"][index];
+        linhaSelecionada = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index];
 
       }
     });
@@ -580,8 +960,8 @@ var numPlayers = 0;
 var idUltimoPlayer = 0;
 
 function AppendNovoPlayer() {
-  var linhaPlayer = listaDePlayers["Campanha1"].length-1;
-  var linhaSelecionada = listaDePlayers["Campanha1"][linhaPlayer];
+  var linhaPlayer = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].length-1;
+  var linhaSelecionada = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][linhaPlayer];
 
     var stringAddPlayer =
     "<div id=\""+linhaSelecionada[0]+"CabecalhoButton"+"\" role=\"button\" data-toggle=\"collapse\" data-parent=\"#PlayersAdicionados\" href=\"#collapsePlayer"+linhaSelecionada[0]+"\" aria-expanded=\"true\""
@@ -685,10 +1065,10 @@ function EditarPlayer(ctl) {
   $("#addPlayerModalDivContainer").load('Players/EditPlayers.html div[id="addPlayerModalDiv"]', function() {
 
     var idPlayer = $(ctl).parent().find(".player-id").text();
-    var todosPlayers = listaDePlayers["Campanha1"];
-    var todasPericias = listaDePericias["Campanha1"];
-    var todosItens = listaDeItens["Campanha1"];
-    var todasMagias = listaDeMagias["Campanha1"];
+    var todosPlayers = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"];
+    var todasPericias = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"];
+    var todosItens = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"];
+    var todasMagias = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"];
     idPlayer = idPlayer.replace('#','');
 
     $.each(todosPlayers, function(index, value) {
@@ -782,16 +1162,33 @@ function EditarPlayer(ctl) {
         for (var i = 0; i < todasPericias[index][1]; i++) {
           var stringNovaPericia =
           "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-            +"<button value=\""+todasPericias[index][i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;\">"
+            +"<button value=\""+todasPericias[index][i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
               +"<b>"+todasPericias[index][i+2]+"</b>"
               +"<span class=\"caret\"></span>"
             +"</button>"
-            +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\">"
-              +"<li><a id=\"deleta\" href=\"#\">Deletar Item</a></li>"
+            +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
+              +"<input onkeyup=\"filtrarEste(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
               +"<li role=\"separator\" class=\"divider\"></li>"
-              +"<li><a href=\"#\">Another action</a></li>"
-              +"<li><a href=\"#\">Something else here</a></li>"
-              +"<li><a href=\"#\">Separated link</a></li>"
+              +"<li><a id=\"deleta\" href=\"#\">Deletar Perícia</a></li>"
+              +"<li role=\"separator\" class=\"divider\"></li>"
+              +"<li><a href=\"#\">Acrobacia</a></li>"
+              +"<li><a href=\"#\">Arcanismo</a></li>"
+              +"<li><a href=\"#\">Atletismo</a></li>"
+              +"<li><a href=\"#\">Atuação</a></li>"
+              +"<li><a href=\"#\">Blefar</a></li>"
+              +"<li><a href=\"#\">Furtividade</a></li>"
+              +"<li><a href=\"#\">História</a></li>"
+              +"<li><a href=\"#\">Intimidação</a></li>"
+              +"<li><a href=\"#\">Intução</a></li>"
+              +"<li><a href=\"#\">Investigação</a></li>"
+              +"<li><a href=\"#\">Lidar com Animais</a></li>"
+              +"<li><a href=\"#\">Medicina</a></li>"
+              +"<li><a href=\"#\">Natureza</a></li>"
+              +"<li><a href=\"#\">Percepção</a></li>"
+              +"<li><a href=\"#\">Persuasão</a></li>"
+              +"<li><a href=\"#\">Prestidigitação</a></li>"
+              +"<li><a href=\"#\">Religião</a></li>"
+              +"<li><a href=\"#\">Sobrevivência</a></li>"
             +"</ul>"
           +"</li>";
           $("#ulPericias").append(stringNovaPericia);
@@ -804,11 +1201,13 @@ function EditarPlayer(ctl) {
         for (var i = 0; i < todosItens[index][1]; i++) {
           var stringNovoItem =
           "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-            +"<button value=\""+todosItens[index][i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;\">"
+            +"<button value=\""+todosItens[index][i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
               +"<b>"+todosItens[index][i+2]+"</b>"
               +"<span class=\"caret\"></span>"
             +"</button>"
-            +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\">"
+            +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
+              +"<input onkeyup=\"filtrarEste(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
+              +"<li role=\"separator\" class=\"divider\"></li>"
               +"<li><a id=\"deleta\" href=\"#\">Deletar Item</a></li>"
               +"<li role=\"separator\" class=\"divider\"></li>"
               +"<li><a href=\"#\">Another action</a></li>"
@@ -826,16 +1225,377 @@ function EditarPlayer(ctl) {
         for (var i = 0; i < todasMagias[index][1]; i++) {
           var stringNovaMagia =
           "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-            +"<button value=\""+todasMagias[index][i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;\">"
+            +"<button value=\""+todasMagias[index][i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
               +"<b>"+todasMagias[index][i+2]+"</b>"
               +"<span class=\"caret\"></span>"
             +"</button>"
-            +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\">"
-              +"<li><a id=\"deleta\" href=\"#\">Deletar Item</a></li>"
+            +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
+              +"<input onkeyup=\"filtrarEste(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
               +"<li role=\"separator\" class=\"divider\"></li>"
-              +"<li><a href=\"#\">Another action</a></li>"
-              +"<li><a href=\"#\">Something else here</a></li>"
-              +"<li><a href=\"#\">Separated link</a></li>"
+              +"<li><a id=\"deleta\" href=\"#\">Deletar Magia</a></li>"
+              +"<li role=\"separator\" class=\"divider\"></li>"
+              +"<li><a href=\"#\">acalmar emoções</a></li>"
+              +"<li><a href=\"#\">adivinhação</a></li>"
+              +"<li><a href=\"#\">ajuda</a></li>"
+              +"<li><a href=\"#\">alarme</a></li>"
+              +"<li><a href=\"#\">aliado planar</a></li>"
+              +"<li><a href=\"#\">aljava veloz</a></li>"
+              +"<li><a href=\"#\">alterar forma</a></li>"
+              +"<li><a href=\"#\">alterar-se</a></li>"
+              +"<li><a href=\"#\">amizade animal</a></li>"
+              +"<li><a href=\"#\">amizade</a></li>"
+              +"<li><a href=\"#\">ampliar plantas</a></li>"
+              +"<li><a href=\"#\">âncora planar</a></li>"
+              +"<li><a href=\"#\">andar na água</a></li>"
+              +"<li><a href=\"#\">animar mortos</a></li>"
+              +"<li><a href=\"#\">animar objetos</a></li>"
+              +"<li><a href=\"#\">antipatia/simpatia</a></li>"
+              +"<li><a href=\"#\">aprimorar habilidade</a></li>"
+              +"<li><a href=\"#\">aprisionamento</a></li>"
+              +"<li><a href=\"#\">arca secreta de leomund</a></li>"
+              +"<li><a href=\"#\">área escorregadia</a></li>"
+              +"<li><a href=\"#\">arma elemental</a></li>"
+              +"<li><a href=\"#\">arma espiritual</a></li>"
+              +"<li><a href=\"#\">arma mágica</a></li>"
+              +"<li><a href=\"#\">armadura arcana</a></li>"
+              +"<li><a href=\"#\">armadura de agathys</a></li>"
+              +"<li><a href=\"#\">arrombar</a></li>"
+              +"<li><a href=\"#\">assassino fantasmagórico</a></li>"
+              +"<li><a href=\"#\">ataque certeiro</a></li>"
+              +"<li><a href=\"#\">ataque visual</a></li>"
+              +"<li><a href=\"#\">augúrio</a></li>"
+              +"<li><a href=\"#\">aumentar/reduzir</a></li>"
+              +"<li><a href=\"#\">aura de pureza</a></li>"
+              +"<li><a href=\"#\">aura de vida</a></li>"
+              +"<li><a href=\"#\">aura de vitalidade</a></li>"
+              +"<li><a href=\"#\">aura mágica de nystul</a></li>"
+              +"<li><a href=\"#\">aura sagrada</a></li>"
+              +"<li><a href=\"#\">auxílio divino</a></li>"
+              +"<li><a href=\"#\">banimento</a></li>"
+              +"<li><a href=\"#\">banquete dos heróis</a></li>"
+              +"<li><a href=\"#\">barreira de lâminas</a></li>"
+              +"<li><a href=\"#\">boca encantada</a></li>"
+              +"<li><a href=\"#\">bola de fogo controlável</a></li>"
+              +"<li><a href=\"#\">bola de fogo</a></li>"
+              +"<li><a href=\"#\">bom fruto</a></li>"
+              +"<li><a href=\"#\">bordão místico</a></li>"
+              +"<li><a href=\"#\">braços de hadar</a></li>"
+              +"<li><a href=\"#\">bruxaria</a></li>"
+              +"<li><a href=\"#\">bênção</a></li>"
+              +"<li><a href=\"#\">caminhar em árvores</a></li>"
+              +"<li><a href=\"#\">caminhar no vento</a></li>"
+              +"<li><a href=\"#\">campo antimagia</a></li>"
+              +"<li><a href=\"#\">carne para pedra</a></li>"
+              +"<li><a href=\"#\">cativar</a></li>"
+              +"<li><a href=\"#\">cegueira/surdez</a></li>"
+              +"<li><a href=\"#\">chama contínua</a></li>"
+              +"<li><a href=\"#\">chama sagrada</a></li>"
+              +"<li><a href=\"#\">chicote de espinhos</a></li>"
+              +"<li><a href=\"#\">chuva de meteoros</a></li>"
+              +"<li><a href=\"#\">clarividência</a></li>"
+              +"<li><a href=\"#\">clone</a></li>"
+              +"<li><a href=\"#\">coluna de chamas</a></li>"
+              +"<li><a href=\"#\">comando</a></li>"
+              +"<li><a href=\"#\">compreender idiomas</a></li>"
+              +"<li><a href=\"#\">compulsão</a></li>"
+              +"<li><a href=\"#\">comunhão com a natureza</a></li>"
+              +"<li><a href=\"#\">comunhão</a></li>"
+              +"<li><a href=\"#\">cone de frio</a></li>"
+              +"<li><a href=\"#\">confusão</a></li>"
+              +"<li><a href=\"#\">conhecimento lendário</a></li>"
+              +"<li><a href=\"#\">conjurar animais</a></li>"
+              +"<li><a href=\"#\">conjurar celestial</a></li>"
+              +"<li><a href=\"#\">conjurar elementais menores</a></li>"
+              +"<li><a href=\"#\">conjurar elemental</a></li>"
+              +"<li><a href=\"#\">conjurar fada</a></li>"
+              +"<li><a href=\"#\">conjurar rajada</a></li>"
+              +"<li><a href=\"#\">conjurar saraivada</a></li>"
+              +"<li><a href=\"#\">conjurar seres da floresta</a></li>"
+              +"<li><a href=\"#\">consagrar</a></li>"
+              +"<li><a href=\"#\">consertar</a></li>"
+              +"<li><a href=\"#\">constrição</a></li>"
+              +"<li><a href=\"#\">contato extraplanar</a></li>"
+              +"<li><a href=\"#\">contingência</a></li>"
+              +"<li><a href=\"#\">contramágica</a></li>"
+              +"<li><a href=\"#\">controlar a água</a></li>"
+              +"<li><a href=\"#\">controlar o clima</a></li>"
+              +"<li><a href=\"#\">convocar familiar</a></li>"
+              +"<li><a href=\"#\">convocar montaria</a></li>"
+              +"<li><a href=\"#\">convocar relâmpagos</a></li>"
+              +"<li><a href=\"#\">cordão de flechas</a></li>"
+              +"<li><a href=\"#\">coroa da loucura</a></li>"
+              +"<li><a href=\"#\">corrente de relâmpagos</a></li>"
+              +"<li><a href=\"#\">crescer espinhos</a></li>"
+              +"<li><a href=\"#\">criar alimentos</a></li>"
+              +"<li><a href=\"#\">criar chamas</a></li>"
+              +"<li><a href=\"#\">criar mortos-vivos</a></li>"
+              +"<li><a href=\"#\">criar ou destruir água</a></li>"
+              +"<li><a href=\"#\">criar passagem</a></li>"
+              +"<li><a href=\"#\">criação</a></li>"
+              +"<li><a href=\"#\">cura completa em massa</a></li>"
+              +"<li><a href=\"#\">cura completa</a></li>"
+              +"<li><a href=\"#\">curar ferimentos em massa</a></li>"
+              +"<li><a href=\"#\">curar ferimentos</a></li>"
+              +"<li><a href=\"#\">cão fiel de mordenkainen</a></li>"
+              +"<li><a href=\"#\">círculo da morte</a></li>"
+              +"<li><a href=\"#\">círculo de poder</a></li>"
+              +"<li><a href=\"#\">círculo de teletransporte</a></li>"
+              +"<li><a href=\"#\">círculo mágico</a></li>"
+              +"<li><a href=\"#\">cúpula antivida</a></li>"
+              +"<li><a href=\"#\">dança irresistível de otto</a></li>"
+              +"<li><a href=\"#\">dedo da morte</a></li>"
+              +"<li><a href=\"#\">desejo</a></li>"
+              +"<li><a href=\"#\">desintegrar</a></li>"
+              +"<li><a href=\"#\">despedaçar</a></li>"
+              +"<li><a href=\"#\">despertar</a></li>"
+              +"<li><a href=\"#\">despistar</a></li>"
+              +"<li><a href=\"#\">destruição banidora</a></li>"
+              +"<li><a href=\"#\">destruição cegante</a></li>"
+              +"<li><a href=\"#\">destruição colérica</a></li>"
+              +"<li><a href=\"#\">destruição estonteante</a></li>"
+              +"<li><a href=\"#\">destruição lancinante</a></li>"
+              +"<li><a href=\"#\">destruição trovejante</a></li>"
+              +"<li><a href=\"#\">detectar magia</a></li>"
+              +"<li><a href=\"#\">detectar o bem e mal</a></li>"
+              +"<li><a href=\"#\">detectar pensamentos</a></li>"
+              +"<li><a href=\"#\">detectar veneno e doença</a></li>"
+              +"<li><a href=\"#\">dificultar detecção</a></li>"
+              +"<li><a href=\"#\">disco flutuante de tenser</a></li>"
+              +"<li><a href=\"#\">disfarçar-se</a></li>"
+              +"<li><a href=\"#\">dissipar magia</a></li>"
+              +"<li><a href=\"#\">dissipar o bem e mal</a></li>"
+              +"<li><a href=\"#\">doença plena</a></li>"
+              +"<li><a href=\"#\">dominar besta</a></li>"
+              +"<li><a href=\"#\">dominar monstro</a></li>"
+              +"<li><a href=\"#\">dominar pessoa</a></li>"
+              +"<li><a href=\"#\">druidismo</a></li>"
+              +"<li><a href=\"#\">duelo compelido</a></li>"
+              +"<li><a href=\"#\">encarnação fantasmagórica</a></li>"
+              +"<li><a href=\"#\">encontrar armadilhas</a></li>"
+              +"<li><a href=\"#\">encontrar o caminho</a></li>"
+              +"<li><a href=\"#\">enfeitiçar pessoa</a></li>"
+              +"<li><a href=\"#\">enfraquecer intelecto</a></li>"
+              +"<li><a href=\"#\">enviar mensagem</a></li>"
+              +"<li><a href=\"#\">escrita ilusória</a></li>"
+              +"<li><a href=\"#\">escudo arcano</a></li>"
+              +"<li><a href=\"#\">escudo da fé</a></li>"
+              +"<li><a href=\"#\">escudo de fogo</a></li>"
+              +"<li><a href=\"#\">escuridão</a></li>"
+              +"<li><a href=\"#\">esfera congelante de otiluke</a></li>"
+              +"<li><a href=\"#\">esfera flamejante</a></li>"
+              +"<li><a href=\"#\">esfera resiliente de otiluke</a></li>"
+              +"<li><a href=\"#\">espada de mordenkainen</a></li>"
+              +"<li><a href=\"#\">espirro ácido</a></li>"
+              +"<li><a href=\"#\">espíritos guardiões</a></li>"
+              +"<li><a href=\"#\">esquentar metal</a></li>"
+              +"<li><a href=\"#\">estabilizar</a></li>"
+              +"<li><a href=\"#\">explosão solar</a></li>"
+              +"<li><a href=\"#\">fabricar</a></li>"
+              +"<li><a href=\"#\">falar com animais</a></li>"
+              +"<li><a href=\"#\">falar com os mortos</a></li>"
+              +"<li><a href=\"#\">falar com plantas</a></li>"
+              +"<li><a href=\"#\">flecha relampejante</a></li>"
+              +"<li><a href=\"#\">flecha ácida de melf</a></li>"
+              +"<li><a href=\"#\">fogo das fadas</a></li>"
+              +"<li><a href=\"#\">fome de hadar</a></li>"
+              +"<li><a href=\"#\">forjar morte</a></li>"
+              +"<li><a href=\"#\">forma etérea</a></li>"
+              +"<li><a href=\"#\">forma gasosa</a></li>"
+              +"<li><a href=\"#\">formas animais</a></li>"
+              +"<li><a href=\"#\">força fantasmagórica</a></li>"
+              +"<li><a href=\"#\">glifo de vigilância</a></li>"
+              +"<li><a href=\"#\">globo de invulnerabilidade</a></li>"
+              +"<li><a href=\"#\">globos de luz</a></li>"
+              +"<li><a href=\"#\">golpe constritor</a></li>"
+              +"<li><a href=\"#\">guardião da fé</a></li>"
+              +"<li><a href=\"#\">heroísmo</a></li>"
+              +"<li><a href=\"#\">identificação</a></li>"
+              +"<li><a href=\"#\">idiomas</a></li>"
+              +"<li><a href=\"#\">ilusão menor</a></li>"
+              +"<li><a href=\"#\">ilusão programada</a></li>"
+              +"<li><a href=\"#\">imagem maior</a></li>"
+              +"<li><a href=\"#\">imagem silenciosa</a></li>"
+              +"<li><a href=\"#\">imobilizar monstro</a></li>"
+              +"<li><a href=\"#\">imobilizar pessoa</a></li>"
+              +"<li><a href=\"#\">infligir ferimentos</a></li>"
+              +"<li><a href=\"#\">inseto gigante</a></li>"
+              +"<li><a href=\"#\">inverter a gravidade</a></li>"
+              +"<li><a href=\"#\">invisibilidade maior</a></li>"
+              +"<li><a href=\"#\">invisibilidade</a></li>"
+              +"<li><a href=\"#\">invocação instantânea de drawmij</a></li>"
+              +"<li><a href=\"#\">isolamento</a></li>"
+              +"<li><a href=\"#\">labirinto</a></li>"
+              +"<li><a href=\"#\">lentidão</a></li>"
+              +"<li><a href=\"#\">leque cromático</a></li>"
+              +"<li><a href=\"#\">levitação</a></li>"
+              +"<li><a href=\"#\">ligação telepática de rary</a></li>"
+              +"<li><a href=\"#\">limpar a mente</a></li>"
+              +"<li><a href=\"#\">localizar animais ou plantas</a></li>"
+              +"<li><a href=\"#\">localizar criatura</a></li>"
+              +"<li><a href=\"#\">localizar objeto</a></li>"
+              +"<li><a href=\"#\">loquacidade</a></li>"
+              +"<li><a href=\"#\">lufada de vento</a></li>"
+              +"<li><a href=\"#\">luz do dia</a></li>"
+              +"<li><a href=\"#\">luz</a></li>"
+              +"<li><a href=\"#\">lâmina flamejante</a></li>"
+              +"<li><a href=\"#\">malogro</a></li>"
+              +"<li><a href=\"#\">mansão magnífica de mordenkainen</a></li>"
+              +"<li><a href=\"#\">manto do cruzado</a></li>"
+              +"<li><a href=\"#\">marca da punição</a></li>"
+              +"<li><a href=\"#\">marca do caçador</a></li>"
+              +"<li><a href=\"#\">medo</a></li>"
+              +"<li><a href=\"#\">mensageiro animal</a></li>"
+              +"<li><a href=\"#\">mensagem</a></li>"
+              +"<li><a href=\"#\">mesclar-se às rochas</a></li>"
+              +"<li><a href=\"#\">metamorfose verdadeira</a></li>"
+              +"<li><a href=\"#\">metamorfose</a></li>"
+              +"<li><a href=\"#\">miragem</a></li>"
+              +"<li><a href=\"#\">missão</a></li>"
+              +"<li><a href=\"#\">modificar memória</a></li>"
+              +"<li><a href=\"#\">moldar rochas</a></li>"
+              +"<li><a href=\"#\">montaria fantasmagórica</a></li>"
+              +"<li><a href=\"#\">mover terra</a></li>"
+              +"<li><a href=\"#\">movimentação livre</a></li>"
+              +"<li><a href=\"#\">muralha de energia</a></li>"
+              +"<li><a href=\"#\">muralha de espinhos</a></li>"
+              +"<li><a href=\"#\">muralha de fogo</a></li>"
+              +"<li><a href=\"#\">muralha de gelo</a></li>"
+              +"<li><a href=\"#\">muralha de pedra</a></li>"
+              +"<li><a href=\"#\">muralha de vento</a></li>"
+              +"<li><a href=\"#\">muralha prismática</a></li>"
+              +"<li><a href=\"#\">mão de bigby</a></li>"
+              +"<li><a href=\"#\">mãos flamejantes</a></li>"
+              +"<li><a href=\"#\">mãos mágicas</a></li>"
+              +"<li><a href=\"#\">mísseis mágicos</a></li>"
+              +"<li><a href=\"#\">nevasca</a></li>"
+              +"<li><a href=\"#\">nublar</a></li>"
+              +"<li><a href=\"#\">nuvem de adagas</a></li>"
+              +"<li><a href=\"#\">nuvem incendiária</a></li>"
+              +"<li><a href=\"#\">névoa fétida</a></li>"
+              +"<li><a href=\"#\">névoa mortal</a></li>"
+              +"<li><a href=\"#\">névoa obscurecente</a></li>"
+              +"<li><a href=\"#\">olho arcano</a></li>"
+              +"<li><a href=\"#\">onda destrutiva</a></li>"
+              +"<li><a href=\"#\">onda trovejante</a></li>"
+              +"<li><a href=\"#\">oração curativa</a></li>"
+              +"<li><a href=\"#\">orbe cromática</a></li>"
+              +"<li><a href=\"#\">orientação</a></li>"
+              +"<li><a href=\"#\">padrão hipnótico</a></li>"
+              +"<li><a href=\"#\">palavra curativa em massa</a></li>"
+              +"<li><a href=\"#\">palavra curativa em massa</a></li>"
+              +"<li><a href=\"#\">palavra curativa</a></li>"
+              +"<li><a href=\"#\">palavra de poder atordoar</a></li>"
+              +"<li><a href=\"#\">palavra de poder curar</a></li>"
+              +"<li><a href=\"#\">palavra de poder matar</a></li>"
+              +"<li><a href=\"#\">palavra de recordação</a></li>"
+              +"<li><a href=\"#\">palavra divina</a></li>"
+              +"<li><a href=\"#\">parar o tempo</a></li>"
+              +"<li><a href=\"#\">passo nebuloso</a></li>"
+              +"<li><a href=\"#\">passos longos</a></li>"
+              +"<li><a href=\"#\">passos sem pegadas</a></li>"
+              +"<li><a href=\"#\">patas de aranha</a></li>"
+              +"<li><a href=\"#\">pele de pedra</a></li>"
+              +"<li><a href=\"#\">pele de árvore</a></li>"
+              +"<li><a href=\"#\">pequena cabana de leomund</a></li>"
+              +"<li><a href=\"#\">perdição</a></li>"
+              +"<li><a href=\"#\">piscar</a></li>"
+              +"<li><a href=\"#\">porta dimensional</a></li>"
+              +"<li><a href=\"#\">portal arcano</a></li>"
+              +"<li><a href=\"#\">portal</a></li>"
+              +"<li><a href=\"#\">praga de insetos</a></li>"
+              +"<li><a href=\"#\">praga</a></li>"
+              +"<li><a href=\"#\">prestidigitação</a></li>"
+              +"<li><a href=\"#\">prisão de energia</a></li>"
+              +"<li><a href=\"#\">proibição</a></li>"
+              +"<li><a href=\"#\">projetar imagem</a></li>"
+              +"<li><a href=\"#\">projeção astral</a></li>"
+              +"<li><a href=\"#\">proteger fortaleza</a></li>"
+              +"<li><a href=\"#\">proteção contra a morte</a></li>"
+              +"<li><a href=\"#\">proteção contra energia</a></li>"
+              +"<li><a href=\"#\">proteção contra lâminas</a></li>"
+              +"<li><a href=\"#\">proteção contra o bem e mal</a></li>"
+              +"<li><a href=\"#\">proteção contra veneno</a></li>"
+              +"<li><a href=\"#\">purificar alimentos</a></li>"
+              +"<li><a href=\"#\">queda suave</a></li>"
+              +"<li><a href=\"#\">raio adoecente</a></li>"
+              +"<li><a href=\"#\">raio ardente</a></li>"
+              +"<li><a href=\"#\">raio de bruxa</a></li>"
+              +"<li><a href=\"#\">raio de fogo</a></li>"
+              +"<li><a href=\"#\">raio de gelo</a></li>"
+              +"<li><a href=\"#\">raio do enfraquecimento</a></li>"
+              +"<li><a href=\"#\">raio guiador</a></li>"
+              +"<li><a href=\"#\">raio lunar</a></li>"
+              +"<li><a href=\"#\">raio solar</a></li>"
+              +"<li><a href=\"#\">rajada de veneno</a></li>"
+              +"<li><a href=\"#\">rajada mística</a></li>"
+              +"<li><a href=\"#\">rajada prismática</a></li>"
+              +"<li><a href=\"#\">recipiente arcano</a></li>"
+              +"<li><a href=\"#\">recuo acelerado</a></li>"
+              +"<li><a href=\"#\">reencarnação</a></li>"
+              +"<li><a href=\"#\">reflexos</a></li>"
+              +"<li><a href=\"#\">regeneração</a></li>"
+              +"<li><a href=\"#\">relâmpago</a></li>"
+              +"<li><a href=\"#\">remover maldição</a></li>"
+              +"<li><a href=\"#\">repouso tranquilo</a></li>"
+              +"<li><a href=\"#\">repreensão infernal</a></li>"
+              +"<li><a href=\"#\">resistência</a></li>"
+              +"<li><a href=\"#\">respirar na água</a></li>"
+              +"<li><a href=\"#\">ressurreição verdadeira</a></li>"
+              +"<li><a href=\"#\">ressurreição</a></li>"
+              +"<li><a href=\"#\">restauração maior</a></li>"
+              +"<li><a href=\"#\">restauração menor</a></li>"
+              +"<li><a href=\"#\">reviver os mortos</a></li>"
+              +"<li><a href=\"#\">revivificar</a></li>"
+              +"<li><a href=\"#\">riso histérico de tasha</a></li>"
+              +"<li><a href=\"#\">rogar maldição</a></li>"
+              +"<li><a href=\"#\">salto</a></li>"
+              +"<li><a href=\"#\">santuário particular de mordenkainen</a></li>"
+              +"<li><a href=\"#\">santuário</a></li>"
+              +"<li><a href=\"#\">saraivada de espinhos</a></li>"
+              +"<li><a href=\"#\">semiplano</a></li>"
+              +"<li><a href=\"#\">sentido bestial</a></li>"
+              +"<li><a href=\"#\">servo invisível</a></li>"
+              +"<li><a href=\"#\">sexto sentido</a></li>"
+              +"<li><a href=\"#\">silêncio</a></li>"
+              +"<li><a href=\"#\">similaridade</a></li>"
+              +"<li><a href=\"#\">simulacro</a></li>"
+              +"<li><a href=\"#\">sinal de esperança</a></li>"
+              +"<li><a href=\"#\">sonho</a></li>"
+              +"<li><a href=\"#\">sono</a></li>"
+              +"<li><a href=\"#\">sugestão em massa</a></li>"
+              +"<li><a href=\"#\">sugestão</a></li>"
+              +"<li><a href=\"#\">sussurros dissonantes</a></li>"
+              +"<li><a href=\"#\">símbolo</a></li>"
+              +"<li><a href=\"#\">taumaturgia</a></li>"
+              +"<li><a href=\"#\">teia</a></li>"
+              +"<li><a href=\"#\">telecinésia</a></li>"
+              +"<li><a href=\"#\">telepatia</a></li>"
+              +"<li><a href=\"#\">teletransporte por árvores</a></li>"
+              +"<li><a href=\"#\">teletransporte</a></li>"
+              +"<li><a href=\"#\">tempestade da vingança</a></li>"
+              +"<li><a href=\"#\">tempestade de fogo</a></li>"
+              +"<li><a href=\"#\">tempestade de gelo</a></li>"
+              +"<li><a href=\"#\">tentáculos negros de evard</a></li>"
+              +"<li><a href=\"#\">terremoto</a></li>"
+              +"<li><a href=\"#\">terreno alucinógeno</a></li>"
+              +"<li><a href=\"#\">toque arrepiante</a></li>"
+              +"<li><a href=\"#\">toque chocante</a></li>"
+              +"<li><a href=\"#\">toque vampírico</a></li>"
+              +"<li><a href=\"#\">tranca arcana</a></li>"
+              +"<li><a href=\"#\">truque de corda</a></li>"
+              +"<li><a href=\"#\">tsunami</a></li>"
+              +"<li><a href=\"#\">velocidade</a></li>"
+              +"<li><a href=\"#\">ver o invisível</a></li>"
+              +"<li><a href=\"#\">viagem planar</a></li>"
+              +"<li><a href=\"#\">vidência</a></li>"
+              +"<li><a href=\"#\">vinha esmagadora</a></li>"
+              +"<li><a href=\"#\">visão da verdade</a></li>"
+              +"<li><a href=\"#\">visão no escuro</a></li>"
+              +"<li><a href=\"#\">vitalidade falsa</a></li>"
+              +"<li><a href=\"#\">voo</a></li>"
+              +"<li><a href=\"#\">vínculo protetor</a></li>"
+              +"<li><a href=\"#\">zombaria viciosa</a></li>"
+              +"<li><a href=\"#\">zona da verdade</a></li>"
             +"</ul>"
           +"</li>";
           $("#ulMagias").append(stringNovaMagia);
@@ -843,4 +1603,52 @@ function EditarPlayer(ctl) {
       }
     });
   });
+}
+
+function filtrarEste(ctl) {
+  var filter, ul, li, a, i;
+  filter = $(ctl).val().toUpperCase();
+  a = $(ctl).parent().children("li").children("a");
+
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      if (i==0) {
+        a[i].style.display = "";
+      }
+      if (i!=0) {
+        a[i].style.display = "none";
+      }
+    }
+  }
+}
+
+function filtrarEsteSemDelete(ctl) {
+  var filter, ul, li, a, i;
+  // input = $(ctl);
+  filter = $(ctl).val().toUpperCase();
+  a = $(ctl).parent().children("li").children("a");
+  // a = div;
+
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+
+function limpar(ctl) {
+  var filter, ul, li, a, i;
+  filter = $(ctl).val().toUpperCase();
+  a = $(ctl).parent().children("li").children("a");
+  $(ctl).val("");
+  for (i = 0; i < a.length; i++) {
+  txtValue = a[i].textContent || a[i].innerText;
+  a[i].style.display = "";
+  }
 }

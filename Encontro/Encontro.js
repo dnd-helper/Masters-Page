@@ -253,6 +253,7 @@ function addMonstroEncontro(ctl) {
   $("#collapseZero2").collapse('show');
   var linhaDeMonstrosAdicionados = [];
   var nome = $(ctl).parents("tr").children("th").first().text();
+  if ($(ctl).attr("id") == "addFromShow") { var nome = $(ctl).parents("div").children("h1").first().text(); }
   var hpMonstro;
   var cdMonstro;
   var xpMonstro;
@@ -341,7 +342,7 @@ function CalculaMonstros() {
 function delMontroEncontro(ctl) {
   var idMonstro = $(ctl).val();
   var indice;
-  alert(idMonstro)
+  // alert(idMonstro)
 
   $.each(monstrosAdicionados["Campanha1"], function(index, value) {
     if (idMonstro == monstrosAdicionados["Campanha1"][index][7]) {

@@ -1,3 +1,6 @@
+// var objetoClasse = Object.keys(database["NPCGerador"]["Possibilidades"][nomeRaca]);
+// var randomClasse = (Math.floor(Math.random() * objetoClasse.length));
+// var nomeClasse = objetoClasse[randomClasse];
 
 var database = {};
 
@@ -60,61 +63,226 @@ database["CdEXP"] = [
   [30,155000]
 ];
 
-database["NPCGerador"] = [
-  ["0",10],
-  ["1/8",25],
-  ["1/4",50],
-  ["1/2",100],
-  [1,200],
-  [2,450],
-  [3,700],
-  [4,1100],
-  [5,1800],
-  [6,2300],
-  [7,2900],
-  [8,3900],
-  [9,5000],
-  [10,5900],
-  [11,7200],
-  [12,8400],
-  [13,10000],
-  [14,11500],
-  [15,13000],
-  [16,15000],
-  [17,18000],
-  [18,20000],
-  [19,22000],
-  [20,25000],
-  [21,33000],
-  [22,41000],
-  [23,50000],
-  [24,62000],
-  [25,0],
-  [26,0],
-  [27,0],
-  [28,0],
-  [29,0],
-  [30,155000]
-];
-
 var racas = {};
-racas["Anão da Colina"] =         [ [0,0,2,0,1,0]];
-racas["Anão da Montanha"] =       [ [2,0,2,0,0,0]];
-racas["Alto Elfo"] =              [ [0,2,0,1,0,0]];
-racas["Elfo das Florestas"] =     [ [0,2,0,0,1,0]];
-racas["Elfo Drow"] =              [ [0,2,0,0,0,1]];
-racas["Halfling dos Pés Leves"] = [ [0,2,0,0,0,1]];
-racas["Halfling Robusto"] =       [ [0,2,1,0,0,0]];
-racas["Humano"] =                 [ [1,1,1,1,1,1]];
-racas["Draconato"] =              [ [2,0,0,0,0,1]];
-racas["Gnomo da Floresta"] =      [ [0,1,0,2,0,0]];
-racas["Gnomo das Profundezas"] =  [ [0,1,0,2,0,0]];
-racas["Gnomo das Rochas"] =       [ [0,0,1,2,0,0]];
-racas["Meio-Elfo"] =              [ [0,0,0,0,0,2]];
-racas["Meio-Orc"] =               [ [2,0,1,0,0,0]];
-racas["Tiefling"] =               [ [0,0,0,1,0,2]];
+racas["Anão da Colina"] =         [0,0,2,0,1,0];
+racas["Anão da Montanha"] =       [2,0,2,0,0,0];
+racas["Alto Elfo"] =              [0,2,0,1,0,0];
+racas["Elfo das Florestas"] =     [0,2,0,0,1,0];
+racas["Elfo Drow"] =              [0,2,0,0,0,1];
+racas["Halfling dos Pés Leves"] = [0,2,0,0,0,1];
+racas["Halfling Robusto"] =       [0,2,1,0,0,0];
+racas["Humano"] =                 [1,1,1,1,1,1];
+racas["Draconato"] =              [2,0,0,0,0,1];
+racas["Gnomo da Floresta"] =      [0,1,0,2,0,0];
+racas["Gnomo das Profundezas"] =  [0,1,0,2,0,0];
+racas["Gnomo das Rochas"] =       [0,0,1,2,0,0];
+racas["Meio-Elfo"] =              [0,0,0,0,0,2];
+racas["Meio-Orc"] =               [2,0,1,0,0,0];
+racas["Tiefling"] =               [0,0,0,1,0,2];
 
 database["Racas"] = racas;
+
+database["NPCGerador"] = [];
+database["NPCGerador"]["Caracteristicas"] = [
+["Distraído"],
+["Arrogante"],
+["Grosseiro"],
+["Mastiga algo"],
+["Desajeitado"],
+["Curioso"],
+["Estúpido (Pouco inteligente)"],
+["Inquieto e impaciente"],
+["Usa palavras erradas com frequência"],
+["Amigável"],
+["Nervoso"],
+["Sempre prevê desgraça"],
+["Marcado com cicatrizes"],
+["Usa palavras de calúnia, língua presa, ou gagueja"],
+["Fala alto ou sussurrando"],
+["Vesgo "],
+["Olhar distante"],
+["Desconfiado"],
+["Faz juramentos coloridos"],
+["Usa discurso florido ou palavras longas"],
+];
+
+
+database["NPCGerador"]["Ideais"] = [
+["Pretenção (qualquer)"],
+["Caridade (bom)"],
+["Comunidade (leal)"],
+["Creatividade (caótico)"],
+["Descoberta (qualquer)"],
+["Justiça (leal)"],
+["Liberdade (caótico)"],
+["Gloria (qualquer)"],
+["Bem maior (bom)"],
+["Ganancia (mau)"],
+["Honra (leal)"],
+["Independência (caótico)"],
+["Conhecimento (neutro)"],
+["Vida (bom)"],
+["Viva e deixe viver (neutro)"],
+["Força (mau)"],
+["Nação (qualquer)"],
+["Pessoas (neutro)"],
+["Poder (mau)"],
+["Redenção (qualquer)"]
+];
+
+database["NPCGerador"]["Vinculos"] = [
+["Objetivo pessoal ou realização"],
+["Membros da família "],
+["Companheiros ou compatriotas "],
+["Benfeitor, patrono ou empregador "],
+["Interesse romantico "],
+["Lugar especial"],
+["Lembrança "],
+["Posse de algo valioso "],
+["Vingança"],
+["Role duas vezes, ignorando rolagens maiores que 10"]
+];
+
+database["NPCGerador"]["Falhas"] = [
+["Amor proibido ou susceptibilidade romântica"],
+["Decadência"],
+["Arrogância"],
+["Inveja de bens de outra pessoa"],
+["Ganância avassaladora"],
+["Propenso a raiva"],
+["Inimigo poderoso"],
+["Fobia específica"],
+["História vergonhosa ou escandalosa"],
+["Crime secreto ou delito"],
+["Porte de conhecimento proibido"],
+["Bravura imprudente"]
+];
+
+database["NPCGerador"]["PrimeiroNome"] = [
+[" "],
+[" "],
+[" "],
+[" "],
+["A"],
+["Be"],
+["De"],
+["El"],
+["Fa"],
+["Jo"],
+["Ki"],
+["La"],
+["Ma"],
+["Na"],
+["O"],
+["Pa"],
+["Re"],
+["Si"],
+["Ta"],
+["Va"]
+];
+
+database["NPCGerador"]["SegundoNome"] = [
+["bar"],
+["ched"],
+["dell"],
+["far"],
+["gran"],
+["hal"],
+["jen"],
+["kel"],
+["lim"],
+["mor"],
+["net"],
+["penn"],
+["quil"],
+["rond"],
+["sark"],
+["shen"],
+["tur"],
+["vash"],
+["yor"],
+["zen"]
+];
+
+database["NPCGerador"]["TerceiroNome"] = [
+[" "],
+["a"],
+["ac"],
+["ai"],
+["al"],
+["am"],
+["an"],
+["ar"],
+["ea"],
+["el"],
+["er"],
+["ess"],
+["ett"],
+["ic"],
+["id"],
+["il"],
+["in"],
+["is"],
+["or"],
+["us"]
+];
+
+database["NPCGerador"]["Possibilidades"] = []
+database["NPCGerador"]["Possibilidades"]["Alto Elfo"]=[]
+database["NPCGerador"]["Possibilidades"]["Anão da Colina"]=[]
+database["NPCGerador"]["Possibilidades"]["Anão da Montanha"]=[]
+database["NPCGerador"]["Possibilidades"]["Draconato"]=[]
+database["NPCGerador"]["Possibilidades"]["Elfo das Florestas"]=[]
+database["NPCGerador"]["Possibilidades"]["Elfo Drow"]=[]
+database["NPCGerador"]["Possibilidades"]["Gnomo da Floresta"]=[]
+database["NPCGerador"]["Possibilidades"]["Gnomo das Profundezas"]=[]
+database["NPCGerador"]["Possibilidades"]["Gnomo das Rochas"]=[]
+database["NPCGerador"]["Possibilidades"]["Halfling dos Pés Leves"]=[]
+database["NPCGerador"]["Possibilidades"]["Halfling Robusto"]=[]
+database["NPCGerador"]["Possibilidades"]["Humano"]=[]
+database["NPCGerador"]["Possibilidades"]["Meio-Elfo"]=[]
+database["NPCGerador"]["Possibilidades"]["Tiefling"]=[]
+
+database["NPCGerador"]["Possibilidades"]["Alto Elfo"]["Guerreiro"]=[[10,14,13,15,12,8],[10,14,13,15,12,8],[10,14,13,15,12,8],[10,16,13,15,12,8],[10,16,13,15,12,8],[10,18,13,15,12,8],[10,18,13,15,12,8],[10,18,13,17,12,8],[10,18,13,17,12,8],[10,18,13,17,12,8],[10,18,13,17,12,8]]
+database["NPCGerador"]["Possibilidades"]["Alto Elfo"]["Mago"]=[[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8]]
+database["NPCGerador"]["Possibilidades"]["Anão da Colina"]["Clérigo"]=[[14,8,13,10,15,12],[14,8,13,10,15,12],[14,8,13,10,15,12],[14,8,13,10,17,12],[14,8,13,10,17,12],[14,8,13,10,17,12],[14,8,13,10,17,12],[15,8,14,10,17,12],[15,8,14,10,17,12],[15,8,14,10,17,12],[15,8,14,10,17,12]]
+database["NPCGerador"]["Possibilidades"]["Anão da Colina"]["Feiticeiro"]=[[8,13,14,10,12,15],[8,13,14,10,12,15],[8,13,14,10,12,15],[8,14,14,10,12,16],[8,14,14,10,12,16],[8,14,14,10,12,16],[8,14,14,10,12,16],[8,14,15,10,12,17],[8,14,15,10,12,17],[8,14,15,10,12,17],[8,14,15,10,12,17]]
+database["NPCGerador"]["Possibilidades"]["Anão da Montanha"]["Bárbaro"]=[[15,13,14,8,12,10],[15,13,14,8,12,10],[15,13,14,8,12,10],[16,13,15,8,12,10],[16,13,15,8,12,10],[16,13,15,8,12,10],[16,13,15,8,12,10],[17,13,15,8,13,10],[17,13,15,8,13,10],[17,13,15,8,13,10],[17,13,15,8,13,10]]
+database["NPCGerador"]["Possibilidades"]["Anão da Montanha"]["Guerreiro"]=[[15,8,14,12,10,13],[15,8,14,12,10,13],[15,8,14,12,10,13],[17,8,14,12,10,13],[17,8,14,12,10,13],[19,8,14,12,10,13],[19,8,14,12,10,13],[19,8,15,12,11,13],[19,8,15,12,11,13],[19,8,15,12,11,13],[19,8,15,12,11,13]]
+database["NPCGerador"]["Possibilidades"]["Draconato"]["Feiticeiro"]=[[8,13,14,10,12,15],[8,13,14,10,12,15],[8,13,14,10,12,15],[8,14,14,10,12,16],[8,14,14,10,12,16],[8,14,14,10,12,16],[8,14,14,10,12,16],[8,14,15,10,12,17],[8,14,15,10,12,17],[8,14,15,10,12,17],[8,14,15,10,12,17]]
+database["NPCGerador"]["Possibilidades"]["Draconato"]["Paladino"]=[[15,8,13,10,12,14],[15,8,13,10,12,14],[15,8,13,10,12,14],[15,8,13,10,13,15],[15,8,13,10,13,15],[15,8,13,10,13,15],[15,8,13,10,13,15],[15,8,13,10,13,17],[15,8,13,10,13,17],[15,8,13,10,13,17],[15,8,13,10,13,17]]
+database["NPCGerador"]["Possibilidades"]["Elfo das Florestas"]["Druida"]=[[8,14,13,10,15,12],[8,14,13,10,15,12],[8,14,13,10,15,12],[8,15,13,10,15,13],[8,15,13,10,15,13],[8,15,13,10,15,13],[8,15,13,10,15,13],[8,15,13,10,17,13],[8,15,13,10,17,13],[8,15,13,10,17,13],[8,15,13,10,17,13]]
+database["NPCGerador"]["Possibilidades"]["Elfo das Florestas"]["Patrulheiro"]=[[12,14,13,10,15,8],[12,14,13,10,15,8],[12,14,13,10,15,8],[12,16,13,10,15,8],[12,16,13,10,15,8],[12,16,13,10,15,8],[12,16,13,10,15,8],[12,18,13,10,15,8],[12,18,13,10,15,8],[12,18,13,10,15,8],[12,18,13,10,15,8]]
+database["NPCGerador"]["Possibilidades"]["Elfo Drow"]["Ladino"]=[[8,14,10,13,12,15],[8,14,10,13,12,15],[8,14,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,17],[8,16,10,13,12,17],[8,16,10,13,12,17],[8,16,10,13,12,17]]
+database["NPCGerador"]["Possibilidades"]["Elfo Drow"]["Mago"]=[[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8]]
+database["NPCGerador"]["Possibilidades"]["Gnomo da Floresta"]["Mago"]=[[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8]]
+database["NPCGerador"]["Possibilidades"]["Gnomo da Floresta"]["Ladino"]=[[8,14,10,13,12,15],[8,14,10,13,12,15],[8,14,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,17],[8,16,10,13,12,17],[8,16,10,13,12,17],[8,16,10,13,12,17]]
+database["NPCGerador"]["Possibilidades"]["Gnomo das Profundezas"]["Mago"]=[[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8]]
+database["NPCGerador"]["Possibilidades"]["Gnomo das Profundezas"]["Ladino"]=[[8,14,10,13,12,15],[8,14,10,13,12,15],[8,14,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,17],[8,16,10,13,12,17],[8,16,10,13,12,17],[8,16,10,13,12,17]]
+database["NPCGerador"]["Possibilidades"]["Gnomo das Rochas"]["Mago"]=[[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8]]
+database["NPCGerador"]["Possibilidades"]["Gnomo das Rochas"]["Bruxo"]=[[8,15,14,12,10,14],[8,15,14,12,10,14],[8,15,14,12,10,14],[8,15,14,12,10,16],[8,15,14,12,10,16],[8,15,14,12,10,16],[8,15,14,12,10,16],[8,15,14,12,10,18],[8,15,14,12,10,18],[8,15,14,12,10,18],[8,15,14,12,10,18]]
+database["NPCGerador"]["Possibilidades"]["Halfling dos Pés Leves"]["Ladino"]=[[10,15,13,14,12,8],[10,15,13,14,12,8],[10,15,13,14,12,8],[10,16,14,14,12,8],[10,16,14,14,12,8],[10,16,14,14,12,8],[10,16,14,14,12,8],[10,18,14,14,12,8],[10,18,14,14,12,8],[10,18,14,14,12,8],[10,18,14,14,12,8]]
+database["NPCGerador"]["Possibilidades"]["Halfling dos Pés Leves"]["Patrulheiro"]=[[12,14,13,10,15,8],[12,14,13,10,15,8],[12,14,13,10,15,8],[12,16,13,10,15,8],[12,16,13,10,15,8],[12,16,13,10,15,8],[12,16,13,10,15,8],[12,18,13,10,15,8],[12,18,13,10,15,8],[12,18,13,10,15,8],[12,18,13,10,15,8]]
+database["NPCGerador"]["Possibilidades"]["Halfling Robusto"]["Monge"]=[[8,15,13,10,14,12],[8,15,13,10,14,12],[8,15,13,10,14,12],[8,16,13,10,15,12],[8,16,13,10,15,12],[8,16,13,10,15,12],[8,16,13,10,15,12],[8,16,14,10,16,12],[8,16,14,10,16,12],[8,16,14,10,16,12],[8,16,14,10,16,12]]
+database["NPCGerador"]["Possibilidades"]["Halfling Robusto"]["Guerreiro"]=[[15,8,14,12,10,13],[15,8,14,12,10,13],[15,8,14,12,10,13],[17,8,14,12,10,13],[17,8,14,12,10,13],[19,8,14,12,10,13],[19,8,14,12,10,13],[19,8,15,12,11,13],[19,8,15,12,11,13],[19,8,15,12,11,13],[19,8,15,12,11,13]]
+database["NPCGerador"]["Possibilidades"]["Humano"]["Mago"]=[[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8]]
+database["NPCGerador"]["Possibilidades"]["Humano"]["Bárbaro"]=[[15,13,14,8,12,10],[15,13,14,8,12,10],[15,13,14,8,12,10],[16,13,15,8,12,10],[16,13,15,8,12,10],[16,13,15,8,12,10],[16,13,15,8,12,10],[17,13,15,8,13,10],[17,13,15,8,13,10],[17,13,15,8,13,10],[17,13,15,8,13,10]]
+database["NPCGerador"]["Possibilidades"]["Humano"]["Clérigo"]=[[15,7,12,9,15,11],[15,7,12,9,15,11],[15,7,12,9,15,11],[15,7,12,9,17,11],[15,7,12,9,17,11],[15,7,12,9,17,11],[15,7,12,9,17,11],[15,7,12,9,19,11],[15,7,12,9,19,11],[15,7,12,9,19,11],[15,7,12,9,19,11]]
+database["NPCGerador"]["Possibilidades"]["Humano"]["Druida"]=[[8,14,13,10,15,12],[8,14,13,10,15,12],[8,14,13,10,15,12],[8,15,13,10,15,13],[8,15,13,10,15,13],[8,15,13,10,15,13],[8,15,13,10,15,13],[8,15,13,10,17,13],[8,15,13,10,17,13],[8,15,13,10,17,13],[8,15,13,10,17,13]]
+database["NPCGerador"]["Possibilidades"]["Humano"]["Guerreiro"]=[[15,8,14,12,10,13],[15,8,14,12,10,13],[15,8,14,12,10,13],[17,8,14,12,10,13],[17,8,14,12,10,13],[19,8,14,12,10,13],[19,8,14,12,10,13],[19,8,15,12,11,13],[19,8,15,12,11,13],[19,8,15,12,11,13],[19,8,15,12,11,13]]
+database["NPCGerador"]["Possibilidades"]["Humano"]["Paladino"]=[[15,8,13,10,12,14],[15,8,13,10,12,14],[15,8,13,10,12,14],[15,8,13,10,13,15],[15,8,13,10,13,15],[15,8,13,10,13,15],[15,8,13,10,13,15],[15,8,13,10,13,17],[15,8,13,10,13,17],[15,8,13,10,13,17],[15,8,13,10,13,17]]
+database["NPCGerador"]["Possibilidades"]["Meio-Elfo"]["Bardo"]=[[8,16,14,12,10,14],[8,16,14,12,10,14],[8,16,14,12,10,14],[8,16,14,12,10,16],[8,16,14,12,10,16],[8,16,14,12,10,16],[8,16,14,12,10,16],[8,18,14,12,10,16],[8,18,14,12,10,16],[8,18,14,12,10,16],[8,18,14,12,10,16]]
+database["NPCGerador"]["Possibilidades"]["Meio-Elfo"]["Ladino"]=[[8,14,10,13,12,15],[8,14,10,13,12,15],[8,14,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,15],[8,16,10,13,12,17],[8,16,10,13,12,17],[8,16,10,13,12,17],[8,16,10,13,12,17]]
+database["NPCGerador"]["Possibilidades"]["Meio-Elfo"]["Paladino"]=[[14,10,13,8,12,15],[14,10,13,8,12,15],[14,10,13,8,12,15],[15,10,13,8,12,16],[15,10,13,8,12,16],[15,10,13,8,12,16],[15,10,13,8,12,16],[16,10,13,8,12,16],[16,10,13,8,12,16],[16,10,13,8,12,16],[16,10,13,8,12,16]]
+database["NPCGerador"]["Possibilidades"]["Meio-Elfo"]["Bárbaro"]=[[15,13,14,8,12,10],[15,13,14,8,12,10],[15,13,14,8,12,10],[16,13,15,8,12,10],[16,13,15,8,12,10],[16,13,15,8,12,10],[16,13,15,8,12,10],[17,13,15,8,13,10],[17,13,15,8,13,10],[17,13,15,8,13,10],[17,13,15,8,13,10]]
+database["NPCGerador"]["Possibilidades"]["Tiefling"]["Bruxo"]=[[8,15,14,12,10,14],[8,15,14,12,10,14],[8,15,14,12,10,14],[8,15,14,12,10,16],[8,15,14,12,10,16],[8,15,14,12,10,16],[8,15,14,12,10,16],[8,15,14,12,10,18],[8,15,14,12,10,18],[8,15,14,12,10,18],[8,15,14,12,10,18]]
+database["NPCGerador"]["Possibilidades"]["Tiefling"]["Mago"]=[[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,15,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,17,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8],[10,14,12,19,13,8]]
+
+
+
+
+
+
 
 var monstros = {}
 // NOME, CD, TAMANHO, TIPO, SECAO, ALIN 1, ALIN 2, NOME ING, HP, NOMEIMG, AMBIENTE

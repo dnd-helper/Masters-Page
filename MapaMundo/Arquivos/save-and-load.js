@@ -141,8 +141,8 @@ function saveMap() {
   const dateString = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
   const license = "File can be loaded in azgaar.github.io/Fantasy-Map-Generator";
   const params = [version, license, dateString, seed, graphWidth, graphHeight].join("|");
-  const options = [distanceUnit.value, distanceScale.value, areaUnit.value, heightUnit.value, heightExponent.value, temperatureScale.value, 
-    barSize.value, barLabel.value, barBackOpacity.value, barBackColor.value, barPosX.value, barPosY.value, populationRate.value, urbanization.value, 
+  const options = [distanceUnit.value, distanceScale.value, areaUnit.value, heightUnit.value, heightExponent.value, temperatureScale.value,
+    barSize.value, barLabel.value, barBackOpacity.value, barBackColor.value, barPosX.value, barPosY.value, populationRate.value, urbanization.value,
     equatorOutput.value, equidistanceOutput.value, temperatureEquatorOutput.value, temperaturePoleOutput.value, precOutput.value, JSON.stringify(winds)].join("|");
   const coords = JSON.stringify(mapCoordinates);
   const biomes = [biomesData.color, biomesData.habitability, biomesData.name].join("|");
@@ -160,13 +160,22 @@ function saveMap() {
   const states = JSON.stringify(pack.states);
   const burgs = JSON.stringify(pack.burgs);
 
-  const data = [params, options, coords, biomes, notesData, svg_xml, 
+  const data = [params, options, coords, biomes, notesData, svg_xml,
     gridGeneral, grid.cells.h, grid.cells.prec, grid.cells.f, grid.cells.t, grid.cells.temp,
     features, cultures, states, burgs,
-    pack.cells.biome, pack.cells.burg, pack.cells.conf, pack.cells.culture, pack.cells.fl, 
+    pack.cells.biome, pack.cells.burg, pack.cells.conf, pack.cells.culture, pack.cells.fl,
     pack.cells.pop, pack.cells.r, pack.cells.road, pack.cells.s, pack.cells.state].join("\r\n");
+  // console.log(data)
+  // if ( window.location !== window.parent.location ) {
+	//   window.parent.usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["MapaAtual"] = data;
+  //   // console.log(window.parent.usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["Historico"])
+	// } else {
+	//   // The page is not in an iframe
+	// }
   const dataBlob = new Blob([data], {type: "text/plain"});
+  // console.log(dataBlob)
   const dataURL = window.URL.createObjectURL(dataBlob);
+  // console.log(dataURL)
   const link = document.createElement("a");
   link.download = "fantasy_map_" + Date.now() + ".map";
   link.href = dataURL;
@@ -178,6 +187,63 @@ function saveMap() {
   zoom.transform(svg, transform);
 
   window.setTimeout(function() {window.URL.revokeObjectURL(dataURL);}, 2000);
+  console.timeEnd("saveMap");
+}
+
+
+function saveMapinUserFile() {
+  if (customization) {tip("Map cannot be saved when is in edit mode, please exit the mode and re-try", false, "error"); return;}
+  console.time("saveMap");
+  const date = new Date();
+  const dateString = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+  const license = "File can be loaded in azgaar.github.io/Fantasy-Map-Generator";
+  const params = [version, license, dateString, seed, graphWidth, graphHeight].join("|");
+  const options = [distanceUnit.value, distanceScale.value, areaUnit.value, heightUnit.value, heightExponent.value, temperatureScale.value,
+    barSize.value, barLabel.value, barBackOpacity.value, barBackColor.value, barPosX.value, barPosY.value, populationRate.value, urbanization.value,
+    equatorOutput.value, equidistanceOutput.value, temperatureEquatorOutput.value, temperaturePoleOutput.value, precOutput.value, JSON.stringify(winds)].join("|");
+  const coords = JSON.stringify(mapCoordinates);
+  const biomes = [biomesData.color, biomesData.habitability, biomesData.name].join("|");
+  const notesData = JSON.stringify(notes);
+
+  // set transform values to default
+  svg.attr("width", graphWidth).attr("height", graphHeight);
+  const transform = d3.zoomTransform(svg.node());
+  viewbox.attr("transform", null);
+  const svg_xml = (new XMLSerializer()).serializeToString(svg.node());
+
+  const gridGeneral = JSON.stringify({spacing:grid.spacing, cellsX:grid.cellsX, cellsY:grid.cellsY, boundary:grid.boundary, points:grid.points, features:grid.features});
+  const features = JSON.stringify(pack.features);
+  const cultures = JSON.stringify(pack.cultures);
+  const states = JSON.stringify(pack.states);
+  const burgs = JSON.stringify(pack.burgs);
+
+  const data = [params, options, coords, biomes, notesData, svg_xml,
+    gridGeneral, grid.cells.h, grid.cells.prec, grid.cells.f, grid.cells.t, grid.cells.temp,
+    features, cultures, states, burgs,
+    pack.cells.biome, pack.cells.burg, pack.cells.conf, pack.cells.culture, pack.cells.fl,
+    pack.cells.pop, pack.cells.r, pack.cells.road, pack.cells.s, pack.cells.state].join("\r\n");
+  // console.log(data)
+  if ( window.location !== window.parent.location ) {
+	  window.parent.usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["MapaAtual"] = data;
+    // console.log(window.parent.usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["Historico"])
+	} else {
+	  // The page is not in an iframe
+	}
+  // const dataBlob = new Blob([data], {type: "text/plain"});
+  // console.log(dataBlob)
+  // const dataURL = window.URL.createObjectURL(dataBlob);
+  // console.log(dataURL)
+  // const link = document.createElement("a");
+  // link.download = "fantasy_map_" + Date.now() + ".map";
+  // link.href = dataURL;
+  // document.body.appendChild(link);
+  // link.click();
+
+  // restore initial values
+  // svg.attr("width", svgWidth).attr("height", svgHeight);
+  // zoom.transform(svg, transform);
+
+  // window.setTimeout(function() {window.URL.revokeObjectURL(dataURL);}, 2000);
   console.timeEnd("saveMap");
 }
 

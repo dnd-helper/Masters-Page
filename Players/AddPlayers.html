@@ -12,15 +12,15 @@
       <ul class="" style="display: flex;flex-wrap: wrap; margin: 0;">
         <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
           <span class="input-group-addon input-sm"><b>ID:</b></span>
-          <input id="IDPlayer" type="text" placeholder="" class="form-control input-sm" value="21252362" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled"></input>
+          <input id="IDPlayer" type="text" placeholder="" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled"></input>
         </li>
         <li class="input-group" style="width: 37.5%;padding-right: 5px;padding-bottom: 5px;">
           <span class="input-group-addon input-sm"><b>Nome (Pers.):</b></span>
-          <input id="NomePersonagem" type="text" placeholder="" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"></input>
+          <input id="NomePersonagem" type="text" placeholder="Nome do Personagem" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"></input>
         </li>
         <li class="input-group" style="width: 37.5%;padding-right: 5px;padding-bottom: 5px;">
           <span class="input-group-addon input-sm"><b>Nome (Jog.):</b></span>
-          <input id="NomePlayer" type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"></input>
+          <input id="NomePlayer" type="text" placeholder="Nome do Player" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"></input>
         </li>
         <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
           <button type="button" id="BotaoRaca" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
@@ -47,7 +47,7 @@
         </li>
         <!-- <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
           <span class="input-group-addon input-sm"><b>Nivel:</b></span>
-          <input type="text" placeholder="ID" class="form-control input-sm" value="Dropdown" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
+          <input type="text" class="form-control input-sm" value="Dropdown" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
         </li> -->
         <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
           <button type="button" id="BotaoAlinhamento" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
@@ -268,37 +268,43 @@
     <div class="modal-body" style="display: flex;flex-wrap: wrap;">
       <ul id="listaStatusPlayer" class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>For</b></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>For</b></span>
           <input id="InputFor1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputFor2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputFor3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Des</b></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Des</b></span>
           <input id="InputDes1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputDes2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
           <input id="InputDes3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Con</b></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Con</b></span>
           <input id="InputCon1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputCon2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
           <input id="InputCon3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Int</b></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Int</b></span>
           <input id="InputInt1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputInt2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
           <input id="InputInt3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Sab</b></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Sab</b></span>
           <input id="InputSab1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputSab2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
           <input id="InputSab3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>Car</b></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Car</b></span>
           <input id="InputCar1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputCar2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
           <input id="InputCar3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
@@ -308,27 +314,27 @@
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
           <span style="width: 35%;" class="input-group-addon input-sm"><b>HP:</b></span>
           <input id="InputHPLeft" type="number" style="width: 50%;" placeholder="Atual" class="form-control input-sm" value=""></input>
-          <input id="InputHPAll" type="number" style="width: 50%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" placeholder="Max" class="form-control input-sm" value="" ></input>
+          <input id="InputHPAll" type="number" style="width: 50%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;margin-left: -1px;" placeholder="Max" class="form-control input-sm" value="" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
           <span style="width: 67.5%;" class="input-group-addon input-sm"><b>BONUS DE PROEF.</b></span>
-          <input id="Inputproef" type="text" placeholder="ID" class="form-control input-sm" value="" disabled="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
+          <input id="Inputproef" type="number" placeholder="Num." class="form-control input-sm" value="" disabled="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
           <span style="width: 67.5%;" class="input-group-addon input-sm"><b>CLASSE DE ARM.</b></span>
-          <input id="InputclasseArm" type="number" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
+          <input id="InputclasseArm" type="number" placeholder="Num." class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
           <span style="width: 67.5%;" class="input-group-addon input-sm"><b>INSPIRAÇÃO</b></span>
-          <input id="Inputinspir" type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
+          <input id="Inputinspir" type="number" placeholder="Num." class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
           <span style="width: 67.5%;" class="input-group-addon input-sm"><b>INICIATIVA</b></span>
-          <input id="Inputiniciat" type="number" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
+          <input id="Inputiniciat" type="number" placeholder="Num." class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
           <span style="width: 67.5%;" class="input-group-addon input-sm"><b>DESLOCAMENTO</b></span>
-          <input id="Inputdesloc" type="text" placeholder="ID" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
+          <input id="Inputdesloc" type="number" placeholder="Num." class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <div class="filler"></div>
       </ul>
@@ -374,6 +380,21 @@
           <button id="NovaMagia" type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
             <b>Adicionar Magia</b>
           </button>
+          <!-- <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+              <b>Magia</b>
+              <span class="caret"></span>
+            </button>
+            <ul id="myDropdown" class="dropdown-menu dropdown-menu-selecionavel">
+              <li><input id="myInput" onkeyup="filtrarEste(this)" type="text" class="custom-select" style="background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;"></li>
+              <li role="separator" class="divider"></li>
+              <li><a id="deleta" href="#">Deletar Item</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li> -->
         </div>
       </ul>
       <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">

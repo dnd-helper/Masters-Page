@@ -7,7 +7,12 @@ $(document).on('click', '.dropdown-menu-classe li a', function() {
   visibleSpells = spellByClass[className];
 
   $("#ULdropdownMagia").empty();
+  $("#ULdropdownMagia").append(
+    "<input onkeyup=\"filtrarEsteSemDelete(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
+    +"<li role=\"separator\" class=\"divider\"></li>"
+  );
   $("#spell-list").empty();
+
 
   //ADICIONA CADA OPCAO DE MAGIA
   if (nivelSelecionado == "Todos") {
@@ -39,6 +44,10 @@ $(document).on('click', '.dropdown-menu-nivel li a', function() {
   visibleSpells = spellByClass[className];
 
   $("#ULdropdownMagia").empty();
+  $("#ULdropdownMagia").append(
+    "<li><input onkeyup=\"filtrarEsteSemDelete(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\"></li>"
+    +"<li role=\"separator\" class=\"divider\"></li>"
+  );
   $("#spell-list").empty();
 
   //ADICIONA CADA OPCAO DE MAGIA

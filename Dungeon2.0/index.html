@@ -67,7 +67,7 @@
 <body style="background-color: white;">
 
 
-<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true" style="margin-bottom: 0px; overflow: hidden">
+<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true" style="margin-bottom: 0px; overflow: hidden;">
 
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne3">
@@ -78,16 +78,16 @@
       </h4>
     </div>
     <div id="collapseOne3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne3">
-      <div class="panel-body" style="padding: 6px" >
+      <div class="panel-body" style="padding: 6px">
 
         <form method="get" onsubmit="return false;" style="flex-wrap: wrap;display: inline-flex;">
           <!-- <h1>Random Dungeon Generator</h1> -->
           <table id="form" class="center">
             <tr>
               <ul class="" style="width: 100%;flex-wrap: wrap; margin: 0;padding-right: 0px;">
-                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;"">Tamanho da Sala Inicial</label>
-                <input class="custom-select" id="dungeon_name" style="width: 79%;" /> &nbsp;
-                <input class="btn btn-primary btn-sm" style="width:19%" type="button" id="new_name" value="New" />
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">Tamanho da Sala Inicial</label>
+                <input class="custom-select" id="dungeon_name" style="width: 79%; background: none" /> &nbsp;
+                <input class="btn btn-primary btn-sm" style="width:19%" type="button" id="new_name" value="Novo Nome/Dungeon" />
               </ul>
               <ul class="" style="width: 33.3%;flex-wrap: wrap; margin: 0;padding-right: 0px;padding-bottom: 10px;padding-right: 5px;">
                 <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Estilo do Mapa</label>
@@ -107,7 +107,7 @@
                 <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Tamanho das Salas</label>
                 <select class="custom-select" id="room_size"></select>
                 <label for="" style="margin-bottom: 0px; margin-top: 10px;line-height: initial;"></label>
-                <input type="button" class="btn btn-primary btn-sm" style="width:100%" value="Save as PNG" onclick="save_map();" />
+                <input type="button" class="btn btn-primary btn-sm" style="width:100%" value="Salvar como PNG" onclick="save_map();" />
 
               </ul>
               <ul class="" style="width: 33.3%;flex-wrap: wrap; margin: 0;padding-right: 0px;padding-bottom: 10px;padding-right: 5px;">
@@ -118,7 +118,7 @@
                 <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Remover Caminhos sem Saída</label>
                 <select class="custom-select" id="remove_deadends"></select>
                 <label for="" style="margin-bottom: 0px; margin-top: 10px;line-height: initial;"></label>
-                <input type="button" class="btn btn-primary btn-sm" style="width:100%" value="Print" onclick="window.print();" />
+                <input type="button" class="btn btn-primary btn-sm" style="width:100%" value="Imprimir Dungeon" onclick="window.print();" />
               </ul>
             </tr>
             <!-- <tr>
@@ -152,7 +152,7 @@
           </div>
         </div>
         <canvas id="map" style="max-width: 100%; max-height: 100%" width="1027" height="1027"><p>Your web browser does not appear to support the HTML5 &lt;canvas&gt; element.</p></canvas><br>
-        <img src="observations.gif" alt="">
+        <img src="observations2.gif" alt="">
       </div>
     </div>
 
@@ -176,16 +176,32 @@
     </div> -->
     <script type="text/javascript">
       function botaoMais(ctl) {
+        // var valora;
+        // var valorb;
+        // valora = $("#iframeDungeon").contents().find("#collapseTwo3").width();
+        // valorb = $("#map").width();
+        // console.log(valora+" >= "+valorb)
         document.getElementById("map").style.maxHeight = ""
         document.getElementById("map").style.maxWidth = ""
+        // if ( valora >= valorb ) {
+        //   if (valora == valorb ) {
+        //     alert("entrou")
+        //
+        //   } else {
+        //     document.getElementById("map").style.width = "100%"
+        //     alert("entrou")
+        //   }
+        // }
       }
       function botaoMenos(ctl) {
         document.getElementById("map").style.maxHeight = ""
         document.getElementById("map").style.maxWidth = "100%"
+        document.getElementById("map").style.width = ""
       }
       function botaoMenosMenos(ctl) {
         document.getElementById("map").style.maxWidth = ""
         document.getElementById("map").style.maxHeight = "calc(70vh - 16px)"
+        document.getElementById("map").style.width = ""
       }
       $(document).ready( function() {
 

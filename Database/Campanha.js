@@ -5,6 +5,39 @@
 
 //Lista de Players
 
+var usuario = {};
+usuario["InformacoesdoUsuario"] = {};
+usuario["InformacoesdoUsuario"]["CampanhaAtual"] = "Campanha1";
+usuario["InformacoesdoUsuario"]["NomeDoUsuario"] = "Admin - Luan";
+usuario["InformacoesdeVersao"] = {};
+usuario["CampanhasPlayer"] = {};
+usuario["CampanhasMestre"] = {};
+usuario["CampanhasMestre"]["Campanha1"] = {};
+// usuario["CampanhasMestre"]["Campanha2"] = {};
+// usuario["CampanhasMestre"]["Campanha3"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Grid"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Encontro"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Contadores"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Cidade"];
+usuario["CampanhasMestre"]["Campanha1"]["Mundo"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["Historico"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["MapaAtual"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Dungeon"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["BlocoDeNotas"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Tabela"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Players"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"] = [];
+usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"] = [];
+usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"] = [];
+usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeProeficiencias"] = [];
+usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"] = [];
+
+
+
+// var objetoClasse = Object.keys(database["NPCGerador"]["Possibilidades"][nomeRaca]);
+// var randomClasse = (Math.floor(Math.random() * objetoClasse.length));
+// var nomeClasse = objetoClasse[randomClasse];
+
 var listaDePlayers = {};
 var listaDeMagias = {};
 var listaDePericias = {};

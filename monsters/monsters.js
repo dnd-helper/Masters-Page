@@ -16,6 +16,9 @@ $(document).on('click', '.dropdown-menu-monstro li a', function() {
      });
      $( "#selectedMonster" ).load('monsters/Dnd5Monsters.html div[data-name="'+nomeIngles+'"]');
      $('#selectedMonsterPicture img').attr("src","monsters/Images/"+linkImagem);
+
+     $('#accordion1 .in').collapse('hide');
+     $("#collapseOneOne1").collapse('show');
 });
 
 
@@ -24,7 +27,7 @@ $( document ).ready(function() {
   $.each(monstrosVisiveis, function(index, value) {
     // if (monstrosVisiveis[index][1] == nivelSelecionado) {
       $("#ULdropdownMonstro").append(
-        "<li data-toggle=\"collapse\" data-parent=\"#accordion1\" href=\"#collapseOneOne1\" aria-expanded=\"true\" aria-controls=\"collapseOneOne1\"><a href=\"#\">"+monstrosVisiveis[index][0]+"</a></li>"
+        "<li><a href=\"#\">"+monstrosVisiveis[index][0]+"</a></li>"
       );
     // }
   });
@@ -93,6 +96,10 @@ function AdicionaMonstros() {
   // visibleSpells = spellByClass[className];
 
   $("#ULdropdownMonstro").empty();
+  $("#ULdropdownMonstro").append(
+    "<input onkeyup=\"filtrarEsteSemDelete(this)\" onblur=\"limpar(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
+    +"<li role=\"separator\" class=\"divider\"></li>"
+  );
   $("#tbodyMonstros").empty();
   // $("#spell-list").empty();
 
@@ -201,7 +208,7 @@ function AdicionaMonstros() {
 
     if (t1a == true && t1b == true && t2 == true && t3 == true && t4 == true && t5 == true && t6 == true && t10 == true && t11 == true) {
       $("#ULdropdownMonstro").append(
-        "<li data-toggle=\"collapse\" data-parent=\"#accordion1\" href=\"#collapseOneOne1\" aria-expanded=\"true\" aria-controls=\"collapseOneOne1\"><a href=\"#\">"+monstrosVisiveis[index][0]+"</a></li>"
+        "<li><a href=\"#\">"+monstrosVisiveis[index][0]+"</a></li>"
       );
 
       $("#tbodyMonstros").append(
@@ -245,7 +252,8 @@ function AdicionaMonstros() {
 // });
 
 function voltaMonstro() {
-  $('#accordion1 .in').collapse('hide');
+  // $('#accordion1 .in').collapse('hide');
+  $("#collapseOneOne1").collapse('hide');
   $("#collapseOne1").collapse('show');
 }
 

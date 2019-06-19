@@ -3,7 +3,7 @@ document.write(`
   <div class="row row-no-gutters">
     <div class="col-xs-3 col-sm-3 col-md-3">
 
-      <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+      <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true" style="margin-bottom: -1px;">
 
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingOne1">
@@ -308,6 +308,8 @@ document.write(`
                   <span class="caret"></span>
                 </button>
                 <ul style="text-transform: Capitalize" id="ULdropdownMonstro" class="dropdown-menu dropdown-menu-monstro scrollable-menu" aria-labelledby="dropdownMonstro">
+                  <input onkeyup="filtrarEsteSemDelete(this)" onblur="limpar(this)" type="text" class="custom-select" style="background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;">
+                  <li role="separator" class="divider"></li>
                 </ul>
               </div>
               <div id="MonstroSelecionado" style="width:100%; max-height: calc(50vh); overflow: hidden auto; margin-top: 10px;"">
@@ -344,13 +346,13 @@ document.write(`
             <div class="panel-body" style="max-height: calc(100vh - 7 * 34px - 26px);overflow: auto;">
               <div class="topoMonstros" style="display: inline-flex; width: 100%">
                 <h1 style="float: left; width: 100%; font-weight: normal;font-size: 2.5rem; margin: 0 0 1rem;margin-bottom: 0px; padding: 0;" id="nomeMonstro">Aarakocra</h1>
-                <button style="float: right;" class="btn btn-default" onclick="voltaMonstro();" role="button">
+                <button style="float: right; height: max-content" class="btn btn-default" onclick="voltaMonstro();" role="button">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </button>
-                <button style="float: right;" class="btn btn-primary" onclick="mostraMonstro();">
+                <button style="float: right; height: max-content" class="btn btn-primary" onclick="mostraMonstro();">
                   <span id="glyphiconPicture" class="glyphicon glyphicon-picture"></span>
                 </button>
-                <button style="float: right;" class="btn btn-success" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                <button id="addFromShow" style="float: right; height: max-content" class="btn btn-success" onclick="addMonstroEncontro(this);">
                   <span class="glyphicon glyphicon-plus"></span>
                 </button>
               </div>
@@ -424,6 +426,8 @@ document.write(`
                   <span class="caret"></span>
                 </button>
                 <ul style="text-transform: Capitalize" id="ULdropdownMagia" class="dropdown-menu dropdown-menu-magia scrollable-menu" aria-labelledby="dropdownMagia">
+                  <input onkeyup="filtrarEsteSemDelete(this)" onblur="limpar(this)" type="text" class="custom-select" style="background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;">
+                  <li role="separator" class="divider"></li>
                 </ul>
               </div>
               <div id="MagiaSelecionada" class="" style="width:100%; max-height: calc(50vh); overflow: hidden auto; margin-top: 10px;"">
@@ -445,21 +449,22 @@ document.write(`
             </h4>
           </div>
           <div id="collapseThree1" style="max-height: calc(100vh - 7 * 34px - 26px); overflow-x: hidden; overflow-y: auto" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree1">
-            <div class="panel-body" style="min-height: 120px;max-height: calc(100vh - 7 * 34px - 26px);">
-
+            <div class="panel-body" style="min-height: 120px; max-height: calc(100vh - 7 * 34px - 26px);">
+              <!-- min-height: 120px; -->
 
               <div class="btn-group btn-group-lg" role="group" aria-label="..." style="width: 100%;display: flex;">
 
-                <div class="btn-group btn-group-lg" style="width: 50%; role="group">
-                  <button type="button" style="width: 100%;" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown clearfix btn-group btn-group-lg" style="width: 50%; role="group">
+                  <button type="button" style="width: 100%;" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     Add Player
                     <span class="caret"></span>
                   </button>
                   <ul style="text-transform: Capitalize" class="dropdown-menu scrollable-menu">
                     <li id="novoPlayer" data-toggle="modal" data-target="#ModalAdicionarPlayer"><a href="#">Novo Player</a></li>
-                    <li data-toggle="modal" data-target="#ModalAdicionarPlayer"><a href="#">ID</a></li>
+                    <li data-toggle="modal" data-target="#ModalAdicionarPorID"><a href="#">Adicionar Por ID</a></li>
                   </ul>
                 </div>
+
                 <button id="PlayerOnGridButton" type="button" class="btn btn-primary" style="width: 50%;">
                   Players nos Grids
                   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
@@ -505,6 +510,63 @@ document.write(`
                 </div>
 
               </div>
+              </div>
+
+              <div class="modal fade" id="ModalAdicionarPorID" style="z-index: 1400;" role="dialog" aria-labelledby="myModalLabel">
+                <div class="vertical-alignment-helper">
+
+                  <div class="modal-dialog vertical-align-center" role="document">
+                    <div class="modal-content" style="width: 400px;">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Adicionar Player por ID</h4>
+                      </div>
+                      <div class="modal-body">
+                        <style media="screen">
+                          .custom-select {
+                            display: inline-block;
+                            width: 100%;
+                            padding: .375rem 1.75rem .375rem .75rem;
+                            font-weight: 400;
+                            line-height: 1.5;
+                            color: #495057;
+                            vertical-align: middle;
+                            background-color: rgba(0, 0, 0, 0);
+                            background-color: #fff;
+                            background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+                            border: 1px solid #ced4da;
+                            border-radius: .25rem;
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            height: calc(1.5em + .5rem + 2px);
+                            padding-top: .25rem;
+                            padding-bottom: .25rem;
+                            padding-left: .5rem;
+                            padding-right: .5rem;
+                            font-size: 1.1rem;
+                          }
+                        </style>
+                        <!-- <script src="Grids/Configuracao.html"></script> -->
+                        <!-- <ul class="" style="width: 100%;flex-wrap: wrap; margin: 0;padding-right: 0px;"> -->
+                          <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">ID do Personagem</label>
+                          <input class="custom-select" style="background: none">
+                          <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">Senha de Personagens</label>
+                          <input type="password" class="custom-select" style="background: none">
+
+                          <h1 style="font-weight: bold;font-size: 2.5rem;margin: 1.6rem 0 1rem;">Atenção</h1>
+                          <h2 style="margin: 0 0 1rem;">Essa função ainda não foi implementada no sistema, e portanto esses controles não geram nenhum resultado. Após a implementação do sistema de Login, esta função será habilitada.</h2>
+                          <!-- <input class="btn btn-primary btn-sm" style="width:19%" type="button" value="Novo Nome/Dungeon"> -->
+                        <!-- </ul> -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
               <div class="modal fade" id="ModalMudaCor" style="z-index: 1600;" role="dialog" aria-labelledby="ModalMudaCor">
@@ -608,37 +670,37 @@ document.write(`
                   </div>
                 </div>
                 <div style="display: inline-flex;">
-                  <table class="table table-bordered" style="margin-top: 10px; margin-bottom: 10px; height: 100%;width: 60%; table-layout: fixed;" id="ListaDeCaractNPC">
+                  <table class="table table-bordered" style="margin-top: 10px; margin-bottom: 10px; height: 100%;width: max-content; table-layout: fixed;" id="ListaDeCaractNPC">
                     <thead style="height: 32px">
                       <tr class="active">
                         <th style="padding: 0px;padding-bottom: 5px;"><b><center>FOR</center></b></th>
                         <th style="padding: 0px;padding-bottom: 5px;"><b><center>DES</center></b></th>
                         <th style="padding: 0px;padding-bottom: 5px;"><b><center>CON</center></b></th>
+                        <th style="padding: 0px;padding-bottom: 5px;"><b><center>INT</center></b></th>
                         <th style="padding: 0px;padding-bottom: 5px;"><b><center>SAB</center></b></th>
                         <th style="padding: 0px;padding-bottom: 5px;"><b><center>CAR</center></b></th>
-                        <th style="padding: 0px;padding-bottom: 5px;"><b><center>INT</center></b></th>
                       </tr>
                     </thead>
                     <tbody style="height: 50px;">
                       <tr>
-                        <th style="padding-top: 4px;padding-bottom: 4px;">10</th>
-                        <th style="padding-top: 4px;padding-bottom: 4px;">10</th>
-                        <th style="padding-bottom: 4px;padding-top: 4px;">12</th>
-                        <th style="padding-top: 4px;padding-bottom: 4px;">08</th>
-                        <th style="padding-bottom: 4px;padding-top: 4px;">15</th>
-                        <th style="padding-bottom: 4px;padding-top: 4px;">14</th>
+                        <th id="forNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+                        <th id="desNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+                        <th id="conNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+                        <th id="intNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+                        <th id="sabNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+                        <th id="carNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
                       </tr>
                       <tr>
-                        <th style="padding-top: 4px;padding-bottom: 4px;">+1</th>
-                        <th style="padding-top: 4px;padding-bottom: 4px;">+1</th>
-                        <th style="padding-bottom: 4px;padding-top: 4px;">+2</th>
-                        <th style="padding-top: 4px;padding-bottom: 4px;">+0</th>
-                        <th style="padding-bottom: 4px;padding-top: 4px;">+3</th>
-                        <th style="padding-bottom: 4px;padding-top: 4px;">+1</th>
+                        <th id="forBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+                        <th id="desBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+                        <th id="conBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+                        <th id="intBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+                        <th id="sabBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+                        <th id="carBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
                       </tr>
                     </tbody>
                   </table>
-                  <div style="width: 40%;padding-left: 1.6rem;margin-top: 1.0rem;">
+                  <div style="width: max-content;padding-left: 1.6rem;margin-top: 1.0rem;">
                     <li id="nomeNPC"><b>Nome:</b></li>
                     <li id="classeNPC"><b>Classe:</b></li>
                     <li id="racaNPC"><b>Raça:</b></li>
@@ -680,7 +742,231 @@ document.write(`
 
       </div>
 
+      <div class="panel-group" id="accordion1Tempo" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTempo">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion1Tempo" href="#collapseTempo" aria-expanded="true" aria-controls="collapseTempo">
+                Contador de Tempo
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTempo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTempo">
+            <div class="panel-body" style="max-height: calc(100vh - 7 * 34px - 26px); text-align: ">
+              <script type="text/javascript">
+                // var minutesLabel = ;
+                // var secondsLabel = ;
+                var totalSeconds = 0;
+                // setInterval(setTime, 1000);
+                var click = false;
+                var t;
+                var shiftAlert;
+                var up = true;
+                var timeon = false;
+                $(document).ready( function() {
+                  $(document).on("click","#play", function() {
+                    playPause()
+                  });
+                  $(document).on("click","#up-down", function() {
+                    var entrou = 0;
+                    if (up == false && entrou == 0) {
+                      $("#up").css("display","");
+                      $("#down").css("display","none");
+                      up = true;
+                      entrou = 1;
+                    }
+                    if (up == true && entrou == 0) {
+                      $("#up").css("display","none");
+                      $("#down").css("display","");
+                      up = false;
+                      entrou = 1;
+                    }
+                  });
+                  $(document).on("click","#timeButton", function() {
+                    var entrou = 0;
+                    if (timeon == false && entrou == 0) {
+                      var estadoInicial = click;
+                      pause()
+                      $("#seconds").removeAttr('disabled');
+                      $("#minutes").removeAttr('disabled');
+                      $("#hours").removeAttr('disabled');
+                      $("#up-down").attr("disabled","disabled");
+                      $("#play").attr("disabled","disabled");
+                      $("#resetTimer").attr("disabled","disabled");
+                      $("#removeTimer").attr("disabled","disabled");resetTimer
+                      timeon = true;
+                      entrou = 1;
+                    }
+                    if (timeon == true && entrou == 0) {
+                      var valordoTimer = 0;
+                      if ($("#seconds").val() == "") { var segundos = 0 } else { var segundos = $("#seconds").val() }
+                      if ($("#minutes").val() == "") { var minutos = 0 } else { var minutos = $("#minutes").val() }
+                      if ($("#hours").val() == "") { var horas = 0 } else { var horas = $("#hours").val() }
+                      valordoTimer = eval(segundos) + eval(minutos)*60 + eval(horas)*3600;
+                      totalSeconds = valordoTimer;
+                      $("#seconds").attr("disabled","disabled");
+                      $("#minutes").attr("disabled","disabled");
+                      $("#hours").attr("disabled","disabled");
+                      $("#up-down").removeAttr('disabled');
+                      $("#play").removeAttr('disabled');
+                      $("#resetTimer").removeAttr('disabled');
+                      $("#removeTimer").removeAttr('disabled');
+                      // $("#time").removeAttr('disabled');
+                      timeon = false;
+                      entrou = 1;
+                      if (estadoInicial == true) { play() }
+                    }
 
+                  });
+                  $(document).on("click","#resetTimer", function() {
+                    reset()
+                  });
+                  // $(document).on("click","#time", function() {
+                  //   $("#time").css("cursor","auto")
+                  //   $("#time").Attr("disabled","disabled")
+                  //   $("#seconds").css("cursor","inherit")
+                  //   $("#minutes").css("cursor","inherit")
+                  //   $("#hours").css("cursor","inherit")
+                  //   clearTimeout(shiftAlert);
+                  // });
+                });
+
+                function reset() {
+                  pause()
+                  var valordoTimer = 0;
+                  if ($("#startSecond").val() == "") { var segundos = 0 } else { var segundos = $("#startSecond").val() }
+                  if ($("#startMinute").val() == "") { var minutos = 0 } else { var minutos = $("#startMinute").val() }
+                  if ($("#startHour").val() == "") { var horas = 0 } else { var horas = $("#startHour").val() }
+                  valordoTimer = eval(segundos) + eval(minutos)*60 + eval(horas)*3600;
+                  totalSeconds = valordoTimer;
+                  play()
+                }
+
+                function setTime() {
+                  if (up == true) { ++totalSeconds;}
+                  if (up == false) {--totalSeconds;}
+
+                  $("#seconds").val(pad(totalSeconds % 60));
+                  if (((totalSeconds / 60) % 1) == 0) {$("#minutes").val(pad(parseInt(totalSeconds / 60) % 60))}
+                  if (((totalSeconds / 3600) % 1) == 0) {$("#hours").val(pad(parseInt(totalSeconds / 3600) % 24))}
+                  if (totalSeconds == 0 && up == false) {
+                    pause()
+                    // $("#time").css("cursor","pointer")
+                    // $("#time").removeAttr("disabled")
+                    // $("#seconds").css("cursor","pointer")
+                    // $("#minutes").css("cursor","pointer")
+                    // $("#hours").css("cursor","pointer")
+                    // shiftAlert = setInterval(shiftColors, 500)
+                  }
+                }
+
+                var shift = false;
+                function shiftColors() {
+                  var entrou = 0;
+                  if (shift == true && entrou == 0) {
+                    $("#time").css("background-color","rgb(50, 50, 50)")
+                    $("#seconds").css("font-color","white")
+                    $("#minutes").css("font-color","white")
+                    $("#hours").css("font-color","white")
+                    entrou = 1;
+                    shift = false;
+                  }
+                  if (shift == false && entrou == 0) {
+                    $("#time").css("background-color","white")
+                    $("#seconds").css("font-color","rgb(50, 50, 50)")
+                    $("#minutes").css("font-color","rgb(50, 50, 50)")
+                    $("#hours").css("font-color","rgb(50, 50, 50)")
+                    entrou = 1;
+                    shift = true;
+                  }
+                }
+
+                function pad(val) {
+                  var valString = val + "";
+                  if (valString.length < 2) {
+                    return "0" + valString;
+                  } else {
+                    return valString;
+                  }
+                }
+                function playPause() {
+                  $("#seconds").val(pad(totalSeconds % 60));
+                  $("#minutes").val(pad(parseInt(totalSeconds / 60) % 60))
+                  $("#hours").val(pad(parseInt(totalSeconds / 3600) % 24))
+                  var entrou = 0;
+                  if (click == false && entrou == 0) {
+                    t = setInterval(setTime, 1000);
+                    click = true;
+                    entrou = 1;
+                  }
+                  if (click == true && entrou == 0) {
+                    clearTimeout(t);
+                    click = false;
+                    entrou = 1;
+                  }
+                }
+                function play() {
+                  $("#seconds").val(pad(totalSeconds % 60));
+                  $("#minutes").val(pad(parseInt(totalSeconds / 60) % 60))
+                  $("#hours").val(pad(parseInt(totalSeconds / 3600) % 24))
+                  t = setInterval(setTime, 1000);
+                  click = true;
+                }
+                function pause() {
+                  $("#seconds").val(pad(totalSeconds % 60));
+                  $("#minutes").val(pad(parseInt(totalSeconds / 60) % 60))
+                  $("#hours").val(pad(parseInt(totalSeconds / 3600) % 24))
+                  clearTimeout(t);
+                  click = false;
+                }
+              </script>
+              <!-- <div class="" style="width: 100%;padding-bottom: 8px;">
+                <button id="" type="button" style="width: 100%" class="btn btn-default btn-lg" name="button">Play</button>
+              </div> -->
+
+              <div class="" style="width: 100%;display: inline-flex;">
+
+                <div class="" style="width: 100%;display: inline-flex;">
+                  <label for="" style="margin-bottom: 0px;text-align: left;" contenteditable="false">Descrição:</label>
+                  <input style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 100%;padding: 0;padding-left: 2px" placeholder="Descreva seu timer aqui." contenteditable="true">
+                </div>
+                <div class="" style="width: min-content;display: inline-flex;">
+                  <label for="" style="margin-bottom: 0px;text-align: left;" contenteditable="false">Inicial:</label>
+                  <input value="" id="startHour" placeholder="00" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;" contenteditable="true">
+                  :
+                  <input value="" id="startMinute" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;" placeholder="00" contenteditable="true">
+                  :
+                  <input value="" id="startSecond" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;" placeholder="00" contenteditable="true">
+                </div>
+              </div>
+              <div style="display: inline-flex;width: 100%;" class="btn-group" role="group">
+                <div style="padding: 0;width: max-content;border: 0px;" class="btn btn-group-vertical">
+                  <button id="play" type="button" class="btn btn-primary btn-lg" style="border-top-right-radius: 0;border-bottom-right-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;">
+                    <span class="glyphicon glyphicon-pause"></span>
+                    <span class="glyphicon glyphicon-play"></span>
+                  </button>
+                  <button id="up-down" type="button" class="btn btn-primary btn-lg" style="border-top-right-radius: 0;border-bottom-right-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;">
+                    <span id="up" style="display: " class="glyphicon glyphicon-arrow-up"></span>
+                    <span id="down" style="display: none" class="glyphicon glyphicon-arrow-down"></span>
+                  </button>
+                </div>
+                <button id="time" style="/* height: 3.5vw */;width: 100%;/* padding-top: 1.0vw !important; */padding: 0;opacity: 1;cursor: auto;" class="btn btn-default" disabled="disabled">
+                  <input value="00" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;" id="hours" disabled="disabled">
+                  <span style="font-size: 3vw;">:</span>
+                  <input value="00" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;" id="minutes" disabled="disabled">
+                  <span style="font-size: 3vw;">:</span>
+                  <input value="00" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;" id="seconds" disabled="disabled">
+                </button>
+                <button id="resetTimer" type="button" class="btn btn-primary btn-lg" style="border-top-left-radius: 0;border-bottom-left-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;"><span class="glyphicon glyphicon-repeat"></span></button>
+                <div style="padding: 0;width: max-content;border: 0px;" class="btn btn-group-vertical">
+                  <button id="removeTimer" type="button" class="btn btn-primary btn-lg" style="border-top-left-radius: 0;border-bottom-left-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;"><span class="glyphicon glyphicon-remove"></span></button>
+                  <button id="timeButton" type="button" class="btn btn-primary btn-lg" style="border-top-left-radius: 0;border-bottom-left-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;"><span class="glyphicon glyphicon-time"></span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6">
       <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs" style="margin-left: 10px;margin-right: 10px;margin-top: 10px;">
@@ -789,126 +1075,7 @@ document.write(`
           </div>
 
           <div role="tabpanel" id="PainelEditorTabela" class="tab-pane fade" style="width: 100%; padding: 5px; height: calc(100vh - 140px); overflow: auto" aria-labelledby="PainelEditorTabela-tab">
-
             <div id="example"></div>
-            <script>
-
-              const data = [
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', ''],
-                ['', '', '', '', '', '', '', '', '', '', '', '']
-              ];
-
-              var alturaTabela;
-              var comprimentoTabela;
-              var quantyTabela = 16;
-              var quantRenders = 0;
-
-              $(document).on("click", "#PainelEditorTabela-tab", function() {
-
-                if (quantRenders == 0) {
-                  // var canvas = new fabric.Canvas('canvasGrid1');
-                  alturaTabela = $("#PainelEditorTabela").height();
-                  comprimentoTabela = $("#PainelEditorTabela").width();
-
-                  // tamanho = Math.floor(comprimento/quantx);
-                  // tamanhoalt = Math.floor(altura/quantx);
-                  quantyTabela = Math.floor((alturaTabela-26)/23);
-                  // alert(quantyTabela)
-                  // alert(alturaTabela)
-
-                  const container = document.getElementById('example');
-                  const hot = new Handsontable(container, {
-                    rowHeaders: true,
-                    colHeaders: true,
-                    stretchH: 'all',
-                    stretchW: 'all',
-                    height: alturaTabela,
-                    autoWrapRow: true,
-                    startCols: 12,
-                    startRows: quantyTabela,
-                    colWidths: 30,
-                    rowSorting: {
-                      indicator: true
-                    },
-                    autoColumnSize: {
-                      samplingRatio: 23
-                    },
-                    mergeCells: true,
-                    contextMenu: true,
-                    manualRowResize: true,
-                    manualColumnResize: true,
-                    manualRowMove: true,
-                    manualColumnMove: true,
-                    dropdownMenu: true,
-                    multiColumnSorting: {
-                      indicator: true
-                    },
-                    renderAllRows: true,
-                    exportFile: true,
-                    showColumns: {
-                      columns: [1,2,3]
-                    }
-                  });
-
-                  setTimeout(function() {
-                    hot.render();
-                  }, 200);
-                  quantRenders = 1;
-
-                }
-              })
-
-              // function renderTable() {
-              //
-              // }
-              // const container = document.getElementById('example');
-              // const hot = new Handsontable(container, {
-              //   rowHeaders: true,
-              //   colHeaders: true,
-              //   stretchH: 'all',
-              //   height: 500,
-              //   autoWrapRow: true,
-              //   startCols: 12,
-              //   startRows: quantyTabela,
-              //   colWidths: 30,
-              //   rowSorting: {
-              //     indicator: true
-              //   },
-              //   autoColumnSize: {
-              //     samplingRatio: 23
-              //   },
-              //   mergeCells: true,
-              //   contextMenu: true,
-              //   manualRowResize: true,
-              //   manualColumnResize: true,
-              //   manualRowMove: true,
-              //   manualColumnMove: true,
-              //   dropdownMenu: true,
-              //   multiColumnSorting: {
-              //     indicator: true
-              //   },
-              //   renderAllRows: true,
-              //   exportFile: true,
-              //   showColumns: {
-              //     columns: [1,2,3]
-              //   }
-              // });
-            </script>
-
           </div>
 
           <div class="modal fade" id="ModalEditarGrids" style="z-index: 1600;" role="dialog" aria-labelledby="myModalLabel">
@@ -925,7 +1092,7 @@ document.write(`
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">Confirmar</button>
+                    <button id="buttonConfirmaConfigGrid" type="button" class="btn btn-success">Confirmar</button>
                   </div>
                 </div>
               </div>
@@ -960,7 +1127,15 @@ document.write(`
             <!-- <img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%;"> -->
           </div>
 
-          <div role="tabpanel" class="tab-pane fade" id="dropdownA2" aria-labelledby="dropdownA2-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
+          <div role="tabpanel" class="tab-pane fade" id="dropdownA2" aria-labelledby="dropdownA2-tab">
+            <!-- <img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"> -->
+            <!-- <input type='file' accept='text/plain' onchange='openFile(event)'><br> -->
+            <!-- <div id='output'></div> -->
+            <!-- <script>
+
+            </script> -->
+
+          </div>
           <div role="tabpanel" class="tab-pane fade" id="dropdownA3" aria-labelledby="dropdownA3-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
           <div role="tabpanel" class="tab-pane fade" id="dropdownA4" aria-labelledby="dropdownA4-tab"><img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%; max-height: 600px;"></div>
 
@@ -982,6 +1157,7 @@ document.write(`
 
           <div role="tabpanel" class="tab-pane fade" id="dropdownC1" aria-labelledby="dropdownC1-tab" style="height: calc(100vh - 140px)">
             <iframe id="iframeCidade" style="overflow: hidden; height: 100%; width: 100%"></iframe>
+            <input type="text" name="" value="" id="linkCidade" style="display:none"></input>
           </div>
           <div role="tabpanel" class="tab-pane fade" id="dropdownC2" aria-labelledby="dropdownC2-tab" style="height: calc(100vh - 140px)">
             <iframe id="iframeMundo"  frameborder="0" style="overflow: hidden; height: 100%; width: 100%"></iframe>

@@ -5,6 +5,7 @@ var tamanho;
 var quanty;
 var paddingWid;
 var paddingHei;
+var canvas;
 
 $( document ).ready(function() {
 
@@ -18,6 +19,8 @@ $( document ).ready(function() {
 
   paddingWid = ((comprimento-(quantx*tamanho))/2)-1;
   paddingHei = ((altura-(quanty*tamanho))/2)-1;
+  if (paddingWid < 1) { paddingWid = 1}
+  if (paddingHei < 1) { paddingHei = 1}
   $("#dropdownA1").css({"padding-left":paddingWid-1, "padding-right":paddingWid, "padding-top":paddingHei-1, "padding-bottom":paddingHei});
 
   // var paddingUti;
@@ -26,7 +29,7 @@ $( document ).ready(function() {
   // $("#dropdownA1").css({"padding-left":paddingUti-1, "padding-right":paddingUti, "padding-top":paddingUti-1, "padding-bottom":paddingUti});
   // $("#dropdownA1").css("height", ((quanty*tamanho)+2*paddingUti) )
 
-  var canvas = new fabric.CanvasEx(canvasGrid1,{
+  canvas = new fabric.CanvasEx(canvasGrid1,{
     selection: false,
     height:	tamanho*(quanty)+2,
     width: tamanho*quantx+2
@@ -44,8 +47,6 @@ $( document ).ready(function() {
    },
 	gridLen = options.width / options.distance;
 
-  var escadax = 0; //0 SOBE, 1 DESCE
-  var escaday = 0; //0 SOBE, 1 DESCE
   var count1to6x = 1; //0 SOBE, 1 DESCE
   var count1to6y = 1; //0 SOBE, 1 DESCE
 
@@ -71,7 +72,6 @@ $( document ).ready(function() {
       if (count1to6y == 7) { count1to6y = 1}
     };
     count1to6y = 1;
-    escaday = 0;
     count1to6x = count1to6x + 1;
     if (count1to6x == 7) { count1to6x = 1}
   };
@@ -174,16 +174,28 @@ $( document ).ready(function() {
 
   });
 
+  $('#InputNCol').change(function() {
+    if ($("#InputNLin").attr("disabled") == "disabled") {
+      // var entrada = $('#InputNCol');
+      // var ratio = eval(quanty/quantx);
+      // $("#InputNLin").val(Math.floor(entrada*ratio));
+      altura = $("#myTabContent").height();
+      comprimento = $("#myTabContent").width();
+      quantx = $("#InputNCol").val();
+      quanty = Math.floor(altura*quantx/comprimento);
+      $("#InputNLin").val(quanty);
+    }
+  });
+
   // $('#checkboxMax').val(this.checked);
   $('#checkboxMax').change(function() {
       if(this.checked) {
-        $("#InputNLin").attr("disabled","");
+        $("#InputNLin").attr("disabled","disabled");
         if ($("#InputNCol").val() != ""){
-          var altura = $("#dropdownA1").height() - 30;
-          var comprimento = $("#dropdownA1").width() - 10;
-          var quantx = $("#InputNCol").val();
-          // var tamanho = Math.floor(comprimento/quantx);
-          var quanty = Math.floor(altura*quantx/comprimento);
+          altura = $("#myTabContent").height();
+          comprimento = $("#myTabContent").width();
+          quantx = $("#InputNCol").val();
+          quanty = Math.floor(altura*quantx/comprimento);
           $("#InputNLin").val(quanty);
         }
       } else {
@@ -192,6 +204,85 @@ $( document ).ready(function() {
       }
       // $('#checkboxMax').val(this.checked);
   });
+
+  $(document).on('click', '#buttonConfirmaConfigGrid', function() {
+
+    atualizaGrid();
+    $("#ModalEditarGrids").modal("hide");
+  });
+
+  function atualizaGrid() {
+
+    canvas.clear()
+    altura = $("#myTabContent").height();
+    comprimento = $("#myTabContent").width();
+    tamanho = Math.floor(comprimento/quantx);
+    paddingWid = ((comprimento-(quantx*tamanho))/2)-1;
+    paddingHei = ((altura-(quanty*tamanho))/2)-1;
+    // alert(paddingWid+" x "+paddingHei)
+    if (paddingWid < 1) { paddingWid = 1}
+    if (paddingHei < 1) { paddingHei = 1}
+    // alert(paddingWid+" x "+paddingHei)
+    $("#dropdownA1").css({"padding-left":paddingWid-1, "padding-right":paddingWid, "padding-top":paddingHei-1, "padding-bottom":paddingHei});
+
+    canvas = new fabric.CanvasEx(canvasGrid1,{
+      selection: false,
+      height:	tamanho*(quanty)+2,
+      width: tamanho*quantx+2
+     }),
+    options = {
+        distance: tamanho,
+        width: canvas.width,
+        height: canvas.height,
+        param: {
+          stroke: '#aaaaaa',
+          strokeWidth: 2,
+          selectable: false,
+          hoverCursor: 'default'
+        }
+     },
+  	gridLen = options.width / options.distance;
+
+    var count1to6x = 1; //0 SOBE, 1 DESCE
+    var count1to6y = 1; //0 SOBE, 1 DESCE
+
+    function adicionaImagem(nomeimagem,i,j) {
+      fabric.Image.fromURL('Grids/Concreto/'+nomeimagem, function(oImg) {
+        oImg.scale(tamanho/71);
+        oImg.set({
+          top:i*tamanho,
+          left:j*tamanho,
+          selectable: false,
+          hoverCursor: 'default'
+        })
+        canvas.add(oImg);
+        canvas.sendToBack(oImg);
+      });
+    }
+
+    for (var i = 0; i < quanty; i++) {
+      for (var j = 0; j < quantx; j++) {
+        var nomeimagem = count1to6x+""+count1to6y+".png";
+        adicionaImagem(nomeimagem,i,j)
+        count1to6y = count1to6y + 1;
+        if (count1to6y == 7) { count1to6y = 1}
+      };
+      count1to6y = 1;
+      count1to6x = count1to6x + 1;
+      if (count1to6x == 7) { count1to6x = 1}
+    };
+    for (var i = 0; i < gridLen; i++) {
+      var distance   = i * options.distance,
+          horizontal = new fabric.Line([ distance, 0, distance, options.height], options.param);
+      canvas.add(horizontal);
+    };
+    for (var i = 0; i < (quanty+1); i++) {
+      var distance   = i * options.distance,
+          vertical   = new fabric.Line([ 0, distance, options.width, distance], options.param);
+      canvas.add(vertical);
+    };
+  }
+
 
   $(document).on('click', '#buttonAdicionaMontrosNoGrid', function() {
     $.each(monstrosAdicionados["Campanha1"], function(index, value) {
