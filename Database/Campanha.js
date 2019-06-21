@@ -36,7 +36,7 @@ usuario["CampanhasMestre"]["Campanha1"]["Dungeon"]["Dados"] = {
     corridor_layout: "errant",
     remove_deadends: "some"
 };
-usuario["CampanhasMestre"]["Campanha1"]["BlocoDeNotas"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["BlocoDeNotas"] = "<h2><span class=\"text-big\"><strong>Olá! Bem vindo à Página do Mestre do DnD Helper!</strong></span></h2><p><span class=\"text-big\">Aqui você encontrará diversas ferramentas para auxiliar em sua mesa de D&amp;D, e melhorar suas mestragens!</span><br><span class=\"text-big\">Há varias ferramentas para agilizar sua pesquisa de magias, poder gerenciar seu grupo, melhorar os combates do seu personagem, tabelas úteis, grids, e muito mais!</span></p>";
 usuario["CampanhasMestre"]["Campanha1"]["Tabela"] = {};
 usuario["CampanhasMestre"]["Campanha1"]["Players"] = {};
 usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"] = [];

@@ -194,6 +194,52 @@ function updateData(campanha) {
   }
 }
 
+function novaCampanha() {
+  var numDeCampanhas = Object.keys(usuario["CampanhasMestre"]).length;
+  var nomeUltimaCamp = Object.keys(usuario["CampanhasMestre"])[eval(numDeCampanhas-1)]
+  nomeUltimaCamp = nomeUltimaCamp.replace("Campanha","");
+  var nomeNovaCamp = "Campanha #" + eval(eval(nomeUltimaCamp)+1);
+  var valorNovaCamp = "Campanha" + eval(eval(nomeUltimaCamp)+1);
+
+  var textToAppend = "<li class=\"default leaf first\" value=\""+valorNovaCamp+"\" onclick=\"carregaDados(objetoCarregado,$(this).attr('value'))\"><a><span>"+nomeNovaCamp+"</span></a></li>";
+  $("#ulCampanhas").append(textToAppend);
+
+  usuario["CampanhasMestre"][valorNovaCamp] = {};
+  // usuario["CampanhasMestre"]["Campanha2"] = {};
+  // usuario["CampanhasMestre"]["Campanha3"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Grid"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Encontro"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Contadores"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Cidade"];
+  usuario["CampanhasMestre"][valorNovaCamp]["Mundo"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Mundo"]["Historico"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Mundo"]["MapaAtual"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Dungeon"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Dungeon"]["Nome"] = "";
+  usuario["CampanhasMestre"][valorNovaCamp]["Dungeon"]["Dados"] = {
+      map_style: "standard",
+      grid: "square",
+      dungeon_layout: "square",
+      dungeon_size: "dimin",
+      add_stairs: "yes",
+      room_layout: "scattered",
+      room_size: "medium",
+      doors: "standard",
+      corridor_layout: "errant",
+      remove_deadends: "some"
+  };
+  usuario["CampanhasMestre"][valorNovaCamp]["BlocoDeNotas"] = "<h2><span class=\"text-big\"><strong>Olá! Bem vindo à Página do Mestre do DnD Helper!</strong></span></h2><p><span class=\"text-big\">Aqui você encontrará diversas ferramentas para auxiliar em sua mesa de D&amp;D, e melhorar suas mestragens!</span><br><span class=\"text-big\">Há varias ferramentas para agilizar sua pesquisa de magias, poder gerenciar seu grupo, melhorar os combates do seu personagem, tabelas úteis, grids, e muito mais!</span></p>";
+  usuario["CampanhasMestre"][valorNovaCamp]["Tabela"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Players"] = {};
+  usuario["CampanhasMestre"][valorNovaCamp]["Players"]["ListaDePlayers"] = [];
+  usuario["CampanhasMestre"][valorNovaCamp]["Players"]["ListaDeMagias"] = [];
+  usuario["CampanhasMestre"][valorNovaCamp]["Players"]["ListaDePericias"] = [];
+  usuario["CampanhasMestre"][valorNovaCamp]["Players"]["ListaDeProeficiencias"] = [];
+  usuario["CampanhasMestre"][valorNovaCamp]["Players"]["ListaDeItens"] = [];
+  // alert(nomeUltimaCamp)
+  // usuario["CampanhasMestre"]
+}
+
 
 
 
