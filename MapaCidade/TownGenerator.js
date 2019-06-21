@@ -8993,10 +8993,11 @@ com_watabou_towngenerator_StateManager.pushParams = function() {
 		}
 	}
 	var url = search1 != "" ? loc.href.split(search1).join(search2) : loc.href + search2;
-	// alert(url)
+	// alert(search1)
+	// alert(search2)
 
 	if ( window.location !== window.parent.location ) {
-	  window.parent.$("#linkCidade").attr("value",url);
+	  window.parent.$("#linkCidade").attr("value",search2);
 	} else {
 	  // The page is not in an iframe
 	}

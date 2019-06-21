@@ -239,18 +239,18 @@ var dc = {
             }
         }
     },
-    default_query = {
-        map_style: "standard",
-        grid: "square",
-        dungeon_layout: "square",
-        dungeon_size: "dimin",
-        add_stairs: "yes",
-        room_layout: "scattered",
-        room_size: "medium",
-        doors: "standard",
-        corridor_layout: "errant",
-        remove_deadends: "some"
-    },
+    // default_query = {
+    //     map_style: "standard",
+    //     grid: "square",
+    //     dungeon_layout: "square",
+    //     dungeon_size: "dimin",
+    //     add_stairs: "yes",
+    //     room_layout: "scattered",
+    //     room_size: "medium",
+    //     doors: "standard",
+    //     corridor_layout: "errant",
+    //     remove_deadends: "some"
+    // },
     NOTHING = 0,
     BLOCKED = 1,
     ROOM = 2,
@@ -294,6 +294,25 @@ var dc = {
         east: "west"
     };
 
+    if ( window.location !== window.parent.location ) {
+      var default_query = window.parent.usuario["CampanhasMestre"]["Campanha1"]["Dungeon"]["Dados"];
+    } else {
+      var default_query = {
+          map_style: "standard",
+          grid: "square",
+          dungeon_layout: "square",
+          dungeon_size: "dimin",
+          add_stairs: "yes",
+          room_layout: "scattered",
+          room_size: "medium",
+          doors: "standard",
+          corridor_layout: "errant",
+          remove_deadends: "some"
+      }
+    }
+
+
+// alert(default_query)
 function init_form() {
     $("dungeon_name").observe("change", name_reaction);
     $("new_name").observe("click", new_name);
@@ -307,7 +326,19 @@ function init_form() {
     $H(default_query).keys().each(function(a) {
         $(a).setValue(default_query[a])
     });
-    new_name()
+
+    if ( window.location !== window.parent.location ) {
+      // if (window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"] != "") {
+      if (window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"] != "") {
+        // $("dungeon_name").setValue(window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"]);
+        $("dungeon_name").setValue(window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"]);
+        name_reaction()
+      } else {
+        new_name()
+      }
+    } else {
+      new_name()
+    }
 }
 
 function create_option(a, b) {
@@ -335,6 +366,23 @@ function new_name() {
 }
 
 function new_dungeon() {
+    if ( window.location !== window.parent.location ) {
+      window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"] = $("dungeon_name").getValue();
+      window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Dados"] = {
+          map_style: $("map_style").getValue(),
+          grid: $("grid").getValue(),
+          dungeon_layout: $("dungeon_layout").getValue(),
+          dungeon_size: $("dungeon_size").getValue(),
+          add_stairs: $("add_stairs").getValue(),
+          room_layout: $("room_layout").getValue(),
+          room_size: $("room_size").getValue(),
+          doors: $("doors").getValue(),
+          corridor_layout: $("corridor_layout").getValue(),
+          remove_deadends: $("remove_deadends").getValue()
+      };
+    } else {
+    }
+
     var a = create_dungeon();
     image_dungeon(a)
 }

@@ -1131,7 +1131,7 @@ function showStatistics() {
   mapHistory.push({seed, width:graphWidth, height:graphHeight, template, created: Date.now()});
   // console.log(mapHistory)
   if ( window.location !== window.parent.location ) {
-	  window.parent.usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["Historico"] = mapHistory;
+	  window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Mundo"]["Historico"] = mapHistory;
     saveMapinUserFile()
     // console.log(window.parent.usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["Historico"])
 	} else {

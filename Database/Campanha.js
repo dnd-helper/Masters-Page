@@ -23,6 +23,19 @@ usuario["CampanhasMestre"]["Campanha1"]["Mundo"] = {};
 usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["Historico"] = {};
 usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["MapaAtual"] = {};
 usuario["CampanhasMestre"]["Campanha1"]["Dungeon"] = {};
+usuario["CampanhasMestre"]["Campanha1"]["Dungeon"]["Nome"] = "";
+usuario["CampanhasMestre"]["Campanha1"]["Dungeon"]["Dados"] = {
+    map_style: "standard",
+    grid: "square",
+    dungeon_layout: "square",
+    dungeon_size: "dimin",
+    add_stairs: "yes",
+    room_layout: "scattered",
+    room_size: "medium",
+    doors: "standard",
+    corridor_layout: "errant",
+    remove_deadends: "some"
+};
 usuario["CampanhasMestre"]["Campanha1"]["BlocoDeNotas"] = {};
 usuario["CampanhasMestre"]["Campanha1"]["Tabela"] = {};
 usuario["CampanhasMestre"]["Campanha1"]["Players"] = {};

@@ -36,6 +36,15 @@
                   $(this).popover();
           });
       });
+      // $(document).ready( function() {
+        // if ( window.location !== window.parent.location ) {
+      	  // window.parent.$("#linkCidade").attr("value",search2);
+          // window.parent.usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["Historico"] = mapHistory;
+      	// } else {
+      	  // The page is not in an iframe
+      	// }
+      // })
+
     </script>
     <style media="screen">
       .custom-select{
@@ -107,7 +116,8 @@
                 <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Tamanho das Salas</label>
                 <select class="custom-select" id="room_size"></select>
                 <label for="" style="margin-bottom: 0px; margin-top: 10px;line-height: initial;"></label>
-                <input type="button" class="btn btn-primary btn-sm" style="width:100%" value="Salvar como PNG" onclick="save_map();" />
+                <!-- <input type="button" class="btn btn-primary btn-sm" style="width:100%" value="Salvar como PNG" onclick="save_map();" /> -->
+                <input type="button" class="btn btn-primary btn-sm" style="width:100%;margin-top: 7px;" value="Salvar como PNG" onclick="save_map();">
 
               </ul>
               <ul class="" style="width: 33.3%;flex-wrap: wrap; margin: 0;padding-right: 0px;padding-bottom: 10px;padding-right: 5px;">
@@ -118,7 +128,7 @@
                 <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial;">Remover Caminhos sem Saída</label>
                 <select class="custom-select" id="remove_deadends"></select>
                 <label for="" style="margin-bottom: 0px; margin-top: 10px;line-height: initial;"></label>
-                <input type="button" class="btn btn-primary btn-sm" style="width:100%" value="Imprimir Dungeon" onclick="window.print();" />
+                <input type="button" class="btn btn-primary btn-sm" style="width:100%;margin-top: 7px;" value="Imprimir Dungeon" onclick="window.print();" />
               </ul>
             </tr>
             <!-- <tr>
@@ -203,11 +213,11 @@
         document.getElementById("map").style.maxHeight = "calc(70vh - 16px)"
         document.getElementById("map").style.width = ""
       }
-      $(document).ready( function() {
+      // $(document).ready( function() {
 
       //   $(document).on("click", "#botaoMais", function() {$("#map").attr("style", "max-height: 100%")});
       //   $(document).on("click", "#botaoMenos", function() {$("#map").attr("style", "max-width: 100%; max-height: 100%")});
-      })
+      // })
     </script>
   </div>
 </div>
