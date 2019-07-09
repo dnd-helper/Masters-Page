@@ -103,9 +103,10 @@ equatorOutput.max = equatorInput.max = graphHeight * 2;
 
 applyDefaultNamesData(); // apply default namesbase on load
 applyDefaultStyle(); // apply style on load
-generate(); // generate map on load
+generate(false); // generate map on load
 focusOn(); // based on searchParams focus on point, cell or burg from MFCG
 addDragToUpload(); // allow map loading by drag and drop
+
 
 // show message on load if required
 // setTimeout(showWelcomeMessage, 8000);
@@ -540,7 +541,7 @@ function addDragToUpload() {
   });
 }
 
-function generate() {
+function generate(newmap) {
   console.time("TOTAL");
   invokeActiveZooming();
   generateSeed();
@@ -569,13 +570,96 @@ function generate() {
   Cultures.expand();
   BurgsAndStates.generate();
   BurgsAndStates.drawStateLabels();
-  console.timeEnd("TOTAL");
+  // var loadedData = false;
+  // if (window.parent.mapaMundo["Mundo"]["MapaAtual"] != "" && newmap == false) {
+  //   mapHistory = window.parent.mapaMundo["Mundo"]["Historico"];
+  //   console.log(mapHistory)
+  //   loadUser();
+  //   loadedData = true;
+  //   // console.log("loaduser")
+  //   // mapHistory = window.parent.mapaMundo["Mundo"]["Historico"];
+  // }
 
+
+  console.timeEnd("TOTAL");
   window.setTimeout(() => {
-    showStatistics();
+    if ( window.location !== window.parent.location ) {
+      if (window.parent.mapaMundo["Mundo"]["MapaAtual"] != "") {
+        if (newmap == false) {
+          loadUser();
+          mapHistory = window.parent.mapaMundo["Mundo"]["Historico"];
+        } else {
+          showStatistics();
+          saveMapinUserFile()
+          window.parent.saveThisCampaignOnline()
+        }
+      } else {
+        showStatistics();
+        saveMapinUserFile()
+        window.parent.saveThisCampaignOnline()
+      }
+    } else {
+      // The page is not in an iframe
+    }
+
     console.groupEnd("Map " + seed);
-  }, 300); // wait for rendering
+  }, 200); // wait for rendering
 }
+
+// function generateWithoutLoad() {
+//   console.time("TOTAL");
+//   invokeActiveZooming();
+//   generateSeed();
+//   console.group("Map " + seed);
+//   applyMapSize();
+//   randomizeOptions();
+//   placePoints();
+//   calculateVoronoi(grid, grid.points);
+//   drawScaleBar();
+//   HeightmapGenerator.generate();
+//   markFeatures();
+//   openNearSeaLakes();
+//   OceanLayers();
+//   calculateMapCoordinates();
+//   calculateTemperatures();
+//   generatePrecipitation();
+//   reGraph();
+//   drawCoastline();
+//
+//   elevateLakes();
+//   Rivers.generate();
+//   defineBiomes();
+//
+//   rankCells();
+//   Cultures.generate();
+//   Cultures.expand();
+//   BurgsAndStates.generate();
+//   BurgsAndStates.drawStateLabels();
+//   var loadedData = false;
+//   if (window.parent.mapaMundo["Mundo"]["MapaAtual"] != "") {
+//     loadUser();
+//     mapHistory = window.parent.mapaMundo["Mundo"]["Historico"];
+//     loadedData = true;
+//     // console.log("loaduser")
+//     // mapHistory = window.parent.mapaMundo["Mundo"]["Historico"];
+//   }
+//
+//   console.timeEnd("TOTAL");
+//
+//   window.setTimeout(() => {
+//     showStatistics();
+//     console.log("showStatistics")
+//     if ( window.location !== window.parent.location ) {
+//   	  window.parent.mapaMundo["Mundo"]["Historico"] = mapHistory;
+//       saveMapinUserFile()
+//       // window.parent.saveThisCampaignOnline()
+//   	} else {
+//   	  // The page is not in an iframe
+//   	}
+//     // window.parent.saveThisCampaignOnline();
+//     console.groupEnd("Map " + seed);
+//   }, 300); // wait for rendering
+// }
 
 // generate map seed (string!) or get it from URL searchParams
 function generateSeed() {
@@ -1131,8 +1215,9 @@ function showStatistics() {
   mapHistory.push({seed, width:graphWidth, height:graphHeight, template, created: Date.now()});
   // console.log(mapHistory)
   if ( window.location !== window.parent.location ) {
-	  window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Mundo"]["Historico"] = mapHistory;
-    saveMapinUserFile()
+	  window.parent.mapaMundo["Mundo"]["Historico"] = mapHistory;
+
+    // window.parent.saveThisCampaignOnline()
     // console.log(window.parent.usuario["CampanhasMestre"]["Campanha1"]["Mundo"]["Historico"])
 	} else {
 	  // The page is not in an iframe
@@ -1145,7 +1230,7 @@ const regenerateMap = debounce(function() {
   customization = 0;
   undraw();
   resetZoom(1000);
-  generate();
+  generate(true);
   restoreLayers();
   if ($("#worldConfigurator").is(":visible")) editWorld();
 }, 500);

@@ -54,7 +54,7 @@ input[type="text"] { -webkit-border-radius: 0; -moz-border-radius: 0; border-rad
 
 #page { color: #333333; background: url(../img/interface/page-background.jpg) 0 0 repeat #f9f7ec; background-size: auto !important; padding-bottom: 60px; }
 #page.snap-menu { padding-top: 85px; }
-@media (max-width: 1022px) { #page { padding-top: 70px; } }
+@media (max-width: 1022px) { #page { padding-top: 50px; } }
 @media (max-width: 479px) { #page { padding-top: 50px; } }
 
 a { color: #9d0a0e; text-decoration: none; }

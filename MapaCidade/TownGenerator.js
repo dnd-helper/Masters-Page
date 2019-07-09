@@ -8998,6 +8998,7 @@ com_watabou_towngenerator_StateManager.pushParams = function() {
 
 	if ( window.location !== window.parent.location ) {
 	  window.parent.$("#linkCidade").attr("value",search2);
+		window.parent.saveThisCampaignOnline();
 	} else {
 	  // The page is not in an iframe
 	}
@@ -23393,7 +23394,7 @@ js_Boot.__trace = function(v,i) {
 	if(tmp) {
 		d.innerHTML += js_Boot.__unhtml(msg) + "<br/>";
 	} else if(typeof console != "undefined" && console.log != null) {
-		console.log(msg);
+		// console.log(msg);
 	}
 };
 js_Boot.getClass = function(o) {

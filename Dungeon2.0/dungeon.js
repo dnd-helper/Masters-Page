@@ -295,7 +295,7 @@ var dc = {
     };
 
     if ( window.location !== window.parent.location ) {
-      var default_query = window.parent.usuario["CampanhasMestre"]["Campanha1"]["Dungeon"]["Dados"];
+      var default_query = window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Dados"];
     } else {
       var default_query = {
           map_style: "standard",
@@ -380,6 +380,7 @@ function new_dungeon() {
           corridor_layout: $("corridor_layout").getValue(),
           remove_deadends: $("remove_deadends").getValue()
       };
+      window.parent.saveThisCampaignOnline();
     } else {
     }
 
