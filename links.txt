@@ -1,0 +1,108 @@
+//////////////FIREBASE//////////////
+//FIREBASE CONSOLE
+https://console.firebase.google.com/
+//MANAGING USERS
+https://firebase.google.com/docs/auth/web/manage-users?authuser=0
+//VARIABLE AS KEY NAME
+https://stackoverflow.com/questions/25707639/firebase-variable-as-key-name
+////////////////////////////////////
+
+//////////////DATABASES DND//////////////
+//MONSTROS
+////MONSTROS OFICIAIS
+https://docs.google.com/spreadsheets/d/1I5W-x8QOcP2siGCPIhWWzKGWt4vyBivYLbmkv_G1B24/edit#gid=0
+////MONSTROS COMUNIDADE
+https://docs.google.com/spreadsheets/d/1x6xC8fHZ6N6M2wOuwPTNdn0ObCPtdqeIBtXaLjHBMYQ/edit
+////MONSTROS TABELAS NÃO WIZARDS
+https://docs.google.com/spreadsheets/d/1YR8NBDp8BP4Lz-CWChh6-8dOPN7aYV_dRD6g9ZBvNqM/edit
+
+//VENENOS
+https://www.aidedd.org/dnd-filters/poison.php
+//TALENTOS
+https://www.aidedd.org/dnd-filters/feats.php
+//MONSTROS
+https://www.aidedd.org/dnd-filters/monsters.php
+//ITENS MAGICOS
+https://www.aidedd.org/dnd-filters/magic-items.php
+////////////////////////////////////
+
+//FLAMELINK
+https://flamelink.io/
+
+//RC4 ENCRYPTION
+https://gist.github.com/farhadi/2185197
+
+//HTML ENCODER
+https://www.ioncube.com/html_encoder.php
+
+//READING A FILE DOCUMENTATION
+https://www.javascripture.com/FileReader
+
+//JSON DOCUMENTATION
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
+
+//CHECK IF PAGE IS INSIDE IFRAME
+https://tommcfarlin.com/check-if-a-page-is-in-an-iframe/
+
+//GET ID INSIDE IFRAME
+https://stackoverflow.com/questions/37906793/get-id-inside-iframe
+
+//HANDSONTABLE DOCUMENTATION
+https://handsontable.com/docs/7.1.0/tutorial-introduction.html
+//GETTING HANDSONTABLE DATA AS JSON
+https://stackoverflow.com/questions/29835876/how-to-get-handson-table-data-in-json-format-with-column-header-as-key
+
+//////////////FABRICJS//////////////
+//REMOVING FABRICJS OBJECT USING ID
+https://stackoverflow.com/questions/32931236/how-to-remove-fabric-js-object-with-custom-id
+
+//HOW TO SET FREEDRAWING MODE IN FABRICJS
+https://stackoverflow.com/questions/33117908/how-to-set-freedrawing-mode-in-fabric-js-to-circle
+
+//HOW TO GET AN OBJECT IDENTIFIER IN FABRICJS
+https://stackoverflow.com/questions/30223144/how-to-get-an-object-identifier-in-fabricjs
+////////////////////////////////////
+
+//CREATING CUSTOM PRE-LOADING SCREEN
+https://ihatetomatoes.net/create-custom-preloading-screen/
+https://ihatetomatoes.net/demos/css3-preloader-transition/ //DEMONSTRATION
+
+//GOOGLE TRANSLATION API IMPLEMENTATION GUIDE
+https://codelabs.developers.google.com/codelabs/cloud-translation-intro/index.html#0
+https://ctrlq.org/code/19909-google-translate-api
+
+//GOOGLE SHEETS API
+https://developers.google.com/sheets/api/quickstart/js
+https://developers.google.com/sheets/api/samples/
+https://www.google.com/search?client=firefox-b-d&q=inserting+google+sheets+api+in+html#kpvalbx=1
+
+//FIDDLE PARA PEGAR TAMANHO DA TELA EM POLEGADAS
+http://jsfiddle.net/hLLBm/
+
+//BOOTSTRAP DOCS
+https://getbootstrap.com/docs/3.4/css/
+https://getbootstrap.com/docs/3.4/components/
+https://getbootstrap.com/docs/3.4/javascript/
+
+//SMOOTH HREF PAGE SCROLLING
+https://css-tricks.com/snippets/jquery/smooth-scrolling/
+
+//BEAUTIFUL JQUERY TABLES
+https://www.sitepoint.com/12-amazing-jquery-tables/
+
+//DEVICE VIEWPORT EXAMPLES
+https://ryanve.com/lab/dimensions/
+
+//DETECTING IF WEBSITE IS OFFLINE  - CROSS BROWSER
+https://stackoverflow.com/questions/3181080/how-to-detect-online-offline-event-cross-browser
+
+
+
+
+
+
+
+
+
+
+.

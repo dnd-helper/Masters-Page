@@ -59,6 +59,22 @@ var openFile = function(event) {
   reader.readAsText(input.files[0]);
 };
 
+function loadDataFromLogin(objetoCarregado) {
+  // objetoCarregado = JSON.parse(rc4("DNDHELPER",text));
+  usuario = [];
+  usuario = objetoCarregado;
+  console.log(usuario)
+
+  var numDeCampanhas = Object.keys(objetoCarregado["CampanhasMestre"]).length;
+  var nomesCampanhas = Object.keys(objetoCarregado["CampanhasMestre"]);
+  $("#ulCampanhas").empty();
+  for (var i = 0; i < numDeCampanhas; i++) {
+    var textToAppend = "<li class=\"default leaf first\" value=\"Campanha"+nomesCampanhas[i].replace("Campanha","")+"\" onclick=\"carregaDados(objetoCarregado,$(this).attr('value'))\"><a><span>Campanha #"+nomesCampanhas[i].replace("Campanha","")+"</span></a></li>";
+    $("#ulCampanhas").append(textToAppend);
+  }
+  carregaDadosSemUpdate(usuario,usuario["InformacoesdoUsuario"]["CampanhaAtual"])
+}
+
 function carregaDados(objetoCarregado,campanha) {
   updateData(usuario["InformacoesdoUsuario"]["CampanhaAtual"])
   carregaDadosSemUpdate(objetoCarregado,campanha)
@@ -69,20 +85,39 @@ function carregaDadosSemUpdate(objetoCarregado,campanha) {
   usuario["InformacoesdoUsuario"]["CampanhaAtual"] = campanha; //SALVA NO USUARIO, QUAL CAMPANHA É A ATUAL
 
   //FUNÇÃO QUE CARREGA OS PLAYERS NA DIV CORRETA
-  $("#AdicionaPlayers").empty();
-  $.each(usuario["CampanhasMestre"][campanha]["Players"]["ListaDePlayers"], function(index, value) {
-    CarregarPlayer(usuario,index,campanha)
-  });
+  if (usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["PlayInfo"] > 0) {
+    $("#AdicionaPlayers").empty();
+    $.each(usuario["CampanhasMestre"][campanha]["Players"]["ListaDePlayers"], function(index, value) {
+      CarregarPlayer(usuario,index,campanha)
+    });
+  }
 
   //FUNÇÃO QUE CONFERE SE A TABELA JÁ FOI CARREGADA, E CARREGA OS DADOS DA TABELA
-  if (renderized == false) { configTabela() }
-  hot.loadData(usuario["CampanhasMestre"][campanha]["Tabela"]);
+  if (usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["TabeInfo"] == true) {
+    if (renderized == false) { configTabela() }
+    hot.loadData(usuario["CampanhasMestre"][campanha]["Tabela"]);
+  }
 
   //FUNÇÃO QUE CARREGA OS DADOS DO EDITOR DE TEXTOS
-  editor.setData(usuario["CampanhasMestre"][campanha]["BlocoDeNotas"]);
+  if (usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["BlocInfo"] == true) {
+    editor.setData(usuario["CampanhasMestre"][campanha]["BlocoDeNotas"]);
+  }
 
   //FUNÇÃO QUE CARREGA OS DADOS NO GERADOR DE DUNGEONS
-  if (contDungeon == 1) { $("#iframeDungeon").attr("src","Dungeon2.0/index.html");}
+  if (usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["DungInfo"] == true) {
+    if (contDungeon == 1) { $("#iframeDungeon").attr("src","Dungeon2.0/index.html");}
+  }
+
+  //FUNÇÃO QUE CARREGA OS DADOS NO MAPA MUNDO
+  if (usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["MundInfo"] == true) {
+    if (contCidade == 1 && usuario["CampanhasMestre"][usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Cidade"] != "") {
+      var linkCidade = "MapaCidade/index.html" + usuario["CampanhasMestre"][usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Cidade"];
+      $("#iframeCidade").attr("src",linkCidade); contCidade = 1;
+    }
+  }
+  // contCidade = 0;
+  // contMundo = 0;
+  // contDungeon = 0;
 }
 
 function CarregarPlayer(usuario,index,campanha) {
@@ -188,9 +223,14 @@ function CarregarPlayer(usuario,index,campanha) {
 function updateData(campanha) {
   if (campanha != "Nenhuma") {
     usuario["CampanhasMestre"][campanha]["BlocoDeNotas"] = editor.getData();
-    if (renderized == false) { configTabela() }
+    usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["BlocInfo"] = true;
+
+    if (renderized == false) { configTabela() } //FUNCAO INICALIZA A TABELA ANTES DE PEGAR DADOS, DESSA FORMA, SEMPRE VIRAO DADOS
     usuario["CampanhasMestre"][campanha]["Tabela"] = hot.getData();
+    usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["TabeInfo"] = true;
+
     usuario["CampanhasMestre"][campanha]["Cidade"] = $("#linkCidade").attr("value");
+    usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["CidaInfo"] = true;
   }
 }
 
@@ -210,7 +250,7 @@ function novaCampanha() {
   usuario["CampanhasMestre"][valorNovaCamp]["Grid"] = {};
   usuario["CampanhasMestre"][valorNovaCamp]["Encontro"] = {};
   usuario["CampanhasMestre"][valorNovaCamp]["Contadores"] = {};
-  usuario["CampanhasMestre"][valorNovaCamp]["Cidade"];
+  usuario["CampanhasMestre"][valorNovaCamp]["Cidade"] = "";
   usuario["CampanhasMestre"][valorNovaCamp]["Mundo"] = {};
   usuario["CampanhasMestre"][valorNovaCamp]["Mundo"]["Historico"] = {};
   usuario["CampanhasMestre"][valorNovaCamp]["Mundo"]["MapaAtual"] = {};

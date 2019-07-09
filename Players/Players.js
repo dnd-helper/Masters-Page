@@ -13,15 +13,31 @@ $(document).on('click', '#ApagarPlayer', function() {
 
 $(document).on('click', '#ConfirmaApagarPlayer', function() {
   var idParaApagar = $("#IDPlayer").val();
+  var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
   var indice;
 
-  $.each(usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"], function(index, value) {
-    if (idParaApagar == usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][0]) {
-      indice = index;
-    }
-  });
-  usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].splice(indice, 1);
+  delete allPlayers[idParaApagar];
+
+  var database = firebase.database();
+  var user = firebase.auth().currentUser;
+  firebase.database().ref('users/' + user.uid + '/CampanhasMestre/' + campanha + "/Players").update({
+    [idParaApagar]: null
+  }).then(function() {
+    saveThisCampaignOnline()
+    // firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
+    // alert("Campanha criada com sucesso!")
+  }).catch(function(error) {
+    // alert("Error: "+ error.message)
+  });;
+
+  // $.each(usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"], function(index, value) {
+  //   if (idParaApagar == usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][0]) {
+  //     indice = index;
+  //   }
+  // });
+  // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].splice(indice, 1);
   // alert(usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"])
+
   $('#ModalRemoverPlayer').modal('hide');
   $('#ModalAdicionarPlayer').modal('hide');
   $('#'+idParaApagar+'CabecalhoButton').remove();
@@ -32,13 +48,7 @@ $(document).on('click', '#ConfirmaApagarPlayer', function() {
 
 $(document).on('click', '#novoPlayer', function() {
   $("#addPlayerModalDivContainer").empty();
-  $("#addPlayerModalDivContainer").load('Players/AddPlayers.html div[id="addPlayerModalDiv"]', function() {
-    numPlayers = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].length;
-    if (numPlayers > 0) { idUltimoPlayer = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][numPlayers-1][0]; }
-
-    if (idUltimoPlayer != 0) { $("#IDPlayer").val(eval(idUltimoPlayer)+1); }
-    if (idUltimoPlayer == 0) { $("#IDPlayer").val(2019000001); }
-  });
+  $("#addPlayerModalDivContainer").load('Players/AddPlayers.html div[id="addPlayerModalDiv"]');
 });
 
 $(document).on('click', '#NovaPericia', function() {
@@ -592,53 +602,62 @@ $(document).on('click', '.botao-raca li a', function() {  //FUNCAO PARA ADICIONA
 });
 
 $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERSONAGEM NO BD
-    var idPlayer = $("#IDPlayer").val();
-    var nomePersonagem = $("#NomePersonagem").val();
-    var nomePlayer = $("#NomePlayer").val();
-    var racaPlayer = $("#BotaoRaca").val();
-    var alinhamentoPlayer = $("#BotaoAlinhamento").val();
-    var antecedentesPlayer = $("#BotaoAntecedentes").val();
-    var xpPlayer = $("#InputXP").val();
-    var classebasePlayer = $("#BotaoClasseBase").val();
-    var nivelclassebasePlayer = $("#BotaoNivelClasseBase").val();
-    var multiclasse1Player = $("#BotaoMulticlasse1").val();
-    var nivelmulticlasse1Player = $("#BotaoNivelMulticlasse1").val();
-    var multiclasse2Player = $("#BotaoMulticlasse2").val();
-    var nivelmulticlasse2Player = $("#BotaoNivelMulticlasse2").val();
-    var forPlayer1 = $("#InputFor1").val();
-    var desPlayer1 = $("#InputDes1").val();
-    var conPlayer1 = $("#InputCon1").val();
-    var intPlayer1 = $("#InputInt1").val();
-    var sabPlayer1 = $("#InputSab1").val();
-    var carPlayer1 = $("#InputCar1").val();
-    var forPlayer2 = $("#InputFor2").val();
-    var desPlayer2 = $("#InputDes2").val();
-    var conPlayer2 = $("#InputCon2").val();
-    var intPlayer2 = $("#InputInt2").val();
-    var sabPlayer2 = $("#InputSab2").val();
-    var carPlayer2 = $("#InputCar2").val();
-    var forPlayer3 = $("#InputFor3").val();
-    var desPlayer3 = $("#InputDes3").val();
-    var conPlayer3 = $("#InputCon3").val();
-    var intPlayer3 = $("#InputInt3").val();
-    var sabPlayer3 = $("#InputSab3").val();
-    var carPlayer3 = $("#InputCar3").val();
-    var hpLeftPlayer = $("#InputHPLeft").val();
-    var hpAllPlayer = $("#InputHPAll").val();
-    var proefPlayer = $("#Inputproef").val();
-    var classeArmPlayer = $("#InputclasseArm").val();
-    var inspirPlayer = $("#Inputinspir").val();
-    var iniciatPlayer = $("#Inputiniciat").val();
-    var deslocPlayer = $("#Inputdesloc").val();
-    var tracosPlayer = $("#TextareaTracos").val();
-    var ideaisPlayer = $("#TextareaIdeais").val();
-    var ligacoesPlayer = $("#TextareaLigacoes").val();
-    var defeitosPlayer = $("#TextareaDefeitos").val();
-    var ataquesPlayer = $("#TextareaAtaques").val();
-    var caracEhabilPlayer = $("#TextareaCarac").val();
-    var equipamentosPlayer = $("#TextareaEquip").val();
-    var corPlayer = $("#inputcolor").val();
 
+  var nomePersonagem = $("#NomePersonagem").val();
+  var nomePlayer = $("#NomePlayer").val();
+  var racaPlayer = $("#BotaoRaca").val();
+  var alinhamentoPlayer = $("#BotaoAlinhamento").val();
+  var antecedentesPlayer = $("#BotaoAntecedentes").val();
+  var xpPlayer = $("#InputXP").val();
+  var classebasePlayer = $("#BotaoClasseBase").val();
+  var nivelclassebasePlayer = $("#BotaoNivelClasseBase").val();
+  var multiclasse1Player = $("#BotaoMulticlasse1").val();
+  var nivelmulticlasse1Player = $("#BotaoNivelMulticlasse1").val();
+  var multiclasse2Player = $("#BotaoMulticlasse2").val();
+  var nivelmulticlasse2Player = $("#BotaoNivelMulticlasse2").val();
+  var forPlayer1 = $("#InputFor1").val();
+  var desPlayer1 = $("#InputDes1").val();
+  var conPlayer1 = $("#InputCon1").val();
+  var intPlayer1 = $("#InputInt1").val();
+  var sabPlayer1 = $("#InputSab1").val();
+  var carPlayer1 = $("#InputCar1").val();
+  var forPlayer2 = $("#InputFor2").val();
+  var desPlayer2 = $("#InputDes2").val();
+  var conPlayer2 = $("#InputCon2").val();
+  var intPlayer2 = $("#InputInt2").val();
+  var sabPlayer2 = $("#InputSab2").val();
+  var carPlayer2 = $("#InputCar2").val();
+  var forPlayer3 = $("#InputFor3").val();
+  var desPlayer3 = $("#InputDes3").val();
+  var conPlayer3 = $("#InputCon3").val();
+  var intPlayer3 = $("#InputInt3").val();
+  var sabPlayer3 = $("#InputSab3").val();
+  var carPlayer3 = $("#InputCar3").val();
+  var hpLeftPlayer = $("#InputHPLeft").val();
+  var hpAllPlayer = $("#InputHPAll").val();
+  var proefPlayer = $("#Inputproef").val();
+  var classeArmPlayer = $("#InputclasseArm").val();
+  var inspirPlayer = $("#Inputinspir").val();
+  var iniciatPlayer = $("#Inputiniciat").val();
+  var deslocPlayer = $("#Inputdesloc").val();
+  var tracosPlayer = $("#TextareaTracos").val();
+  var ideaisPlayer = $("#TextareaIdeais").val();
+  var ligacoesPlayer = $("#TextareaLigacoes").val();
+  var defeitosPlayer = $("#TextareaDefeitos").val();
+  var ataquesPlayer = $("#TextareaAtaques").val();
+  var caracEhabilPlayer = $("#TextareaCarac").val();
+  var equipamentosPlayer = $("#TextareaEquip").val();
+  var corPlayer = $("#inputcolor").val();
+
+  var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
+  var lastPlayerRef = firebase.database().ref('/lastCreatedPlayer');
+  lastPlayerRef.once('value', function(snapshot) {
+    var lastPlayerId = snapshot.val();
+    var database = firebase.database();
+    var user = firebase.auth().currentUser;
+    var playerId = eval(eval(lastPlayerId) + 1);
+    var playerFullId = "Player"+playerId;
+    var idPlayer = playerFullId;
 
     var linhaPAdicionar = [];
     linhaPAdicionar.push(idPlayer);                     //0
@@ -688,73 +707,93 @@ $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERS
     linhaPAdicionar.push(equipamentosPlayer);           //44
     linhaPAdicionar.push(corPlayer);                    //45
 
+    var linhaDePericias = SalvaPericias();
+    var linhaDeItens = SalvaItens();
+    var linhaDeMagias = SalvaMagias();
 
-    usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].push(linhaPAdicionar);
-    AppendNovoPlayer();
-    SalvaPericias();
-    SalvaItens();
-    SalvaMagias();
+    allPlayers = {}
+    allPlayers[idPlayer] = {
+      "InfoPlayer": linhaPAdicionar,
+      "InfoPericiasPlayer": linhaDePericias,
+      "InfoItensPlayer": linhaDeItens,
+      "InfoMagiasPlayer": linhaDeMagias
+    }
+    // console.log(allPlayers);
 
-  function SalvaPericias() {
-    var numDePericias = 0;
-    var linhaDePericias = [];
-    linhaDePericias.push(idPlayer);
-    linhaDePericias.push(numDePericias);
-
-    $('#ulPericias .btn-group').each(function(){
-      if (numDePericias != 0) {
-        var nomeDaPericia = $(this).children("button").val();
-        linhaDePericias.push(nomeDaPericia);
-      }
-      numDePericias = numDePericias +1;
+    firebase.database().ref('users/' + user.uid + '/CampanhasMestre/' + campanha + "/Players").update({
+      [idPlayer]: allPlayers[idPlayer]
+    }).then(function() {
+      firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
+      saveThisCampaignOnline()
+      // alert("Campanha criada com sucesso!")
+    }).catch(function(error) {
+      // alert("Error: "+ error.message)
     });
-    numDePericias = numDePericias -1;
+
+    // usuario["CampanhasMestre"][campanha]["Players"]["ListaDePlayers"].push(linhaPAdicionar);
+    // AppendNovoPlayer(idPlayer,campanha)
+
+    function SalvaPericias() {
+      var numDePericias = 0;
+      var linhaDePericias = [];
+      linhaDePericias.push(idPlayer);
+      linhaDePericias.push(numDePericias);
+
+      $('#ulPericias .btn-group').each(function(){
+        if (numDePericias != 0) {
+          var nomeDaPericia = $(this).children("button").val();
+          linhaDePericias.push(nomeDaPericia);
+        }
+        numDePericias = numDePericias +1;
+      });
+      numDePericias = numDePericias -1;
 
 
-    linhaDePericias[1] = (numDePericias);
-    usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"].push(linhaDePericias);
-  }
+      linhaDePericias[1] = (numDePericias);
+      return linhaDePericias;
+      // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"].push(linhaDePericias);
+    }
+    function SalvaItens() {
+      var numDeItens = 0;
+      var linhaDeItens = [];
+      linhaDeItens.push(idPlayer);
+      linhaDeItens.push(numDeItens);
 
-  function SalvaItens() {
-    var numDeItens = 0;
-    var linhaDeItens = [];
-    linhaDeItens.push(idPlayer);
-    linhaDeItens.push(numDeItens);
-
-    $('#ulItens .btn-group').each(function(){
-      if (numDeItens != 0) {
-        var nomeDaPericia = $(this).children("button").val();
-        linhaDeItens.push(nomeDaPericia);
-      }
-      numDeItens = numDeItens +1;
-    });
-    numDeItens = numDeItens -1;
-
-
-    linhaDeItens[1] = (numDeItens);
-    usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"].push(linhaDeItens);
-  }
-
-  function SalvaMagias() {
-    var numDeMagias = 0;
-    var linhaDeMagias = [];
-    linhaDeMagias.push(idPlayer);
-    linhaDeMagias.push(numDeMagias);
-
-    $('#ulMagias .btn-group').each(function(){
-      if (numDeMagias != 0) {
-        var nomeDaPericia = $(this).children("button").val();
-        linhaDeMagias.push(nomeDaPericia);
-      }
-      numDeMagias = numDeMagias +1;
-    });
-    numDeMagias = numDeMagias -1;
+      $('#ulItens .btn-group').each(function(){
+        if (numDeItens != 0) {
+          var nomeDaPericia = $(this).children("button").val();
+          linhaDeItens.push(nomeDaPericia);
+        }
+        numDeItens = numDeItens +1;
+      });
+      numDeItens = numDeItens -1;
 
 
-    linhaDeMagias[1] = (numDeMagias);
-    usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"].push(linhaDeMagias);
-  }
+      linhaDeItens[1] = (numDeItens);
+      return linhaDeItens;
+      // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"].push(linhaDeItens);
+    }
+    function SalvaMagias() {
+      var numDeMagias = 0;
+      var linhaDeMagias = [];
+      linhaDeMagias.push(idPlayer);
+      linhaDeMagias.push(numDeMagias);
 
+      $('#ulMagias .btn-group').each(function(){
+        if (numDeMagias != 0) {
+          var nomeDaPericia = $(this).children("button").val();
+          linhaDeMagias.push(nomeDaPericia);
+        }
+        numDeMagias = numDeMagias +1;
+      });
+      numDeMagias = numDeMagias -1;
+
+
+      linhaDeMagias[1] = (numDeMagias);
+      return linhaDeMagias;
+      // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"].push(linhaDeMagias);
+    }
+  })
 });
 
 $(document).on('click', '#SalvarEdicaoPlayer', function() {  //FUNCAO PARA SALVAR EDICOES NO PERSONAGEM
@@ -806,63 +845,68 @@ $(document).on('click', '#SalvarEdicaoPlayer', function() {  //FUNCAO PARA SALVA
     var equipamentosPlayer = $("#TextareaEquip").val();
     var corPlayer = $("#inputcolor").val();
 
-
-    var todosPlayers = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"];
+    var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
+    var playerSelecionado = allPlayers[idPlayer]["InfoPlayer"];
+    // var todosPlayers = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"];
     var linhaSelecionada;
 
-    $.each(todosPlayers, function(index, value) {
-      if (idPlayer == todosPlayers[index][0]) {
+    // $.each(todosPlayers, function(index, value) {
+      // if (idPlayer == todosPlayers[index][0]) {
 
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][1] = (nomePersonagem);               //1
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][2] = (nomePlayer);                   //2
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][3] = (racaPlayer);                   //3
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][4] = (alinhamentoPlayer);            //4
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][5] = (antecedentesPlayer);           //5
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][6] = (xpPlayer);                     //6
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][7] = (classebasePlayer);             //7
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][8] = (nivelclassebasePlayer);        //8
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][9] = (multiclasse1Player);           //9
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][10] = (nivelmulticlasse1Player);      //10
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][11] = (multiclasse2Player);           //11
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][12] = (nivelmulticlasse2Player);      //12
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][13] = (forPlayer1);                   //13
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][14] = (desPlayer1);                   //14
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][15] = (conPlayer1);                   //15
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][16] = (intPlayer1);                   //16
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][17] = (sabPlayer1);                   //17
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][18] = (carPlayer1);                   //18
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][19] = (forPlayer2);                   //19
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][20] = (desPlayer2);                   //20
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][21] = (conPlayer2);                   //21
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][22] = (intPlayer2);                   //22
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][23] = (sabPlayer2);                   //23
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][24] = (carPlayer2);                   //24
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][25] = (forPlayer3);                   //25
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][26] = (desPlayer3);                   //26
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][27] = (conPlayer3);                   //27
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][28] = (intPlayer3);                   //28
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][29] = (sabPlayer3);                   //29
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][30] = (carPlayer3);                   //30
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][31] = (hpLeftPlayer);                 //31
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][32] = (hpAllPlayer);                  //32
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][33] = (proefPlayer);                  //33
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][34] = (classeArmPlayer);              //34
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][35] = (inspirPlayer);                 //35
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][36] = (iniciatPlayer);                //36
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][37] = (deslocPlayer);                 //37
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][38] = (tracosPlayer);                 //38
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][39] = (ideaisPlayer);                 //39
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][40] = (ligacoesPlayer);               //40
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][41] = (defeitosPlayer);               //41
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][42] = (ataquesPlayer);                //42
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][43] = (caracEhabilPlayer);            //43
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][44] = (equipamentosPlayer);           //44
-        usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][45] = (corPlayer);                    //45
+        allPlayers[idPlayer]["InfoPlayer"][1] = (nomePersonagem);               //1
+        allPlayers[idPlayer]["InfoPlayer"][2] = (nomePlayer);                   //2
+        allPlayers[idPlayer]["InfoPlayer"][3] = (racaPlayer);                   //3
+        allPlayers[idPlayer]["InfoPlayer"][4] = (alinhamentoPlayer);            //4
+        allPlayers[idPlayer]["InfoPlayer"][5] = (antecedentesPlayer);           //5
+        allPlayers[idPlayer]["InfoPlayer"][6] = (xpPlayer);                     //6
+        allPlayers[idPlayer]["InfoPlayer"][7] = (classebasePlayer);             //7
+        allPlayers[idPlayer]["InfoPlayer"][8] = (nivelclassebasePlayer);        //8
+        allPlayers[idPlayer]["InfoPlayer"][9] = (multiclasse1Player);           //9
+        allPlayers[idPlayer]["InfoPlayer"][10] = (nivelmulticlasse1Player);      //10
+        allPlayers[idPlayer]["InfoPlayer"][11] = (multiclasse2Player);           //11
+        allPlayers[idPlayer]["InfoPlayer"][12] = (nivelmulticlasse2Player);      //12
+        allPlayers[idPlayer]["InfoPlayer"][13] = (forPlayer1);                   //13
+        allPlayers[idPlayer]["InfoPlayer"][14] = (desPlayer1);                   //14
+        allPlayers[idPlayer]["InfoPlayer"][15] = (conPlayer1);                   //15
+        allPlayers[idPlayer]["InfoPlayer"][16] = (intPlayer1);                   //16
+        allPlayers[idPlayer]["InfoPlayer"][17] = (sabPlayer1);                   //17
+        allPlayers[idPlayer]["InfoPlayer"][18] = (carPlayer1);                   //18
+        allPlayers[idPlayer]["InfoPlayer"][19] = (forPlayer2);                   //19
+        allPlayers[idPlayer]["InfoPlayer"][20] = (desPlayer2);                   //20
+        allPlayers[idPlayer]["InfoPlayer"][21] = (conPlayer2);                   //21
+        allPlayers[idPlayer]["InfoPlayer"][22] = (intPlayer2);                   //22
+        allPlayers[idPlayer]["InfoPlayer"][23] = (sabPlayer2);                   //23
+        allPlayers[idPlayer]["InfoPlayer"][24] = (carPlayer2);                   //24
+        allPlayers[idPlayer]["InfoPlayer"][25] = (forPlayer3);                   //25
+        allPlayers[idPlayer]["InfoPlayer"][26] = (desPlayer3);                   //26
+        allPlayers[idPlayer]["InfoPlayer"][27] = (conPlayer3);                   //27
+        allPlayers[idPlayer]["InfoPlayer"][28] = (intPlayer3);                   //28
+        allPlayers[idPlayer]["InfoPlayer"][29] = (sabPlayer3);                   //29
+        allPlayers[idPlayer]["InfoPlayer"][30] = (carPlayer3);                   //30
+        allPlayers[idPlayer]["InfoPlayer"][31] = (hpLeftPlayer);                 //31
+        allPlayers[idPlayer]["InfoPlayer"][32] = (hpAllPlayer);                  //32
+        allPlayers[idPlayer]["InfoPlayer"][33] = (proefPlayer);                  //33
+        allPlayers[idPlayer]["InfoPlayer"][34] = (classeArmPlayer);              //34
+        allPlayers[idPlayer]["InfoPlayer"][35] = (inspirPlayer);                 //35
+        allPlayers[idPlayer]["InfoPlayer"][36] = (iniciatPlayer);                //36
+        allPlayers[idPlayer]["InfoPlayer"][37] = (deslocPlayer);                 //37
+        allPlayers[idPlayer]["InfoPlayer"][38] = (tracosPlayer);                 //38
+        allPlayers[idPlayer]["InfoPlayer"][39] = (ideaisPlayer);                 //39
+        allPlayers[idPlayer]["InfoPlayer"][40] = (ligacoesPlayer);               //40
+        allPlayers[idPlayer]["InfoPlayer"][41] = (defeitosPlayer);               //41
+        allPlayers[idPlayer]["InfoPlayer"][42] = (ataquesPlayer);                //42
+        allPlayers[idPlayer]["InfoPlayer"][43] = (caracEhabilPlayer);            //43
+        allPlayers[idPlayer]["InfoPlayer"][44] = (equipamentosPlayer);           //44
+        allPlayers[idPlayer]["InfoPlayer"][45] = (corPlayer);                    //45
 
-        linhaSelecionada = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index];
+        allPlayers[idPlayer]["InfoPericiasPlayer"] = SalvaEdicaoPericias();
+        allPlayers[idPlayer]["InfoItensPlayer"] = SalvaEdicaoItens();
+        allPlayers[idPlayer]["InfoMagiasPlayer"] = SalvaEdicaoMagias();
 
-      }
-    });
+        linhaSelecionada = allPlayers[idPlayer]["InfoPlayer"];
+
+      // }
+    // });
 
 
     var stringEditPlayer1 =
@@ -954,14 +998,90 @@ $(document).on('click', '#SalvarEdicaoPlayer', function() {  //FUNCAO PARA SALVA
   $("#"+linhaSelecionada[0]+"Cabecalho").append(stringEditPlayer1);
   $("#"+linhaSelecionada[0]+"Body").append(stringEditPlayer2);
   $("#"+linhaSelecionada[0]+"CabecalhoButton").append(stringEditPlayer3);
+
+  var database = firebase.database();
+  var user = firebase.auth().currentUser;
+  firebase.database().ref('users/' + user.uid + '/CampanhasMestre/' + campanha + "/Players").update({
+    [idPlayer]: allPlayers[idPlayer]
+  }).then(function() {
+    saveThisCampaignOnline()
+    // firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
+    // alert("Campanha criada com sucesso!")
+  }).catch(function(error) {
+    // alert("Error: "+ error.message)
+  });
+
+  function SalvaEdicaoPericias() {
+    var numDePericias = 0;
+    var linhaDePericias = [];
+    linhaDePericias.push(idPlayer);
+    linhaDePericias.push(numDePericias);
+
+    $('#ulPericias .btn-group').each(function(){
+      if (numDePericias != 0) {
+        var nomeDaPericia = $(this).children("button").val();
+        linhaDePericias.push(nomeDaPericia);
+      }
+      numDePericias = numDePericias +1;
+    });
+    numDePericias = numDePericias -1;
+
+
+    linhaDePericias[1] = (numDePericias);
+    return linhaDePericias;
+    // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"].push(linhaDePericias);
+  }
+  function SalvaEdicaoItens() {
+    var numDeItens = 0;
+    var linhaDeItens = [];
+    linhaDeItens.push(idPlayer);
+    linhaDeItens.push(numDeItens);
+
+    $('#ulItens .btn-group').each(function(){
+      if (numDeItens != 0) {
+        var nomeDaPericia = $(this).children("button").val();
+        linhaDeItens.push(nomeDaPericia);
+      }
+      numDeItens = numDeItens +1;
+    });
+    numDeItens = numDeItens -1;
+
+
+    linhaDeItens[1] = (numDeItens);
+    return linhaDeItens;
+    // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"].push(linhaDeItens);
+  }
+  function SalvaEdicaoMagias() {
+    var numDeMagias = 0;
+    var linhaDeMagias = [];
+    linhaDeMagias.push(idPlayer);
+    linhaDeMagias.push(numDeMagias);
+
+    $('#ulMagias .btn-group').each(function(){
+      if (numDeMagias != 0) {
+        var nomeDaPericia = $(this).children("button").val();
+        linhaDeMagias.push(nomeDaPericia);
+      }
+      numDeMagias = numDeMagias +1;
+    });
+    numDeMagias = numDeMagias -1;
+
+
+    linhaDeMagias[1] = (numDeMagias);
+    return linhaDeMagias;
+    // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"].push(linhaDeMagias);
+  }
+
+
 });
 
 var numPlayers = 0;
 var idUltimoPlayer = 0;
 
-function AppendNovoPlayer() {
-  var linhaPlayer = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].length-1;
-  var linhaSelecionada = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][linhaPlayer];
+function AppendNovoPlayer(idPlayer,campanha) {
+
+  // var linhaPlayer = allPlayers[idPlayer]["InfoPlayer"].length-1;
+  var linhaSelecionada = allPlayers[idPlayer]["InfoPlayer"];
 
     var stringAddPlayer =
     "<div id=\""+linhaSelecionada[0]+"CabecalhoButton"+"\" role=\"button\" data-toggle=\"collapse\" data-parent=\"#PlayersAdicionados\" href=\"#collapsePlayer"+linhaSelecionada[0]+"\" aria-expanded=\"true\""
@@ -1063,107 +1183,107 @@ function EditarPlayer(ctl) {
 
   $("#addPlayerModalDivContainer").empty();
   $("#addPlayerModalDivContainer").load('Players/EditPlayers.html div[id="addPlayerModalDiv"]', function() {
-
+    var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
     var idPlayer = $(ctl).parent().find(".player-id").text();
-    var todosPlayers = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"];
-    var todasPericias = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"];
-    var todosItens = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"];
-    var todasMagias = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"];
     idPlayer = idPlayer.replace('#','');
 
-    $.each(todosPlayers, function(index, value) {
-      if (idPlayer == todosPlayers[index][0]) {
-        $("#IDPlayer").val(todosPlayers[index][0]);
-        // $("#ApagarPlayer").val(todosPlayers[index][0]);
-        $("#NomePersonagem").val(todosPlayers[index][1]);
-        $("#NomePlayer").val(todosPlayers[index][2]);
-        if (todosPlayers[index][3] != "") {
-          $("#BotaoRaca").val(todosPlayers[index][3]);
-          $("#BotaoRaca").children("b").text(todosPlayers[index][3]);
+    var playerSelecionado = allPlayers[idPlayer]["InfoPlayer"];
+    var periciasPlayer = allPlayers[idPlayer]["InfoPericiasPlayer"];
+    var itensPlayer = allPlayers[idPlayer]["InfoItensPlayer"];
+    var magiasPlayer = allPlayers[idPlayer]["InfoMagiasPlayer"];
+    // $.each(todosPlayers, function(index, value) {
+      // if (idPlayer == playerSelecionado[0]) {
+        $("#IDPlayer").val(playerSelecionado[0]);
+        // $("#ApagarPlayer").val(playerSelecionado[0]);
+        $("#NomePersonagem").val(playerSelecionado[1]);
+        $("#NomePlayer").val(playerSelecionado[2]);
+        if (playerSelecionado[3] != "") {
+          $("#BotaoRaca").val(playerSelecionado[3]);
+          $("#BotaoRaca").children("b").text(playerSelecionado[3]);
         }
-        if (todosPlayers[index][4] != "") {
-          $("#BotaoAlinhamento").val(todosPlayers[index][4]);
-          $("#BotaoAlinhamento").children("b").text(todosPlayers[index][4]);
+        if (playerSelecionado[4] != "") {
+          $("#BotaoAlinhamento").val(playerSelecionado[4]);
+          $("#BotaoAlinhamento").children("b").text(playerSelecionado[4]);
         }
-        if (todosPlayers[index][5] != "") {
-          $("#BotaoAntecedentes").val(todosPlayers[index][5]);
-          $("#BotaoAntecedentes").children("b").text(todosPlayers[index][5]);
+        if (playerSelecionado[5] != "") {
+          $("#BotaoAntecedentes").val(playerSelecionado[5]);
+          $("#BotaoAntecedentes").children("b").text(playerSelecionado[5]);
         }
-        if (todosPlayers[index][6] != "") {
-          $("#InputXP").val(todosPlayers[index][6]);
+        if (playerSelecionado[6] != "") {
+          $("#InputXP").val(playerSelecionado[6]);
         }
-        if (todosPlayers[index][7] != "") {
-          $("#BotaoClasseBase").val(todosPlayers[index][7]);
-          $("#BotaoClasseBase").children("b").text(todosPlayers[index][7]);
+        if (playerSelecionado[7] != "") {
+          $("#BotaoClasseBase").val(playerSelecionado[7]);
+          $("#BotaoClasseBase").children("b").text(playerSelecionado[7]);
         }
-        if (todosPlayers[index][8] != "") {
-          $("#BotaoNivelClasseBase").val(todosPlayers[index][8]);
-          $("#BotaoNivelClasseBase").children("b").text(todosPlayers[index][8]);
+        if (playerSelecionado[8] != "") {
+          $("#BotaoNivelClasseBase").val(playerSelecionado[8]);
+          $("#BotaoNivelClasseBase").children("b").text(playerSelecionado[8]);
         }
-        if (todosPlayers[index][9] != "") {
-          $("#BotaoMulticlasse1").val(todosPlayers[index][9]);
-          $("#BotaoMulticlasse1").children("b").text(todosPlayers[index][9]);
+        if (playerSelecionado[9] != "") {
+          $("#BotaoMulticlasse1").val(playerSelecionado[9]);
+          $("#BotaoMulticlasse1").children("b").text(playerSelecionado[9]);
         }
-        if (todosPlayers[index][10] != "") {
-          $("#BotaoNivelMulticlasse1").val(todosPlayers[index][10]);
-          $("#BotaoNivelMulticlasse1").children("b").text(todosPlayers[index][10]);
+        if (playerSelecionado[10] != "") {
+          $("#BotaoNivelMulticlasse1").val(playerSelecionado[10]);
+          $("#BotaoNivelMulticlasse1").children("b").text(playerSelecionado[10]);
         }
-        if (todosPlayers[index][11] != "") {
-          $("#BotaoMulticlasse2").val(todosPlayers[index][11]);
-          $("#BotaoMulticlasse2").children("b").text(todosPlayers[index][11]);
+        if (playerSelecionado[11] != "") {
+          $("#BotaoMulticlasse2").val(playerSelecionado[11]);
+          $("#BotaoMulticlasse2").children("b").text(playerSelecionado[11]);
         }
-        if (todosPlayers[index][12] != "") {
-          $("#BotaoNivelMulticlasse2").val(todosPlayers[index][12]);
-          $("#BotaoNivelMulticlasse2").children("b").text(todosPlayers[index][12]);
+        if (playerSelecionado[12] != "") {
+          $("#BotaoNivelMulticlasse2").val(playerSelecionado[12]);
+          $("#BotaoNivelMulticlasse2").children("b").text(playerSelecionado[12]);
         }
-        if (todosPlayers[index][13] != "") { $("#InputFor1").val(todosPlayers[index][13]); }
-        if (todosPlayers[index][14] != "") { $("#InputDes1").val(todosPlayers[index][14]); }
-        if (todosPlayers[index][15] != "") { $("#InputCon1").val(todosPlayers[index][15]); }
-        if (todosPlayers[index][16] != "") { $("#InputInt1").val(todosPlayers[index][16]); }
-        if (todosPlayers[index][17] != "") { $("#InputSab1").val(todosPlayers[index][17]); }
-        if (todosPlayers[index][18] != "") { $("#InputCar1").val(todosPlayers[index][18]); }
-        if (todosPlayers[index][19] != "") { $("#InputFor2").val(todosPlayers[index][19]); }
-        if (todosPlayers[index][20] != "") { $("#InputDes2").val(todosPlayers[index][20]); }
-        if (todosPlayers[index][21] != "") { $("#InputCon2").val(todosPlayers[index][21]); }
-        if (todosPlayers[index][22] != "") { $("#InputInt2").val(todosPlayers[index][22]); }
-        if (todosPlayers[index][23] != "") { $("#InputSab2").val(todosPlayers[index][23]); }
-        if (todosPlayers[index][24] != "") { $("#InputCar2").val(todosPlayers[index][24]); }
-        if (todosPlayers[index][25] != "") { $("#InputFor3").val(todosPlayers[index][25]); }
-        if (todosPlayers[index][26] != "") { $("#InputDes3").val(todosPlayers[index][26]); }
-        if (todosPlayers[index][27] != "") { $("#InputCon3").val(todosPlayers[index][27]); }
-        if (todosPlayers[index][28] != "") { $("#InputInt3").val(todosPlayers[index][28]); }
-        if (todosPlayers[index][29] != "") { $("#InputSab3").val(todosPlayers[index][29]); }
-        if (todosPlayers[index][30] != "") { $("#InputCar3").val(todosPlayers[index][30]); }
-        if (todosPlayers[index][31] != "") { $("#InputHPLeft").val(todosPlayers[index][31]); }
-        if (todosPlayers[index][32] != "") { $("#InputHPAll").val(todosPlayers[index][32]); }
-        if (todosPlayers[index][33] != "") { $("#Inputproef").val(todosPlayers[index][33]); }
-        if (todosPlayers[index][34] != "") { $("#InputclasseArm").val(todosPlayers[index][34]); }
-        if (todosPlayers[index][35] != "") { $("#Inputinspir").val(todosPlayers[index][35]); }
-        if (todosPlayers[index][36] != "") { $("#Inputiniciat").val(todosPlayers[index][36]); }
-        if (todosPlayers[index][37] != "") { $("#Inputdesloc").val(todosPlayers[index][37]); }
-        if (todosPlayers[index][38] != "") { $("#TextareaTracos").val(todosPlayers[index][38]); }
-        if (todosPlayers[index][39] != "") { $("#TextareaIdeais").val(todosPlayers[index][39]); }
-        if (todosPlayers[index][40] != "") { $("#TextareaLigacoes").val(todosPlayers[index][40]); }
-        if (todosPlayers[index][41] != "") { $("#TextareaDefeitos").val(todosPlayers[index][41]); }
-        if (todosPlayers[index][42] != "") { $("#TextareaAtaques").val(todosPlayers[index][42]); }
-        if (todosPlayers[index][43] != "") { $("#TextareaCarac").val(todosPlayers[index][43]); }
-        if (todosPlayers[index][44] != "") { $("#TextareaEquip").val(todosPlayers[index][44]); }
-        if (todosPlayers[index][45] != "") {
-          $("#inputcolor").css("background-color",todosPlayers[index][45]);
+        if (playerSelecionado[13] != "") { $("#InputFor1").val(playerSelecionado[13]); }
+        if (playerSelecionado[14] != "") { $("#InputDes1").val(playerSelecionado[14]); }
+        if (playerSelecionado[15] != "") { $("#InputCon1").val(playerSelecionado[15]); }
+        if (playerSelecionado[16] != "") { $("#InputInt1").val(playerSelecionado[16]); }
+        if (playerSelecionado[17] != "") { $("#InputSab1").val(playerSelecionado[17]); }
+        if (playerSelecionado[18] != "") { $("#InputCar1").val(playerSelecionado[18]); }
+        if (playerSelecionado[19] != "") { $("#InputFor2").val(playerSelecionado[19]); }
+        if (playerSelecionado[20] != "") { $("#InputDes2").val(playerSelecionado[20]); }
+        if (playerSelecionado[21] != "") { $("#InputCon2").val(playerSelecionado[21]); }
+        if (playerSelecionado[22] != "") { $("#InputInt2").val(playerSelecionado[22]); }
+        if (playerSelecionado[23] != "") { $("#InputSab2").val(playerSelecionado[23]); }
+        if (playerSelecionado[24] != "") { $("#InputCar2").val(playerSelecionado[24]); }
+        if (playerSelecionado[25] != "") { $("#InputFor3").val(playerSelecionado[25]); }
+        if (playerSelecionado[26] != "") { $("#InputDes3").val(playerSelecionado[26]); }
+        if (playerSelecionado[27] != "") { $("#InputCon3").val(playerSelecionado[27]); }
+        if (playerSelecionado[28] != "") { $("#InputInt3").val(playerSelecionado[28]); }
+        if (playerSelecionado[29] != "") { $("#InputSab3").val(playerSelecionado[29]); }
+        if (playerSelecionado[30] != "") { $("#InputCar3").val(playerSelecionado[30]); }
+        if (playerSelecionado[31] != "") { $("#InputHPLeft").val(playerSelecionado[31]); }
+        if (playerSelecionado[32] != "") { $("#InputHPAll").val(playerSelecionado[32]); }
+        if (playerSelecionado[33] != "") { $("#Inputproef").val(playerSelecionado[33]); }
+        if (playerSelecionado[34] != "") { $("#InputclasseArm").val(playerSelecionado[34]); }
+        if (playerSelecionado[35] != "") { $("#Inputinspir").val(playerSelecionado[35]); }
+        if (playerSelecionado[36] != "") { $("#Inputiniciat").val(playerSelecionado[36]); }
+        if (playerSelecionado[37] != "") { $("#Inputdesloc").val(playerSelecionado[37]); }
+        if (playerSelecionado[38] != "") { $("#TextareaTracos").val(playerSelecionado[38]); }
+        if (playerSelecionado[39] != "") { $("#TextareaIdeais").val(playerSelecionado[39]); }
+        if (playerSelecionado[40] != "") { $("#TextareaLigacoes").val(playerSelecionado[40]); }
+        if (playerSelecionado[41] != "") { $("#TextareaDefeitos").val(playerSelecionado[41]); }
+        if (playerSelecionado[42] != "") { $("#TextareaAtaques").val(playerSelecionado[42]); }
+        if (playerSelecionado[43] != "") { $("#TextareaCarac").val(playerSelecionado[43]); }
+        if (playerSelecionado[44] != "") { $("#TextareaEquip").val(playerSelecionado[44]); }
+        if (playerSelecionado[45] != "") {
+          $("#inputcolor").css("background-color",playerSelecionado[45]);
           $("#inputcolor").css("border-color", "rgba(0, 0, 0, 0.42)");
-          $("#inputcolor").val(todosPlayers[index][45]);
+          $("#inputcolor").val(playerSelecionado[45]);
         }
-      }
+      // }
 
-    });
+    // });
 
-    $.each(todasPericias, function(index, value) {
-      if (idPlayer == todasPericias[index][0]) {
-        for (var i = 0; i < todasPericias[index][1]; i++) {
+    // $.each(todasPericias, function(index, value) {
+      // if (idPlayer == periciasPlayer[0]) {
+        for (var i = 0; i < periciasPlayer[1]; i++) {
           var stringNovaPericia =
           "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-            +"<button value=\""+todasPericias[index][i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
-              +"<b>"+todasPericias[index][i+2]+"</b>"
+            +"<button value=\""+periciasPlayer[i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
+              +"<b>"+periciasPlayer[i+2]+"</b>"
               +"<span class=\"caret\"></span>"
             +"</button>"
             +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
@@ -1193,16 +1313,17 @@ function EditarPlayer(ctl) {
           +"</li>";
           $("#ulPericias").append(stringNovaPericia);
         }
-      }
-    });
+      // }
+    // });
 
-    $.each(todosItens, function(index, value) {
-      if (idPlayer == todosItens[index][0]) {
-        for (var i = 0; i < todosItens[index][1]; i++) {
+
+    // $.each(todosItens, function(index, value) {
+      // if (idPlayer == itensPlayer[0]) {
+        for (var i = 0; i < itensPlayer[1]; i++) {
           var stringNovoItem =
           "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-            +"<button value=\""+todosItens[index][i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
-              +"<b>"+todosItens[index][i+2]+"</b>"
+            +"<button value=\""+itensPlayer[i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
+              +"<b>"+itensPlayer[i+2]+"</b>"
               +"<span class=\"caret\"></span>"
             +"</button>"
             +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
@@ -1217,16 +1338,16 @@ function EditarPlayer(ctl) {
           +"</li>";
           $("#ulItens").append(stringNovoItem);
         }
-      }
-    });
+      // }
+    // });
 
-    $.each(todasMagias, function(index, value) {
-      if (idPlayer == todasMagias[index][0]) {
-        for (var i = 0; i < todasMagias[index][1]; i++) {
+    // $.each(todasMagias, function(index, value) {
+      // if (idPlayer == magiasPlayer[0]) {
+        for (var i = 0; i < magiasPlayer[1]; i++) {
           var stringNovaMagia =
           "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-            +"<button value=\""+todasMagias[index][i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
-              +"<b>"+todasMagias[index][i+2]+"</b>"
+            +"<button value=\""+magiasPlayer[i+2]+"\" type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
+              +"<b>"+magiasPlayer[i+2]+"</b>"
               +"<span class=\"caret\"></span>"
             +"</button>"
             +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
@@ -1600,8 +1721,8 @@ function EditarPlayer(ctl) {
           +"</li>";
           $("#ulMagias").append(stringNovaMagia);
         }
-      }
-    });
+      // }
+    // });
   });
 }
 

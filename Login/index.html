@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <style media="screen">
+
+      body{
+        font-family: 'Open Sans', sans-serif;
+        overflow: hidden;
+      }
+      input, textarea{
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin: 5px;
+        padding: 10px;
+        width: 50vw;
+        resize: none;
+      }
+      button{
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin: 5px;
+        padding: 10px;
+        background-color: cornflowerblue;
+        cursor: pointer;
+        /* width: 50vw; */
+      }
+      button:hover{
+        opacity: 0.8;
+      }
+      .main-div{
+        /* margin: 32.5vw auto; */
+        /* padding: 25vw; */
+        /* padding-top: 20vh; */
+        /* min-width: 300px; */
+        text-align: center;
+        /* width: 50vw; */
+      }
+      .login-container {
+        height: 100vh;
+        position: relative;
+        /* border: 3px solid green; */
+      }
+      .vertical-center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+    </style>
+    <title></title>
+  </head>
+  <body>
+    <div class="login-container">
+
+      <div id="login_div" class="main-div vertical-center" style="display: inline-grid;">
+        <div id="enter_div" class="" style="display: inline-grid;">
+          <h3>Firebase Web Login Test</h3>
+          <input type="text" placeholder="Email" name="" value="" id="email_field">
+          <input type="password" placeholder="Senha" name="" value="" id="password_field">
+          <button onclick="login()" type="button" name="button">Login!</button>
+          <button onclick="mostrarCriarUser()" type="button" name="button">Criar Novo Usuário!</button>
+        </div>
+        <div id="create_div" class="" style="display: none;">
+          <h3>Crie um novo Usuário</h3>
+          <input type="text" placeholder="Email" name="" value="" id="new_email_field">
+          <input type="password" placeholder="Senha" name="" value="" id="new_password_field">
+          <button onclick="criarUser()" type="button" name="button">Criar Novo Usuário!</button>
+          <button onclick="voltar()" type="button" name="button">Voltar</button>
+        </div>
+      </div>
+
+
+
+      <div id="user_div" class="main-div vertical-center" style="display: none;">
+        <div id="full_info_div" class="">
+          <h2>Bem vindo, <span id="logged_user">Usuário!</span></h2>
+          Bem vindo à pagina, parece que você conseguiu logar com sucesso!
+          <div class="info">
+            <h3 style="margin-bottom: 0">Suas informações:</h3>
+            <b>Nome:</b>
+            <span id="logged_user_name"></span>
+            <br><b>Telefone:</b>
+            <span id="logged_user_cel"></span>
+            <br><b>Email:</b>
+            <span id="logged_user_email"></span>
+            <!-- <br><b>DND-ID:</b>
+            <span id="logged_user_dndID"></span> -->
+            <br><b>Ultimo Login:</b>
+            <span id="logged_user_lastlogin"></span>
+          </div>
+          <button onclick="logout()" type="button" name="button">Logout!</button>
+          <button onclick="newCampaign()" type="button" name="button">Criar nova campanha!</button>
+          <!-- <button onclick="deleteUser()" type="button" name="button">Apagar meu Usuário.</button> -->
+          <!-- <textarea id="InputJSON" rows="8" placeholder="Input your JSON object here."></textarea> -->
+          <!-- <button onclick="sendDataToServer()" type="button" name="button">Enviar meus dados para a DB.</button> -->
+        </div>
+        <div id="missing_info_div" class="">
+          <input type="text" placeholder="Nome" name="" value="" id="name_field">
+          <input type="text" placeholder="Telefone" name="" value="" id="cel_field">
+          <button onclick="updateData()" type="button" name="button">Atualizar dados!</button>
+          <button onclick="logout()" type="button" name="button">Logout!</button>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LINKS PARA ADICIONAR A FIREBASE -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-database.js"></script>
+
+    <script>
+      // var lastUser = 2019000000;
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyChiqQX2sD8RgDahTSVkQNe18AoZdYq8C8",
+        authDomain: "dnd-helper-project.firebaseapp.com",
+        databaseURL: "https://dnd-helper-project.firebaseio.com",
+        projectId: "dnd-helper-project",
+        storageBucket: "dnd-helper-project.appspot.com",
+        messagingSenderId: "297880874955",
+        appId: "1:297880874955:web:8cdbb7bb09ebdfe5"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          $("#user_div").css("display", "inline-grid");
+          $("#login_div").css("display", "none");
+
+          var user = firebase.auth().currentUser;
+          var email;
+          if (user != null) {
+            $("#logged_user").text(user.email);
+            $("#logged_user_email").text(user.email);
+            $("#logged_user_name").text(user.displayName);
+            $("#logged_user_cel").text(user.phoneNumber);
+            $("#logged_user_lastlogin").text(user.metadata.lastSignInTime);
+          }
+          if (user.displayName === null) {
+            $("#full_info_div").css("display", "none");
+            $("#missing_info_div").css("display", "inline-grid");
+          } else {
+            $("#full_info_div").css("display", "inline-grid");
+            $("#missing_info_div").css("display", "none");
+          }
+        } else {
+          // No user is signed in.
+          $("#user_div").css("display", "none");
+          $("#login_div").css("display", "inline-grid");
+        }
+      });
+
+      function login(){
+
+        var userEmail = $("#email_field").val();
+        var userPass = $("#password_field").val();
+
+
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+          alert("Error: "+errorMessage)
+        });
+
+      }
+      function logout(){
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+        }).catch(function(error) {
+          // An error happened.
+        });
+      }
+
+      function criarUser(){
+        var userEmail = $("#new_email_field").val();
+        var userPass = $("#new_password_field").val();
+
+        firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+          alert("Error: "+errorMessage)
+        });
+      }
+      function deleteUser() {
+        var user = firebase.auth().currentUser;
+        user.delete().then(function() {
+          // User deleted.
+        }).catch(function(error) {
+          // An error happened.
+        });
+      }
+
+      function updateData() {
+        var user = firebase.auth().currentUser;
+        user.updateProfile({
+          displayName: $("#name_field").val(),
+          phoneNumber: $("#cel_field").val()
+        }).then(function() {
+          // Update successful.
+          sendDataToServer()
+          var user = firebase.auth().currentUser;
+          $("#logged_user_email").text(user.email);
+          $("#logged_user_name").text(user.displayName);
+          $("#logged_user_cel").text(user.phoneNumber);
+          $("#logged_user_lastlogin").text(user.metadata.lastSignInTime);
+          $("#full_info_div").css("display", "inline-grid");
+          $("#missing_info_div").css("display", "none");
+          alert("Dados Atualizados!")
+        }).catch(function(error) {
+          // An error happened.
+          var errorMessage = error.message;
+          alert("Error: "+errorMessage)
+        });
+      }
+      function sendDataToServer(){
+        var database = firebase.database();
+        var user = firebase.auth().currentUser;
+
+        firebase.database().ref('users/' + user.uid + '/InformacoesdoUsuario').set({
+          name: user.displayName,
+          email: user.email,
+          phone: user.phoneNumber,
+          data: "written data."
+        }).then(function() {
+          // Update successful.
+          alert("Dados criados com sucesso!")
+        }).catch(function(error) {
+          // An error happened.
+          alert("Error: "+ error.message)
+        });
+      }
+      function newCampaign(){
+      var lastCampaingRef = firebase.database().ref('/lastCreatedCampaign');
+      lastCampaingRef.once('value', function(snapshot) {
+        var lastCampaingId = snapshot.val();
+
+        var database = firebase.database();
+        var user = firebase.auth().currentUser;
+        var CampaingId = eval(eval(lastCampaingId) + 1);
+        var CampaingFullId = "Campanha"+CampaingId;
+
+        firebase.database().ref('users/' + user.uid + '/CampanhasMestre/' + CampaingFullId).set({
+            // CampaingFullId: {
+              // "Grid": {},
+              // "Encontro": {},
+              // "Contadores": {},
+              "Cidade": "",
+              "Mundo": {
+                "Historico": {},
+                "MapaAtual": {}
+              },
+              "Dungeon": {
+                "Nome": "",
+                "Dados": {
+                  "map_style": "standard",
+                  "grid": "square",
+                  "dungeon_layout": "square",
+                  "dungeon_size": "dimin",
+                  "add_stairs": "yes",
+                  "room_layout": "scattered",
+                  "room_size": "medium",
+                  "doors": "standard",
+                  "corridor_layout": "errant",
+                  "remove_deadends": "some"
+                }
+              },
+              "BlocoDeNotas": "<h2><span class=\"text-big\"><strong>Olá! Bem vindo à Página do Mestre do DnD Helper!</strong></span></h2><p><span class=\"text-big\">Aqui você encontrará diversas ferramentas para auxiliar em sua mesa de D&amp;D, e melhorar suas mestragens!</span><br><span class=\"text-big\">Há varias ferramentas para agilizar sua pesquisa de magias, poder gerenciar seu grupo, melhorar os combates do seu personagem, tabelas úteis, grids, e muito mais!</span></p>",
+              "Tabela": {},
+              "Players": {
+                "ListaDePlayers": [],
+                "ListaDeMagias": [],
+                "ListaDePericias": [],
+                "ListaDeProeficiencias": [],
+                "ListaDeItens": []
+              }
+            // }
+        }).then(function() {
+          // Update successful.
+          firebase.database().ref('/').update({ lastCreatedCampaign: CampaingId })
+          alert("Campanha criada com sucesso!")
+        }).catch(function(error) {
+          // An error happened.
+          alert("Error: "+ error.message)
+        });
+        });
+      }
+      function mostrarCriarUser() {
+        $("#enter_div").css("display", "none");
+        $("#create_div").css("display", "inline-grid");
+      }
+      function voltar() {
+        $("#enter_div").css("display", "inline-grid");
+        $("#create_div").css("display", "none");
+      }
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+  </body>
+</html>

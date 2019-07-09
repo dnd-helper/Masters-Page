@@ -38,17 +38,6 @@ document.write(`
           </li>
 
           <li class="column expanded">
-            <a title="" class="nolink">Filtro de Itens</a>
-            <ul class="submenu-col">
-
-              <li class="default leaf first">
-                <a href="" title=""><span class="">(Em Desenvolvimento)</span></a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li class="column expanded">
             <a title="" class="nolink">Dados Roláveis</a>
             <ul class="submenu-col">
 
@@ -168,7 +157,7 @@ document.write(`
             <ul class="submenu-col" id="ulCampanhas">
 
               <li class="default leaf first last">
-                <a href="https://dnd-helper.github.io/Masters-Page/" title=""><span class="">Faça Login para Carregar</span></a>
+                <a href="https://dnd-helper.github.io/Masters-Page/" title=""><span class="">(Em Desenvolvimento)</span></a>
               </li>
 
               <!-- <li class="default leaf first">
@@ -254,15 +243,14 @@ document.write(`
               </li>
             </ul>
           </li>
-          <li class="column expanded">
-            <a title="" class="nolink">Carregar Player</a>
-            <ul class="submenu-col">
+          <!-- <li class="column expanded">
+            <a title="" class="nolink">Tabletop Games</a>    <ul class="submenu-col">
 
               <li class="default leaf first">
-                <a href="" title=""><span class="">(Em Desenvolvimento)</span></a>
+                <a href="http://dnd.wizards.com/products/tabletop-games/rpg-products" title=""><span class="">Tabletop RPGs</span></a>
               </li>
 
-              <!-- <li class="default leaf">
+              <li class="default leaf">
                 <a href="http://dnd.wizards.com/products/tabletop-games/miniatures" title=""><span class="">Miniatures</span></a>
               </li>
 
@@ -272,10 +260,10 @@ document.write(`
 
               <li class="default leaf last">
                 <a href="http://dnd.wizards.com/products/catalog/tabletop-games" title=""><span class="">All</span></a>
-              </li> -->
+              </li>
             </ul>
           </li>
-          <!-- <li class="column expanded">
+          <li class="column expanded">
             <a title="" class="nolink">Fiction</a>    <ul class="submenu-col">
 
               <li class="default leaf first">
@@ -514,19 +502,61 @@ document.write(`
     </li>
     <li id="call_login_top_LI" class="top_level_right leaf dropdown mega-dropdown">
       <a href="#" style="width: min-content;float: inherit;">
-        <img class="main-menu_utility-icon" src="img/Login.png" alt="" style="opacity: 0.65">
-        <span style="width: max-content;">Login</span>
+        <img class="main-menu_utility-icon" src="img/Login.png" alt="" style="">
+        <span id="first_name" style="width: max-content;">Login</span>
       </a>
     </li>
-    <!-- <li  class="top_level_right leaf dropdown mega-dropdown" >
+    <li id="login_top_LI" class="top_level_right leaf dropdown mega-dropdown" style="display: none">
       <a href="#" class="dropdown-toggle" style="width: min-content;float: inherit;">
         <img class="main-menu_utility-icon" src="img/Login.png" alt="" style="">
         <span id="first_name" style="width: max-content;">Login</span>
       </a>
       <div class="dropdown-menu mega-dropdown-menu" style="text-align: center;padding: 10px;border: 6px solid rgba(0,0,0,0.98);margin-right: 0px;">
+
         <img class="main-menu_utility-icon" src="Loader/DNDHelperBanner.png" alt="" style="width: 100%;">
-        <div id="user_div_top" class="main-div vertical-center">
-          <div id="full_info_div_top" style="display: inline-grid;" class="">
+        <div id="login_div_top" class="main-div vertical-center" style="display: inline-grid;width: 100%;text-align: center;">
+          <div class="" role="tablist" style="width: 100%;text-align: center;height: 40px;display: flex;">
+            <button id="buttonLogin_top" type="button" onclick="voltar_top()" name="button" style="width: 49%; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; border: medium none; color: white; font-size: 18px;"><b>LOGIN</b></button>
+            <button id="buttonSignin_top" type="button" onclick="mostrarCriarUser_top()" name="button" style="width: 49%; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; border: medium none; color: rgb(204, 204, 204); font-size: 18px;"><b>SIGN IN</b></button>
+          </div>
+          <div id="enter_div_top" class="" style="display: inline-grid;">
+            <h5 class="nolink" style="color: #ccc;">Faça Login com sua conta:</h5>
+            <input type="text" placeholder="Email" name="" value="" id="email_field_top" class="form-control input-sm" style="margin-bottom: 10px; border-radius: 3px">
+            <input type="password" placeholder="Senha" name="" value="" id="password_field_top" class="form-control input-sm" style="margin-bottom: 10px;">
+            <button onclick="login_top()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 0px;">Login!</button>
+            <span href="#" style="text-align: center;color: #ccc;cursor: pointer;">Esqueci minha senha.</span>
+            <div style="display: inline-flex;">
+              <div class="custom-divider" style="width: 46%;margin-top: 11px;margin-right: 5px;"></div>
+              <span style="color: #ccc;">ou</span>
+              <div class="custom-divider" style="width: 46%;margin-top: 11px;margin-left: 5px;"></div>
+            </div>
+            <!-- <ul class="social-links" style="width: max-content;margin-left: 14px;margin-right: 14px;margin-top: 7px;">
+              <li><a href="#"><img src="https://dnd-helper.github.io/files/facebook-01.png"></a></li>
+              <li><a href="#"><img src="https://dnd-helper.github.io/files/twitter_0-01.png"></a></li>
+              <li><a href="#"><img src="https://dnd-helper.github.io/files/youtube-01.png"></a></li>
+              <li><a href="#"><img src="https://dnd-helper.github.io/files/twitch-01.png"></a></li>
+              <li style="margin-right: 0px;"><a href="#"><img src="https://dnd-helper.github.io/files/instagram-01.png"></a></li> -->
+              <!-- <li><a href=""><img src="https://dnd-helper.github.io/files/ExtraLife-01.png"></a></li> -->
+            <!-- </ul> -->
+            <div id="firebaseui-auth-container_top" style="margin-top: 5px;">
+              <!-- <button onclick="loginWithGoogle()" class="firebaseui-idp-button mdl-button mdl-js-button mdl-button--raised firebaseui-idp-google firebaseui-id-idp-button" data-provider-id="google.com" style="background-color:" data-upgraded=",MaterialButton">
+                <span class="firebaseui-idp-icon-wrapper">
+                  <img class="firebaseui-idp-icon" alt="" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+                </span>
+                <span class="firebaseui-idp-text firebaseui-idp-text-long">Login com Google</span>
+                <span class="firebaseui-idp-text firebaseui-idp-text-short">Google</span>
+              </button> -->
+            </div>
+          </div>
+          <div id="create_div_top" class="" style="display: none;">
+            <h4 style="color: #ccc;">Crie um novo Usuário</h4>
+            <input type="text" placeholder="Email" name="" value="" id="new_email_field_top" class="form-control input-sm" style="margin-bottom: 10px; border-radius: 3px">
+            <input type="password" placeholder="Senha" name="" value="" id="new_password_field_top" class="form-control input-sm" style="margin-bottom: 10px;">
+            <button onclick="criarUser()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Criar Novo Usuário!</button>
+          </div>
+        </div>
+        <div id="user_div_top" class="main-div vertical-center" style="display: none;">
+          <div id="full_info_div_top" style="display: none;" class="">
             <h2 style="color: white">Bem vindo, <span id="logged_user_top">Usuário!</span></h2>
             <span style="color: white">Bem vindo à pagina, parece que você conseguiu logar com sucesso!</span>
             <div class="info" style="color: white; display: none">
@@ -539,34 +569,40 @@ document.write(`
               <span id="logged_user_email_top"></span>
               <br><b>Ultimo Login:</b>
               <span id="logged_user_last"></span>
-            </div> -->
+            </div>
             <!-- <button onclick="logout()" type="button" name="button">Logout!</button> -->
-            <!-- <button onclick="logout()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Logout!</button>
+            <button onclick="logout()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Logout!</button>
             <button onclick="newCampaign()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Criar nova campanha!</button>
-            <button onclick="saveThisCampaignOnline()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Salvar dados desta campanha!</button> -->
+            <button onclick="saveThisCampaignOnline()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Salvar dados desta campanha!</button>
             <!-- <button onclick="newCampaign()" type="button" name="button">Criar nova campanha!</button> -->
             <!-- <button onclick="deleteUser()" type="button" name="button">Apagar meu Usuário.</button> -->
             <!-- <textarea id="InputJSON" rows="8" placeholder="Input your JSON object here."></textarea> -->
             <!-- <button onclick="sendDataToServer()" type="button" name="button">Enviar meus dados para a DB.</button> -->
-          <!-- </div>
-        </div> -->
+          </div>
+          <div id="missing_info_div_top" style="display: none;" class="">
+            <h4 style="color: #ccc;">Atualize seus dados para continuar.</h4>
+            <input type="text" placeholder="Nome" name="" value="" id="name_field_top" class="form-control input-sm" style="margin-bottom: 10px;">
+            <input type="text" placeholder="Telefone" name="" value="" id="cel_field_top" class="form-control input-sm" style="margin-bottom: 10px;">
+            <button onclick="updateData()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Atualizar dados!</button>
+            <button onclick="logout()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Logout!</button>
+            <!-- <button onclick="updateData()" type="button" name="button">Atualizar dados!</button>
+            <button onclick="logout()" type="button" name="button">Logout!</button> -->
+
+          </div>
+        </div>
         <!-- <li><a href="#">Action</a></li>
         <li><a href="#">Another action</a></li>
         <li><a href="#">Something else here</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="#">Separated link</a></li> -->
         <!-- <img class="main-menu_utility-icon" src="Loader/error_background.png" alt="" style=""> -->
-<!--
+
       </div>
-    </li> -->
-    <li id="login_top_LI" class="top_level_right leaf" style="display: none">
-      <a title="" id="toggle-right-menu-button" style="width: max-content;" class="toggle-right-menu-button-usuario">
-        <img class="main-menu_utility-icon" src="img/Login.png" style="opacity: 0.65" alt="">
-        <span id="first_name" style="width: max-content;">Usuario</span>
-      </a>
     </li>
     <style media="screen">
       .mega-dropdown-menu{
+        width: 350px !important;
+        height: 450px;
         position: initial;
         max-height: none;
         border-radius: 0px;

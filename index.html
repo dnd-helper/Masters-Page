@@ -14,12 +14,12 @@
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://dnd.wizards.com/articles/media-resources/sites/all/themes/dx/icons/touch-icon-72.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://dnd.wizards.com/articles/media-resources/sites/all/themes/dx/icons/touch-icon-114.png"> -->
 
+  <link rel="stylesheet" type="text/css" href="css/own.css">
   <link rel="stylesheet" type="text/css" href="css/system.base.css">
   <link rel="stylesheet" type="text/css" href="css/system.menus.css">
   <link rel="stylesheet" type="text/css" href="css/system.messages.css">
   <link rel="stylesheet" type="text/css" href="css/system.theme.css">
   <link rel="stylesheet" type="text/css" href="css/fonts.css">
-  <link rel="stylesheet" type="text/css" href="css/own.css">
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
@@ -57,8 +57,18 @@
 
   <script src="Encontro/Encontro.js"></script>
 
-  <script src="DownloadFile/download.js"></script>
+  <!-- <script src="DownloadFile/download.js"></script> -->
   <script src="Encrypter/Encrypter.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="css/firebase-ui-auth.css" />
+
+  <script src="files/slick.min.js"></script>
+  <script src="BarraLateralDireita/jquery.mmenu.oncanvas.js"></script>
+
+  <script src="files/MainMenu.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="BarraLateralDireita/MainRightMenu.css" />
+  <script src="BarraLateralDireita/MainRightMenu.js"></script>
 
 
   <!-- <script src="MapaDungeon/MapaDungeon.js"></script> -->
@@ -115,19 +125,156 @@
 
 </head>
 <body class="html not-front not-logged-in no-sidebars page-articles page-articles-media-resources page-articles-media-resources-wallpapers product_tabletop-games_basic-rules eu-cookie-compliance-processed loaded windows" style="overflow: hidden;">
+  <style media="screen">
+    .modal-backdrop{
+      z-index: 399 !important;
+      opacity: 0.8 !important;
+    }
+    .vertical-alignment-helper {
+      display: table;
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+    }
+    .vertical-align-center {
+      display: table-cell;
+      vertical-align: middle;
+      pointer-events: none;
+    }
+    .modal-content {
+      width: inherit;
+      max-width: inherit;
+      height: inherit;
+      margin: 0 auto;
+      pointer-events: all;
+    }
+  </style>
+  <!-- <div class="" style="z-index: 400; display: block"></div> -->
+  <div class="modal fade in" id="loginBlock" role="dialog" aria-labelledby="ModalAdicionarPlayerLabel" style="overflow: hidden; z-index: 400; display: block; padding-left: 17px;">
+    <div class="vertical-alignment-helper">
+      <div class="modal-dialog vertical-align-center" role="document">
+        <div id="" class="modal-content" style="border-radius: 0;width: max-content;">
+          <!-- <div id="" class=""> -->
+            <!-- <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+              <h4 class="modal-title">Adicionar Player</h4>
+            </div> -->
+            <!-- <div class="" style="height: 30vh;max-height: 90vh;overflow-x: hidden;overflow-y: auto;"> -->
+              <!-- <div class="modal-body" style="display: flex;flex-wrap: wrap;"> -->
+                <div class="dropdown-menu mega-dropdown-menu narrowMenu" style="">
+
+                  <img class="main-menu_utility-icon" src="Loader/DNDHelperBanner.png" alt="" style="width: 100%;">
+                  <div id="login_div" class="main-div vertical-center" style="display: inline-grid;width: 100%;text-align: center;">
+                    <div class="" role="tablist" style="width: 100%;text-align: center;height: 40px;display: flex;">
+                      <button id="buttonLogin" type="button" onclick="voltar()" name="button" style="width: 49%; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; border: medium none; color: white; font-size: 18px;"><b>LOGIN</b></button>
+                      <button id="buttonSignin" type="button" onclick="mostrarCriarUser()" name="button" style="width: 49%; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; border: medium none; color: rgb(204, 204, 204); font-size: 18px;"><b>SIGN IN</b></button>
+                    </div>
+                    <div id="enter_div" class="" style="display: inline-grid;">
+                      <h5 class="nolink" style="color: #ccc;">Faça Login com sua conta:</h5>
+                      <input type="text" placeholder="Email" name="" value="" id="email_field" class="form-control input-sm" style="margin-bottom: 10px; border-radius: 3px">
+                      <input type="password" placeholder="Senha" name="" value="" id="password_field" class="form-control input-sm" style="margin-bottom: 10px;">
+                      <button onclick="login()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 0px;">Login!</button>
+                      <span href="#" style="text-align: center;color: #ccc;cursor: pointer;">Esqueci minha senha.</span>
+                      <div style="display: inline-flex;">
+                        <div class="custom-divider" style="width: 46%;margin-top: 11px;margin-right: 5px;"></div>
+                        <span style="color: #ccc;">ou</span>
+                        <div class="custom-divider" style="width: 46%;margin-top: 11px;margin-left: 5px;"></div>
+                      </div>
+                      <!-- <ul class="social-links" style="width: max-content;margin-left: 14px;margin-right: 14px;margin-top: 7px;">
+                        <li><a href="#"><img src="https://dnd-helper.github.io/files/facebook-01.png"></a></li>
+                        <li><a href="#"><img src="https://dnd-helper.github.io/files/twitter_0-01.png"></a></li>
+                        <li><a href="#"><img src="https://dnd-helper.github.io/files/youtube-01.png"></a></li>
+                        <li><a href="#"><img src="https://dnd-helper.github.io/files/twitch-01.png"></a></li>
+                        <li style="margin-right: 0px;"><a href="#"><img src="https://dnd-helper.github.io/files/instagram-01.png"></a></li> -->
+                        <!-- <li><a href=""><img src="https://dnd-helper.github.io/files/ExtraLife-01.png"></a></li> -->
+                      <!-- </ul> -->
+                      <div id="firebaseui-auth-container" style="margin-top: 5px;" lang="pt-BR">
+                        <!-- <button onclick="loginWithGoogle()" class="firebaseui-idp-button mdl-button mdl-js-button mdl-button--raised firebaseui-idp-google firebaseui-id-idp-button" data-provider-id="google.com" style="background-color:" data-upgraded=",MaterialButton">
+                          <span class="firebaseui-idp-icon-wrapper">
+                            <img class="firebaseui-idp-icon" alt="" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+                          </span>
+                          <span class="firebaseui-idp-text firebaseui-idp-text-long">Login com Google</span>
+                          <span class="firebaseui-idp-text firebaseui-idp-text-short">Google</span>
+                        </button> -->
+                      </div>
+                    </div>
+                    <div id="create_div" class="" style="display: none;">
+                      <h4 style="color: #ccc;">Crie um novo Usuário</h4>
+                      <input type="text" placeholder="Email" name="" value="" id="new_email_field" class="form-control input-sm" style="margin-bottom: 10px; border-radius: 3px">
+                      <input type="password" placeholder="Senha" name="" value="" id="new_password_field" class="form-control input-sm" style="margin-bottom: 10px;">
+                      <button onclick="criarUser()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Criar Novo Usuário!</button>
+                    </div>
+                  </div>
+                  <div id="user_div" class="main-div vertical-center" style="display: none;">
+                    <div id="full_info_div" style="display: none;" class="">
+                      <h2 style="color: white">Bem vindo, <span id="logged_user">Usuário!</span></h2>
+                      <span style="color: white">Bem vindo à pagina, parece que você conseguiu logar com sucesso!</span>
+                      <div class="info" style="color: white; display: block">
+                        <h3 style="margin-bottom: 0">Suas informações:</h3>
+                        <b>Nome:</b>
+                        <span id="logged_user_name"></span>
+                        <br><b>Telefone:</b>
+                        <span id="logged_user_cel"></span>
+                        <br><b>Email:</b>
+                        <span id="logged_user_email"></span>
+                        <br><b>Ultimo Login:</b>
+                        <span id="logged_user_lastlogin"></span>
+                      </div>
+                      <!-- <button onclick="logout()" type="button" name="button">Logout!</button> -->
+                      <button onclick="logout()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Logout!</button>
+                      <button onclick="newCampaign()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Criar nova campanha!</button>
+                      <!-- <button onclick="saveThisCampaignOnline()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Salvar dados desta campanha!</button> -->
+                      <!-- <button onclick="newCampaign()" type="button" name="button">Criar nova campanha!</button> -->
+                      <!-- <button onclick="deleteUser()" type="button" name="button">Apagar meu Usuário.</button> -->
+                      <!-- <textarea id="InputJSON" rows="8" placeholder="Input your JSON object here."></textarea> -->
+                      <!-- <button onclick="sendDataToServer()" type="button" name="button">Enviar meus dados para a DB.</button> -->
+                    </div>
+                    <div id="missing_info_div" style="display: none;" class="">
+                      <h4 style="color: #ccc;">Atualize seus dados para continuar.</h4>
+                      <input type="text" placeholder="Nome" name="" value="" id="name_field" class="form-control input-sm" style="margin-bottom: 10px;">
+                      <input type="text" placeholder="Telefone" name="" value="" id="cel_field" class="form-control input-sm" style="margin-bottom: 10px;">
+                      <button onclick="updateData()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Atualizar dados!</button>
+                      <button onclick="logout()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Logout!</button>
+                      <!-- <button onclick="updateData()" type="button" name="button">Atualizar dados!</button>
+                      <button onclick="logout()" type="button" name="button">Logout!</button> -->
+
+                    </div>
+                    <!-- <div id="verify_email_div" style="display: none;" class="">
+                      <h4 style="color: #ccc;">Atualize seus dados para continuar.</h4>
+                      <input type="text" placeholder="Nome" name="" value="" id="name_field" class="form-control input-sm" style="margin-bottom: 10px;">
+                      <input type="text" placeholder="Telefone" name="" value="" id="cel_field" class="form-control input-sm" style="margin-bottom: 10px;">
+                      <button onclick="updateData()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Atualizar dados!</button>
+                      <button onclick="logout()" type="button" name="button" class="btn btn-primary" style="margin-bottom: 10px;">Logout!</button>
+
+                    </div> -->
+                  </div>
+                </div>
+        </div>
+      </div><!-- /.modal-dialog -->
+    </div>
+  </div>
+  <div id="loginBackground" class="modal-backdrop fade in" style="z-index: 399; display: block; opacity: 0.8"></div>
+
   <div id="mobile-menu">
     <div class="header">
       <div class="logo">
-        <a class="home" href="https://dnd-helper.github.io/"><span>Dungeons & Dragons</span></a></div>
-        <div class="toggle-menu-button"></div>
+        <a class="home" href="https://dnd-helper.github.io/">
+          <span>Dungeons & Dragons</span>
+        </a>
       </div>
-
-      <!-- <script src="lateral.html"></script> -->
-
+      <div class="toggle-menu-button"></div>
+      <div id="miniLogin" class="toggle-right-menu-button" style="display: none">
+        <img class="main-menu_utility-icon" src="img/Login.png" alt="" style="opacity: 0.6;height: 65%;margin-top: 2px;margin-right: -6px;">
+      </div>
     </div>
+
+    <script src="lateral.html"></script>
+    <script src="BarraLateralDireita/lateralDireita.html"></script>
+
+  </div>
   <div id="viewport">
     <div id="viewport-content">
-      <div id="page" class="page" style="height:100vh">
+      <div id="page" class="page" style="min-height:100vh">
 
         <!-- Header -->
         <div class="region region-header" style="">
@@ -173,6 +320,21 @@
   <script type="text/javascript" src="files/bootstrap.js"></script>
   <script type="text/javascript" src="dice.js"></script>
   <script src="colorWheel/iro.min.js"></script>
+  <!-- LINKS PARA ADICIONAR A FIREBASE -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.0.0/firebase-ui-auth__pt_br.js"></script>
+  <script src="Login/login.js"></script>
+
 
   <!-- <script src="Dungeon2.0/prng.js" charset="utf-8"></script> -->
   <!-- <script src="Dungeon2.0/dice.js" charset="utf-8"></script> -->

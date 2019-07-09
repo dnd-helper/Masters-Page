@@ -45,7 +45,7 @@ $(document).on('click', '.dropdown-menu-nivel li a', function() {
 
   $("#ULdropdownMagia").empty();
   $("#ULdropdownMagia").append(
-    "<li><input onkeyup=\"filtrarEsteSemDelete(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\"></li>"
+    "<input onkeyup=\"filtrarEsteSemDelete(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
     +"<li role=\"separator\" class=\"divider\"></li>"
   );
   $("#spell-list").empty();
@@ -72,6 +72,26 @@ $(document).on('click', '.dropdown-menu-nivel li a', function() {
   sortUnorderedList("ULdropdownMagia");
 });
 
+$(document).ready( function() {
+  visibleSpells = spellByClass["Todas"];
+
+  $("#ULdropdownMagia").append(
+    "<input onkeyup=\"filtrarEsteSemDelete(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
+    +"<li role=\"separator\" class=\"divider\"></li>"
+  );
+  $("#spell-list").empty();
+
+
+  //ADICIONA CADA OPCAO DE MAGIA
+  $.each(visibleSpells, function(index, value) {
+    $("#ULdropdownMagia").append(
+      "<li><a href=\"#\">"+visibleSpells[index][0]+"</a></li>"
+    );
+  });
+
+  sortUnorderedList("ULdropdownMagia");
+
+});
 
 $(document).on('click', '.dropdown-menu-magia li a', function() {
      $(".btn-magia:first-child").text($(this).text());
