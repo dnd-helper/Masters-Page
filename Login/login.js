@@ -378,13 +378,17 @@ function loadDataFromLogin(objetoCarregado) {
       $("#ulCampanhas").append(textToAppend);
     }
 
-    var allPersonagens = objetoCarregado.PersonagensPlayer;
-    var nomesPersonagens = Object.keys(objetoCarregado.PersonagensPlayer);
-    var numDePersonagens = Object.keys(allPersonagens).length;
     $("#ulPersonagens").empty();
-    for (var i = 0; i < numDePersonagens; i++) {
-      var textToAppend = "<li class=\"default leaf first\" value=\""+nomesPersonagens[i]+"\" onclick=\"carregaDados($(this).attr('value'))\"><a><span>"+allPersonagens[nomesPersonagens[i]].Nome+"</span></a></li>";
-      $("#ulPersonagens").append(textToAppend);
+    var allPersonagens = objetoCarregado.PersonagensPlayer;
+    if (allPersonagens != undefined) {
+      var nomesPersonagens = Object.keys(objetoCarregado.PersonagensPlayer);
+      var numDePersonagens = Object.keys(allPersonagens).length;
+      for (var i = 0; i < numDePersonagens; i++) {
+        var textToAppend = "<li class=\"default leaf first\" value=\""+nomesPersonagens[i]+"\" onclick=\"carregaDados($(this).attr('value'))\"><a><span>"+allPersonagens[nomesPersonagens[i]].Nome+"</span></a></li>";
+        $("#ulPersonagens").append(textToAppend);
+      }
+    } else {
+      $("#ulPersonagens").append("<li class=\"default leaf first\" data-toggle=\"modal\" data-target=\"#criarNovoPersonagem\"><a><span>Crie um Personagem</span></a></li>");
     }
 
     $("#ulOpcoesPagMestre").empty();
