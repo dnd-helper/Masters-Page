@@ -254,7 +254,8 @@ function sendDataToServer(){
     name: user.displayName,
     email: user.email,
     phone: user.phoneNumber,
-    "CampanhaAtual": ""
+    "CampanhaAtual": "",
+    "PersonagemAtual": ""
   }).then(function() {
     // Update successful.
     alert("Dados criados com sucesso!")
@@ -376,6 +377,23 @@ function loadDataFromLogin(objetoCarregado) {
       var textToAppend = "<li class=\"default leaf first\" value=\"Campanha"+nomesCampanhas[i].replace("Campanha","")+"\" onclick=\"carregaDados($(this).attr('value'))\"><a><span>Campanha #"+nomesCampanhas[i].replace("Campanha","")+"</span></a></li>";
       $("#ulCampanhas").append(textToAppend);
     }
+
+    var allPersonagens = objetoCarregado.PersonagensPlayer;
+    var nomesPersonagens = Object.keys(objetoCarregado.PersonagensPlayer);
+    var numDePersonagens = Object.keys(allPersonagens).length;
+    $("#ulPersonagens").empty();
+    for (var i = 0; i < numDePersonagens; i++) {
+      var textToAppend = "<li class=\"default leaf first\" value=\""+nomesPersonagens[i]+"\" onclick=\"carregaDados($(this).attr('value'))\"><a><span>"+allPersonagens[nomesPersonagens[i]].Nome+"</span></a></li>";
+      $("#ulPersonagens").append(textToAppend);
+    }
+
+    $("#ulOpcoesPagMestre").empty();
+    var textToAppend = "<li class=\"default leaf first\"><a title=\"\"><span class=\"\">Abrir Painel</span></a></li>" +
+    "<li class=\"default leaf\"><a href=\"https://dnd-helper.github.io/Masters-Page/\" title=\"\"><span class=\"\">Configurar Campanhas</span></a></li>" +
+    "<li class=\"default leaf last\"><a onclick=\"novaCampanha()\" title=\"\"><span class=\"\">Criar nova Campanha</span></a></li>" +
+    "<li class=\"default leaf first\" onclick=\"saveThisCampaignOnline()\"><a><span>Salvar Dados da Campanha</span></a></li>";
+    $("#ulOpcoesPagMestre").append(textToAppend);
+
     carregaDadosSemUpdate(usuario["InformacoesdoUsuario"]["CampanhaAtual"])
   }
 
@@ -601,7 +619,7 @@ function transformaDadosVoltaTabela(dadosNaoTransformados) {
   });
   return dadosTransformados;
 }
-// function updateData(campanha) {
+function updateData(campanha) {
 //   if (campanha != "Nenhuma") {
 //     usuario["CampanhasMestre"][campanha]["BlocoDeNotas"] = editor.getData();
 //     usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["BlocInfo"] = true;
@@ -634,7 +652,7 @@ function transformaDadosVoltaTabela(dadosNaoTransformados) {
 //   // usuario["CampanhasMestre"][campanha]["Cidade"] = $("#linkCidade").attr("value");
 //   // usuario["CampanhasMestre"][campanha]["CampanhaInfo"]["CidaInfo"] = true;
 //   // }
-// }
+}
 function saveThisCampaign() {
   var user = firebase.auth().currentUser;
   var campanhaAtualPSalvar = usuario["InformacoesdoUsuario"]["CampanhaAtual"];
@@ -721,5 +739,96 @@ function saveThisCampaignOnline() {
   }).catch(function(error) {
     // An error happened.
     // alert("Error: "+ error.message)
+  });
+}
+
+function newCharacter() {
+  var database = firebase.database();
+  var user = firebase.auth().currentUser;
+  var nomePer = $("#persName").val();
+  var senhPer = $("#persPass").val();
+
+  firebase.database().ref('/lastCreatedPlayer').once('value', function(snapshot) {
+    var lastPlayerId = snapshot.val();
+    var playerId = eval(eval(lastPlayerId) + 1);
+    var playerFullId = "Player"+playerId;
+    var idPlayer = playerFullId;
+
+    firebase.database().ref('users/' + user.uid + '/PersonagensPlayer').update({
+      [idPlayer] : {
+        "Nome": nomePer,
+        "Senha": senhPer,
+        "InfoItensPlayer": [
+          idPlayer,
+          0
+        ],
+        "InfoMagiasPlayer": [
+          idPlayer,
+          0
+        ],
+        "InfoPericiasPlayer": [
+          idPlayer,
+          0
+        ],
+        "InfoPlayer": [
+          idPlayer,
+          nomePer,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "rgb(4, 255, 0)"
+        ]
+      }
+    });
+    firebase.database().ref('/playerUID/').update({
+      [idPlayer]: user.uid
+    }).then(function() {
+      firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
+      // Update successful.
+      alert("Personagem criado com sucesso!")
+    }).catch(function(error) {
+      // An error happened.
+      alert("Error: "+ error.message)
+    });
   });
 }

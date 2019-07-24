@@ -64,21 +64,34 @@ database["CdEXP"] = [
 ];
 
 var racas = {};
+racas["Aasimar Caido"] =          [1,0,0,0,0,2];
+racas["Aasimar Flagelador"] =     [0,0,1,0,0,2];
+racas["Aasimar Protetor"] =       [0,0,0,0,1,2];
 racas["Anão da Colina"] =         [0,0,2,0,1,0];
 racas["Anão da Montanha"] =       [2,0,2,0,0,0];
 racas["Alto Elfo"] =              [0,2,0,1,0,0];
+racas["Bugbear"] =                [2,1,0,0,0,0];
+racas["Draconato"] =              [2,0,0,0,0,1];
 racas["Elfo das Florestas"] =     [0,2,0,0,1,0];
 racas["Elfo Drow"] =              [0,2,0,0,0,1];
-racas["Halfling dos Pés Leves"] = [0,2,0,0,0,1];
-racas["Halfling Robusto"] =       [0,2,1,0,0,0];
-racas["Humano"] =                 [1,1,1,1,1,1];
-racas["Draconato"] =              [2,0,0,0,0,1];
+racas["Firbolg"] =                [1,0,0,0,2,0];
 racas["Gnomo da Floresta"] =      [0,1,0,2,0,0];
 racas["Gnomo das Profundezas"] =  [0,1,0,2,0,0];
 racas["Gnomo das Rochas"] =       [0,0,1,2,0,0];
+racas["Goblin"] =                 [0,2,1,0,0,0];
+racas["Golias"] =                 [2,0,1,0,0,0];
+racas["Halfling dos Pés Leves"] = [0,2,0,0,0,1];
+racas["Halfling Robusto"] =       [0,2,1,0,0,0];
+racas["Hobgoblin"] =              [0,0,2,1,0,0];
+racas["Homem Lagarto"] =          [0,0,2,0,1,0];
+racas["Humano"] =                 [1,1,1,1,1,1];
+racas["Kenku"] =                  [0,2,0,0,1,0];
+racas["Kobold"] =                 [-2,2,0,0,1,0];
 racas["Meio-Elfo"] =              [0,0,0,0,0,2];
 racas["Meio-Orc"] =               [2,0,1,0,0,0];
+racas["Tabaxi"] =                 [0,2,0,0,0,1];
 racas["Tiefling"] =               [0,0,0,1,0,2];
+racas["Tritão"] =                 [1,0,1,0,0,1];
 
 database["Racas"] = racas;
 

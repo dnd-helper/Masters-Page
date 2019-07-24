@@ -8959,7 +8959,7 @@ body:not(.mobile) .top_level:hover .mega_menu_content,body.mobile .top_level.tou
 	right: 0;
 	left: 0;
 	background: rgba(33,33,33,0);
-	z-index: 5000;
+	z-index: 1000;
 	display: none;
 	-webkit-transition: background-color .25s ease-in-out;
 	-o-transition: background-color .25s ease-in-out;

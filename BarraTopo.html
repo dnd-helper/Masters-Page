@@ -135,7 +135,7 @@ document.write(`
         <ul class="mega_menu_content ">
           <li class="column expanded first">
             <a title="" class="nolink">Opções</a>
-            <ul class="submenu-col">
+            <ul class="submenu-col" id="ulOpcoesPagMestre">
 
               <li class="default leaf first">
                 <a title=""><span class="">Abrir Painel</span></a>
@@ -235,7 +235,7 @@ document.write(`
         <ul class="mega_menu_content ">
           <li class="column expanded first">
             <a title="" class="nolink">Opções</a>
-            <ul class="submenu-col">
+            <ul class="submenu-col" >
 
               <li class="default leaf first">
                 <a href="" title=""><span class="">Abrir Painel</span></a>
@@ -245,8 +245,8 @@ document.write(`
                 <a href="" title=""><span class="">Abrir Página do Player</span></a>
               </li>
 
-              <li class="default leaf">
-                <a href="" title=""><span class="">Criar novo personagem</span></a>
+              <li data-toggle="modal" data-target="#criarNovoPersonagem" class="default leaf">
+                <a title=""><span class="">Criar novo personagem</span></a
               </li>
 
               <li class="default leaf last">
@@ -255,8 +255,8 @@ document.write(`
             </ul>
           </li>
           <li class="column expanded">
-            <a title="" class="nolink">Carregar Player</a>
-            <ul class="submenu-col">
+            <a title="" class="nolink">Carregar Personagem</a>
+            <ul class="submenu-col" id="ulPersonagens">
 
               <li class="default leaf first">
                 <a href="" title=""><span class="">(Em Desenvolvimento)</span></a>
@@ -639,9 +639,5 @@ document.write(`
     </script>
 
   </ul>
-
-
-
-
 
   `)

@@ -1,0 +1,35 @@
+document.write(`
+
+    <div class="modal fade" id="criarNovoPersonagem" style="z-index: 1400;" role="dialog" aria-labelledby="myModalLabel">
+      <div class="vertical-alignment-helper">
+
+        <div class="modal-dialog vertical-align-center" role="document">
+          <div class="modal-content" style="width: 400px;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Criar novo Personagem</h4>
+            </div>
+            <div class="modal-body">
+              <!-- <script src="Grids/Configuracao.html"></script> -->
+              <!-- <ul class="" style="width: 100%;flex-wrap: wrap; margin: 0;padding-right: 0px;"> -->
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">Nome do Personagem</label>
+                <input id="persName" class="custom-select" style="background: none">
+                <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">Senha de Personagem</label>
+                <input id="persPass" type="password" class="custom-select" style="background: none">
+
+                <!-- <h1 style="font-weight: bold;font-size: 2.5rem;margin: 1.6rem 0 1rem;">Atenção</h1> -->
+                <h2 style="margin: 0 0 1rem; font-size: 11px">A sua senha de personagem é "publica", e será passada para o mestre, para permitir a adição do personagem na campanha. Assim, não utilize a mesma senha de sua conta, para evitar a perda da mesma.</h2>
+                <!-- <input class="btn btn-primary btn-sm" style="width:19%" type="button" value="Novo Nome/Dungeon"> -->
+              <!-- </ul> -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+              <button type="button" onclick="newCharacter()" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  `)

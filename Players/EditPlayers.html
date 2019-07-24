@@ -28,26 +28,39 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu dropdown-menu-selecionavel botao-raca">
+            <li><a href="#">Aasimar Caido</a></li>
+            <li><a href="#">Aasimar Flagelador</a></li>
+            <li><a href="#">Aasimar Protetor</a></li>
             <li><a href="#">Anão da Colina</a></li>
             <li><a href="#">Anão da Montanha</a></li>
             <li><a href="#">Alto Elfo</a></li>
+            <li><a href="#">Bugbear</a></li>
+            <li><a href="#">Draconato</a></li>
             <li><a href="#">Elfo das Florestas</a></li>
             <li><a href="#">Elfo Drow</a></li>
-            <li><a href="#">Halfling dos Pés Leves</a></li>
-            <li><a href="#">Halfling Robusto</a></li>
-            <li><a href="#">Humano</a></li>
-            <li><a href="#">Draconato</a></li>
+            <li><a href="#">Firbolg</a></li>
             <li><a href="#">Gnomo da Floresta</a></li>
             <li><a href="#">Gnomo das Profundezas</a></li>
             <li><a href="#">Gnomo das Rochas</a></li>
+            <li><a href="#">Goblin</a></li>
+            <li><a href="#">Golias</a></li>
+            <li><a href="#">Halfling dos Pés Leves</a></li>
+            <li><a href="#">Halfling Robusto</a></li>
+            <li><a href="#">Hobgoblin</a></li>
+            <li><a href="#">Homem Lagarto</a></li>
+            <li><a href="#">Humano</a></li>
             <li><a href="#">Meio-Elfo</a></li>
             <li><a href="#">Meio-Orc</a></li>
+            <li><a href="#">Kenku</a></li>
+            <li><a href="#">Kobold</a></li>
+            <li><a href="#">Tabaxi</a></li>
             <li><a href="#">Tiefling</a></li>
+            <li><a href="#">Tritão</a></li>
           </ul>
         </li>
         <!-- <li class="input-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
           <span class="input-group-addon input-sm"><b>Nivel:</b></span>
-          <input type="text" placeholder="ID" class="form-control input-sm" value="Dropdown" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
+          <input type="text" class="form-control input-sm" value="Dropdown" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" disabled="disabled">
         </li> -->
         <li class="btn-group" style="width: 25%;padding-right: 5px;padding-bottom: 5px;">
           <button type="button" id="BotaoAlinhamento" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
@@ -250,7 +263,7 @@
           <span style="width: 50%;" class="input-group-addon input-sm"><b>Cor:</b></span>
           <button id="inputcolor" data-toggle="modal" data-target="#ModalMudaCor" type="button" class="btn btn-default btn-sm" style="width: 100%;border-top-left-radius: 0px;;border-bottom-left-radius: 0px;height: 30px;padding-top: 4px;padding-bottom: 4px;background-color: blueviolet;">
           </button>
-          <!-- <button type="button" class="btn btn-default btn-sm" style="width: 100%;border-top-left-radius: 0px;;border-bottom-left-radius: 0px;height: 30px;padding-top: 4px;padding-bottom: 4px;background-color: blueviolet;"></button> -->
+          <!-- <input  type='text' class="basic"/> -->
           <!-- <input id="InputXP" type="text" placeholder="XP" class="form-control input-sm" value="" style="font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"> -->
         </li>
         <!-- <li class="input-group" style="width: 15%;padding-right: 5px;padding-bottom: 5px;">
@@ -268,43 +281,42 @@
     <div class="modal-body" style="display: flex;flex-wrap: wrap;">
       <ul id="listaStatusPlayer" class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <!-- <span style="width: 35%; text-transform: uppercase" class="input-group-addon input-sm"><b>For</b></span> -->
-          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input id="chkFor" type="checkbox" style="opacity: 0.6;"></input></span>
           <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>For</b></span>
           <input id="InputFor1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputFor2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputFor3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input id="chkDes" type="checkbox" style="opacity: 0.6;"></input></span>
           <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Des</b></span>
           <input id="InputDes1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputDes2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
           <input id="InputDes3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input id="chkCon" type="checkbox" style="opacity: 0.6;"></input></span>
           <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Con</b></span>
           <input id="InputCon1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputCon2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
           <input id="InputCon3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input id="chkInt" type="checkbox" style="opacity: 0.6;"></input></span>
           <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Int</b></span>
           <input id="InputInt1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputInt2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
           <input id="InputInt3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input id="chkSab" type="checkbox" style="opacity: 0.6;"></input></span>
           <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Sab</b></span>
           <input id="InputSab1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputSab2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
           <input id="InputSab3" type="number" placeholder="Bon." class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input type="checkbox" style="opacity: 0.6;"></input></span>
+          <span style="width: 5%;padding-left: 3px;padding-right: 3px;" class="input-group-addon input-sm"><input id="chkCar" type="checkbox" style="opacity: 0.6;"></input></span>
           <span style="width: 26%; text-transform: uppercase" class="input-group-addon input-sm"><b>Car</b></span>
           <input id="InputCar1" type="number" placeholder="Base" class="form-control input-sm" value="" style="width: 33%;font-weight: bold; text-align: center"></input>
           <input id="InputCar2" type="number" placeholder="Raça" class="form-control input-sm" value="" disabled="" style="width: 33%;font-weight: bold; text-align: center" ></input>
@@ -315,7 +327,7 @@
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
           <span style="width: 35%;" class="input-group-addon input-sm"><b>HP:</b></span>
           <input id="InputHPLeft" type="number" style="width: 50%;" placeholder="Atual" class="form-control input-sm" value=""></input>
-          <input id="InputHPAll" type="number" style="width: 50%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" placeholder="Max" class="form-control input-sm" value="" ></input>
+          <input id="InputHPAll" type="number" style="width: 50%;font-weight: bold;border-bottom-right-radius: 3px;border-top-right-radius: 3px;margin-left: -1px;" placeholder="Max" class="form-control input-sm" value="" ></input>
         </li>
         <li class="input-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
           <span style="width: 67.5%;" class="input-group-addon input-sm"><b>BONUS DE PROEF.</b></span>
@@ -339,42 +351,53 @@
         </li>
         <div class="filler"></div>
       </ul>
-      <ul id="ulPericias" class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
-        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <button id="NovaPericia" type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-            <b>Adicionar Pericia</b>
-          </button>
-        </li>
-      </ul>
-      <ul id="ulItens" class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
-        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
-          <button id="NovoItem" type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
-            <b>Adicionar Item</b>
-          </button>
-        </li>
-      </ul>
-    </div>
-
-    <div class="modal-body" style="display: flex;flex-wrap: wrap;">
-      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-        <label for="TextareaTracos">Traços de Personalidade</label>
-        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaTracos" rows="3"></textarea>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 0px;padding-right: 5px;margin-top: -5px;">
+        <label for="TextareaTracos" style="margin-bottom: 0px;">Traços de Personalidade</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 85px;height: 85px;resize: none;" id="TextareaTracos" rows="3"></textarea>
+        <!-- </div> -->
+        <!-- <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;"> -->
+        <label for="TextareaIdeais" style="margin-bottom: 0px;">Ideais</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 85px;height: 100px;resize: none;" id="TextareaIdeais" rows="3"></textarea>
       </div>
-      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-        <label for="TextareaIdeais">Ideais</label>
-        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaIdeais" rows="3"></textarea>
-      </div>
-      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-        <label for="TextareaLigacoes">Ligações</label>
-        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaLigacoes" rows="3"></textarea>
-      </div>
-      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-        <label for="TextareaDefeitos">Defeitos</label>
-        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 65px;height: 65px;resize: none;" id="TextareaDefeitos" rows="3"></textarea>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;margin-top: -5px;">
+        <label for="TextareaLigacoes" style="margin-bottom: 0px;">Ligações</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 85px;height: 85px;resize: none;" id="TextareaLigacoes" rows="3"></textarea>
+        <!-- </div> -->
+        <!-- <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;"> -->
+        <label for="TextareaDefeitos" style="margin-bottom: 0px;">Defeitos</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 85px;height: 85px;resize: none;" id="TextareaDefeitos" rows="3"></textarea>
       </div>
     </div>
 
     <div class="modal-body" style="display: flex;flex-wrap: wrap;">
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaAtaques">Ataques e Magias</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 95px;height: 210px;resize: none;" id="TextareaAtaques" rows="3"></textarea>
+      </div>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaCarac">Caracteristicas e Habilidades</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 95px;height: 210px;resize: none;" id="TextareaCarac" rows="3"></textarea>
+      </div>
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaEquip">Equipamentos e Notas</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 95px;height: 210px;resize: none;" id="TextareaEquip" rows="3"></textarea>
+      </div>
+      <!-- <ul id="ulTalentos" class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
+        <label>Talentos</label>
+        <div class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button id="NovoTalento" type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Adicionar Talento</b>
+          </button>
+        </div>
+      </ul> -->
+      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
+        <label for="TextareaAnotacoes">Anotações</label>
+        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 95px;height: 210px;resize: none;" id="TextareaAnotacoes" rows="3"></textarea>
+      </div>
+    </div>
+    <label style="cursor:pointer;padding-right: 5px;margin-bottom: 0px;padding-left: 15px;">Esconder Todos</label>
+    <div style="height: 1px;background: #ccc;padding-right: 15px;margin-left: 15px;margin-right: 20px;margin-top: -3px;margin-bottom: 0px;"></div>
+    <div class="modal-body" style="display: flex;flex-wrap: wrap;padding-top: 5px">
       <ul id="ulMagias" class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
         <label>Magias</label>
         <div class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
@@ -383,20 +406,32 @@
           </button>
         </div>
       </ul>
-      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-        <label for="TextareaAtaques">Ataques e Magias</label>
-        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 210px;height: 210px;resize: none;" id="TextareaAtaques" rows="3"></textarea>
-      </div>
-      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-        <label for="TextareaCarac">Caracteristicas e Habilidades</label>
-        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 210px;height: 210px;resize: none;" id="TextareaCarac" rows="3"></textarea>
-      </div>
-      <div class="form-group" style="max-width: 25%;width: 25%;margin-bottom: 5px;padding-right: 5px;">
-        <label for="TextareaEquip">Equipamentos e Notas</label>
-        <textarea class="form-control" style="max-width: 100%;width: 100%; max-height: 210px;height: 210px;resize: none;" id="TextareaEquip" rows="3"></textarea>
-      </div>
-    </div>
 
+      <ul id="ulPericias" class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
+        <label>Pericias</label>
+        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button id="NovaPericia" type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Adicionar Pericia</b>
+          </button>
+        </li>
+      </ul>
+      <ul id="ulItens" class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
+        <label>Itens</label>
+        <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button id="NovoItem" type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Adicionar Item</b>
+          </button>
+        </li>
+      </ul>
+      <ul id="ulTalentos" class="" style="width: 25%;flex-wrap: wrap; margin: 0;">
+        <label>Talentos</label>
+        <div class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+          <button id="NovoTalento" type="button" class="btn btn-success btn-sm" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;">
+            <b>Adicionar Talento</b>
+          </button>
+        </div>
+      </ul>
+    </div>
   </div>
   <div class="modal-footer">
     <button id="ApagarPlayer" type="button" class="btn btn-danger">Apagar Player</button>

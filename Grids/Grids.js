@@ -147,14 +147,14 @@ $( document ).ready(function() {
 
   $(document).on('click', '#PlayerOnGridButton', function() {
 
-    var todosPlayers = listaDePlayers["Campanha1"];
+    var todosPlayers = usuario.CampanhasMestre[usuario.InformacoesdoUsuario.CampanhaAtual].Players;
+    var count = 0;
     $.each(todosPlayers, function(index, value) {
-
         // canvas.fabric.getItemByAttr('id', todosPlayers[index][0]).remove();
 
         var player = new fabric.Circle({
-          id: todosPlayers[index][0],
-          left: index*tamanho,
+          id: index,
+          left: count*tamanho,
           top: 0,
           radius: tamanho/2,
           fill: todosPlayers[index][45],
@@ -169,6 +169,7 @@ $( document ).ready(function() {
           var txt = player.id +""+player.left+""+player.top;
           window.alert(txt);
         });
+      count = count + 1;
     });
 
 
@@ -284,7 +285,7 @@ $( document ).ready(function() {
   }
 
 
-  $(document).on('click', '#buttonAdicionaMontrosNoGrid', function() {
+  $(document).on('click', '#buttonAdicionaMonstrosNoGrid', function() {
     $.each(monstrosAdicionados["Campanha1"], function(index, value) {
       // removeObjectFromCanvas()
       const canvasObject = canvas.getObjects().filter((item) => {

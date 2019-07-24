@@ -648,6 +648,13 @@ $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERS
   var caracEhabilPlayer = $("#TextareaCarac").val();
   var equipamentosPlayer = $("#TextareaEquip").val();
   var corPlayer = $("#inputcolor").val();
+  if ($("#chkFor").is(":checked")) { var chkForPlayer = "Sim"; } else { var chkForPlayer = "Nao"; }
+  if ($("#chkDes").is(":checked")) { var chkDesPlayer = "Sim"; } else { var chkDesPlayer = "Nao"; }
+  if ($("#chkCon").is(":checked")) { var chkConPlayer = "Sim"; } else { var chkConPlayer = "Nao"; }
+  if ($("#chkInt").is(":checked")) { var chkIntPlayer = "Sim"; } else { var chkIntPlayer = "Nao"; }
+  if ($("#chkSab").is(":checked")) { var chkSabPlayer = "Sim"; } else { var chkSabPlayer = "Nao"; }
+  if ($("#chkCar").is(":checked")) { var chkCarPlayer = "Sim"; } else { var chkCarPlayer = "Nao"; }
+
 
   var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
   var lastPlayerRef = firebase.database().ref('/lastCreatedPlayer');
@@ -706,6 +713,12 @@ $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERS
     linhaPAdicionar.push(caracEhabilPlayer);            //43
     linhaPAdicionar.push(equipamentosPlayer);           //44
     linhaPAdicionar.push(corPlayer);                    //45
+    linhaPAdicionar.push(chkForPlayer);                 //46
+    linhaPAdicionar.push(chkDesPlayer);                 //47
+    linhaPAdicionar.push(chkConPlayer);                 //48
+    linhaPAdicionar.push(chkIntPlayer);                 //49
+    linhaPAdicionar.push(chkSabPlayer);                 //50
+    linhaPAdicionar.push(chkCarPlayer);                 //51
 
     var linhaDePericias = SalvaPericias();
     var linhaDeItens = SalvaItens();
@@ -724,6 +737,7 @@ $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERS
       [idPlayer]: allPlayers[idPlayer]
     }).then(function() {
       firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
+      // firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
       saveThisCampaignOnline()
       // alert("Campanha criada com sucesso!")
     }).catch(function(error) {
@@ -844,6 +858,13 @@ $(document).on('click', '#SalvarEdicaoPlayer', function() {  //FUNCAO PARA SALVA
     var caracEhabilPlayer = $("#TextareaCarac").val();
     var equipamentosPlayer = $("#TextareaEquip").val();
     var corPlayer = $("#inputcolor").val();
+    if ($("#chkFor").is(":checked")) { var chkForPlayer = "Sim"; } else { var chkForPlayer = "Nao"; }
+    if ($("#chkDes").is(":checked")) { var chkDesPlayer = "Sim"; } else { var chkDesPlayer = "Nao"; }
+    if ($("#chkCon").is(":checked")) { var chkConPlayer = "Sim"; } else { var chkConPlayer = "Nao"; }
+    if ($("#chkInt").is(":checked")) { var chkIntPlayer = "Sim"; } else { var chkIntPlayer = "Nao"; }
+    if ($("#chkSab").is(":checked")) { var chkSabPlayer = "Sim"; } else { var chkSabPlayer = "Nao"; }
+    if ($("#chkCar").is(":checked")) { var chkCarPlayer = "Sim"; } else { var chkCarPlayer = "Nao"; }
+
 
     var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
     var playerSelecionado = allPlayers[idPlayer]["InfoPlayer"];
@@ -898,6 +919,13 @@ $(document).on('click', '#SalvarEdicaoPlayer', function() {  //FUNCAO PARA SALVA
         allPlayers[idPlayer]["InfoPlayer"][43] = (caracEhabilPlayer);            //43
         allPlayers[idPlayer]["InfoPlayer"][44] = (equipamentosPlayer);           //44
         allPlayers[idPlayer]["InfoPlayer"][45] = (corPlayer);                    //45
+        allPlayers[idPlayer]["InfoPlayer"][46] = (chkForPlayer);                 //46
+        allPlayers[idPlayer]["InfoPlayer"][47] = (chkDesPlayer);                 //47
+        allPlayers[idPlayer]["InfoPlayer"][48] = (chkConPlayer);                 //48
+        allPlayers[idPlayer]["InfoPlayer"][49] = (chkIntPlayer);                 //49
+        allPlayers[idPlayer]["InfoPlayer"][50] = (chkSabPlayer);                 //50
+        allPlayers[idPlayer]["InfoPlayer"][51] = (chkCarPlayer);                 //51
+
 
         allPlayers[idPlayer]["InfoPericiasPlayer"] = SalvaEdicaoPericias();
         allPlayers[idPlayer]["InfoItensPlayer"] = SalvaEdicaoItens();
@@ -1273,6 +1301,13 @@ function EditarPlayer(ctl) {
           $("#inputcolor").css("border-color", "rgba(0, 0, 0, 0.42)");
           $("#inputcolor").val(playerSelecionado[45]);
         }
+        if (playerSelecionado[46] == "Sim") { $("#chkFor").prop("checked",true); }
+        if (playerSelecionado[47] == "Sim") { $("#chkDes").prop("checked",true); }
+        if (playerSelecionado[48] == "Sim") { $("#chkCon").prop("checked",true); }
+        if (playerSelecionado[49] == "Sim") { $("#chkInt").prop("checked",true); }
+        if (playerSelecionado[50] == "Sim") { $("#chkSab").prop("checked",true); }
+        if (playerSelecionado[51] == "Sim") { $("#chkCar").prop("checked",true); }
+
       // }
 
     // });
