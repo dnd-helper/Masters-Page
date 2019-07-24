@@ -384,7 +384,7 @@ function loadDataFromLogin(objetoCarregado) {
       var nomesPersonagens = Object.keys(objetoCarregado.PersonagensPlayer);
       var numDePersonagens = Object.keys(allPersonagens).length;
       for (var i = 0; i < numDePersonagens; i++) {
-        var textToAppend = "<li class=\"default leaf first\" value=\""+nomesPersonagens[i]+"\" onclick=\"carregaDados($(this).attr('value'))\"><a><span>"+allPersonagens[nomesPersonagens[i]].Nome+"</span></a></li>";
+        var textToAppend = "<li class=\"default leaf first\" value=\""+nomesPersonagens[i]+"\"><a><span>"+allPersonagens[nomesPersonagens[i]].Nome+"</span></a></li>";
         $("#ulPersonagens").append(textToAppend);
       }
     } else {

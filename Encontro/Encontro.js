@@ -125,13 +125,16 @@ $( document ).ready(function() {
     var arrayLevelQuant = {};
     arrayLevelQuant["Todos"] = [];
     // $("#ulPlayersAdicionados").empty();
-    if (listaDePlayers["Campanha1"].length > 0) {
-      $.each(listaDePlayers["Campanha1"], function(index, value) {
+    var allPlayers = usuario.CampanhasMestre[usuario.InformacoesdoUsuario.CampanhaAtual].Players;
+    var nomesPlayers = Object.keys(allPlayers);
+    var numDePlayers = Object.keys(allPlayers).length;
+    if (numDePlayers > 0) {
+      $.each(nomesPlayers, function(index, value) {
         var contFoi = false;
 
-        var nivel1 = listaDePlayers["Campanha1"][index][8];
-        var nivel2 = listaDePlayers["Campanha1"][index][10];
-        var nivel3 = listaDePlayers["Campanha1"][index][12];
+        var nivel1 = allPlayers[value].InfoPlayer[8];
+        var nivel2 = allPlayers[value].InfoPlayer[10];
+        var nivel3 = allPlayers[value].InfoPlayer[12];
 
         if (nivel1 == "") { nivel1 = 0}
         if (nivel2 == "") { nivel2 = 0}
