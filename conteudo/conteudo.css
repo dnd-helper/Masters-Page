@@ -1,0 +1,32 @@
+@media only screen and (max-width: 991px) {
+    .bs-example-tabs{
+        margin: 0px !important;
+    }
+
+}
+
+@media only screen and (max-width: 767px) {
+    #PainelEditorTexto{
+        height: calc(55vh - 50px) !important;
+    }
+    .tabsDesktop{
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    .tabsMobile{
+        display: none;
+    }
+}
+
+.panel-group .panel{
+    margin-top: 0px !important;
+}
+#content {
+    padding-bottom: 0px;
+}
+#page{
+    padding-bottom: 10px;
+}

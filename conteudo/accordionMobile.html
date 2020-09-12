@@ -1,0 +1,1482 @@
+<div class="col-xs-12 col-sm-6 col-md-3 col-md-pull-6" >
+
+	<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true" style="margin-bottom: -1px;">
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingOne1">
+				<h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true"
+						aria-controls="collapseOne1">
+						Tabela de Monstros
+					</a>
+				</h4>
+			</div>
+			<div id="collapseOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne1">
+				<div class="panel-body" style="max-height: calc(100vh - 7 * 34px - 26px);">
+					<div style="width: 100%;display: flex;">
+						<!-- Tamanho -->
+						<div class="dropdown clearfix" style="width: 30%">
+							<button value="Todos"
+								style="text-transform: Capitalize; width: 100%; border-bottom-right-radius: 0px; border-top-right-radius: 0px; border-bottom-left-radius: 0px"
+								class="btn btn-Tamanho btn-default dropdown-toggle" type="button" id="dropdownTamanhos"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Tamanho
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize" id="ULdropdownTamanho"
+								class="dropdown-menu dropdown-menu-Tamanho" aria-labelledby="dropdownTamanhos">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">Miúdo</a></li>
+								<li><a href="#">Pequeno</a></li>
+								<li><a href="#">Médio</a></li>
+								<li><a href="#">Grande</a></li>
+								<li><a href="#">Enorme</a></li>
+								<li><a href="#">Imenso</a></li>
+							</ul>
+						</div>
+						<!-- Lendario -->
+						<div class="dropdown clearfix" style="width: calc(30% + 1px); margin-left: -1px; ">
+							<button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+								class="btn btn-Lendario btn-default dropdown-toggle" type="button" id="dropdownLendario"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Lendário
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize;" id="ULdropdownLendario"
+								class="dropdown-menu dropdown-menu-Lendario" aria-labelledby="dropdownLendario">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">Sim</a></li>
+								<li><a href="#">Não</a></li>
+							</ul>
+						</div>
+						<!-- Ambiente -->
+						<div class="dropdown clearfix" style="width: calc(40% + 1px); margin-left: -1px; ">
+							<button value="Todos"
+								style="text-transform: Capitalize; width: 100%;  border-bottom-left-radius: 0px; border-top-left-radius: 0px; border-bottom-right-radius: 0px"
+								class="btn btn-Ambiente btn-default dropdown-toggle" type="button" id="dropdownAmbiente"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Ambiente
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize;" id="ULdropdownAmbiente"
+								class="dropdown-menu dropdown-menu-Ambiente" aria-labelledby="dropdownAmbiente">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">Aquático</a></li>
+								<li><a href="#">Ártico</a></li>
+								<li><a href="#">Caverna</a></li>
+								<li><a href="#">Costa</a></li>
+								<li><a href="#">Deserto</a></li>
+								<li><a href="#">Floresta</a></li>
+								<li><a href="#">Masmorra</a></li>
+								<li><a href="#">Montanha</a></li>
+								<li><a href="#">Pântano</a></li>
+								<li><a href="#">Planicies</a></li>
+								<li><a href="#">Planos</a></li>
+								<li><a href="#">Ruínas</a></li>
+								<li><a href="#">Subterrâneo</a></li>
+								<li><a href="#">Urbano</a></li>
+							</ul>
+						</div>
+					</div>
+					<div style="width: 100%;display: flex; margin-top: -1px;">
+						<!-- Alinhamento 1 -->
+						<div class="dropdown clearfix" style="width: 30%">
+							<button value="Todos" style="text-transform: Capitalize; width: 100%; border-radius: 0px;"
+								class="btn btn-Alinhamento1 btn-default dropdown-toggle" type="button" id="dropdownAlinhamento1"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Alinhamento 1
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize" id="ULdropdownAlinhamento1"
+								class="dropdown-menu dropdown-menu-Alinhamento1" aria-labelledby="dropdownAlinhamento1">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">Leal</a></li>
+								<li><a href="#">Neutro</a></li>
+								<li><a href="#">Caótico</a></li>
+								<li><a href="#">Nenhum</a></li>
+								<li><a href="#">Qualquer</a></li>
+								<li><a href="#">Não-Leal</a></li>
+							</ul>
+						</div>
+						<!-- Alinhamento 2 -->
+						<div class="dropdown clearfix" style="width: calc(30% + 1px); margin-left: -1px; ">
+							<button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+								class="btn btn-Alinhamento2 btn-default dropdown-toggle" type="button" id="dropdownAlinhamento2"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Alinhamento 2
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize;" id="ULdropdownAlinhamento2"
+								class="dropdown-menu dropdown-menu-Alinhamento2" aria-labelledby="dropdownAlinhamento2">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">Bom</a></li>
+								<li><a href="#">Neutro</a></li>
+								<li><a href="#">Mal</a></li>
+								<li><a href="#">Nenhum</a></li>
+								<li><a href="#">Qualquer</a></li>
+								<li><a href="#">Não-Bom</a></li>
+								<li><a href="#">Não-Neutro</a></li>
+							</ul>
+						</div>
+						<!-- Tipo -->
+						<div class="dropdown clearfix" style="width: calc(40% + 1px); margin-left: -1px; ">
+							<button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+								class="btn btn-Tipo btn-default dropdown-toggle" type="button" id="dropdownTipo"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Tipo
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize;" id="ULdropdownTipo" class="dropdown-menu dropdown-menu-Tipo"
+								aria-labelledby="dropdownTipo">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">Aberração</a></li>
+								<li><a href="#">Besta</a></li>
+								<li><a href="#">Celestial</a></li>
+								<li><a href="#">Constructo</a></li>
+								<li><a href="#">Corruptor</a></li>
+								<li><a href="#">Dragão</a></li>
+								<li><a href="#">Elemental</a></li>
+								<li><a href="#">Fada</a></li>
+								<li><a href="#">Gigante</a></li>
+								<li><a href="#">Humanoide</a></li>
+								<li><a href="#">Limo</a></li>
+								<li><a href="#">Monstruosidade</a></li>
+								<li><a href="#">Morto-vivo</a></li>
+								<li><a href="#">Planta</a></li>
+							</ul>
+						</div>
+					</div>
+					<div style="width: 100%;display: flex; margin-top: -1px;">
+						<!-- CD min -->
+						<div class="dropdown clearfix" style="width: 30%">
+							<button value="Todos" style="text-transform: Capitalize; width: 100%; border-radius: 0px;"
+								class="btn btn-CDMin btn-default dropdown-toggle" type="button" id="dropdownCDMin"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								CD Mínimo
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize" id="ULdropdownCDMin"
+								class="dropdown-menu dropdown-menu-CDMin" aria-labelledby="dropdownAlinhamento1">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">0</a></li>
+								<li><a href="#">1/8</a></li>
+								<li><a href="#">1/4</a></li>
+								<li><a href="#">1/2</a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">6</a></li>
+								<li><a href="#">7</a></li>
+								<li><a href="#">8</a></li>
+								<li><a href="#">9</a></li>
+								<li><a href="#">10</a></li>
+								<li><a href="#">11</a></li>
+								<li><a href="#">12</a></li>
+								<li><a href="#">13</a></li>
+								<li><a href="#">14</a></li>
+								<li><a href="#">15</a></li>
+								<li><a href="#">16</a></li>
+								<li><a href="#">17</a></li>
+								<li><a href="#">18</a></li>
+								<li><a href="#">19</a></li>
+								<li><a href="#">20</a></li>
+								<li><a href="#">21</a></li>
+								<li><a href="#">22</a></li>
+								<li><a href="#">23</a></li>
+								<li><a href="#">24</a></li>
+								<li><a href="#">25</a></li>
+								<li><a href="#">26</a></li>
+								<li><a href="#">27</a></li>
+								<li><a href="#">28</a></li>
+								<li><a href="#">29</a></li>
+								<li><a href="#">30</a></li>
+							</ul>
+						</div>
+						<!-- CD max -->
+						<div class="dropdown clearfix" style="width: calc(30% + 1px); margin-left: -1px; ">
+							<button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+								class="btn btn-CDMax btn-default dropdown-toggle" type="button" id="dropdownCDMax"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								CD Máximo
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize;" id="ULdropdownCDMax"
+								class="dropdown-menu dropdown-menu-CDMax" aria-labelledby="dropdownCDMax">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">0</a></li>
+								<li><a href="#">1/8</a></li>
+								<li><a href="#">1/4</a></li>
+								<li><a href="#">1/2</a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">6</a></li>
+								<li><a href="#">7</a></li>
+								<li><a href="#">8</a></li>
+								<li><a href="#">9</a></li>
+								<li><a href="#">10</a></li>
+								<li><a href="#">11</a></li>
+								<li><a href="#">12</a></li>
+								<li><a href="#">13</a></li>
+								<li><a href="#">14</a></li>
+								<li><a href="#">15</a></li>
+								<li><a href="#">16</a></li>
+								<li><a href="#">17</a></li>
+								<li><a href="#">18</a></li>
+								<li><a href="#">19</a></li>
+								<li><a href="#">20</a></li>
+								<li><a href="#">21</a></li>
+								<li><a href="#">22</a></li>
+								<li><a href="#">23</a></li>
+								<li><a href="#">24</a></li>
+								<li><a href="#">25</a></li>
+								<li><a href="#">26</a></li>
+								<li><a href="#">27</a></li>
+								<li><a href="#">28</a></li>
+								<li><a href="#">29</a></li>
+								<li><a href="#">30</a></li>
+							</ul>
+						</div>
+						<!-- Secao -->
+						<div class="dropdown clearfix" style="width: calc(40% + 1px); margin-left: -1px; ">
+							<button value="Todos" style="text-transform: Capitalize; width: 100%;  border-radius: 0px;"
+								class="btn btn-Secao btn-default dropdown-toggle" type="button" id="dropdownSecao"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Seção
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize;" id="ULdropdownSecao"
+								class="dropdown-menu dropdown-menu-Secao" aria-labelledby="dropdownSecao">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">Anjos</a></li>
+								<li><a href="#">Blights</a></li>
+								<li><a href="#">Bruxas</a></li>
+								<li><a href="#">Bugbears</a></li>
+								<li><a href="#">Carniçais</a></li>
+								<li><a href="#">Criaturas Diversas</a></li>
+								<li><a href="#">Demônios</a></li>
+								<li><a href="#">Devorador de Mentes</a></li>
+								<li><a href="#">Diabos</a></li>
+								<li><a href="#">Dinossauros</a></li>
+								<li><a href="#">Dracolich</a></li>
+								<li><a href="#">Dragões</a></li>
+								<li><a href="#">Dragon, Shadow</a></li>
+								<li><a href="#">Elementais</a></li>
+								<li><a href="#">Elfos: Drow</a></li>
+								<li><a href="#">Esfinges</a></li>
+								<li><a href="#">Espectro</a></li>
+								<li><a href="#">Esqueletos</a></li>
+								<li><a href="#">Fungos</a></li>
+								<li><a href="#">Gênios</a></li>
+								<li><a href="#">Gigantes</a></li>
+								<li><a href="#">Gith</a></li>
+								<li><a href="#">Gnolls</a></li>
+								<li><a href="#">Gnomos</a></li>
+								<li><a href="#">Goblins</a></li>
+								<li><a href="#">Golens</a></li>
+								<li><a href="#">Grick</a></li>
+								<li><a href="#">Hobgoblins</a></li>
+								<li><a href="#">Kobolds</a></li>
+								<li><a href="#">Kuo-toa</a></li>
+								<li><a href="#">Licantropos</a></li>
+								<li><a href="#">Limos</a></li>
+								<li><a href="#">Meio-Dragão</a></li>
+								<li><a href="#">Mephits</a></li>
+								<li><a href="#">Miconides</a></li>
+								<li><a href="#">Modrons</a></li>
+								<li><a href="#">Múmias</a></li>
+								<li><a href="#">Nagas</a></li>
+								<li><a href="#">Não-Definida</a></li>
+								<li><a href="#">Objetos Animados</a></li>
+								<li><a href="#">Observadores</a></li>
+								<li><a href="#">Ogros</a></li>
+								<li><a href="#">Orcs</a></li>
+								<li><a href="#">Personagens do Mestre</a></li>
+								<li><a href="#">Povo Lagarto</a></li>
+								<li><a href="#">Quaggoth</a></li>
+								<li><a href="#">Remorhazes</a></li>
+								<li><a href="#">Sahuagin</a></li>
+								<li><a href="#">Salamandras</a></li>
+								<li><a href="#">Slaadi</a></li>
+								<li><a href="#">Vampiros</a></li>
+								<li><a href="#">Yeti</a></li>
+								<li><a href="#">Yuan-ti</a></li>
+								<li><a href="#">Yugoloths</a></li>
+								<li><a href="#">Zumbis</a></li>
+							</ul>
+						</div>
+					</div>
+		
+					<div class="dropdown clearfix" style="width: 100%;margin-top: -1px;">
+						<button
+							style="text-transform: Capitalize; width: 100%; border-top-left-radius: 0px;border-top-right-radius: 0px;"
+							class="btn btn-monstro btn-default dropdown-toggle" type="button" id="dropdownMonstro"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							Monstro
+							<span class="caret"></span>
+						</button>
+						<ul style="text-transform: Capitalize" id="ULdropdownMonstro"
+							class="dropdown-menu dropdown-menu-monstro scrollable-menu" aria-labelledby="dropdownMonstro">
+							<input onkeyup="filtrarEsteSemDelete(this)" onblur="limpar(this)" type="text" class="custom-select"
+								style="background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;">
+							<li role="separator" class="divider"></li>
+						</ul>
+					</div>
+					<div id="MonstroSelecionado"
+						style="width:100%; max-height: calc(50vh); overflow: hidden auto; margin-top: 10px;"">
+			              <div id=" monster-list">
+		
+					</div>
+				</div>
+				<div id="divtbodyMonstros"
+					style="max-height: calc(100vh - 7 * 34px - 4 * 32px - 52px); overflow-x: hidden; overflow-y: auto;">
+					<table class="table table-striped table-condensed" style="hyphens: auto;">
+						<!-- word-break: break-all; -->
+						<thead>
+							<tr class="">
+								<th style="width: max-content;"><b>Nome</b></th>
+								<th style="width: min-content;"><b>CD</b></th>
+								<th style="width: 19%;"><b>Tipo</b></th>
+								<th style="width: 18%;"><b>Alinham.</b></th>
+								<th style="width: min-content;"><b>Tam.</b></th>
+								<th style="width: min-content;text-align: center;"><b>+</b></th>
+								<th style="width: min-content;text-align: center;"><b>+</b></th>
+							</tr>
+						</thead>
+						<tbody id="tbodyMonstros">
+		
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="collapseOneOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOneOne1">
+			<div class="panel-body" style="max-height: calc(100vh - 7 * 34px - 26px);overflow: auto;">
+				<div class="topoMonstros" style="display: inline-flex; width: 100%">
+					<h1 style="float: left; width: 100%; font-weight: normal;font-size: 2.5rem; margin: 0 0 1rem;margin-bottom: 0px; padding: 0;"
+						id="nomeMonstro">Aarakocra</h1>
+					<button style="float: right; height: max-content" class="btn btn-default" onclick="voltaMonstro();"
+						role="button">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</button>
+					<button style="float: right; height: max-content" class="btn btn-primary" onclick="mostraMonstro();">
+						<span id="glyphiconPicture" class="glyphicon glyphicon-picture"></span>
+					</button>
+					<button id="addFromShow" style="float: right; height: max-content" class="btn btn-success"
+						onclick="addMonstroEncontro(this);">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</div>
+		
+				<div id="selectedMonster" class="unstyled" style="width: 100%;">
+		
+				</div>
+				<div id="selectedMonsterPicture" class="unstyled" style="width: 100%;display: none;">
+					<img src="monsters/Images/aarakocra.jpg" style="width: 100%" alt="">
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingTwo1">
+				<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1"
+						aria-expanded="false" aria-controls="collapseTwo1">
+						Tabela de Magias
+					</a>
+				</h4>
+			</div>
+			<div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo1">
+				<div class="panel-body">
+					<div style="width: 100%;display: flex;">
+						<div class="dropdown clearfix" style="width: 50%">
+							<button value="Todas"
+								style="text-transform: Capitalize; width: 100%; border-bottom-right-radius: 0px; border-top-right-radius: 0px; border-bottom-left-radius: 0px"
+								class="btn btn-classe btn-default dropdown-toggle" type="button" id="dropdownClasses"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Classes
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize" id="ULdropdownClasse"
+								class="dropdown-menu dropdown-menu-classe" aria-labelledby="dropdownClasses">
+								<li><a href="#">Todas</a></li>
+								<li><a href="#">Bardo</a></li>
+								<li><a href="#">Bruxo</a></li>
+								<li><a href="#">Clérigo</a></li>
+								<li><a href="#">Druida</a></li>
+								<li><a href="#">Feiticeiro</a></li>
+								<li><a href="#">Mago</a></li>
+								<li><a href="#">Paladino</a></li>
+								<li><a href="#">Patrulheiro</a></li>
+							</ul>
+						</div>
+						<div class="dropdown clearfix" style="width: calc(50% + 1px); margin-left: -1px; ">
+							<button value="Todos"
+								style="text-transform: Capitalize; width: 100%;  border-bottom-left-radius: 0px; border-top-left-radius: 0px; border-bottom-right-radius: 0px"
+								class="btn btn-nivel btn-default dropdown-toggle" type="button" id="dropdownNivel"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Nivel
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize;" id="ULdropdownNivel"
+								class="dropdown-menu dropdown-menu-nivel" aria-labelledby="dropdownNivel">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">Nivel 0</a></li>
+								<li><a href="#">Nivel 1</a></li>
+								<li><a href="#">Nivel 2</a></li>
+								<li><a href="#">Nivel 3</a></li>
+								<li><a href="#">Nivel 4</a></li>
+								<li><a href="#">Nivel 5</a></li>
+								<li><a href="#">Nivel 6</a></li>
+								<li><a href="#">Nivel 7</a></li>
+								<li><a href="#">Nivel 8</a></li>
+								<li><a href="#">Nivel 9</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="dropdown clearfix">
+						<button
+							style="text-transform: Capitalize; width: 100%; margin-top: -1px; border-top-left-radius: 0px; border-top-right-radius: 0px"
+							class="btn btn-magia btn-default dropdown-toggle" type="button" id="dropdownMagia"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							Magia
+							<span class="caret"></span>
+						</button>
+						<ul style="text-transform: Capitalize" id="ULdropdownMagia"
+							class="dropdown-menu dropdown-menu-magia scrollable-menu" aria-labelledby="dropdownMagia">
+							<!-- <input onkeyup="filtrarEsteSemDelete(this)" onblur="limpar(this)" type="text" class="custom-select" style="background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;">
+							<li role="separator" class="divider"></li> -->
+						</ul>
+					</div>
+					<div id="MagiaSelecionada" class=""
+						style="width:100%; max-height: calc(50vh); overflow: hidden auto; margin-top: 10px;"">
+					<div id=" spell-list">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingFive1">
+				<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseFive1"
+						aria-expanded="false" aria-controls="collapseFive1">
+						Tabela de Itens
+					</a>
+				</h4>
+			</div>
+			<div id="collapseFive1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive1">
+				<div class="panel-body">
+					<div style="width: 100%;display: flex;">
+						<div class="dropdown clearfix" style="width: 50%">
+							<button value="Todas"
+								style="text-transform: Capitalize; width: 100%; border-bottom-right-radius: 0px; border-top-right-radius: 0px; border-bottom-left-radius: 0px"
+								class="btn btn-default dropdown-toggle" type="button" id="dropdownTipos" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="true">
+								Tipos
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize" id="ULdropdownTipo"
+								class="dropdown-menu dropdown-menu-selecionavel scrollable-menu"
+								aria-labelledby="dropdownTipos">
+								<li><a href="#">Todas</a></li>
+								<li><a href="#">Anel</a></li>
+								<li><a href="#">Armaduras</a></li>
+								<li><a href="#">Armas</a></li>
+								<li><a href="#">Barra</a></li>
+								<li><a href="#">Cajado</a></li>
+								<li><a href="#">Pergaminho</a></li>
+								<li><a href="#">Poção</a></li>
+								<li><a href="#">Varinha</a></li>
+								<li><a href="#">Venenos</a></li>
+							</ul>
+						</div>
+						<div class="dropdown clearfix" style="width: calc(50% + 1px); margin-left: -1px; ">
+							<button value="Todos"
+								style="text-transform: Capitalize; width: 100%;  border-bottom-left-radius: 0px; border-top-left-radius: 0px; border-bottom-right-radius: 0px"
+								class="btn btn-default dropdown-toggle" type="button" id="dropdownRaridade"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Raridade
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize;" id="ULdropdownRaridade"
+								class="dropdown-menu dropdown-menu-selecionavel scrollable-menu"
+								aria-labelledby="dropdownRaridade">
+								<li><a href="#">Todos</a></li>
+								<li><a href="#">Nivel 0</a></li>
+								<li><a href="#">Nivel 1</a></li>
+								<li><a href="#">Nivel 2</a></li>
+								<li><a href="#">Nivel 3</a></li>
+								<li><a href="#">Nivel 4</a></li>
+								<li><a href="#">Nivel 5</a></li>
+								<li><a href="#">Nivel 6</a></li>
+								<li><a href="#">Nivel 7</a></li>
+								<li><a href="#">Nivel 8</a></li>
+								<li><a href="#">Nivel 9</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="dropdown clearfix">
+						<button
+							style="text-transform: Capitalize; width: 100%; margin-top: -1px; border-top-left-radius: 0px; border-top-right-radius: 0px"
+							class="btn btn-default dropdown-toggle" type="button" id="dropdownItem" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="true">
+							Item
+							<span class="caret"></span>
+						</button>
+						<ul style="text-transform: Capitalize" id="ULdropdownItem"
+							class="dropdown-menu dropdown-menu-selecionavel scrollable-menu" aria-labelledby="dropdownItem">
+							<!-- <input onkeyup="filtrarEsteSemDelete(this)" onblur="limpar(this)" type="text" class="custom-select" style="background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;">
+							<li role="separator" class="divider"></li> -->
+						</ul>
+					</div>
+					<div id="ItemSelecionado" class=""
+						style="width:100%; max-height: calc(50vh); overflow: hidden auto; margin-top: 10px;"">
+					<div id=" spell-list">
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingThree1">
+				<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1"
+						aria-expanded="false" aria-controls="collapseThree1">
+						Players
+					</a>
+				</h4>
+			</div>
+			<div id="collapseThree1" style="max-height: calc(100vh - 7 * 34px - 26px); overflow-x: hidden; overflow-y: auto"
+				class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree1">
+				<div class="panel-body" style="min-height: 120px; max-height: calc(100vh - 7 * 34px - 26px);">
+					<!-- min-height: 120px; -->
+
+					<div class="btn-group btn-group-lg" role="group" aria-label="..." style="width: 100%;display: flex;">
+
+						<div class="dropdown clearfix btn-group btn-group-lg" style="width: 50%; role=" group">
+							<button type="button" style="width: 100%;" class="btn btn-success dropdown-toggle"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Add Player
+								<span class="caret"></span>
+							</button>
+							<ul style="text-transform: Capitalize" class="dropdown-menu scrollable-menu">
+								<li id="novoPlayer" data-toggle="modal" data-target="#ModalAdicionarPlayer"><a href="#">Novo
+										Player</a></li>
+								<li data-toggle="modal" data-target="#ModalAdicionarPorID"><a href="#">Adicionar Por ID</a></li>
+							</ul>
+						</div>
+
+						<button id="PlayerOnGridButton" type="button" class="btn btn-primary" style="width: 50%;">
+							Players nos Grids
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						</button>
+					</div>
+
+					<div id="PlayersAdicionados" class="panel-group" role="tablist" aria-multiselectable="true"
+						style="width:100%;margin-top: 12px;margin-bottom: 12px;">
+						<div id="AdicionaPlayers" class="btn-group-vertical btn-group-lg" role="group" aria-label="..."
+							style="width: 100%;">
+
+						</div>
+					</div>
+
+					<div class="modal fade" id="ModalAdicionarPlayer" role="dialog" aria-labelledby="ModalAdicionarPlayerLabel"
+						style="overflow: hidden;z-index: 1400;">
+						<div class="vertical-alignment-helper">
+
+							<div class="modal-dialog modal-lg vertical-align-center" role="document">
+								<div id="addPlayerModalDivContainer" class="modal-content">
+
+
+								</div><!-- /.modal-content -->
+							</div><!-- /.modal-dialog -->
+
+						</div>
+					</div><!-- /.modal -->
+
+					<div class="modal fade" id="ModalRemoverPlayer" style="z-index: 1600;" role="dialog"
+						aria-labelledby="myModalLabel">
+						<div class="vertical-alignment-helper">
+
+							<div class="modal-dialog vertical-align-center" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+												aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+									</div>
+									<div class="modal-body">
+										Deseja realmente apagar este player? Essa ação não poderá ser desfeita!
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+										<button type="button" id="ConfirmaApagarPlayer" class="btn btn-danger">Apagar</button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="modal fade" id="ModalAdicionarPorID" style="z-index: 1400;" role="dialog"
+						aria-labelledby="myModalLabel">
+						<div class="vertical-alignment-helper">
+
+							<div class="modal-dialog vertical-align-center" role="document">
+								<div class="modal-content" style="width: 400px;">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+												aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">Adicionar Player por ID</h4>
+									</div>
+									<div class="modal-body">
+										<!-- <script src="Grids/Configuracao.html"></script> -->
+										<!-- <ul class="" style="width: 100%;flex-wrap: wrap; margin: 0;padding-right: 0px;"> -->
+										<label for=""
+											style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">ID do
+											Personagem</label>
+										<input class="custom-select" style="background: none">
+										<label for=""
+											style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">Senha
+											de
+											Personagens</label>
+										<input type="password" class="custom-select" style="background: none">
+
+										<h1 style="font-weight: bold;font-size: 2.5rem;margin: 1.6rem 0 1rem;">Atenção</h1>
+										<h2 style="margin: 0 0 1rem;">Essa função ainda não foi implementada no sistema, e
+											portanto esses
+											controles não geram nenhum resultado. Após a implementação do sistema de Login, esta
+											função será
+											habilitada.</h2>
+										<!-- <input class="btn btn-primary btn-sm" style="width:19%" type="button" value="Novo Nome/Dungeon"> -->
+										<!-- </ul> -->
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+										<button type="button" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="modal fade" id="ModalMudaCor" style="z-index: 1600;" role="dialog"
+						aria-labelledby="ModalMudaCor">
+						<div class="vertical-alignment-helper">
+
+							<div class="modal-dialog vertical-align-center" role="document">
+								<div class="modal-content" style="width: min-content;">
+									<!-- <div id="cabecalhoCor" class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+								</div> -->
+									<div class="modal-body">
+										<div id="colorPicker" style="height: 250px;" class="colorPicker"></div>
+										<!-- <div id="values"></div> -->
+									</div>
+									<script type="text/javascript">
+										$(document).ready(function () {
+											var colorPicker = new iro.ColorPicker("#colorPicker", {
+												// color picker options
+												// Option guide: https://iro.js.org/guide.html#color-picker-options
+												sliderMargin: 200,
+												width: 200,
+												height: 300,
+												color: "rgb(255, 0, 0)",
+												borderWidth: 1,
+												borderColor: "#fff",
+											});
+
+											var values = document.getElementById("values");
+
+											// https://iro.js.org/guide.html#color-picker-events
+											colorPicker.on(["color:init", "color:change"], function (color) {
+												// Show the current color in different formats
+												// Using the selected color: https://iro.js.org/guide.html#selected-color-api
+												$("#selecionarCor").css("background-color", color.hexString);
+											});
+											$(document).on("click", "#selecionarCor", function (color) {
+												$("#inputcolor").css("background-color", $("#selecionarCor").css("background-color"));
+												$("#inputcolor").val($("#selecionarCor").css("background-color"));
+												$('#ModalMudaCor').modal('toggle');
+											});
+										});
+									</script>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+										<button id="selecionarCor" type="button" class="btn btn-default">Selecionar Cor</button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingFour1">
+				<h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1" aria-expanded="false"
+						aria-controls="collapseFour1">
+						Gerador de NPC Aleatório
+					</a>
+				</h4>
+			</div>
+			<div id="collapseFour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour1">
+				<div class="panel-body">
+					<div class="btn-group btn-group-justified" style="width: 100%" role="group" aria-label="...">
+						<div class="btn-group" style="width: 70%" role="group">
+							<button id="GerarNPC" type="button" class="btn btn-default">Gerar NPC</button>
+						</div>
+						<div class="btn-group" style="width: 30%" role="group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
+								Nivel
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-selecionavel scrollable-menu">
+								<li><a href="#">Aleatório</a></li>
+								<li><a href="#">Nivel 1</a></li>
+								<li><a href="#">Nivel 2</a></li>
+								<li><a href="#">Nivel 3</a></li>
+								<li><a href="#">Nivel 4</a></li>
+								<li><a href="#">Nivel 5</a></li>
+								<li><a href="#">Nivel 6</a></li>
+								<li><a href="#">Nivel 7</a></li>
+								<li><a href="#">Nivel 8</a></li>
+								<li><a href="#">Nivel 9</a></li>
+								<li><a href="#">Nivel 10</a></li>
+								<li><a href="#">Nivel 11</a></li>
+								<li><a href="#">Nivel 12</a></li>
+								<li><a href="#">Nivel 13</a></li>
+								<li><a href="#">Nivel 14</a></li>
+								<li><a href="#">Nivel 15</a></li>
+								<li><a href="#">Nivel 16</a></li>
+								<li><a href="#">Nivel 17</a></li>
+								<li><a href="#">Nivel 18</a></li>
+								<li><a href="#">Nivel 19</a></li>
+								<li><a href="#">Nivel 20</a></li>
+							</ul>
+						</div>
+					</div>
+					<div style="display: inline-flex;">
+						<table class="table table-bordered"
+							style="margin-top: 10px; margin-bottom: 10px; height: 100%;width: max-content; table-layout: fixed;"
+							id="ListaDeCaractNPC">
+							<thead style="height: 32px">
+								<tr class="active">
+									<th style="padding: 0px;padding-bottom: 5px;"><b>
+											<center>FOR</center>
+										</b></th>
+									<th style="padding: 0px;padding-bottom: 5px;"><b>
+											<center>DES</center>
+										</b></th>
+									<th style="padding: 0px;padding-bottom: 5px;"><b>
+											<center>CON</center>
+										</b></th>
+									<th style="padding: 0px;padding-bottom: 5px;"><b>
+											<center>INT</center>
+										</b></th>
+									<th style="padding: 0px;padding-bottom: 5px;"><b>
+											<center>SAB</center>
+										</b></th>
+									<th style="padding: 0px;padding-bottom: 5px;"><b>
+											<center>CAR</center>
+										</b></th>
+								</tr>
+							</thead>
+							<tbody style="height: 50px;">
+								<tr>
+									<th id="forNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+									<th id="desNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+									<th id="conNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+									<th id="intNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+									<th id="sabNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+									<th id="carNPC" class="bonNPC" style="padding-top: 4px;padding-bottom: 4px;">00</th>
+								</tr>
+								<tr>
+									<th id="forBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+									<th id="desBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+									<th id="conBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+									<th id="intBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+									<th id="sabBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+									<th id="carBonNPC" style="padding-top: 4px;padding-bottom: 4px;">+0</th>
+								</tr>
+							</tbody>
+						</table>
+						<div style="width: max-content;padding-left: 1.6rem;margin-top: 1.0rem;">
+							<li id="nomeNPC"><b>Nome:</b></li>
+							<li id="classeNPC"><b>Classe:</b></li>
+							<li id="racaNPC"><b>Raça:</b></li>
+							<li id="nivelNPC"><b>Nivel:</b></li>
+						</div>
+					</div>
+					<div style="width: 100%;padding-left: 1.6rem;">
+						<li id="caracNPC"><b>Caracteristica:</b></li>
+						<li id="idealNPC"><b>Ideal:</b></li>
+						<li id="vincNPC"><b>Vínculo:</b></li>
+						<li id="falhaNPC"><b>Falha:</b></li>
+					</div>
+					<!-- Nome:
+							Classe:
+							Caracteristica:
+							Ideal:
+							Vinculo:
+							Defeito: -->
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingTempo">
+				<h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseTempo"
+						aria-expanded="false" aria-controls="collapseTempo">
+						Contador de Tempo
+					</a>
+				</h4>
+			</div>
+			<div id="collapseTempo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTempo">
+				<div class="panel-body" style="max-height: calc(100vh - 7 * 34px - 26px); text-align: ">
+					<script type="text/javascript">
+						// var minutesLabel = ;
+						// var secondsLabel = ;
+						var totalSeconds = 0;
+						// setInterval(setTime, 1000);
+						var click = false;
+						var t;
+						var shiftAlert;
+						var up = true;
+						var timeon = false;
+						$(document).ready(function () {
+							$(document).on("click", "#play", function () {
+								playPause()
+							});
+							$(document).on("click", "#up-down", function () {
+								var entrou = 0;
+								if (up == false && entrou == 0) {
+									$("#up").css("display", "");
+									$("#down").css("display", "none");
+									up = true;
+									entrou = 1;
+								}
+								if (up == true && entrou == 0) {
+									$("#up").css("display", "none");
+									$("#down").css("display", "");
+									up = false;
+									entrou = 1;
+								}
+							});
+							$(document).on("click", "#timeButton", function () {
+								var entrou = 0;
+								if (timeon == false && entrou == 0) {
+									var estadoInicial = click;
+									pause()
+									$("#seconds").removeAttr('disabled');
+									$("#minutes").removeAttr('disabled');
+									$("#hours").removeAttr('disabled');
+									$("#up-down").attr("disabled", "disabled");
+									$("#play").attr("disabled", "disabled");
+									$("#resetTimer").attr("disabled", "disabled");
+									$("#removeTimer").attr("disabled", "disabled"); resetTimer
+									timeon = true;
+									entrou = 1;
+								}
+								if (timeon == true && entrou == 0) {
+									var valordoTimer = 0;
+									if ($("#seconds").val() == "") { var segundos = 0 } else { var segundos = $("#seconds").val() }
+									if ($("#minutes").val() == "") { var minutos = 0 } else { var minutos = $("#minutes").val() }
+									if ($("#hours").val() == "") { var horas = 0 } else { var horas = $("#hours").val() }
+									valordoTimer = eval(segundos) + eval(minutos) * 60 + eval(horas) * 3600;
+									totalSeconds = valordoTimer;
+									$("#seconds").attr("disabled", "disabled");
+									$("#minutes").attr("disabled", "disabled");
+									$("#hours").attr("disabled", "disabled");
+									$("#up-down").removeAttr('disabled');
+									$("#play").removeAttr('disabled');
+									$("#resetTimer").removeAttr('disabled');
+									$("#removeTimer").removeAttr('disabled');
+									// $("#time").removeAttr('disabled');
+									timeon = false;
+									entrou = 1;
+									if (estadoInicial == true) { play() }
+								}
+
+							});
+							$(document).on("click", "#resetTimer", function () {
+								reset()
+							});
+							// $(document).on("click","#time", function() {
+							//   $("#time").css("cursor","auto")
+							//   $("#time").Attr("disabled","disabled")
+							//   $("#seconds").css("cursor","inherit")
+							//   $("#minutes").css("cursor","inherit")
+							//   $("#hours").css("cursor","inherit")
+							//   clearTimeout(shiftAlert);
+							// });
+						});
+
+						function reset() {
+							pause()
+							var valordoTimer = 0;
+							if ($("#startSecond").val() == "") { var segundos = 0 } else { var segundos = $("#startSecond").val() }
+							if ($("#startMinute").val() == "") { var minutos = 0 } else { var minutos = $("#startMinute").val() }
+							if ($("#startHour").val() == "") { var horas = 0 } else { var horas = $("#startHour").val() }
+							valordoTimer = eval(segundos) + eval(minutos) * 60 + eval(horas) * 3600;
+							totalSeconds = valordoTimer;
+							play()
+						}
+
+						function setTime() {
+							if (up == true) { ++totalSeconds; }
+							if (up == false) { --totalSeconds; }
+
+							$("#seconds").val(pad(totalSeconds % 60));
+							if (((totalSeconds / 60) % 1) == 0) { $("#minutes").val(pad(parseInt(totalSeconds / 60) % 60)) }
+							if (((totalSeconds / 3600) % 1) == 0) { $("#hours").val(pad(parseInt(totalSeconds / 3600) % 24)) }
+							if (totalSeconds == 0 && up == false) {
+								pause()
+								// $("#time").css("cursor","pointer")
+								// $("#time").removeAttr("disabled")
+								// $("#seconds").css("cursor","pointer")
+								// $("#minutes").css("cursor","pointer")
+								// $("#hours").css("cursor","pointer")
+								// shiftAlert = setInterval(shiftColors, 500)
+							}
+						}
+
+						var shift = false;
+						function shiftColors() {
+							var entrou = 0;
+							if (shift == true && entrou == 0) {
+								$("#time").css("background-color", "rgb(50, 50, 50)")
+								$("#seconds").css("font-color", "white")
+								$("#minutes").css("font-color", "white")
+								$("#hours").css("font-color", "white")
+								entrou = 1;
+								shift = false;
+							}
+							if (shift == false && entrou == 0) {
+								$("#time").css("background-color", "white")
+								$("#seconds").css("font-color", "rgb(50, 50, 50)")
+								$("#minutes").css("font-color", "rgb(50, 50, 50)")
+								$("#hours").css("font-color", "rgb(50, 50, 50)")
+								entrou = 1;
+								shift = true;
+							}
+						}
+
+						function pad(val) {
+							var valString = val + "";
+							if (valString.length < 2) {
+								return "0" + valString;
+							} else {
+								return valString;
+							}
+						}
+						function playPause() {
+							$("#seconds").val(pad(totalSeconds % 60));
+							$("#minutes").val(pad(parseInt(totalSeconds / 60) % 60))
+							$("#hours").val(pad(parseInt(totalSeconds / 3600) % 24))
+							var entrou = 0;
+							if (click == false && entrou == 0) {
+								t = setInterval(setTime, 1000);
+								click = true;
+								entrou = 1;
+							}
+							if (click == true && entrou == 0) {
+								clearTimeout(t);
+								click = false;
+								entrou = 1;
+							}
+						}
+						function play() {
+							$("#seconds").val(pad(totalSeconds % 60));
+							$("#minutes").val(pad(parseInt(totalSeconds / 60) % 60))
+							$("#hours").val(pad(parseInt(totalSeconds / 3600) % 24))
+							t = setInterval(setTime, 1000);
+							click = true;
+						}
+						function pause() {
+							$("#seconds").val(pad(totalSeconds % 60));
+							$("#minutes").val(pad(parseInt(totalSeconds / 60) % 60))
+							$("#hours").val(pad(parseInt(totalSeconds / 3600) % 24))
+							clearTimeout(t);
+							click = false;
+						}
+					</script>
+					<!-- <div class="" style="width: 100%;padding-bottom: 8px;">
+							<button id="" type="button" style="width: 100%" class="btn btn-default btn-lg" name="button">Play</button>
+						</div> -->
+
+					<div class="" style="width: 100%;display: inline-flex;">
+
+						<div class="" style="width: 100%;display: inline-flex;">
+							<label for="" style="margin-bottom: 0px;text-align: left;"
+								contenteditable="false">Descrição:</label>
+							<input
+								style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 100%;padding: 0;padding-left: 2px"
+								placeholder="Descreva seu timer aqui." contenteditable="true">
+						</div>
+						<div class="" style="width: min-content;display: inline-flex;">
+							<label for="" style="margin-bottom: 0px;text-align: left;" contenteditable="false">Inicial:</label>
+							<input value="" id="startHour" placeholder="00"
+								style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;"
+								contenteditable="true">
+							:
+							<input value="" id="startMinute"
+								style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;"
+								placeholder="00" contenteditable="true">
+							:
+							<input value="" id="startSecond"
+								style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;"
+								placeholder="00" contenteditable="true">
+						</div>
+					</div>
+					<div style="display: inline-flex;width: 100%;" class="btn-group" role="group">
+						<div style="padding: 0;width: max-content;border: 0px;display: inline-grid;"
+							class="btn btn-group-vertical">
+							<button id="play" type="button" class="btn btn-primary btn-lg"
+								style="border-top-right-radius: 0;border-bottom-right-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;">
+								<span class="glyphicon glyphicon-pause"></span>
+								<span class="glyphicon glyphicon-play"></span>
+							</button>
+							<button id="up-down" type="button" class="btn btn-primary btn-lg"
+								style="border-top-right-radius: 0;border-bottom-right-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;">
+								<span id="up" style="display: " class="glyphicon glyphicon-arrow-up"></span>
+								<span id="down" style="display: none" class="glyphicon glyphicon-arrow-down"></span>
+							</button>
+						</div>
+						<button id="time"
+							style="/* height: 3.5vw */;width: 100%;/* padding-top: 1.0vw !important; */padding: 0;opacity: 1;cursor: auto;"
+							class="btn btn-default" disabled="disabled">
+							<input value="00" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;"
+								id="hours" disabled="disabled">
+							<span style="font-size: 3vw;">:</span>
+							<input value="00" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;"
+								id="minutes" disabled="disabled">
+							<span style="font-size: 3vw;">:</span>
+							<input value="00" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;"
+								id="seconds" disabled="disabled">
+						</button>
+						<button id="resetTimer" type="button" class="btn btn-primary btn-lg"
+							style="border-top-left-radius: 0;border-bottom-left-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;"><span
+								class="glyphicon glyphicon-repeat"></span></button>
+						<div style="padding: 0;width: max-content;border: 0px;display: inline-grid;"
+							class="btn btn-group-vertical">
+							<button id="removeTimer" type="button" class="btn btn-primary btn-lg"
+								style="border-top-left-radius: 0;border-bottom-left-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;"><span
+									class="glyphicon glyphicon-remove"></span></button>
+							<button id="timeButton" type="button" class="btn btn-primary btn-lg"
+								style="border-top-left-radius: 0;border-bottom-left-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;"><span
+									class="glyphicon glyphicon-time"></span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingZero2">
+				<h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseZero2" aria-expanded="false"
+						aria-controls="collapseZero2">
+						Gerador de Encontro
+					</a>
+				</h4>
+			</div>
+			<div id="collapseZero2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingZero2">
+				<div class="panel-body" style="padding: 0px;">
+					<li class="btn-group" style="width: 100%;">
+						<table class="table table-condensed" style="margin-bottom: 0px;">
+							<tbody>
+								<tr style="height: 2px">
+									<td id="XP1" style="text-align: center">Fácil: <span>0 xp</span></td>
+									<td id="XP2" style="text-align: center">Médio: <span>0 xp</span></td>
+									<td id="XP3" style="text-align: center">Difícil: <span>0 xp</span></td>
+									<td id="XP4" style="text-align: center">Mortal: <span>0 xp</span></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="custom-divider"></div>
+					</li>
+					<ul id="ulPlayersAdicionados" class="" style="display: flex;flex-wrap: wrap; margin: 0; padding: 10px;">
+						<li class="btn-group" style="width: 100%;height: min-content; ">
+							<button id="botaoAddPlayersCampanha" type="button" class="btn btn-default btn-sm"
+								style="width: 57%;border-bottom-left-radius: 0;">Adicionar Players da Campanha</button>
+							<button id="botaoAddPlayerGerador" type="button" class="btn btn-default btn-sm"
+								style="width: 43%;border-bottom-right-radius: 0;">Adicionar Outros Players</button>
+							<!-- <button type="button" id="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;">
+							<b>Players participando do Encontro</b>
+							<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-selecionavel">
+							<li><a href="#">Players da Campanha</a></li>
+							<li><a href="#">Players da Campanha + Outros</a></li>
+							<li><a href="#">Outros</a></li>
+							</ul> -->
+						</li>
+						<!-- <div class="btn-group" style="width: 100%;height: min-content;display: inline-flex;margin-top: -1px;" role="group" aria-label="...">
+							<div class="btn-group" style="width: 100%;">
+							<button type="button" id="BotaoQuantPlayers" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;border-top-left-radius: 0;">
+								<b>Quantidade</b>
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-selecionavel">
+								<li><a href="#">1 Player</a></li>
+								<li><a href="#">2 Players</a></li>
+								<li><a href="#">3 Players</a></li>
+								<li><a href="#">4 Players</a></li>
+								<li><a href="#">5 Players</a></li>
+								<li><a href="#">6 Players</a></li>
+								<li><a href="#">7 Players</a></li>
+								<li><a href="#">8 Players</a></li>
+								<li><a href="#">9 Players</a></li>
+							</ul>
+							</div>
+							<button type="button" class="btn btn-default btn-sm" disabled="" style="cursor: default;opacity: 1;">X</button>
+							<div class="btn-group" style="width: 100%;">
+							<button type="button" id="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;">
+								<b>Nivel</b>
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-selecionavel">
+								<li><a href="#">Nivel 1</a></li>
+								<li><a href="#">Nivel 2</a></li>
+								<li><a href="#">Nivel 3</a></li>
+								<li><a href="#">Nivel 4</a></li>
+								<li><a href="#">Nivel 5</a></li>
+								<li><a href="#">Nivel 6</a></li>
+								<li><a href="#">Nivel 7</a></li>
+								<li><a href="#">Nivel 8</a></li>
+								<li><a href="#">Nivel 9</a></li>
+								<li><a href="#">Nivel 10</a></li>
+								<li><a href="#">Nivel 11</a></li>
+								<li><a href="#">Nivel 12</a></li>
+								<li><a href="#">Nivel 13</a></li>
+								<li><a href="#">Nivel 14</a></li>
+								<li><a href="#">Nivel 15</a></li>
+								<li><a href="#">Nivel 16</a></li>
+								<li><a href="#">Nivel 17</a></li>
+								<li><a href="#">Nivel 18</a></li>
+								<li><a href="#">Nivel 19</a></li>
+								<li><a href="#">Nivel 20</a></li>
+							</ul>
+							</div>
+							<button type="button" class="btn btn-danger btn-sm" style="margin-right: 1px;border-top-right-radius: 0;">
+							<span class="glyphicon glyphicon-remove"></span>
+							</button>
+						</div>
+						<div class="btn-group" style="width: 100%;height: min-content;display: inline-flex;margin-top: -1px;" role="group" aria-label="...">
+							<div class="btn-group" style="width: 100%;">
+							<button type="button" id="BotaoQuantPlayers" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;border-top-left-radius: 0;">
+								<b>Quantidade</b>
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-selecionavel">
+								<li><a href="#">1 Player</a></li>
+								<li><a href="#">2 Players</a></li>
+								<li><a href="#">3 Players</a></li>
+								<li><a href="#">4 Players</a></li>
+								<li><a href="#">5 Players</a></li>
+								<li><a href="#">6 Players</a></li>
+								<li><a href="#">7 Players</a></li>
+								<li><a href="#">8 Players</a></li>
+								<li><a href="#">9 Players</a></li>
+							</ul>
+							</div>
+							<button type="button" class="btn btn-default btn-sm" disabled="" style="cursor: default;opacity: 1;">X</button>
+							<div class="btn-group" style="width: 100%;">
+							<button type="button" id="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;">
+								<b>Nivel</b>
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-selecionavel">
+								<li><a href="#">Nivel 1</a></li>
+								<li><a href="#">Nivel 2</a></li>
+								<li><a href="#">Nivel 3</a></li>
+								<li><a href="#">Nivel 4</a></li>
+								<li><a href="#">Nivel 5</a></li>
+								<li><a href="#">Nivel 6</a></li>
+								<li><a href="#">Nivel 7</a></li>
+								<li><a href="#">Nivel 8</a></li>
+								<li><a href="#">Nivel 9</a></li>
+								<li><a href="#">Nivel 10</a></li>
+								<li><a href="#">Nivel 11</a></li>
+								<li><a href="#">Nivel 12</a></li>
+								<li><a href="#">Nivel 13</a></li>
+								<li><a href="#">Nivel 14</a></li>
+								<li><a href="#">Nivel 15</a></li>
+								<li><a href="#">Nivel 16</a></li>
+								<li><a href="#">Nivel 17</a></li>
+								<li><a href="#">Nivel 18</a></li>
+								<li><a href="#">Nivel 19</a></li>
+								<li><a href="#">Nivel 20</a></li>
+							</ul>
+							</div>
+							<button type="button" class="btn btn-danger btn-sm" style="margin-right: 1px;border-top-right-radius: 0;">
+							<span class="glyphicon glyphicon-remove"></span>
+							</button>
+						</div> -->
+					</ul>
+					<div class="custom-divider" style="margin-top: 10px;"></div>
+					<ul class="" style="display: flex;flex-wrap: wrap; margin: 0; /*! padding: 10px */">
+						<div
+							style="max-height: calc(100vh - 7 * 34px - 4 * 32px - 52px); overflow-x: hidden; overflow-y: auto;width: 100%;/*! border: 1px solid rgb(204, 204, 204); */border-radius: 2px;">
+							<table style="hyphens: auto;margin-bottom: 0px;" class="table table-striped ">
+								<!-- word-break: break-all; -->
+								<thead style="height: min-content;">
+									<tr class="">
+										<th style="width: 100%;padding-top: 4px;padding-bottom: 4px;"><b>Nome</b></th>
+										<th style="width: min-content;text-align: center;padding: 4px;"><b>CD</b></th>
+										<th style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;">
+											<b>XP</b>
+										</th>
+										<!-- <th style="width: 24%;"><b>Alinhamento</b></th> -->
+										<th style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;">
+											<b>HP</b>
+										</th>
+										<th
+											style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;padding-left: 2px;padding-right: 2px;">
+											<b>Cor</b></th>
+										<th style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;">
+											<b>+</b>
+										</th>
+										<th style="width: min-content;text-align: center;padding-top: 4px;padding-bottom: 4px;">
+											<b>+</b>
+										</th>
+									</tr>
+								</thead>
+								<tbody id="tbodyMonstrosSelecionados">
+
+								</tbody>
+							</table>
+						</div>
+					</ul>
+					<div class="custom-divider" style="margin-bottom: 5px;"></div>
+					<div class="" style="display: flex;padding: 10px;">
+						<div class="" style="width:70%; text-align: left;font-size: 15px;">
+							<h4>Dificuldade: <span id="dificEncontro"></span></h4>
+							<div class="">
+								<button class="btn btn-danger btn-sm" onclick="delTodosMontrosEncontro(this)" type="button"
+									name="button">Limpar Monstros</button>
+								<button class="btn btn-primary btn-sm" id="buttonAdicionaMonstrosNoGrid" type="button"
+									name="button">Monstros no Grid</button>
+							</div>
+						</div>
+						<div class="" style="width:30%; text-align: right;">
+							<!-- <h4 style="margin-bottom: 0px;font-size: 0.95vw">XP Total: <span id="valXp1">0</span></h4> -->
+							<h4 style="margin-bottom: 0px;font-size: 15px;">XP Total: <span id="valXp1">0</span></h4>
+							<span>(<span id="valXp3">0</span> por Player)</span>
+							<!-- <h4 style="margin-bottom: 0px;font-size: 0.95vw">XP Ajustado: <span id="valXp2">0</span></h4> -->
+							<h4 style="margin-bottom: 0px;font-size: 15px;">XP Ajustado: <span id="valXp2">0</span></h4>
+							<span>(<span id="valXp4">0</span> por Player)</span>
+						</div>
+					</div>
+
+					<div class="modal fade" id="ModalMudaCorMonstro" style="z-index: 1600;" role="dialog"
+						aria-labelledby="ModalMudaCorMonstro">
+						<div class="vertical-alignment-helper">
+
+							<div class="modal-dialog vertical-align-center" role="document">
+								<div class="modal-content" style="width: min-content;">
+									<div class="modal-body">
+										<div id="colorPicker2" style="height: 250px;" class="colorPicker2"></div>
+									</div>
+									<script type="text/javascript">
+										$(document).ready(function () {
+											var colorPicker2 = new iro.ColorPicker("#colorPicker2", {
+												// color picker options
+												// Option guide: https://iro.js.org/guide.html#color-picker-options
+												sliderMargin: 200,
+												width: 200,
+												height: 300,
+												color: "rgb(255, 0, 0)",
+												borderWidth: 1,
+												borderColor: "#fff",
+											});
+
+											var values = document.getElementById("values");
+
+											// https://iro.js.org/guide.html#color-picker-events
+											colorPicker2.on(["color:init", "color:change"], function (color) {
+												// Show the current color in different formats
+												// Using the selected color: https://iro.js.org/guide.html#selected-color-api
+												$("#selecionarCor2").css("background-color", color.hexString);
+											});
+										});
+									</script>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+										<button id="selecionarCor2" type="button" class="btn btn-default">Selecionar
+											Cor</button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!-- <script src="Encontro/Encontro.html"></script> -->
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingOne2">
+				<h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne2" aria-expanded="false"
+						aria-controls="collapseOne2">
+						Avanço de Personagem (XP)
+					</a>
+				</h4>
+			</div>
+			<div id="collapseOne2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne2">
+				<div class="panel-body">
+					<img src="img/collapse/exp.PNG" alt="" style="width: 100%">
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingfour2">
+				<h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapsefour2" aria-expanded="true"
+						aria-controls="collapsefour2">
+						Câmbio
+					</a>
+				</h4>
+			</div>
+			<div id="collapsefour2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour2">
+				<div class="panel-body">
+					<img src="img/collapse/Cambio.PNG" alt="" style="width: 100%">
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingfive2">
+				<h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapsefive2" aria-expanded="true"
+						aria-controls="collapsefive2">
+						Classe de Dificuldade Típicas
+					</a>
+				</h4>
+			</div>
+			<div id="collapsefive2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfive2">
+				<div class="panel-body">
+					<img src="img/collapse/CDTarefas.PNG" alt="" style="width: 100%">
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingsix2">
+				<h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapsesix2" aria-expanded="true"
+						aria-controls="collapsesix2">
+						Comida, Bebida e Hospedagem
+					</a>
+				</h4>
+			</div>
+			<div id="collapsesix2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingsix2">
+				<div class="panel-body">
+					<img src="img/collapse/Hospedagem.PNG" alt="" style="width: 100%">
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingTwo2">
+				<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo2"
+						aria-expanded="false" aria-controls="collapseTwo2">
+						Rolar Dados
+					</a>
+				</h4>
+			</div>
+			<div id="collapseTwo2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
+				<div class="panel-body">
+					<div class="btn-group" role="group" style="width: 100%;display: flex;" aria-label="...">
+						<button id="D4" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)">
+							<center>D4</center>
+						</button>
+						<button id="D6" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)">
+							<center>D6</center>
+						</button>
+						<button id="D8" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)">
+							<center>D8</center>
+						</button>
+						<button id="D10" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)">
+							<center>D10</center>
+						</button>
+						<button id="D12" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)">
+							<center>D12</center>
+						</button>
+						<button id="D20" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)">
+							<center>D20</center>
+						</button>
+						<button id="D50" type="button" style="width: 12.5%;" class="btn btn-default" onclick="addDado(this.id)">
+							<center>D50</center>
+						</button>
+						<button id="D100" type="button" style="calc(12.5% +3px)" class="btn btn-default"
+							onclick="addDado(this.id)">
+							<center>D100</center>
+						</button>
+					</div>
+
+					<table class="table table-bordered" style="margin-top: 10px; width: 100%; table-layout: fixed;"
+						id="ListaDeDados">
+						<thead>
+							<tr class="active" style="height: 15px;">
+								<th style="width: 36px;"><b>
+										<center>Del</center>
+									</b></th>
+								<th><b>Dado</b></th>
+								<th><b>Resultado</b></th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+					<div class="btn-group btn-group-lg" role="group" aria-label="..." style="width: 100%;display: flex;">
+						<button type="button" class="btn btn-success" style="width: 50%;" onclick="rollDado()">Rolar</button>
+						<button type="button" class="btn btn-danger" style="width: 50%;" onclick="delAll()">Limpar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingThree2">
+				<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree2"
+						aria-expanded="false" aria-controls="collapseThree2">
+						Plugin YouTube
+					</a>
+				</h4>
+			</div>
+			<div id="collapseThree2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree2">
+				<div class="panel-body">
+					<iframe width="100%" frameborder="0" style="overflow: hidden; height: calc(100vh - 8 * 34px - 64px)"
+						src="YoutubeApi/youtubeapi.html">
+					</iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

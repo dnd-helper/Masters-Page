@@ -108,7 +108,7 @@ function sortUnorderedList(ul, sortDescending) {
 
   // Idiot-proof, remove if you want
   if(!ul) {
-    alert("The UL object is null!");
+    // alert("The UL object is null!");
     return;
   }
 
