@@ -7,6 +7,6 @@
 
 @media only screen and (max-width: 767px) {
     #PainelEditorTexto{
-        height: calc(65vh - 50px) !important;
+        height: calc(55vh - 50px) !important;
     }
 }

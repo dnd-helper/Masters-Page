@@ -139,6 +139,6 @@ main .content-container #editor {
 
 @media only screen and (max-width: 767px) {
 	main .document-editor {
-		max-height: calc(65vh - 60px);
+		max-height: calc(55vh - 60px);
 	}
 }
