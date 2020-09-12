@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DnD Helper Map Generator v1.0</title>
-  <meta name="application-name" content="DnD Helper Map Generator and Editor">
-  <meta name="author" content="Dnd Helper (Luan Henrique Sirtoli)">
-  <meta name="description" content="DnD Helper Map Generator and Editor">
-  <meta name="google" content="notranslate">
-  <meta property="og:url" content="https://dnd-helper.github.io/">
-  <meta property="og:title" content="DnD Helper Map Generator">
-  <meta property="og:description" content="Based on Voronoi diagram rendered to svg">
-  <meta property="og:image" content="images/preview.png">
-  <link rel="icon" type="image/png" href="https://azgaar.github.io/Fantasy-Map-Generator/images/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="https://azgaar.github.io/Fantasy-Map-Generator/images/favicon-16x16.png" sizes="16x16">
-  <link rel="canonical" href="https://dnd-helper.github.io/">
+<html lang="en" style="overflow: hidden;">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>DnD Helper Map Generator v1.0</title>
+		<meta name="application-name" content="DnD Helper Map Generator and Editor">
+		<meta name="author" content="Dnd Helper (Luan Henrique Sirtoli)">
+		<meta name="description" content="DnD Helper Map Generator and Editor">
+		<meta name="google" content="notranslate">
+		<meta property="og:url" content="https://dnd-helper.github.io/">
+		<meta property="og:title" content="DnD Helper Map Generator">
+		<meta property="og:description" content="Based on Voronoi diagram rendered to svg">
+		<meta property="og:image" content="images/preview.png">
+		<link rel="icon" type="image/png" href="https://azgaar.github.io/Fantasy-Map-Generator/images/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="https://azgaar.github.io/Fantasy-Map-Generator/images/favicon-16x16.png" sizes="16x16">
+		<link rel="canonical" href="https://dnd-helper.github.io/">
 
-  <link rel="stylesheet" type="text/css" href="Arquivos/index.css">
-  <link rel="stylesheet" type="text/css" href="Arquivos/icons.css">
-  <link rel="stylesheet" type="text/css" href="Arquivos/jquery-ui.css">
-</head>
+		<link rel="stylesheet" type="text/css" href="Arquivos/index.css">
+		<link rel="stylesheet" type="text/css" href="Arquivos/icons.css">
+		<link rel="stylesheet" type="text/css" href="Arquivos/jquery-ui.css">
+	</head>
 <body>
-  <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+  <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" style="overflow: hidden;">
     <defs>
       <g id="filters">
         <filter id="blurFilter" x="-1" y="-1" width="100" height="100">
