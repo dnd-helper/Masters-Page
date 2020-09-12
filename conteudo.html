@@ -7,35 +7,35 @@ document.write(`
   
   
         <ul id="myTabs" class="nav nav-tabs nav-justified" role="tablist" style="margin-left: 0px;padding-right: 0px; display: flex;">
-          <li role="presentation" class="active black-tab" style=" display: flex; flex-grow: 1;">
+          <li role="presentation" class="active black-tab" style=" display: flex; flex-grow: 1;min-width: 15%;">
             <a class="newtab" href="#PainelEditorTexto" id="PainelEditorTexto-tab" role="tab" data-toggle="tab"
-              aria-controls="PainelEditorTexto" aria-expanded="true" style="flex-grow: 1; margin: 0;">Bloco de Notas</a>
+              aria-controls="PainelEditorTexto" aria-expanded="true" style="flex-grow: 1; margin: 0; padding-left: 5px !important; padding-right: 5px !important;">Bloco de Notas</a>
           </li>
-          <li role="presentation" class="black-tab" style=" display: flex; flex-grow: 1;">
+          <li role="presentation" class="black-tab" style=" display: flex; flex-grow: 1;min-width: 15%;">
             <a class="newtab" href="#PainelEditorTabela" role="tab" id="PainelEditorTabela-tab" data-toggle="tab"
-              aria-controls="PainelEditorTabela" aria-expanded="false" style="flex-grow: 1; margin: 0;">Tabela</a>
+              aria-controls="PainelEditorTabela" aria-expanded="false" style="flex-grow: 1; margin: 0;padding-left: 5px !important; padding-right: 5px !important;">Tabela</a>
           </li>
           <!-- <li role="presentation" class="black-tab"><a class="newtab" href="#grid" role="tab" id="grid-tab" data-toggle="tab" aria-controls="grid" aria-expanded="false">Grid</a></li> -->
-          <li role="presentation" class="dropdown top_level expanded" style="padding: 0px; flex-grow: 1; height: auto;">
-				<a href="#" id="myTabDropA" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDrop11-contents" aria-expanded="false" style="flex-grow: 1; height: 100%;">
-					Grids
-					<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu" aria-labelledby="myTabDropA" id="myTabDropA-contents">
-					<li><a href="#dropdownA1" role="tab" id="dropdownA1-tab" data-toggle="tab"
-						aria-controls="dropdownA1">Concreto</a></li>
-					<li><a href="#dropdownA2" role="tab" id="dropdownA2-tab" data-toggle="tab"
-						aria-controls="dropdownA2">Campo</a></li>
-					<li><a href="#dropdownA3" role="tab" id="dropdownA3-tab" data-toggle="tab"
-						aria-controls="dropdownA3">Floresta</a></li>
-					<li><a href="#dropdownA4" role="tab" id="dropdownA4-tab" data-toggle="tab"
-						aria-controls="dropdownA4">Deserto</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#" data-toggle="modal" data-target="#ModalEditarGrids">Configurações</a></li>
-				</ul>
+          <li role="presentation" class="dropdown top_level expanded" style="padding: 0px; flex-grow: 1; height: auto;min-width: 15%;">
+            <a href="#" id="myTabDropA" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDrop11-contents" aria-expanded="false" style="flex-grow: 1; height: 100%;padding-left: 5px !important; padding-right: 5px !important;">
+              Grids
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="myTabDropA" id="myTabDropA-contents">
+              <li><a href="#dropdownA1" role="tab" id="dropdownA1-tab" data-toggle="tab"
+                aria-controls="dropdownA1">Concreto</a></li>
+              <li><a href="#dropdownA2" role="tab" id="dropdownA2-tab" data-toggle="tab"
+                aria-controls="dropdownA2">Campo</a></li>
+              <li><a href="#dropdownA3" role="tab" id="dropdownA3-tab" data-toggle="tab"
+                aria-controls="dropdownA3">Floresta</a></li>
+              <li><a href="#dropdownA4" role="tab" id="dropdownA4-tab" data-toggle="tab"
+                aria-controls="dropdownA4">Deserto</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#" data-toggle="modal" data-target="#ModalEditarGrids">Configurações</a></li>
+            </ul>
           </li>
           <!-- <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Tabela</a></li> -->
-          <li role="presentation" class="dropdown top_level expanded" style="padding: 0px; flex-grow: 1; height: auto;">
+          <li role="presentation" class="dropdown top_level expanded" style="padding: 0px; flex-grow: 1; height: auto;min-width: 15%;">
             <a href="#" id="myTabDropB" class="dropdown-toggle newtab" data-toggle="dropdown"
               aria-controls="myTabDrop1-contents" aria-expanded="false" style=" height: 100%;">Progressão de Classes<span
                 class="caret"></span></a>
@@ -68,7 +68,7 @@ document.write(`
                   aria-controls="dropdownB13">Patrulheiro</a></li>
             </ul>
           </li>
-          <li role="presentation" class="dropdown top_level expanded" style="padding: 0px; flex-grow: 1; height: auto;">
+          <li role="presentation" class="dropdown top_level expanded" style="padding: 0px; flex-grow: 1; height: auto;min-width: 15%;">
             <a href="#" id="myTabDropC" class="dropdown-toggle newtab" data-toggle="dropdown"
               aria-controls="myTabDropC-contents" aria-expanded="false" style=" height: 100%;">Gerador de Mapas<span class="caret"></span></a>
             <ul class="dropdown-menu" aria-labelledby="myTabDropC" id="myTabDropC-contents">
@@ -113,13 +113,13 @@ document.write(`
                   </div>
                 </div>
                 <script>
-                  $(document).ready(function () {
-                    $('#documentcontent').css('max-height', $('#documentcontent').height());
-                  });
-                  $(window).resize(function () {
-                    $('#documentcontent').css('max-height', ($('#documenteditor').height() - $('#documenttoolbar').height()));
-                    $('#editor').css('max-height', ($('#documenteditor').height() - $('#documenttoolbar').height()));
-                  });
+                  // $(document).ready(function () {
+                  //   $('#documentcontent').css('max-height', $('#documentcontent').height());
+                  // });
+                  // $(window).resize(function () {
+                  //   $('#documentcontent').css('max-height', ($('#documenteditor').height() - $('#documenttoolbar').height()));
+                  //   $('#editor').css('max-height', ($('#documenteditor').height() - $('#documenttoolbar').height()));
+                  // });
                 </script>
               </div>
             </main>

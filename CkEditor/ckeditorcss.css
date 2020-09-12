@@ -58,14 +58,20 @@ main .document-editor {
 	border-radius: 2px;
 	height: calc(100vh - 155px);
 	max-height: calc(100vh - 155px);
-	display: flex;
+	/* display: flex; */
 	flex-flow: column nowrap;
 	flex-direction: column;
 	box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+
+	/* max-height: calc(50vh - 60px); */
+    display: flex;
+	flex-direction: column;
+	
 }
 
 main .toolbar-container {
 	z-index: 1;
+	flex-grow: 1;
 	position: relative;
 	box-shadow: 2px 2px 1px rgba(0,0,0,.05);
 }
@@ -83,6 +89,8 @@ main .content-container {
 	background: #eee;
 	flex-flow: 1;
 	height: 100% !important;
+	flex-grow: 1;
+    overflow: auto;
 	/* max-height: 100% !important; */
 	/* overflow-y: scroll; */
 }
@@ -93,7 +101,7 @@ main .content-container #editor {
 
 	/* width: 15.8cm; */
 	height: 100% !important;
-	/* max-height: 100% !important; */
+	max-height: 100% !important;
 	padding: 1cm 1cm 0cm;
 	margin: 0 auto;
 	box-shadow: 2px 2px 1px rgba(0,0,0,.05);
@@ -126,5 +134,11 @@ main .content-container #editor {
 	header .centered {
 		padding-left: 0;
 		padding-right: 0;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	main .document-editor {
+		max-height: calc(65vh - 60px);
 	}
 }
