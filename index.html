@@ -115,7 +115,7 @@
         }
     </style>
     <!-- <div class="" style="z-index: 400; display: block"></div> -->
-    <div class="modal fade in" id="loginBlock" role="dialog" aria-labelledby="ModalAdicionarPlayerLabel" style="overflow: hidden; z-index: 400; display: block; padding-left: 17px;">
+    <div class="modal fade in" id="loginBlock" role="dialog" aria-labelledby="ModalAdicionarPlayerLabel" style="overflow: hidden; z-index: 400; display: none; padding-left: 17px;">
         <div class="vertical-alignment-helper">
             <div class="modal-dialog vertical-align-center" role="document">
                 <div id="" class="modal-content" style="border-radius: 0;width: max-content;">
@@ -126,7 +126,7 @@
             </div> -->
                     <!-- <div class="" style="height: 30vh;max-height: 90vh;overflow-x: hidden;overflow-y: auto;"> -->
                     <!-- <div class="modal-body" style="display: flex;flex-wrap: wrap;"> -->
-                    <div class="dropdown-menu mega-dropdown-menu narrowMenu" style="">
+                    <div class="dropdown-menu mega-dropdown-menu narrowMenu">
 
                         <img class="main-menu_utility-icon" src="Loader/DNDHelperBanner.png" alt="" style="width: 100%;">
                         <div id="login_div" class="main-div vertical-center" style="display: inline-grid;width: 100%;text-align: center;">
@@ -219,7 +219,7 @@
             <!-- /.modal-dialog -->
         </div>
     </div>
-    <div id="loginBackground" class="modal-backdrop fade in" style="z-index: 399; display: block; opacity: 0.8"></div>
+    <div id="loginBackground" class="modal-backdrop fade in" style="z-index: 399; display: none; opacity: 0.8"></div>
 
     <div id="mobile-menu">
         <div class="header">
@@ -243,16 +243,17 @@
             <div id="page" class="page" style="min-height:100vh">
 
                 <!-- Header -->
-                <div class="region region-header" style="">
+                <div class="region region-header">
                     <div id="block-dx1-meganav-dx1-meganav" class="block block-dx1-meganav">
                         <div class="content">
-                            <header style="">
-                                <div class="wrapper" style="">
+                            <header>
+                                <div class="wrapper">
 
                                     <!-- Menu -->
                                     <nav id="menu">
-                                        <a class="home" href="https://dnd-helper.github.io/"><span>Dungeons &
-												Dragons</span></a>
+                                        <a class="home" href="https://dnd-helper.github.io/">
+                                            <span>Dungeons & Dragons</span>
+                                        </a>
                                         <div class="menu-wrapper">
                                             <script src="BarraTopo.html"></script>
                                         </div>
@@ -287,7 +288,8 @@
 
 
     <script src="Modais/Modais.html"></script>
-    <script type="text/javascript" src="files/bootstrap.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="files/bootstrap.js"></script> -->
     <script type="text/javascript" src="dice.js"></script>
     <script src="colorWheel/iro.min.js"></script>
     <!-- LINKS PARA ADICIONAR A FIREBASE -->
