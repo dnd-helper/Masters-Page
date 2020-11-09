@@ -30,3 +30,11 @@
 #page{
     padding-bottom: 10px;
 }
+.dropdown-menu li.open > a{
+    background-color: unset !important;
+    border-color: #337ab7;
+}
+.dropdown-menu li.open.active > a{
+    background-color: #337ab7 !important;
+    border-color: #337ab7;
+}
