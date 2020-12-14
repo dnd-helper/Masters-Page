@@ -1043,15 +1043,14 @@
                   placeholder="Descreva seu timer aqui." contenteditable="true">
               </div>
               <div class="" style="width: min-content;display: inline-flex;">
-                <label for="" style="margin-bottom: 0px;text-align: left;" contenteditable="false">Inicial:</label>
-                <input value="" id="startHour" placeholder="00" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;"
-                  contenteditable="true">
+                <label for="" style="margin-bottom: 0px;text-align: left;" contenteditable="false">Inicial:</label>7
+
+                <input value="" type="number" id="startHour" placeholder="00" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;" contenteditable="true" max=23 min=0 maxlength=2>
                 :
-                <input value="" id="startMinute" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;"
-                  placeholder="00" contenteditable="true">
+                <input value="" type="number" id="startMinute" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;" placeholder="00" contenteditable="true" max=60 min=0 maxlength=2>
                 :
-                <input value="" id="startSecond" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;"
-                  placeholder="00" contenteditable="true">
+                <input value="" type="number" id="startSecond" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;" placeholder="00" contenteditable="true" max=60 min=0 maxlength=2>
+
               </div>
             </div>
             <div style="display: inline-flex;width: 100%;" class="btn-group" role="group">
@@ -1068,14 +1067,14 @@
               <button id="time"
                 style="/* height: 3.5vw */;width: 100%;/* padding-top: 1.0vw !important; */padding: 0;opacity: 1;cursor: auto;"
                 class="btn btn-default" disabled="disabled">
-                <input value="00" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;"
-                  id="hours" disabled="disabled">
+                <input value="00" type="number" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;"
+                  id="hours" disabled="disabled" max=60 min=0 maxlength=2>
                 <span style="font-size: 3vw;">:</span>
-                <input value="00" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;"
-                  id="minutes" disabled="disabled">
+                <input value="00" type="number" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;"
+                  id="minutes" disabled="disabled" max=60 min=0 maxlength=2>
                 <span style="font-size: 3vw;">:</span>
-                <input value="00" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;"
-                  id="seconds" disabled="disabled">
+                <input value="00" type="number" style="font-size: 3vw;background: none;border: none;width: 3.5vw;max-height: 4vw;"
+                  id="seconds" disabled="disabled" max=60 min=0 maxlength=2>
               </button>
               <button id="resetTimer" type="button" class="btn btn-primary btn-lg"
                 style="border-top-left-radius: 0;border-bottom-left-radius: 0;padding-left: 0.8vw;padding-right: 0.8vw;"><span
