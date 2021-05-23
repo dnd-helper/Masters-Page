@@ -130,3 +130,31 @@ ul.cabecalhoPlayer>li{
 .form-group>label{
     flex-grow: 1;
 }
+
+.player-name{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 4px;
+    border: 0;
+}
+.player-name>p{
+    font-size: 13px;
+    line-height: 13px !important;
+}
+.player-id{
+    font-size: 12px !important;
+}
+.player-title>.delPlayerbutton{
+    margin-bottom: 7px;
+}
+.player-details{
+    margin-top: 0.2em;
+}
+.player-details>.description{
+    border-top: 1px solid;
+}
+.player-details>.description>.carac{
+    line-height: 1rem;
+    margin-top: 2px;
+}

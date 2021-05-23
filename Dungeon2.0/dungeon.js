@@ -295,7 +295,9 @@ var dc = {
     };
 
     if ( window.location !== window.parent.location ) {
-      var default_query = window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Dados"];
+        console.log('window.parent.usuario');
+        console.log(window.parent.usuario);
+      var default_query = window.parent.global_campanhaAtualDados.Dungeon.Dados;
     } else {
       var default_query = {
           map_style: "standard",
@@ -328,10 +330,10 @@ function init_form() {
     });
 
     if ( window.location !== window.parent.location ) {
-      // if (window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"] != "") {
-      if (window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"] != "") {
-        // $("dungeon_name").setValue(window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"]);
-        $("dungeon_name").setValue(window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"]);
+      // if (window.parent.global_campanhaAtualDados.Dungeon.Nome != "") {
+      if (window.parent.global_campanhaAtualDados.Dungeon.Nome != "") {
+        // $("dungeon_name").setValue(window.parent.global_campanhaAtualDados.Dungeon.Nome);
+        $("dungeon_name").setValue(window.parent.global_campanhaAtualDados.Dungeon.Nome);
         name_reaction()
       } else {
         new_name()
@@ -367,8 +369,8 @@ function new_name() {
 
 function new_dungeon() {
     if ( window.location !== window.parent.location ) {
-      window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Nome"] = $("dungeon_name").getValue();
-      window.parent.usuario["CampanhasMestre"][window.parent.usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Dungeon"]["Dados"] = {
+      window.parent.global_campanhaAtualDados.Dungeon.Nome = $("dungeon_name").getValue();
+      window.parent.global_campanhaAtualDados.Dungeon.Dados = {
           map_style: $("map_style").getValue(),
           grid: $("grid").getValue(),
           dungeon_layout: $("dungeon_layout").getValue(),

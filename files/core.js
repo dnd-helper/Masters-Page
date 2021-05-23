@@ -170,21 +170,21 @@ function globalPageLoadHandler() {
 	window.ark.windowResize();
 
 
-	//Smooth Scrolling to top
-	$(function() {
-		$('a[href=#page]').click(function() {
-			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-				var target = $(this.hash);
-				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-				if (target.length) {
-					$('html,body').animate({
-						scrollTop: target.offset().top
-					}, 500);
-					return false;
-					}
-				}
-		});
-	});
+	// //Smooth Scrolling to top
+	// $(function() {
+	// 	$('a[href=#page]').click(function() {
+	// 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	// 			var target = $(this.hash);
+	// 			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	// 			if (target.length) {
+	// 				$('html,body').animate({
+	// 					scrollTop: target.offset().top
+	// 				}, 500);
+	// 				return false;
+	// 				}
+	// 			}
+	// 	});
+	// });
 
 
 	//Back to top appear on scroll

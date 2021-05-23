@@ -33,7 +33,7 @@ document.write(`
           <!-- <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Tabela</a></li> -->
           <li role="presentation" class="dropdown top_level expanded" style="padding: 0px; flex-grow: 1; height: auto;min-width: 15%;">
             <a href="#" id="myTabDropB" class="dropdown-toggle newtab" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false" style=" height: 100%;">
-              Progressão de Classes
+              Classes
               <span class="caret"></span></a>
             <ul class="dropdown-menu dropdownClasses" aria-labelledby="myTabDropB" id="myTabDropB-contents">
               <li><a href="#dropdownB1" role="tab" id="dropdownB1-tab" data-toggle="tab" aria-controls="dropdownB1">Todas</a></li>
@@ -178,10 +178,59 @@ document.write(`
             </div>
           </div>
   
-          <div role="tabpanel" class="tab-pane fade"
-            style="height: calc(100vh - 140px); overflow-x: hidden; overflow-y: auto;" id="dropdownA1"
-            aria-labelledby="dropdownA1-tab">
-            <canvas id="canvasGrid1" style="width: 100%; height: 100%"></canvas>
+          <div role="tabpanel" class="tab-pane fade" style="height: calc(100vh - 140px); overflow: hidden; padding: 0px;" id="dropdownA1" aria-labelledby="dropdownA1-tab">
+            <!-- <canvas id="canvasGrid1" style="width: 100%; height: 100%"></canvas> -->
+            <div style="height: 32px; padding: 4px; width: 100%; background: #fdfdfd; display: flex; border-bottom: 1px solid #ddd;">
+              
+              <div class="input-group input-group-sm" style="display: flex; margin-left: auto;">
+                <span class="input-group-addon" id="sizing-addon3" style="max-height: 24px; height: 24px; line-height: 13px; width: 120px;">Tamanho da Grid</span>
+                <input id="gridSizeX" type="number" placeholder="Grid X" class="form-control" style="max-height: 24px; height: 24px; line-height: 13px; width: 120px;" value=""></input>
+                <span class="input-group-addon" id="sizing-addon3" style="max-height: 24px; height: 24px; line-height: 13px; width: 26px; border-left: 0; border-right: 0;">x</span>
+                <input id="gridSizeY" type="number" placeholder="Grid Y" class="form-control" style="max-height: 24px; height: 24px; line-height: 13px; width: 120px;" value=""></input>
+              </div>
+
+            </div>
+            <!-- <div style="overflow: auto;"> -->
+              <div class="grid" id="gridContainer">
+            <!-- </div> -->
+				<div ondrop="handleDrop(event);" class="gridRow">
+					<div ondragstart="itemDragStart(event);" class="gridCell">
+						<div class="gridItem" draggable="true"></div>
+					</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">B</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">C</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">D</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">E</div>
+				</div>
+				<div ondrop="handleDrop(event);" class="gridRow">
+					<div ondragstart="itemDragStart(event);" class="gridCell">F</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">G</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">H</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">I</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">J</div>
+				</div>
+				<div ondrop="handleDrop(event);" class="gridRow">
+					<div ondragstart="itemDragStart(event);" class="gridCell">K</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">L</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">M</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">N</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">O</div>
+				</div>
+				<div ondrop="handleDrop(event);" class="gridRow">
+					<div ondragstart="itemDragStart(event);" class="gridCell">P</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">Q</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">R</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">S</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">T</div>
+				</div>
+				<div ondrop="handleDrop(event);" class="gridRow">
+					<div ondragstart="itemDragStart(event);" class="gridCell">U</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">V</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">W</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">X</div>
+					<div ondragstart="itemDragStart(event);" class="gridCell">Y</div>
+				</div>
+            </div>
             <!-- <img src="img/grid/Grid-3.jpeg" alt="" style="width: 100%;"> -->
           </div>
   
@@ -670,7 +719,7 @@ document.write(`
             var contCidade = 0;
             $(document).on("click", "#dropdownC1-tab", function () {
               if (contCidade == 0) {
-                var linkCidade = "MapaCidade/index.html" + usuario["CampanhasMestre"][usuario["InformacoesdoUsuario"]["CampanhaAtual"]]["Cidade"];
+                var linkCidade = "MapaCidade/index.html" + global_campanhaAtualDados.Cidade;
                 $("#iframeCidade").attr("src", linkCidade); contCidade = 1;
               }
               // alert("foi")

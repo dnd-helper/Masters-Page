@@ -1,11 +1,3 @@
-// Fantasy Map Generator main script
-// Azgaar (maxganiev@yandex.com). Minsk, 2017-2019
-// https://github.com/Azgaar/Fantasy-Map-Generator
-// MIT License
-
-// I don't mind of any help with programming.
-// See also https://github.com/Azgaar/Fantasy-Map-Generator/issues/153
-
 "use strict";
 const version = "0.80b"; // generator version
 document.title += " v " + version;
@@ -581,30 +573,32 @@ function generate(newmap) {
   // }
 
 
-  console.timeEnd("TOTAL");
-  window.setTimeout(() => {
-    if ( window.location !== window.parent.location ) {
-      if (window.parent.mapaMundo["Mundo"]["MapaAtual"] != "") {
-        if (newmap == false) {
-          loadUser();
-          mapHistory = window.parent.mapaMundo["Mundo"]["Historico"];
+    console.timeEnd("TOTAL");
+    window.setTimeout(() => {
+        if ( window.location !== window.parent.location ) {
+            if (window.parent.mapaMundo["Mundo"]["MapaAtual"] != "") {
+                if (newmap == false) {
+                    // loadUser();
+                    let data = window.parent.mapaMundo["Mundo"]["MapaAtual"].split("\r\n");
+                    parseLoadedUser(data);
+                    mapHistory = window.parent.mapaMundo["Mundo"]["Historico"];
+                } else {
+                    showStatistics();
+                    saveMapinUserFile();
+                    window.parent.saveThisCampaignOnline();
+                }
+            } else {
+                showStatistics();
+                saveMapinUserFile();
+                window.parent.saveThisCampaignOnline();
+            }
         } else {
-          showStatistics();
-          saveMapinUserFile()
-          window.parent.saveThisCampaignOnline()
+        // The page is not in an iframe
         }
-      } else {
-        showStatistics();
-        saveMapinUserFile()
-        window.parent.saveThisCampaignOnline()
-      }
-    } else {
-      // The page is not in an iframe
-    }
 
-    console.groupEnd("Map " + seed);
-  }, 200); // wait for rendering
-}
+        console.groupEnd("Map " + seed);
+    }, 5000); // wait for rendering
+}   
 
 // function generateWithoutLoad() {
 //   console.time("TOTAL");

@@ -125,7 +125,7 @@ $( document ).ready(function() {
     var arrayLevelQuant = {};
     arrayLevelQuant["Todos"] = [];
     // $("#ulPlayersAdicionados").empty();
-    var allPlayers = usuario.CampanhasMestre[usuario.InformacoesdoUsuario.CampanhaAtual].Players;
+    var allPlayers = global_personagens_campanha;
     var nomesPlayers = Object.keys(allPlayers);
     var numDePlayers = Object.keys(allPlayers).length;
     if (numDePlayers > 0) {

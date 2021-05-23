@@ -639,23 +639,23 @@
                     <div class="modal-body">
                       <!-- <script src="Grids/Configuracao.html"></script> -->
                       <!-- <ul class="" style="width: 100%;flex-wrap: wrap; margin: 0;padding-right: 0px;"> -->
-                      <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">ID do
-                        Personagem</label>
-                      <input class="custom-select" style="background: none">
-                      <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">Senha de
-                        Personagens</label>
-                      <input type="password" class="custom-select" style="background: none">
+                      <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">
+                        ID do Personagem</label>
+                      <input id="IdPlayerDesktop" class="custom-select" style="background: none">
+                      <label for="" style="margin-bottom: 0px; margin-top: 5px;line-height: initial; width: 100%;">
+                        Senha de Personagens</label>
+                      <input id="SenhaPlayerDesktop" type="password" class="custom-select" style="background: none">
       
                       <h1 style="font-weight: bold;font-size: 2.5rem;margin: 1.6rem 0 1rem;">Atenção</h1>
-                      <h2 style="margin: 0 0 1rem;">Essa função ainda não foi implementada no sistema, e portanto esses
-                        controles não geram nenhum resultado. Após a implementação do sistema de Login, esta função será
-                        habilitada.</h2>
+                      <h2 style="margin: 0 0 1rem;">
+                        Essa função ainda não foi implementada no sistema, e portanto esses controles não geram nenhum resultado. Após a implementação do sistema de Login, esta função será habilitada.
+                      </h2>
                       <!-- <input class="btn btn-primary btn-sm" style="width:19%" type="button" value="Novo Nome/Dungeon"> -->
                       <!-- </ul> -->
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                      <button type="button" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                      <button type="button" class="btn btn-success" data-dismiss="modal" onclick="confirmarAdicionarPlayer();">Confirmar</button>
                     </div>
                   </div>
                 </div>
@@ -1043,7 +1043,7 @@
                   placeholder="Descreva seu timer aqui." contenteditable="true">
               </div>
               <div class="" style="width: min-content;display: inline-flex;">
-                <label for="" style="margin-bottom: 0px;text-align: left;" contenteditable="false">Inicial:</label>7
+                <label for="" style="margin-bottom: 0px; margin-right: 3px; text-align: left;" contenteditable="false">Inicial: </label>
 
                 <input value="" type="number" id="startHour" placeholder="00" style="margin-bottom: 0px;text-align: left;background: none;border: none;width: 12px;padding: 0;" contenteditable="true" max=23 min=0 maxlength=2>
                 :
@@ -1274,9 +1274,9 @@
                 <h4>Dificuldade: <span id="dificEncontro"></span></h4>
                 <div class="">
                   <button class="btn btn-danger btn-sm" onclick="delTodosMontrosEncontro(this)" type="button"
-                    name="button">Limpar Monstros</button>
+                    name="button" style="min-width: 115px; margin-bottom: 3px;">Limpar Monstros</button>
                   <button class="btn btn-primary btn-sm" id="buttonAdicionaMonstrosNoGrid" type="button"
-                    name="button">Monstros no Grid</button>
+                    name="button" style="min-width: 115px; margin-bottom: 3px;">Monstros no Grid</button>
                 </div>
               </div>
               <div class="" style="width:30%; text-align: right;">

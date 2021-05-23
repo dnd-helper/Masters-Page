@@ -234,7 +234,7 @@ function updateData(campanha) {
   }
 }
 
-function novaCampanha() {
+function newCampaign() {
   var numDeCampanhas = Object.keys(usuario["CampanhasMestre"]).length;
   var nomeUltimaCamp = Object.keys(usuario["CampanhasMestre"])[eval(numDeCampanhas-1)]
   nomeUltimaCamp = nomeUltimaCamp.replace("Campanha","");

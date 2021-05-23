@@ -1,6 +1,6 @@
 document.write(`
 
-  <ul class="main-menu">
+  <ul class="barraOpcoes main-menu">
 
 
     <li class="top_level expanded">
@@ -8,12 +8,12 @@ document.write(`
         <span>Ferramentas</span>
       </a>
       <div class="mega_menu">
-        <ul class="mega_menu_content ">
+        <ul id="mm-50" class="mega_menu_content ">
 
 
           <li class="column expanded first">
             <a title="" class="nolink">Filtro de Magias</a>
-            <ul class="submenu-col">
+            <ul id="opcoesMagias" class="submenu-col">
 
               <li class="default leaf first">
                 <a href="https://dnd-helper.github.io/Magic-Filter-Printable/" title=""><span class="">Edição Printável</span></a>
@@ -28,7 +28,7 @@ document.write(`
 
           <li class="column expanded">
             <a title="" class="nolink">Filtro de Monstros</a>
-            <ul class="submenu-col">
+            <ul id="opcoesMonstros" class="submenu-col">
 
               <li class="default leaf first">
                 <a href="" title=""><span class="">(Em Desenvolvimento)</span></a>
@@ -39,7 +39,7 @@ document.write(`
 
           <li class="column expanded">
             <a title="" class="nolink">Filtro de Itens</a>
-            <ul class="submenu-col">
+            <ul id="opcoesItens" class="submenu-col">
 
               <li class="default leaf first">
                 <a href="" title=""><span class="">(Em Desenvolvimento)</span></a>
@@ -50,7 +50,7 @@ document.write(`
 
           <li class="column expanded">
             <a title="" class="nolink">Dados Roláveis</a>
-            <ul class="submenu-col">
+            <ul id="opcoesDados" class="submenu-col">
 
               <li class="default leaf first">
                 <a href="" title=""><span class="">(Em Desenvolvimento)</span></a>
@@ -61,7 +61,7 @@ document.write(`
 
           <li class="column expanded last">
             <a title="" class="nolink">Game Page</a>
-            <ul class="submenu-col">
+            <ul id="opcoesGamePage" class="submenu-col">
 
               <li class="default leaf first">
                 <a href="" title=""><span class="">(Em Desenvolvimento)</span></a>
@@ -135,39 +135,39 @@ document.write(`
         <ul class="mega_menu_content ">
           <li class="column expanded first">
             <a title="" class="nolink">Opções</a>
-            <ul class="submenu-col" id="ulOpcoesPagMestre">
+            <ul class="ulOpcoesPagMestre submenu-col" id="ulOpcoesPagMestreTop">
 
-              <li class="default leaf first">
+              <li class="removable default leaf first">
                 <a title=""><span class="">Abrir Painel</span></a>
               </li>
 
-              <li class="default leaf">
+              <li class="removable default leaf">
                 <a href="https://dnd-helper.github.io/Masters-Page/" title=""><span class="">Configurar Campanhas</span></a>
                 <!-- <a href="https://dnd-helper.github.io/Masters-Page/" title=""><span class="">(Em Desenvolvimento)</span></a> -->
               </li>
 
-              <!-- <li class="default leaf first last">
+              <!-- <li class="removable default leaf first last">
                 <a download="info.txt" id="downloadlink"><span class="">Baixar Campanhas</span></a> -->
                 <!-- <a href="https://dnd-helper.github.io/Masters-Page/" title="" ><span class="">Baixar Campanhas</span></a> -->
               <!-- </li> -->
 
 
-              <!-- <li class="default leaf first last">
+              <!-- <li class="removable default leaf first last">
                 <input id="carregarCampanha" type='file' accept='text/plain' onchange='openFile(event)' style="visibility:hidden; display: none">
-                <a onclick="$('#carregarCampanha').click();"><span class="">Carregar Campanhas</span></a> -->
-                <!-- <a href="https://dnd-helper.github.io/Masters-Page/" title=""><span class="">Carregar Campanhas</span></a> -->
+                <a onclick="$('#carregarCampanha').click();"><span class="">Minhas Campanhas</span></a> -->
+                <!-- <a href="https://dnd-helper.github.io/Masters-Page/" title=""><span class="">Minhas Campanhas</span></a> -->
               <!-- </li> -->
 
-              <li class="default leaf last">
-                <a onclick="novaCampanha()" title=""><span class="">Criar nova Campanha</span></a>
+              <li class="removable default leaf last">
+                <a onclick="newCampaign()" title=""><span class="">Criar nova Campanha</span></a>
               </li>
             </ul>
           </li>
           <li class="column expanded">
-            <a title="" class="nolink">Carregar Campanhas</a>
+            <a title="" class="nolink">Minhas Campanhas</a>
             <ul class="submenu-col" id="ulCampanhas">
 
-              <li class="default leaf first last">
+              <li class="removable campOpt default leaf first last">
                 <a href="https://dnd-helper.github.io/Masters-Page/" title=""><span class="">Faça Login para Carregar</span></a>
               </li>
 
@@ -255,10 +255,10 @@ document.write(`
             </ul>
           </li>
           <li class="column expanded">
-            <a title="" class="nolink">Carregar Personagem</a>
+            <a title="" class="nolink">Meus Personagens</a>
             <ul class="submenu-col" id="ulPersonagens">
 
-              <li class="default leaf first">
+              <li class="removable campOpt default leaf first">
                 <a href="" title=""><span class="">(Em Desenvolvimento)</span></a>
               </li>
 
@@ -561,8 +561,14 @@ document.write(`
     </li> -->
     <li id="login_top_LI" class="top_level_right leaf" style="display: none">
       <a title="" id="toggle-right-menu-button" style="width: max-content;" class="toggle-right-menu-button-usuario">
-        <img class="main-menu_utility-icon" src="img/Login.png" style="opacity: 0.65" alt="">
-        <span id="first_name" style="width: max-content;">Usuario</span>
+        <img class="main-menu_utility-icon" src="img/Login.png" style="opacity: 0.65; width: 25px;" alt="">
+        <div style="width: max-content;">
+          <div id="first_name">Usuario</div>
+          <div style="font-size: 10px; line-height: 8px; text-align: initial; display: flex;">
+            <span style="margin: 0; width: 26px; padding: 0 !important;">Salvo: </span>
+            <span id='lastSaveTime'>---</span>
+          </div>
+        </div>
       </a>
     </li>
     <style media="screen">

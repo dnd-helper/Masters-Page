@@ -6,6 +6,14 @@
 //Lista de Players
 
 var usuario = {};
+var global_user;
+var global_userData;
+var global_userId;
+var global_campanhas;
+var global_campanhaAtualId;
+var global_campanhaAtualDados;
+var global_personagens;
+var global_personagens_campanha = {};
 // usuario["InformacoesdoUsuario"] = {};
 // usuario["InformacoesdoUsuario"]["CampanhaAtual"] = "Campanha1";
 // usuario["InformacoesdoUsuario"]["NomeDoUsuario"] = "Admin - Luan";

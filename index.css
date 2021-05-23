@@ -1,0 +1,41 @@
+.campOpt{
+    cursor: pointer;
+}
+.leaf.first.selected>a{
+    color: #df373c !important;
+}
+
+.grid{
+    border-top: 1px solid;
+    border-left: 1px solid;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 16px);
+    margin: 8px;
+}
+.gridRow{
+    display: flex;
+}
+.gridCell{
+    flex-grow: 1;
+    flex: 1 1 0px;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    background-color: lightgreen;
+    /* min-height: 120px; */
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    padding: 15px;
+    user-select: none;
+    /* min-width: 120px; */
+    aspect-ratio: 1 / 1;
+}
+.gridItem{
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: 2px 2px 6px #0000004d;
+    border-radius: 15px;
+}

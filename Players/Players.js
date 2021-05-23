@@ -12,38 +12,21 @@ $(document).on('click', '#ApagarPlayer', function() {
 });
 
 $(document).on('click', '#ConfirmaApagarPlayer', function() {
-  var idParaApagar = $("#IDPlayer").val();
-  var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
-  var indice;
+	var idParaApagar = $("#IDPlayer").val();
+	// delete global_personagens_campanha[idParaApagar];
 
-  delete allPlayers[idParaApagar];
+	firebase.database().ref('personagens/').update({
+		[idParaApagar]: null
+	}).then(function() {
+		// saveThisCampaignOnline()
+	}).catch(function(error) {
+		console.log({error});
+	});
 
-  var database = firebase.database();
-  var user = firebase.auth().currentUser;
-  firebase.database().ref('users/' + user.uid + '/CampanhasMestre/' + campanha + "/Players").update({
-    [idParaApagar]: null
-  }).then(function() {
-    saveThisCampaignOnline()
-    // firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
-    // alert("Campanha criada com sucesso!")
-  }).catch(function(error) {
-    // alert("Error: "+ error.message)
-  });;
-
-  // $.each(usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"], function(index, value) {
-  //   if (idParaApagar == usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"][index][0]) {
-  //     indice = index;
-  //   }
-  // });
-  // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"].splice(indice, 1);
-  // alert(usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"])
-
-  $('#ModalRemoverPlayer').modal('hide');
-  $('#ModalAdicionarPlayer').modal('hide');
-  $('#'+idParaApagar+'CabecalhoButton').remove();
-  $('#collapsePlayer'+idParaApagar).remove();
-
-
+	$('#ModalRemoverPlayer').modal('hide');
+	$('#ModalAdicionarPlayer').modal('hide');
+	$('#'+idParaApagar+'CabecalhoButton').remove();
+	$('#collapsePlayer'+idParaApagar).remove();
 });
 
 $(document).on('click', '#novoPlayer', function() {
@@ -53,39 +36,38 @@ $(document).on('click', '#novoPlayer', function() {
 
 $(document).on('click', '#NovaPericia', function() {
 
-  var stringNovaPericia =
-  "<li class=\"btn-group\" style=\"width: 100%;padding-right: 5px;padding-bottom: 5px;\">"
-    +"<button type=\"button\" class=\"btn btn-default btn-sm dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;\">"
-      +"<b>Pericia</b>"
-      +"<span class=\"caret\"></span>"
-    +"</button>"
-    +"<ul class=\"dropdown-menu dropdown-menu-selecionavel\" style=\"text-transform: Capitalize\">"
-      +"<input onkeyup=\"filtrarEste(this)\" type=\"text\" class=\"custom-select\" style=\"background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;\">"
-      +"<li role=\"separator\" class=\"divider\"></li>"
-      +"<li><a id=\"deleta\" href=\"#\">Deletar Perícia</a></li>"
-      +"<li role=\"separator\" class=\"divider\"></li>"
-      +"<li><a href=\"#\">Acrobacia</a></li>"
-      +"<li><a href=\"#\">Arcanismo</a></li>"
-      +"<li><a href=\"#\">Atletismo</a></li>"
-      +"<li><a href=\"#\">Atuação</a></li>"
-      +"<li><a href=\"#\">Blefar</a></li>"
-      +"<li><a href=\"#\">Furtividade</a></li>"
-      +"<li><a href=\"#\">História</a></li>"
-      +"<li><a href=\"#\">Intimidação</a></li>"
-      +"<li><a href=\"#\">Intução</a></li>"
-      +"<li><a href=\"#\">Investigação</a></li>"
-      +"<li><a href=\"#\">Lidar com Animais</a></li>"
-      +"<li><a href=\"#\">Medicina</a></li>"
-      +"<li><a href=\"#\">Natureza</a></li>"
-      +"<li><a href=\"#\">Percepção</a></li>"
-      +"<li><a href=\"#\">Persuasão</a></li>"
-      +"<li><a href=\"#\">Prestidigitação</a></li>"
-      +"<li><a href=\"#\">Religião</a></li>"
-      +"<li><a href=\"#\">Sobrevivência</a></li>"
-    +"</ul>"
-  +"</li>";
+  var stringNovaPericia = `
+    <li class="btn-group" style="width: 100%;padding-right: 5px;padding-bottom: 5px;">
+		<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;padding-top: 4px;padding-bottom: 4px;font-size: 13px !important;text-transform: Capitalize;">
+			<b>Pericia</b>
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu dropdown-menu-selecionavel" style="text-transform: Capitalize">
+			<input onkeyup="filtrarEste(this)" type="text" class="custom-select" style="background: none;width: 96%;margin-left: 2%;margin-right: 2%;border-radius: 3px;">
+			<li role="separator" class="divider"></li>
+			<li><a id="deleta" href="#">Deletar Perícia</a></li>
+			<li role="separator" class="divider"></li>
+			<li><a href="#">Acrobacia</a></li>
+			<li><a href="#">Arcanismo</a></li>
+			<li><a href="#">Atletismo</a></li>
+			<li><a href="#">Atuação</a></li>
+			<li><a href="#">Blefar</a></li>
+			<li><a href="#">Furtividade</a></li>
+			<li><a href="#">História</a></li>
+			<li><a href="#">Intimidação</a></li>
+			<li><a href="#">Intução</a></li>
+			<li><a href="#">Investigação</a></li>
+			<li><a href="#">Lidar com Animais</a></li>
+			<li><a href="#">Medicina</a></li>
+			<li><a href="#">Natureza</a></li>
+			<li><a href="#">Percepção</a></li>
+			<li><a href="#">Persuasão</a></li>
+			<li><a href="#">Prestidigitação</a></li>
+			<li><a href="#">Religião</a></li>
+			<li><a href="#">Sobrevivência</a></li>
+		</ul>
+    </li>`;
   $("#ulPericias").append(stringNovaPericia);
-
 });
 
 $(document).on('click', '#NovoItem', function() {
@@ -603,211 +585,263 @@ $(document).on('click', '.botao-raca li a', function() {  //FUNCAO PARA ADICIONA
 
 $(document).on('click', '#SalvarPlayer', function() {  //FUNCAO PARA SALVAR PERSONAGEM NO BD
 
-  var nomePersonagem = $("#NomePersonagem").val();
-  var nomePlayer = $("#NomePlayer").val();
-  var racaPlayer = $("#BotaoRaca").val();
-  var alinhamentoPlayer = $("#BotaoAlinhamento").val();
-  var antecedentesPlayer = $("#BotaoAntecedentes").val();
-  var xpPlayer = $("#InputXP").val();
-  var classebasePlayer = $("#BotaoClasseBase").val();
-  var nivelclassebasePlayer = $("#BotaoNivelClasseBase").val();
-  var multiclasse1Player = $("#BotaoMulticlasse1").val();
-  var nivelmulticlasse1Player = $("#BotaoNivelMulticlasse1").val();
-  var multiclasse2Player = $("#BotaoMulticlasse2").val();
-  var nivelmulticlasse2Player = $("#BotaoNivelMulticlasse2").val();
-  var forPlayer1 = $("#InputFor1").val();
-  var desPlayer1 = $("#InputDes1").val();
-  var conPlayer1 = $("#InputCon1").val();
-  var intPlayer1 = $("#InputInt1").val();
-  var sabPlayer1 = $("#InputSab1").val();
-  var carPlayer1 = $("#InputCar1").val();
-  var forPlayer2 = $("#InputFor2").val();
-  var desPlayer2 = $("#InputDes2").val();
-  var conPlayer2 = $("#InputCon2").val();
-  var intPlayer2 = $("#InputInt2").val();
-  var sabPlayer2 = $("#InputSab2").val();
-  var carPlayer2 = $("#InputCar2").val();
-  var forPlayer3 = $("#InputFor3").val();
-  var desPlayer3 = $("#InputDes3").val();
-  var conPlayer3 = $("#InputCon3").val();
-  var intPlayer3 = $("#InputInt3").val();
-  var sabPlayer3 = $("#InputSab3").val();
-  var carPlayer3 = $("#InputCar3").val();
-  var hpLeftPlayer = $("#InputHPLeft").val();
-  var hpAllPlayer = $("#InputHPAll").val();
-  var proefPlayer = $("#Inputproef").val();
-  var classeArmPlayer = $("#InputclasseArm").val();
-  var inspirPlayer = $("#Inputinspir").val();
-  var iniciatPlayer = $("#Inputiniciat").val();
-  var deslocPlayer = $("#Inputdesloc").val();
-  var tracosPlayer = $("#TextareaTracos").val();
-  var ideaisPlayer = $("#TextareaIdeais").val();
-  var ligacoesPlayer = $("#TextareaLigacoes").val();
-  var defeitosPlayer = $("#TextareaDefeitos").val();
-  var ataquesPlayer = $("#TextareaAtaques").val();
-  var caracEhabilPlayer = $("#TextareaCarac").val();
-  var equipamentosPlayer = $("#TextareaEquip").val();
-  var corPlayer = $("#inputcolor").val();
-  if ($("#chkFor").is(":checked")) { var chkForPlayer = "Sim"; } else { var chkForPlayer = "Nao"; }
-  if ($("#chkDes").is(":checked")) { var chkDesPlayer = "Sim"; } else { var chkDesPlayer = "Nao"; }
-  if ($("#chkCon").is(":checked")) { var chkConPlayer = "Sim"; } else { var chkConPlayer = "Nao"; }
-  if ($("#chkInt").is(":checked")) { var chkIntPlayer = "Sim"; } else { var chkIntPlayer = "Nao"; }
-  if ($("#chkSab").is(":checked")) { var chkSabPlayer = "Sim"; } else { var chkSabPlayer = "Nao"; }
-  if ($("#chkCar").is(":checked")) { var chkCarPlayer = "Sim"; } else { var chkCarPlayer = "Nao"; }
+	var nomePersonagem = $("#NomePersonagem").val();
+	var nomePlayer = $("#NomePlayer").val();
+	var racaPlayer = $("#BotaoRaca").val();
+	var alinhamentoPlayer = $("#BotaoAlinhamento").val();
+	var antecedentesPlayer = $("#BotaoAntecedentes").val();
+	var xpPlayer = $("#InputXP").val();
+	var classebasePlayer = $("#BotaoClasseBase").val();
+	var nivelclassebasePlayer = $("#BotaoNivelClasseBase").val();
+	var multiclasse1Player = $("#BotaoMulticlasse1").val();
+	var nivelmulticlasse1Player = $("#BotaoNivelMulticlasse1").val();
+	var multiclasse2Player = $("#BotaoMulticlasse2").val();
+	var nivelmulticlasse2Player = $("#BotaoNivelMulticlasse2").val();
+	var forPlayer1 = $("#InputFor1").val();
+	var desPlayer1 = $("#InputDes1").val();
+	var conPlayer1 = $("#InputCon1").val();
+	var intPlayer1 = $("#InputInt1").val();
+	var sabPlayer1 = $("#InputSab1").val();
+	var carPlayer1 = $("#InputCar1").val();
+	var forPlayer2 = $("#InputFor2").val();
+	var desPlayer2 = $("#InputDes2").val();
+	var conPlayer2 = $("#InputCon2").val();
+	var intPlayer2 = $("#InputInt2").val();
+	var sabPlayer2 = $("#InputSab2").val();
+	var carPlayer2 = $("#InputCar2").val();
+	var forPlayer3 = $("#InputFor3").val();
+	var desPlayer3 = $("#InputDes3").val();
+	var conPlayer3 = $("#InputCon3").val();
+	var intPlayer3 = $("#InputInt3").val();
+	var sabPlayer3 = $("#InputSab3").val();
+	var carPlayer3 = $("#InputCar3").val();
+	var hpLeftPlayer = $("#InputHPLeft").val();
+	var hpAllPlayer = $("#InputHPAll").val();
+	var proefPlayer = $("#Inputproef").val();
+	var classeArmPlayer = $("#InputclasseArm").val();
+	var inspirPlayer = $("#Inputinspir").val();
+	var iniciatPlayer = $("#Inputiniciat").val();
+	var deslocPlayer = $("#Inputdesloc").val();
+	var tracosPlayer = $("#TextareaTracos").val();
+	var ideaisPlayer = $("#TextareaIdeais").val();
+	var ligacoesPlayer = $("#TextareaLigacoes").val();
+	var defeitosPlayer = $("#TextareaDefeitos").val();
+	var ataquesPlayer = $("#TextareaAtaques").val();
+	var caracEhabilPlayer = $("#TextareaCarac").val();
+	var equipamentosPlayer = $("#TextareaEquip").val();
+	var corPlayer = $("#inputcolor").val();
+	if ($("#chkFor").is(":checked")) { var chkForPlayer = "Sim"; } else { var chkForPlayer = "Nao"; }
+	if ($("#chkDes").is(":checked")) { var chkDesPlayer = "Sim"; } else { var chkDesPlayer = "Nao"; }
+	if ($("#chkCon").is(":checked")) { var chkConPlayer = "Sim"; } else { var chkConPlayer = "Nao"; }
+	if ($("#chkInt").is(":checked")) { var chkIntPlayer = "Sim"; } else { var chkIntPlayer = "Nao"; }
+	if ($("#chkSab").is(":checked")) { var chkSabPlayer = "Sim"; } else { var chkSabPlayer = "Nao"; }
+	if ($("#chkCar").is(":checked")) { var chkCarPlayer = "Sim"; } else { var chkCarPlayer = "Nao"; }
 
 
-  var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
-  var lastPlayerRef = firebase.database().ref('/lastCreatedPlayer');
-  lastPlayerRef.once('value', function(snapshot) {
-    var lastPlayerId = snapshot.val();
-    var database = firebase.database();
-    var user = firebase.auth().currentUser;
-    var playerId = eval(eval(lastPlayerId) + 1);
-    var playerFullId = "Player"+playerId;
-    var idPlayer = playerFullId;
+	firebase.database().ref('/lastCreatedPlayer').once('value', function(snapshot) {
+		var lastPlayerId = snapshot.val();
+		var playerId = eval(eval(lastPlayerId) + 1);
+		var playerFullId = "Player"+playerId;
+		var idPlayer = playerFullId;
 
-    var linhaPAdicionar = [];
-    linhaPAdicionar.push(idPlayer);                     //0
-    linhaPAdicionar.push(nomePersonagem);               //1
-    linhaPAdicionar.push(nomePlayer);                   //2
-    linhaPAdicionar.push(racaPlayer);                   //3
-    linhaPAdicionar.push(alinhamentoPlayer);            //4
-    linhaPAdicionar.push(antecedentesPlayer);           //5
-    linhaPAdicionar.push(xpPlayer);                     //6
-    linhaPAdicionar.push(classebasePlayer);             //7
-    linhaPAdicionar.push(nivelclassebasePlayer);        //8
-    linhaPAdicionar.push(multiclasse1Player);           //9
-    linhaPAdicionar.push(nivelmulticlasse1Player);      //10
-    linhaPAdicionar.push(multiclasse2Player);           //11
-    linhaPAdicionar.push(nivelmulticlasse2Player);      //12
-    linhaPAdicionar.push(forPlayer1);                   //13
-    linhaPAdicionar.push(desPlayer1);                   //14
-    linhaPAdicionar.push(conPlayer1);                   //15
-    linhaPAdicionar.push(intPlayer1);                   //16
-    linhaPAdicionar.push(sabPlayer1);                   //17
-    linhaPAdicionar.push(carPlayer1);                   //18
-    linhaPAdicionar.push(forPlayer2);                   //19
-    linhaPAdicionar.push(desPlayer2);                   //20
-    linhaPAdicionar.push(conPlayer2);                   //21
-    linhaPAdicionar.push(intPlayer2);                   //22
-    linhaPAdicionar.push(sabPlayer2);                   //23
-    linhaPAdicionar.push(carPlayer2);                   //24
-    linhaPAdicionar.push(forPlayer3);                   //25
-    linhaPAdicionar.push(desPlayer3);                   //26
-    linhaPAdicionar.push(conPlayer3);                   //27
-    linhaPAdicionar.push(intPlayer3);                   //28
-    linhaPAdicionar.push(sabPlayer3);                   //29
-    linhaPAdicionar.push(carPlayer3);                   //30
-    linhaPAdicionar.push(hpLeftPlayer);                 //31
-    linhaPAdicionar.push(hpAllPlayer);                  //32
-    linhaPAdicionar.push(proefPlayer);                  //33
-    linhaPAdicionar.push(classeArmPlayer);              //34
-    linhaPAdicionar.push(inspirPlayer);                 //35
-    linhaPAdicionar.push(iniciatPlayer);                //36
-    linhaPAdicionar.push(deslocPlayer);                 //37
-    linhaPAdicionar.push(tracosPlayer);                 //38
-    linhaPAdicionar.push(ideaisPlayer);                 //39
-    linhaPAdicionar.push(ligacoesPlayer);               //40
-    linhaPAdicionar.push(defeitosPlayer);               //41
-    linhaPAdicionar.push(ataquesPlayer);                //42
-    linhaPAdicionar.push(caracEhabilPlayer);            //43
-    linhaPAdicionar.push(equipamentosPlayer);           //44
-    linhaPAdicionar.push(corPlayer);                    //45
-    linhaPAdicionar.push(chkForPlayer);                 //46
-    linhaPAdicionar.push(chkDesPlayer);                 //47
-    linhaPAdicionar.push(chkConPlayer);                 //48
-    linhaPAdicionar.push(chkIntPlayer);                 //49
-    linhaPAdicionar.push(chkSabPlayer);                 //50
-    linhaPAdicionar.push(chkCarPlayer);                 //51
+		var linhaPAdicionar = [];
+		linhaPAdicionar.push(idPlayer);                     //0
+		linhaPAdicionar.push(nomePersonagem);               //1
+		linhaPAdicionar.push(nomePlayer);                   //2
+		linhaPAdicionar.push(racaPlayer);                   //3
+		linhaPAdicionar.push(alinhamentoPlayer);            //4
+		linhaPAdicionar.push(antecedentesPlayer);           //5
+		linhaPAdicionar.push(xpPlayer);                     //6
+		linhaPAdicionar.push(classebasePlayer);             //7
+		linhaPAdicionar.push(nivelclassebasePlayer);        //8
+		linhaPAdicionar.push(multiclasse1Player);           //9
+		linhaPAdicionar.push(nivelmulticlasse1Player);      //10
+		linhaPAdicionar.push(multiclasse2Player);           //11
+		linhaPAdicionar.push(nivelmulticlasse2Player);      //12
+		linhaPAdicionar.push(forPlayer1);                   //13
+		linhaPAdicionar.push(desPlayer1);                   //14
+		linhaPAdicionar.push(conPlayer1);                   //15
+		linhaPAdicionar.push(intPlayer1);                   //16
+		linhaPAdicionar.push(sabPlayer1);                   //17
+		linhaPAdicionar.push(carPlayer1);                   //18
+		linhaPAdicionar.push(forPlayer2);                   //19
+		linhaPAdicionar.push(desPlayer2);                   //20
+		linhaPAdicionar.push(conPlayer2);                   //21
+		linhaPAdicionar.push(intPlayer2);                   //22
+		linhaPAdicionar.push(sabPlayer2);                   //23
+		linhaPAdicionar.push(carPlayer2);                   //24
+		linhaPAdicionar.push(forPlayer3);                   //25
+		linhaPAdicionar.push(desPlayer3);                   //26
+		linhaPAdicionar.push(conPlayer3);                   //27
+		linhaPAdicionar.push(intPlayer3);                   //28
+		linhaPAdicionar.push(sabPlayer3);                   //29
+		linhaPAdicionar.push(carPlayer3);                   //30
+		linhaPAdicionar.push(hpLeftPlayer);                 //31
+		linhaPAdicionar.push(hpAllPlayer);                  //32
+		linhaPAdicionar.push(proefPlayer);                  //33
+		linhaPAdicionar.push(classeArmPlayer);              //34
+		linhaPAdicionar.push(inspirPlayer);                 //35
+		linhaPAdicionar.push(iniciatPlayer);                //36
+		linhaPAdicionar.push(deslocPlayer);                 //37
+		linhaPAdicionar.push(tracosPlayer);                 //38
+		linhaPAdicionar.push(ideaisPlayer);                 //39
+		linhaPAdicionar.push(ligacoesPlayer);               //40
+		linhaPAdicionar.push(defeitosPlayer);               //41
+		linhaPAdicionar.push(ataquesPlayer);                //42
+		linhaPAdicionar.push(caracEhabilPlayer);            //43
+		linhaPAdicionar.push(equipamentosPlayer);           //44
+		linhaPAdicionar.push(corPlayer);                    //45
+		linhaPAdicionar.push(chkForPlayer);                 //46
+		linhaPAdicionar.push(chkDesPlayer);                 //47
+		linhaPAdicionar.push(chkConPlayer);                 //48
+		linhaPAdicionar.push(chkIntPlayer);                 //49
+		linhaPAdicionar.push(chkSabPlayer);                 //50
+		linhaPAdicionar.push(chkCarPlayer);                 //51
 
-    var linhaDePericias = SalvaPericias();
-    var linhaDeItens = SalvaItens();
-    var linhaDeMagias = SalvaMagias();
+		let setlinhaAdicionar = {
+			idPlayer,
+			nomePersonagem,
+			nomePlayer,
+			racaPlayer,
+			alinhamentoPlayer,
+			antecedentesPlayer,
+			xpPlayer,
+			classebasePlayer,
+			nivelclassebasePlayer,
+			multiclasse1Player,
+			nivelmulticlasse1Player,
+			multiclasse2Player,
+			nivelmulticlasse2Player,
+			forPlayer1,
+			desPlayer1,
+			conPlayer1,
+			intPlayer1,
+			sabPlayer1,
+			carPlayer1,
+			forPlayer2,
+			desPlayer2,
+			conPlayer2,
+			intPlayer2,
+			sabPlayer2,
+			carPlayer2,
+			forPlayer3,
+			desPlayer3,
+			conPlayer3,
+			intPlayer3,
+			sabPlayer3,
+			carPlayer3,
+			hpLeftPlayer,
+			hpAllPlayer,
+			proefPlayer,
+			classeArmPlayer,
+			inspirPlayer,
+			iniciatPlayer,
+			deslocPlayer,
+			tracosPlayer,
+			ideaisPlayer,
+			ligacoesPlayer,
+			defeitosPlayer,
+			ataquesPlayer,
+			caracEhabilPlayer,
+			equipamentosPlayer,
+			corPlayer,
+			chkForPlayer,
+			chkDesPlayer,
+			chkConPlayer,
+			chkIntPlayer,
+			chkSabPlayer,
+			chkCarPlayer,
+		};
+		console.log({setlinhaAdicionar});
 
-    allPlayers = {}
-    allPlayers[idPlayer] = {
-      "InfoPlayer": linhaPAdicionar,
-      "InfoPericiasPlayer": linhaDePericias,
-      "InfoItensPlayer": linhaDeItens,
-      "InfoMagiasPlayer": linhaDeMagias
-    }
-    // console.log(allPlayers);
+		var linhaDePericias = SalvaPericias();
+		var linhaDeItens = SalvaItens();
+		var linhaDeMagias = SalvaMagias();
 
-    firebase.database().ref('users/' + user.uid + '/CampanhasMestre/' + campanha + "/Players").update({
-      [idPlayer]: allPlayers[idPlayer]
-    }).then(function() {
-      firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
-      // firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
-      saveThisCampaignOnline()
-      // alert("Campanha criada com sucesso!")
-    }).catch(function(error) {
-      // alert("Error: "+ error.message)
-    });
+		global_personagens_campanha = {}
+		global_personagens_campanha[idPlayer] = {
+			"InfoPlayer": linhaPAdicionar,
+			"InfoPericiasPlayer": linhaDePericias,
+			"InfoItensPlayer": linhaDeItens,
+			"InfoMagiasPlayer": linhaDeMagias
+		}
+		// console.log(global_personagens_campanha);
 
-    // usuario["CampanhasMestre"][campanha]["Players"]["ListaDePlayers"].push(linhaPAdicionar);
-    // AppendNovoPlayer(idPlayer,campanha)
+		firebase.database().ref('personagens/').update({
+			[idPlayer]: global_personagens_campanha[idPlayer]
+		}).then(function() {
+			firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
+			// firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
+			saveThisCampaignOnline()
+			// alert("Campanha criada com sucesso!")
+		}).catch(function(error) {
+		// alert("Error: "+ error.message)
+		});
 
-    function SalvaPericias() {
-      var numDePericias = 0;
-      var linhaDePericias = [];
-      linhaDePericias.push(idPlayer);
-      linhaDePericias.push(numDePericias);
+		// usuario["CampanhasMestre"][campanha]["Players"]["ListaDePlayers"].push(linhaPAdicionar);
+		// AppendNovoPlayer(idPlayer,campanha)
 
-      $('#ulPericias .btn-group').each(function(){
-        if (numDePericias != 0) {
-          var nomeDaPericia = $(this).children("button").val();
-          linhaDePericias.push(nomeDaPericia);
-        }
-        numDePericias = numDePericias +1;
-      });
-      numDePericias = numDePericias -1;
+		function SalvaPericias() {
+			var numDePericias = 0;
+			var linhaDePericias = [];
+			linhaDePericias.push(idPlayer);
+			linhaDePericias.push(numDePericias);
 
+			$('#ulPericias .btn-group').each(function(){
+				if (numDePericias != 0) {
+					var nomeDaPericia = $(this).children("button").val();
+					linhaDePericias.push(nomeDaPericia);
+				}
+				numDePericias = numDePericias +1;
+			});
+			numDePericias = numDePericias -1;
 
-      linhaDePericias[1] = (numDePericias);
-      return linhaDePericias;
-      // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"].push(linhaDePericias);
-    }
-    function SalvaItens() {
-      var numDeItens = 0;
-      var linhaDeItens = [];
-      linhaDeItens.push(idPlayer);
-      linhaDeItens.push(numDeItens);
+			linhaDePericias[1] = (numDePericias);
+			return linhaDePericias;
+			// usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"].push(linhaDePericias);
+		}
 
-      $('#ulItens .btn-group').each(function(){
-        if (numDeItens != 0) {
-          var nomeDaPericia = $(this).children("button").val();
-          linhaDeItens.push(nomeDaPericia);
-        }
-        numDeItens = numDeItens +1;
-      });
-      numDeItens = numDeItens -1;
+		function SalvaItens() {
+			var numDeItens = 0;
+			var linhaDeItens = [];
+			linhaDeItens.push(idPlayer);
+			linhaDeItens.push(numDeItens);
 
-
-      linhaDeItens[1] = (numDeItens);
-      return linhaDeItens;
-      // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"].push(linhaDeItens);
-    }
-    function SalvaMagias() {
-      var numDeMagias = 0;
-      var linhaDeMagias = [];
-      linhaDeMagias.push(idPlayer);
-      linhaDeMagias.push(numDeMagias);
-
-      $('#ulMagias .btn-group').each(function(){
-        if (numDeMagias != 0) {
-          var nomeDaPericia = $(this).children("button").val();
-          linhaDeMagias.push(nomeDaPericia);
-        }
-        numDeMagias = numDeMagias +1;
-      });
-      numDeMagias = numDeMagias -1;
+			$('#ulItens .btn-group').each(function(){
+				if (numDeItens != 0) {
+				var nomeDaPericia = $(this).children("button").val();
+				linhaDeItens.push(nomeDaPericia);
+				}
+				numDeItens = numDeItens +1;
+			});
+			numDeItens = numDeItens -1;
 
 
-      linhaDeMagias[1] = (numDeMagias);
-      return linhaDeMagias;
-      // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"].push(linhaDeMagias);
-    }
-  })
+			linhaDeItens[1] = (numDeItens);
+			return linhaDeItens;
+			// usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"].push(linhaDeItens);
+		}
+		function SalvaMagias() {
+			var numDeMagias = 0;
+			var linhaDeMagias = [];
+			linhaDeMagias.push(idPlayer);
+			linhaDeMagias.push(numDeMagias);
+
+			$('#ulMagias .btn-group').each(function(){
+				if (numDeMagias != 0) {
+				var nomeDaPericia = $(this).children("button").val();
+				linhaDeMagias.push(nomeDaPericia);
+				}
+				numDeMagias = numDeMagias +1;
+			});
+			numDeMagias = numDeMagias -1;
+
+
+			linhaDeMagias[1] = (numDeMagias);
+			return linhaDeMagias;
+			// usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"].push(linhaDeMagias);
+		}
+	})
 });
 
 $(document).on('click', '#SalvarEdicaoPlayer', function() {  //FUNCAO PARA SALVAR EDICOES NO PERSONAGEM
@@ -866,241 +900,237 @@ $(document).on('click', '#SalvarEdicaoPlayer', function() {  //FUNCAO PARA SALVA
     if ($("#chkCar").is(":checked")) { var chkCarPlayer = "Sim"; } else { var chkCarPlayer = "Nao"; }
 
 
-    var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
-    var playerSelecionado = allPlayers[idPlayer]["InfoPlayer"];
+    var campanha = global_userData.CampanhaAtual;
     // var todosPlayers = usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePlayers"];
     var linhaSelecionada;
 
     // $.each(todosPlayers, function(index, value) {
       // if (idPlayer == todosPlayers[index][0]) {
 
-        allPlayers[idPlayer]["InfoPlayer"][1] = (nomePersonagem);               //1
-        allPlayers[idPlayer]["InfoPlayer"][2] = (nomePlayer);                   //2
-        allPlayers[idPlayer]["InfoPlayer"][3] = (racaPlayer);                   //3
-        allPlayers[idPlayer]["InfoPlayer"][4] = (alinhamentoPlayer);            //4
-        allPlayers[idPlayer]["InfoPlayer"][5] = (antecedentesPlayer);           //5
-        allPlayers[idPlayer]["InfoPlayer"][6] = (xpPlayer);                     //6
-        allPlayers[idPlayer]["InfoPlayer"][7] = (classebasePlayer);             //7
-        allPlayers[idPlayer]["InfoPlayer"][8] = (nivelclassebasePlayer);        //8
-        allPlayers[idPlayer]["InfoPlayer"][9] = (multiclasse1Player);           //9
-        allPlayers[idPlayer]["InfoPlayer"][10] = (nivelmulticlasse1Player);      //10
-        allPlayers[idPlayer]["InfoPlayer"][11] = (multiclasse2Player);           //11
-        allPlayers[idPlayer]["InfoPlayer"][12] = (nivelmulticlasse2Player);      //12
-        allPlayers[idPlayer]["InfoPlayer"][13] = (forPlayer1);                   //13
-        allPlayers[idPlayer]["InfoPlayer"][14] = (desPlayer1);                   //14
-        allPlayers[idPlayer]["InfoPlayer"][15] = (conPlayer1);                   //15
-        allPlayers[idPlayer]["InfoPlayer"][16] = (intPlayer1);                   //16
-        allPlayers[idPlayer]["InfoPlayer"][17] = (sabPlayer1);                   //17
-        allPlayers[idPlayer]["InfoPlayer"][18] = (carPlayer1);                   //18
-        allPlayers[idPlayer]["InfoPlayer"][19] = (forPlayer2);                   //19
-        allPlayers[idPlayer]["InfoPlayer"][20] = (desPlayer2);                   //20
-        allPlayers[idPlayer]["InfoPlayer"][21] = (conPlayer2);                   //21
-        allPlayers[idPlayer]["InfoPlayer"][22] = (intPlayer2);                   //22
-        allPlayers[idPlayer]["InfoPlayer"][23] = (sabPlayer2);                   //23
-        allPlayers[idPlayer]["InfoPlayer"][24] = (carPlayer2);                   //24
-        allPlayers[idPlayer]["InfoPlayer"][25] = (forPlayer3);                   //25
-        allPlayers[idPlayer]["InfoPlayer"][26] = (desPlayer3);                   //26
-        allPlayers[idPlayer]["InfoPlayer"][27] = (conPlayer3);                   //27
-        allPlayers[idPlayer]["InfoPlayer"][28] = (intPlayer3);                   //28
-        allPlayers[idPlayer]["InfoPlayer"][29] = (sabPlayer3);                   //29
-        allPlayers[idPlayer]["InfoPlayer"][30] = (carPlayer3);                   //30
-        allPlayers[idPlayer]["InfoPlayer"][31] = (hpLeftPlayer);                 //31
-        allPlayers[idPlayer]["InfoPlayer"][32] = (hpAllPlayer);                  //32
-        allPlayers[idPlayer]["InfoPlayer"][33] = (proefPlayer);                  //33
-        allPlayers[idPlayer]["InfoPlayer"][34] = (classeArmPlayer);              //34
-        allPlayers[idPlayer]["InfoPlayer"][35] = (inspirPlayer);                 //35
-        allPlayers[idPlayer]["InfoPlayer"][36] = (iniciatPlayer);                //36
-        allPlayers[idPlayer]["InfoPlayer"][37] = (deslocPlayer);                 //37
-        allPlayers[idPlayer]["InfoPlayer"][38] = (tracosPlayer);                 //38
-        allPlayers[idPlayer]["InfoPlayer"][39] = (ideaisPlayer);                 //39
-        allPlayers[idPlayer]["InfoPlayer"][40] = (ligacoesPlayer);               //40
-        allPlayers[idPlayer]["InfoPlayer"][41] = (defeitosPlayer);               //41
-        allPlayers[idPlayer]["InfoPlayer"][42] = (ataquesPlayer);                //42
-        allPlayers[idPlayer]["InfoPlayer"][43] = (caracEhabilPlayer);            //43
-        allPlayers[idPlayer]["InfoPlayer"][44] = (equipamentosPlayer);           //44
-        allPlayers[idPlayer]["InfoPlayer"][45] = (corPlayer);                    //45
-        allPlayers[idPlayer]["InfoPlayer"][46] = (chkForPlayer);                 //46
-        allPlayers[idPlayer]["InfoPlayer"][47] = (chkDesPlayer);                 //47
-        allPlayers[idPlayer]["InfoPlayer"][48] = (chkConPlayer);                 //48
-        allPlayers[idPlayer]["InfoPlayer"][49] = (chkIntPlayer);                 //49
-        allPlayers[idPlayer]["InfoPlayer"][50] = (chkSabPlayer);                 //50
-        allPlayers[idPlayer]["InfoPlayer"][51] = (chkCarPlayer);                 //51
+		let InfoPlayer = global_personagens_campanha[idPlayer]["InfoPlayer"];
+			InfoPlayer[1] = (nomePersonagem);               //1
+			InfoPlayer[2] = (nomePlayer);                   //2
+			InfoPlayer[3] = (racaPlayer);                   //3
+			InfoPlayer[4] = (alinhamentoPlayer);            //4
+			InfoPlayer[5] = (antecedentesPlayer);           //5
+			InfoPlayer[6] = (xpPlayer);                     //6
+			InfoPlayer[7] = (classebasePlayer);             //7
+			InfoPlayer[8] = (nivelclassebasePlayer);        //8
+			InfoPlayer[9] = (multiclasse1Player);           //9
+			InfoPlayer[10] = (nivelmulticlasse1Player);      //10
+			InfoPlayer[11] = (multiclasse2Player);           //11
+			InfoPlayer[12] = (nivelmulticlasse2Player);      //12
+			InfoPlayer[13] = (forPlayer1);                   //13
+			InfoPlayer[14] = (desPlayer1);                   //14
+			InfoPlayer[15] = (conPlayer1);                   //15
+			InfoPlayer[16] = (intPlayer1);                   //16
+			InfoPlayer[17] = (sabPlayer1);                   //17
+			InfoPlayer[18] = (carPlayer1);                   //18
+			InfoPlayer[19] = (forPlayer2);                   //19
+			InfoPlayer[20] = (desPlayer2);                   //20
+			InfoPlayer[21] = (conPlayer2);                   //21
+			InfoPlayer[22] = (intPlayer2);                   //22
+			InfoPlayer[23] = (sabPlayer2);                   //23
+			InfoPlayer[24] = (carPlayer2);                   //24
+			InfoPlayer[25] = (forPlayer3);                   //25
+			InfoPlayer[26] = (desPlayer3);                   //26
+			InfoPlayer[27] = (conPlayer3);                   //27
+			InfoPlayer[28] = (intPlayer3);                   //28
+			InfoPlayer[29] = (sabPlayer3);                   //29
+			InfoPlayer[30] = (carPlayer3);                   //30
+			InfoPlayer[31] = (hpLeftPlayer);                 //31
+			InfoPlayer[32] = (hpAllPlayer);                  //32
+			InfoPlayer[33] = (proefPlayer);                  //33
+			InfoPlayer[34] = (classeArmPlayer);              //34
+			InfoPlayer[35] = (inspirPlayer);                 //35
+			InfoPlayer[36] = (iniciatPlayer);                //36
+			InfoPlayer[37] = (deslocPlayer);                 //37
+			InfoPlayer[38] = (tracosPlayer);                 //38
+			InfoPlayer[39] = (ideaisPlayer);                 //39
+			InfoPlayer[40] = (ligacoesPlayer);               //40
+			InfoPlayer[41] = (defeitosPlayer);               //41
+			InfoPlayer[42] = (ataquesPlayer);                //42
+			InfoPlayer[43] = (caracEhabilPlayer);            //43
+			InfoPlayer[44] = (equipamentosPlayer);           //44
+			InfoPlayer[45] = (corPlayer);                    //45
+			InfoPlayer[46] = (chkForPlayer);                 //46
+			InfoPlayer[47] = (chkDesPlayer);                 //47
+			InfoPlayer[48] = (chkConPlayer);                 //48
+			InfoPlayer[49] = (chkIntPlayer);                 //49
+			InfoPlayer[50] = (chkSabPlayer);                 //50
+			InfoPlayer[51] = (chkCarPlayer);                 //51
+		global_personagens_campanha[idPlayer]["InfoPlayer"] = InfoPlayer;
 
 
-        allPlayers[idPlayer]["InfoPericiasPlayer"] = SalvaEdicaoPericias();
-        allPlayers[idPlayer]["InfoItensPlayer"] = SalvaEdicaoItens();
-        allPlayers[idPlayer]["InfoMagiasPlayer"] = SalvaEdicaoMagias();
+        global_personagens_campanha[idPlayer]["InfoPericiasPlayer"] = SalvaEdicaoPericias();
+        global_personagens_campanha[idPlayer]["InfoItensPlayer"] = SalvaEdicaoItens();
+        global_personagens_campanha[idPlayer]["InfoMagiasPlayer"] = SalvaEdicaoMagias();
 
-        linhaSelecionada = allPlayers[idPlayer]["InfoPlayer"];
+        linhaSelecionada = global_personagens_campanha[idPlayer]["InfoPlayer"];
 
       // }
     // });
 
 
-    var stringEditPlayer1 =
-    "<b style=\"font-size: 13px;\">"
-      +linhaSelecionada[1]+" - HP:"+linhaSelecionada[32]+"/"+linhaSelecionada[31]+" - XP:"+linhaSelecionada[6]
-    +"</b>"
+		var stringEditPlayer1 =
+		"<b style=\"font-size: 13px;\">"
+		+linhaSelecionada[1]+" - HP:"+linhaSelecionada[32]+"/"+linhaSelecionada[31]+" - XP:"+linhaSelecionada[6]
+		+"</b>"
 
-    var stringEditPlayer3 =
-    "<button style=\"float: right; background-color:"+linhaSelecionada[45]+"\" type=\"button\" class=\"btn btn-primary delPlayerbutton\" onclick=\"alert('teste')\">"
-      +"<span class=\"glyphicon glyphicon-certificate\" aria-hidden=\"true\"></span>"
-    +"</button>"
+		var stringEditPlayer3 =
+		"<button style=\"float: right; background-color:"+linhaSelecionada[45]+"\" type=\"button\" class=\"btn btn-primary delPlayerbutton\" onclick=\"alert('teste')\">"
+		+"<span class=\"glyphicon glyphicon-certificate\" aria-hidden=\"true\"></span>"
+		+"</button>"
 
-    var stringEditPlayer2 =
-      "<div class=\"grid-item player-item\">"
-        +"<div class=\"player-body\">"
-          +"<div class=\"player-title\">"
-            +"<div class=\"player-name\">"
-              +"<p>"+linhaSelecionada[7]+" "+linhaSelecionada[8]+" / "+linhaSelecionada[9]+" "+linhaSelecionada[10]+" / "+linhaSelecionada[11]+" "+linhaSelecionada[12]+"</p>"
-              +"<p class=\"player-id\">#"+linhaSelecionada[0]+"</p>"
-            +"</div>"
-            +"<button style=\"float: right;\" type=\"button\" onclick=\"EditarPlayer(this)\" class=\"btn btn-info delPlayerbutton\" data-toggle=\"modal\" data-target=\"#ModalAdicionarPlayer\">"
-              +"<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>"
-            +"</button>"
-          +"</div>"
-          +"<div class=\"player-details\">"
-            +"<div class=\"description\" style=\"padding-top: 0px;margin-top: -5px;padding-bottom: 6px;\">"
-              +"<div class=\"carac\"><strong>FOR</strong><br>"+linhaSelecionada[19]+" (+"+linhaSelecionada[25]+")</div>"
-              +"<div class=\"carac\"><strong>DES</strong><br>"+linhaSelecionada[20]+" (+"+linhaSelecionada[26]+")</div>"
-              +"<div class=\"carac\"><strong>CON</strong><br>"+linhaSelecionada[21]+" (+"+linhaSelecionada[27]+")</div>"
-              +"<div class=\"carac\"><strong>INT</strong><br>"+linhaSelecionada[22]+" (+"+linhaSelecionada[28]+")</div>"
-              +"<div class=\"carac\"><strong>SAB</strong><br>"+linhaSelecionada[23]+" (+"+linhaSelecionada[29]+")</div>"
-              +"<div class=\"carac\"><strong>CAR</strong><br>"+linhaSelecionada[24]+" (+"+linhaSelecionada[30]+")</div>"
-              +"<div class=\"rub\"></div>"
-              +"<table id=\"TabelaPlayer\" class=\"table table-striped table-condensed\">"
-                +"<tbody>"
-                  +"<tr>"
-                    +"<th><b>Raça</b></th>"
-                    +"<th>"+linhaSelecionada[3]+"</th>"
-                    +"<th><b>Bonus de Proficiencia</b></th>"
-                    +"<th>"+linhaSelecionada[33]+"</th>"
-                  +"</tr>"
-                  +"<tr>"
-                    +"<th><b>Alinhamento</b></th>"
-                    +"<th>"+linhaSelecionada[4]+"</th>"
-                    +"<th><b>Classe de Armadura</b></th>"
-                    +"<th>"+linhaSelecionada[34]+"</th>"
-                  +"</tr>"
-                  +"<tr>"
-                    +"<th><b>Antecedente</b></th>"
-                    +"<th>"+linhaSelecionada[5]+"</th>"
-                    +"<th><b>Inspiração</b></th>"
-                    +"<th>"+linhaSelecionada[35]+"</th>"
-                  +"</tr>"
-                  +"<tr>"
-                    +"<th><b>Deslocamento</b></th>"
-                    +"<th>"+linhaSelecionada[37]+"</th>"
-                    +"<th><b>Iniciativa</b></th>"
-                    +"<th>"+linhaSelecionada[36]+"</th>"
-                  +"</tr>"
-                +"</tbody>"
-              +"</table>"
-              +"<table id=\"TabelaPlayer\" class=\"table table-striped table-condensed\">"
-                +"<tbody>"
-                  +"<tr>"
-                    +"<th><b>Traços de Personalidade</b></th>"
-                    +"<th>"+linhaSelecionada[38]+"</th>"
-                  +"</tr>"
-                  +"<tr>"
-                    +"<th><b>Ideais</b></th>"
-                    +"<th>"+linhaSelecionada[39]+"</th>"
-                  +"</tr>"
-                  +"<tr>"
-                    +"<th><b>Ligações</b></th>"
-                    +"<th>"+linhaSelecionada[40]+"</th>"
-                  +"</tr>"
-                  +"<tr>"
-                    +"<th><b>Defeitos</b></th>"
-                    +"<th>"+linhaSelecionada[41]+"</th>"
-                  +"</tr>"
-                +"</tbody>"
-              +"</table>"
-              +"</div>"
-            +"</div>"
-          +"</div>"
-    +"</div>";
-  $("#"+linhaSelecionada[0]+"Cabecalho").empty();
-  $("#"+linhaSelecionada[0]+"Body").empty();
-  $("#"+linhaSelecionada[0]+"CabecalhoButton button").remove();
-  $("#"+linhaSelecionada[0]+"Cabecalho").append(stringEditPlayer1);
-  $("#"+linhaSelecionada[0]+"Body").append(stringEditPlayer2);
-  $("#"+linhaSelecionada[0]+"CabecalhoButton").append(stringEditPlayer3);
+		var stringEditPlayer2 =
+		"<div class=\"grid-item player-item\">"
+			+"<div class=\"player-body\">"
+			+"<div class=\"player-title\">"
+				+"<div class=\"player-name\">"
+				+"<p>"+linhaSelecionada[7]+" "+linhaSelecionada[8]+" / "+linhaSelecionada[9]+" "+linhaSelecionada[10]+" / "+linhaSelecionada[11]+" "+linhaSelecionada[12]+"</p>"
+				+"<p class=\"player-id\">#"+linhaSelecionada[0]+"</p>"
+				+"</div>"
+				+"<button style=\"float: right;\" type=\"button\" onclick=\"EditarPlayer(this)\" class=\"btn btn-info delPlayerbutton\" data-toggle=\"modal\" data-target=\"#ModalAdicionarPlayer\">"
+				+"<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>"
+				+"</button>"
+			+"</div>"
+			+"<div class=\"player-details\">"
+				+"<div class=\"description\" style=\"padding-top: 0px;margin-top: -5px;padding-bottom: 6px;\">"
+				+"<div class=\"carac\"><strong>FOR</strong><br>"+linhaSelecionada[19]+" (+"+linhaSelecionada[25]+")</div>"
+				+"<div class=\"carac\"><strong>DES</strong><br>"+linhaSelecionada[20]+" (+"+linhaSelecionada[26]+")</div>"
+				+"<div class=\"carac\"><strong>CON</strong><br>"+linhaSelecionada[21]+" (+"+linhaSelecionada[27]+")</div>"
+				+"<div class=\"carac\"><strong>INT</strong><br>"+linhaSelecionada[22]+" (+"+linhaSelecionada[28]+")</div>"
+				+"<div class=\"carac\"><strong>SAB</strong><br>"+linhaSelecionada[23]+" (+"+linhaSelecionada[29]+")</div>"
+				+"<div class=\"carac\"><strong>CAR</strong><br>"+linhaSelecionada[24]+" (+"+linhaSelecionada[30]+")</div>"
+				+"<div class=\"rub\"></div>"
+				+"<table id=\"TabelaPlayer\" class=\"table table-striped table-condensed\">"
+					+"<tbody>"
+					+"<tr>"
+						+"<th><b>Raça</b></th>"
+						+"<th>"+linhaSelecionada[3]+"</th>"
+						+"<th><b>Bonus de Proficiencia</b></th>"
+						+"<th>"+linhaSelecionada[33]+"</th>"
+					+"</tr>"
+					+"<tr>"
+						+"<th><b>Alinhamento</b></th>"
+						+"<th>"+linhaSelecionada[4]+"</th>"
+						+"<th><b>Classe de Armadura</b></th>"
+						+"<th>"+linhaSelecionada[34]+"</th>"
+					+"</tr>"
+					+"<tr>"
+						+"<th><b>Antecedente</b></th>"
+						+"<th>"+linhaSelecionada[5]+"</th>"
+						+"<th><b>Inspiração</b></th>"
+						+"<th>"+linhaSelecionada[35]+"</th>"
+					+"</tr>"
+					+"<tr>"
+						+"<th><b>Deslocamento</b></th>"
+						+"<th>"+linhaSelecionada[37]+"</th>"
+						+"<th><b>Iniciativa</b></th>"
+						+"<th>"+linhaSelecionada[36]+"</th>"
+					+"</tr>"
+					+"</tbody>"
+				+"</table>"
+				+"<table id=\"TabelaPlayer\" class=\"table table-striped table-condensed\">"
+					+"<tbody>"
+					+"<tr>"
+						+"<th><b>Traços de Personalidade</b></th>"
+						+"<th>"+linhaSelecionada[38]+"</th>"
+					+"</tr>"
+					+"<tr>"
+						+"<th><b>Ideais</b></th>"
+						+"<th>"+linhaSelecionada[39]+"</th>"
+					+"</tr>"
+					+"<tr>"
+						+"<th><b>Ligações</b></th>"
+						+"<th>"+linhaSelecionada[40]+"</th>"
+					+"</tr>"
+					+"<tr>"
+						+"<th><b>Defeitos</b></th>"
+						+"<th>"+linhaSelecionada[41]+"</th>"
+					+"</tr>"
+					+"</tbody>"
+				+"</table>"
+				+"</div>"
+				+"</div>"
+			+"</div>"
+		+"</div>";
+	$("#"+linhaSelecionada[0]+"Cabecalho").empty();
+	$("#"+linhaSelecionada[0]+"Body").empty();
+	$("#"+linhaSelecionada[0]+"CabecalhoButton button").remove();
+	$("#"+linhaSelecionada[0]+"Cabecalho").append(stringEditPlayer1);
+	$("#"+linhaSelecionada[0]+"Body").append(stringEditPlayer2);
+	$("#"+linhaSelecionada[0]+"CabecalhoButton").append(stringEditPlayer3);
 
-  var database = firebase.database();
-  var user = firebase.auth().currentUser;
-  firebase.database().ref('users/' + user.uid + '/CampanhasMestre/' + campanha + "/Players").update({
-    [idPlayer]: allPlayers[idPlayer]
-  }).then(function() {
-    saveThisCampaignOnline()
-    // firebase.database().ref('/').update({ lastCreatedPlayer: playerId })
-    // alert("Campanha criada com sucesso!")
-  }).catch(function(error) {
-    // alert("Error: "+ error.message)
-  });
+	firebase.database().ref('personagens/').update({
+		[idPlayer]: global_personagens_campanha[idPlayer]
+	}).then(function() {
+		saveThisCampaignOnline()
+		alert("Player salvo com sucesso!")
+	}).catch(function(error) {
+		// alert("Error: "+ error.message)
+	});
 
-  function SalvaEdicaoPericias() {
-    var numDePericias = 0;
-    var linhaDePericias = [];
-    linhaDePericias.push(idPlayer);
-    linhaDePericias.push(numDePericias);
+	function SalvaEdicaoPericias() {
+		var numDePericias = 0;
+		var linhaDePericias = [];
+		linhaDePericias.push(idPlayer);
+		linhaDePericias.push(numDePericias);
 
-    $('#ulPericias .btn-group').each(function(){
-      if (numDePericias != 0) {
-        var nomeDaPericia = $(this).children("button").val();
-        linhaDePericias.push(nomeDaPericia);
-      }
-      numDePericias = numDePericias +1;
-    });
-    numDePericias = numDePericias -1;
+		$('#ulPericias .btn-group').each(function(){
+			if (numDePericias != 0) {
+				var nomeDaPericia = $(this).children("button").val();
+				linhaDePericias.push(nomeDaPericia);
+			}
+			numDePericias = numDePericias +1;
+		});
+		numDePericias = numDePericias -1;
 
 
-    linhaDePericias[1] = (numDePericias);
-    return linhaDePericias;
-    // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"].push(linhaDePericias);
-  }
-  function SalvaEdicaoItens() {
-    var numDeItens = 0;
-    var linhaDeItens = [];
-    linhaDeItens.push(idPlayer);
-    linhaDeItens.push(numDeItens);
+		linhaDePericias[1] = (numDePericias);
+		return linhaDePericias;
+		// usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDePericias"].push(linhaDePericias);
+	}
+	function SalvaEdicaoItens() {
+		var numDeItens = 0;
+		var linhaDeItens = [];
+		linhaDeItens.push(idPlayer);
+		linhaDeItens.push(numDeItens);
 
-    $('#ulItens .btn-group').each(function(){
-      if (numDeItens != 0) {
-        var nomeDaPericia = $(this).children("button").val();
-        linhaDeItens.push(nomeDaPericia);
-      }
-      numDeItens = numDeItens +1;
-    });
-    numDeItens = numDeItens -1;
-
-
-    linhaDeItens[1] = (numDeItens);
-    return linhaDeItens;
-    // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"].push(linhaDeItens);
-  }
-  function SalvaEdicaoMagias() {
-    var numDeMagias = 0;
-    var linhaDeMagias = [];
-    linhaDeMagias.push(idPlayer);
-    linhaDeMagias.push(numDeMagias);
-
-    $('#ulMagias .btn-group').each(function(){
-      if (numDeMagias != 0) {
-        var nomeDaPericia = $(this).children("button").val();
-        linhaDeMagias.push(nomeDaPericia);
-      }
-      numDeMagias = numDeMagias +1;
-    });
-    numDeMagias = numDeMagias -1;
+		$('#ulItens .btn-group').each(function(){
+			if (numDeItens != 0) {
+				var nomeDaPericia = $(this).children("button").val();
+				linhaDeItens.push(nomeDaPericia);
+			}
+			numDeItens = numDeItens +1;
+		});
+		numDeItens = numDeItens -1;
 
 
-    linhaDeMagias[1] = (numDeMagias);
-    return linhaDeMagias;
-    // usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"].push(linhaDeMagias);
-  }
+		linhaDeItens[1] = (numDeItens);
+		return linhaDeItens;
+		// usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeItens"].push(linhaDeItens);
+	}
+	function SalvaEdicaoMagias() {
+		var numDeMagias = 0;
+		var linhaDeMagias = [];
+		linhaDeMagias.push(idPlayer);
+		linhaDeMagias.push(numDeMagias);
+
+		$('#ulMagias .btn-group').each(function(){
+			if (numDeMagias != 0) {
+				var nomeDaPericia = $(this).children("button").val();
+				linhaDeMagias.push(nomeDaPericia);
+			}
+		numDeMagias = numDeMagias +1;
+		});
+		numDeMagias = numDeMagias -1;
 
 
+		linhaDeMagias[1] = (numDeMagias);
+		return linhaDeMagias;
+		// usuario["CampanhasMestre"]["Campanha1"]["Players"]["ListaDeMagias"].push(linhaDeMagias);
+	}
 });
 
 var numPlayers = 0;
@@ -1108,8 +1138,8 @@ var idUltimoPlayer = 0;
 
 function AppendNovoPlayer(idPlayer,campanha) {
 
-  // var linhaPlayer = allPlayers[idPlayer]["InfoPlayer"].length-1;
-  var linhaSelecionada = allPlayers[idPlayer]["InfoPlayer"];
+  // var linhaPlayer = global_personagens_campanha[idPlayer]["InfoPlayer"].length-1;
+  var linhaSelecionada = global_personagens_campanha[idPlayer]["InfoPlayer"];
 
     var stringAddPlayer =
     "<div id=\""+linhaSelecionada[0]+"CabecalhoButton"+"\" role=\"button\" data-toggle=\"collapse\" data-parent=\"#PlayersAdicionados\" href=\"#collapsePlayer"+linhaSelecionada[0]+"\" aria-expanded=\"true\""
@@ -1211,14 +1241,13 @@ function EditarPlayer(ctl) {
 
   $("#addPlayerModalDivContainer").empty();
   $("#addPlayerModalDivContainer").load('Players/EditPlayers.html div[id="addPlayerModalDiv"]', function() {
-    var campanha = (usuario["InformacoesdoUsuario"]["CampanhaAtual"]);
     var idPlayer = $(ctl).parent().find(".player-id").text();
     idPlayer = idPlayer.replace('#','');
 
-    var playerSelecionado = allPlayers[idPlayer]["InfoPlayer"];
-    var periciasPlayer = allPlayers[idPlayer]["InfoPericiasPlayer"];
-    var itensPlayer = allPlayers[idPlayer]["InfoItensPlayer"];
-    var magiasPlayer = allPlayers[idPlayer]["InfoMagiasPlayer"];
+    var playerSelecionado = global_personagens_campanha[idPlayer]["InfoPlayer"];
+    var periciasPlayer = global_personagens_campanha[idPlayer]["InfoPericiasPlayer"];
+    var itensPlayer = global_personagens_campanha[idPlayer]["InfoItensPlayer"];
+    var magiasPlayer = global_personagens_campanha[idPlayer]["InfoMagiasPlayer"];
     // $.each(todosPlayers, function(index, value) {
       // if (idPlayer == playerSelecionado[0]) {
         $("#IDPlayer").val(playerSelecionado[0]);
@@ -1762,23 +1791,23 @@ function EditarPlayer(ctl) {
 }
 
 function filtrarEste(ctl) {
-  var filter, ul, li, a, i;
-  filter = $(ctl).val().toUpperCase();
-  a = $(ctl).parent().children("li").children("a");
+	var filter, ul, li, a, i;
+	filter = $(ctl).val().toUpperCase();
+	a = $(ctl).parent().children("li").children("a");
 
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      if (i==0) {
-        a[i].style.display = "";
-      }
-      if (i!=0) {
-        a[i].style.display = "none";
-      }
-    }
-  }
+	for (i = 0; i < a.length; i++) {
+		txtValue = a[i].textContent || a[i].innerText;
+		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		a[i].style.display = "";
+		} else {
+		if (i==0) {
+			a[i].style.display = "";
+		}
+		if (i!=0) {
+			a[i].style.display = "none";
+		}
+		}
+	}
 }
 
 function filtrarEsteSemDelete(ctl) {

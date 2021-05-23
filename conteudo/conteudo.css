@@ -38,3 +38,18 @@
     background-color: #337ab7 !important;
     border-color: #337ab7;
 }
+
+.btn-default {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#menu ul.main-menu {
+    /* float: right;
+    margin: 0;
+    height: 60px;
+    list-style: none;
+    width: 100%; */
+    overflow: hidden;
+}
